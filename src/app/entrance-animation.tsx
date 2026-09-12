@@ -30,11 +30,6 @@ export default function EntranceAnimation() {
     if (!visible) document.body.style.overflow = "";
   }, [visible]);
 
-  function skip() {
-    setLeaving(true);
-    window.setTimeout(() => setVisible(false), 400);
-  }
-
   if (!visible) return null;
 
   return (
@@ -48,7 +43,6 @@ export default function EntranceAnimation() {
         priority
         unoptimized
       />
-      <button className={styles.skip} type="button" onClick={skip}>O‘tkazib yuborish</button>
     </div>
   );
 }

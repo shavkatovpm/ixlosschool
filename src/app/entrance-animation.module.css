@@ -32,25 +32,6 @@
   height: auto;
 }
 
-.skip {
-  position: absolute;
-  z-index: 2;
-  right: clamp(22px,4vw,58px);
-  bottom: clamp(22px,4vw,48px);
-  padding: 10px 0;
-  border: 0;
-  border-bottom: 1px solid rgba(255,255,255,.28);
-  background: transparent;
-  color: rgba(255,255,255,.6);
-  font: 500 10px/1 Arial,sans-serif;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color .2s ease, border-color .2s ease;
-}
-
-.skip:hover { color: #fff; border-color: #c8a45a; }
-
 @media (max-width: 640px) {
   .logo { width: min(82vw, 420px); }
 }
