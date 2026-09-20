@@ -1,0 +1,43 @@
+# Ixlos School
+
+> Ixlos School is a private school for grades 1–11 with an in-depth focus on exact sciences: mathematics, English and IT. The school guarantees graduates an IELTS score of at least 5.5 and awards a professional diploma (Accounting or IT). The website is available in Uzbek (default), Russian and English.
+
+Facts on this page come from the school's own materials. Contact details and address are not yet published on the website; parents can send an application through the form on the admissions page and the school will get back to them.
+
+## Pages
+
+- [Home (Uzbek)](https://www.ixlosschool.uz/uz): overview, programme, daily life, clubs, FAQ, application form
+- [Home (Russian)](https://www.ixlosschool.uz/ru): the same in Russian
+- [Home (English)](https://www.ixlosschool.uz/en): the same in English
+- [Admissions (Uzbek)](https://www.ixlosschool.uz/uz/admissions): how admission works
+- [Admissions (Russian)](https://www.ixlosschool.uz/ru/admissions): порядок приёма
+- [Admissions (English)](https://www.ixlosschool.uz/en/admissions): how admission works
+- [Teachers (Uzbek)](https://www.ixlosschool.uz/uz/teachers): education, qualifications and experience of the school's teachers
+- [Teachers (Russian)](https://www.ixlosschool.uz/ru/teachers): преподаватели школы
+- [Teachers (English)](https://www.ixlosschool.uz/en/teachers): the same in English
+- [Privacy policy (English)](https://www.ixlosschool.uz/en/privacy): how application data is handled
+
+## Key facts (English)
+
+- Grades: 1–11. Admission is by an entrance exam in mathematics and English.
+- Grades 1–4: fundamental education in Russian and Uzbek groups.
+- Grades 5–9: in-depth Mathematics, English and Informatics.
+- Grades 10–11: Accounting or IT track with a professional diploma; international ACCA and SAT programmes; IELTS 5.5+ guaranteed to graduates.
+- Groups A / B / C by knowledge level, re-formed based on weekly exams. Extra Saturday classes for students who are falling behind (Mathematics and English in upper grades, core subjects in primary grades).
+- Five-day school week, Monday to Friday, 08:30–17:30. Three meals a day. School bus for students who live far away. School uniform.
+- Eight free clubs included in tuition: Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football, Judo.
+- Payment: annual or monthly. Students with high quarterly results study on a monthly scholarship.
+
+## Asosiy ma'lumotlar (O'zbekcha)
+
+- Ixlos School — 1–11-sinf uchun xususiy maktab; matematika, ingliz tili va IT chuqurlashtirilgan.
+- Qabul matematika va ingliz tilidan imtihon orqali. Bitiruvchilarga IELTS 5.5+ kafolatlanadi, Buxgalteriya yoki IT bo'yicha kasbiy diplom beriladi.
+- A/B/C guruhlar har haftalik imtihon natijasiga ko'ra yangilanadi; shanba kunlari qo'shimcha darslar bor.
+- Dushanbadan jumagacha 08:30–17:30, kuniga 3 mahal ovqat, maktab avtobusi, 8 ta bepul to'garak.
+
+## Основные факты (по-русски)
+
+- Ixlos School — частная школа для 1–11 классов с углублённым изучением математики, английского языка и IT.
+- Приём по результатам экзамена по математике и английскому языку. Выпускникам гарантирован IELTS не ниже 5.5 и профессиональный диплом (Бухгалтерия или IT).
+- Группы A/B/C обновляются по итогам еженедельных экзаменов; по субботам проходят дополнительные занятия.
+- С понедельника по пятницу 08:30–17:30, трёхразовое питание, школьный автобус, 8 бесплатных кружков.

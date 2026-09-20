@@ -41,3 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 .claude/
+
+!.env.example
+
+# raw source material (repo is public): original teacher photos and the founders' documents
+/teachers/
+/info/

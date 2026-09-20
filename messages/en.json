@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "title": "Ixlos School — a private school specializing in exact sciences",
+    "description": "Ixlos School is a private school in Tashkent with an in-depth focus on mathematics, English, and IT, guaranteeing IELTS 5.5+ and a professional diploma (Accounting, IT). Grades 1–11."
+  },
+  "nav": {
+    "why": "Why us",
+    "program": "Curriculum",
+    "teachers": "Teachers",
+    "life": "School day",
+    "clubs": "Clubs",
+    "faq": "FAQ",
+    "apply": "Admissions",
+    "menu": "Menu",
+    "mainLabel": "Main navigation",
+    "language": "Choose language"
+  },
+  "hero": {
+    "eyebrowLeft": "For a generation that thinks.",
+    "eyebrowRight": "Grades 1–11 / Tashkent",
+    "panelLeft": "A love of knowledge.",
+    "panelRight": "Trust in the future. ↗",
+    "h1Prefix": "Ixlos School — a private school specializing in exact sciences. ",
+    "line1Pre": "Big",
+    "line1Em": "ideas.",
+    "line2": "Your own path.",
+    "line3": "A clear step.",
+    "lead": "From memorizing — to understanding. From curiosity — to ability.",
+    "leadStrong": "We give your child's future meaning.",
+    "cta": "Let's get acquainted",
+    "quoteLabel": "The Ixlos philosophy / 01",
+    "quoteA": "A child",
+    "quoteAStrong": "has a voice.",
+    "quoteB": "And a school that",
+    "quoteBStrong": "listens to it.",
+    "quoteFoot": "Every child is a world of their own.",
+    "contents": [
+      "Start from your own level",
+      "Find your own path",
+      "Grow every day"
+    ],
+    "gradeUnit": "GRADE"
+  },
+  "facts": [
+    {
+      "value": "1–11",
+      "label": "grades"
+    },
+    {
+      "value": "A / B / C",
+      "label": "level-based groups"
+    },
+    {
+      "value": "8",
+      "label": "free clubs"
+    },
+    {
+      "value": "3 meals",
+      "label": "a day"
+    }
+  ],
+  "whyUs": {
+    "titleA": "A school that",
+    "titleEm": "sees",
+    "titleB": "every child.",
+    "items": [
+      {
+        "title": "Specialized focus",
+        "description": "Grades 5–9 follow an in-depth program in Mathematics, English, and IT; grades 10–11 lead to a professional diploma in Accounting or IT."
+      },
+      {
+        "title": "International certificates",
+        "description": "Graduates are guaranteed a minimum IELTS score of 5.5, with ACCA and SAT programs also offered."
+      },
+      {
+        "title": "A/B/C group system",
+        "description": "Students are grouped by proficiency level, and groups are updated after weekly assessments. Saturday catch-up classes are available for students who need extra support: math and English in upper grades, core subjects in primary grades."
+      },
+      {
+        "title": "Full day & safety",
+        "description": "Classes run 8:30 AM–5:30 PM with three daily meals, a school bus, and a high standard of security — peace of mind for parents."
+      }
+    ]
+  },
+  "curriculum": {
+    "titleA": "Small steps.",
+    "titleEm": "Big opportunities.",
+    "firstTag": "Foundation",
+    "stages": [
+      {
+        "range": "1–4",
+        "title": "A solid foundation",
+        "copy": "Core knowledge is built in Russian- and Uzbek-medium groups through a fundamental education program."
+      },
+      {
+        "range": "5–9",
+        "title": "Deeper into exact sciences",
+        "copy": "Mathematics, English, and IT are taught through an advanced curriculum. A, B, and C groups are updated weekly by proficiency."
+      },
+      {
+        "range": "10–11",
+        "title": "A path to a profession",
+        "copy": "Accounting and IT tracks, alongside international ACCA and SAT programs. Graduates are guaranteed an IELTS score of at least 5.5."
+      }
+    ]
+  },
+  "teachers": {
+    "titleA": "The teachers who work",
+    "titleEm": "with your child.",
+    "all": "All teachers",
+    "allHint": "Education, qualifications and experience",
+    "experience": "{years, plural, one {# year} other {# years}}",
+    "experienceLabel": "experience",
+    "photoAlt": "{name} — Ixlos School teacher",
+    "jobTitle": "Teacher",
+    "facts": {
+      "education": "Education",
+      "bachelor": "Bachelor's degree",
+      "master": "Master's degree",
+      "bachelorMaster": "Bachelor's and master's degrees"
+    },
+    "category": {
+      "first": "First-category teacher",
+      "highest": "Highest-category teacher"
+    },
+    "focus": {
+      "robotics": "Robotics",
+      "acca": "ACCA"
+    },
+    "credentials": {
+      "roboUz": {
+        "label": "Additional certificate",
+        "value": "RoboUz"
+      },
+      "c1": {
+        "label": "Certificate",
+        "value": "C1"
+      },
+      "nationalHistory": {
+        "label": "National certificate (History)",
+        "value": "B+"
+      },
+      "accaPapers": {
+        "label": "ACCA",
+        "value": "F1–F7, F9 (full paper)"
+      }
+    },
+    "institutions": {
+      "umft": "UMFT University",
+      "jahonTillari": "University of World Languages",
+      "nizomiyTdpu": "Tashkent State Pedagogical University named after Nizami",
+      "oriental": "Oriental University",
+      "urdu": "Urgench State University",
+      "aifu": "AIFU University",
+      "profi": "Profi University",
+      "tdpu": "Tashkent State Pedagogical University",
+      "buxdpi": "Bukhara State Pedagogical University",
+      "ozmu": "National University of Uzbekistan",
+      "isft": "ISFT Institute"
+    },
+    "prev": "Previous teacher",
+    "next": "Next teacher"
+  },
+  "dailyLife": {
+    "label": "One day at Ixlos",
+    "big": "9",
+    "unit": "hours.",
+    "line1": "Gain knowledge.",
+    "line2": "Make friends.",
+    "line3": "Discover yourself.",
+    "hours": "8:30 AM — 5:30 PM / MONDAY — FRIDAY",
+    "note": "A school bus for students commuting from afar, a high standard of security on campus, and a designated school uniform.",
+    "cells": [
+      {
+        "value": "08:30",
+        "label": "Classes begin"
+      },
+      {
+        "value": "3 meals",
+        "label": "Daily meals"
+      },
+      {
+        "value": "8",
+        "label": "Free clubs"
+      },
+      {
+        "value": "17:30",
+        "label": "Classes end"
+      }
+    ]
+  },
+  "clubs": {
+    "titleA": "From curiosity",
+    "titleEm": "to ability.",
+    "badge": "8 clubs — all free",
+    "items": [
+      "Mental Arithmetic",
+      "Chess",
+      "Arabic",
+      "Robotics",
+      "IT",
+      "Speech Therapy",
+      "Football",
+      "Judo"
+    ]
+  },
+  "faq": {
+    "titleA": "Clear",
+    "titleEm": "answers.",
+    "items": [
+      {
+        "question": "From which grade does the school admit students?",
+        "answer": "Students are admitted from grade 1 through grade 11."
+      },
+      {
+        "question": "How does admission work?",
+        "answer": "Students are admitted based on an entrance exam in Mathematics and English."
+      },
+      {
+        "question": "What tracks are offered in grades 10–11?",
+        "answer": "Accounting and IT tracks, along with international ACCA and SAT programs. Graduates are guaranteed a minimum IELTS score of 5.5."
+      },
+      {
+        "question": "Are the clubs paid?",
+        "answer": "No, all clubs (Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football, Judo) are free and included in the tuition fee."
+      },
+      {
+        "question": "How are meals organized?",
+        "answer": "Students receive three meals a day — breakfast, lunch, and an afternoon snack — based on a specially prepared menu."
+      },
+      {
+        "question": "Is there a transport service?",
+        "answer": "Yes, a school bus service is available for students commuting from afar."
+      },
+      {
+        "question": "How can tuition be paid?",
+        "answer": "Tuition can be paid either annually or on a monthly basis."
+      },
+      {
+        "question": "Are there benefits for high-achieving students?",
+        "answer": "Yes, students with high quarterly results study on a monthly scholarship basis."
+      },
+      {
+        "question": "Are there extra classes on Saturdays?",
+        "answer": "Yes, students who are falling behind can attend Saturday catch-up classes: math and English in upper grades, and core subjects in primary grades."
+      },
+      {
+        "question": "How are the groups formed?",
+        "answer": "Students are placed into A, B, and C groups by proficiency level. Groups are updated based on weekly assessment results."
+      },
+      {
+        "question": "What do graduates receive?",
+        "answer": "Graduates are guaranteed an IELTS score of at least 5.5. Along with the school certificate, they receive a professional diploma."
+      },
+      {
+        "question": "What does the school day look like?",
+        "answer": "Classes run on a five-day schedule, Monday to Friday, from 8:30 AM to 5:30 PM. Students have three meals during the day."
+      },
+      {
+        "question": "Do students wear a uniform?",
+        "answer": "Yes, students wear the designated school uniform on campus."
+      },
+      {
+        "question": "In which language are primary grades taught?",
+        "answer": "In grades 1–4, fundamental education is delivered in Russian- and Uzbek-medium groups."
+      }
+    ]
+  },
+  "admissions": {
+    "titleA": "Let's get",
+    "titleEm": "acquainted.",
+    "description": "Students in grades 1–11 are admitted based on an entrance exam in Mathematics and English. Tuition can be paid annually or monthly.",
+    "nameLabel": "Full name",
+    "namePlaceholder": "Enter your name",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "+998 XX XXX XX XX",
+    "gradeLabel": "Which grade is your child applying to?",
+    "gradePlaceholder": "Select a grade",
+    "gradeOption": "Grade {grade}",
+    "nameError": "Please enter your name",
+    "phoneError": "Please enter the full phone number",
+    "gradeError": "Please select a grade",
+    "submit": "Apply now",
+    "submitting": "Submitting...",
+    "success": "Thank you! Your application has been received — we'll be in touch soon.",
+    "error": "Something went wrong. Please try again.",
+    "more": "More about admissions",
+    "consent": "By submitting, you confirm that you have read the <link>Privacy Policy</link>."
+  },
+  "footer": {
+    "tagline": "The path from knowledge to a profession.",
+    "rights": "All rights reserved.",
+    "top": "Back to top ↑",
+    "admissions": "Admissions",
+    "privacy": "Privacy Policy"
+  },
+  "pages": {
+    "home": "Home",
+    "admissions": {
+      "metaTitle": "Admissions — Grades 1–11, entrance exam | Ixlos School",
+      "metaDescription": "Admissions at Ixlos School: students in grades 1–11 are admitted based on an entrance exam in Mathematics and English. Annual or monthly tuition, quarterly scholarships, free clubs.",
+      "eyebrow": "Admissions",
+      "h1": "Admissions at Ixlos School: Grades 1–11",
+      "lead": "Students are admitted based on an entrance exam in Mathematics and English. This page brings together the essentials about admission, study and tuition.",
+      "blocks": [
+        {
+          "title": "Who is admitted",
+          "text": "Students from grade 1 through grade 11. Grades 1–4 have Russian- and Uzbek-medium groups."
+        },
+        {
+          "title": "Entrance exam",
+          "text": "Students are admitted based on an exam in Mathematics and English."
+        },
+        {
+          "title": "Groups and language of instruction",
+          "text": "In grades 1–4, fundamental education is delivered in Russian- and Uzbek-medium groups. Students study in A, B, and C groups by proficiency level, updated after weekly assessments."
+        },
+        {
+          "title": "Tuition and scholarships",
+          "text": "Tuition can be paid in two ways: annually or monthly. Students with high quarterly results study on a monthly scholarship basis. Leave an application to find out the tuition amount."
+        },
+        {
+          "title": "What graduates receive",
+          "text": "Graduates are guaranteed an IELTS score of at least 5.5 and receive a professional diploma along with the school certificate. Grades 10–11 offer Accounting and IT tracks, plus international ACCA and SAT programs."
+        },
+        {
+          "title": "Daily schedule and facilities",
+          "text": "Classes run Monday to Friday, 8:30 AM–5:30 PM. Three meals a day, a school bus for students commuting from afar, a high standard of security, and a school uniform. All clubs are free."
+        }
+      ],
+      "formHint": "Leave an application to learn about admission dates, the list of documents and tuition — the school will contact you.",
+      "homeLink": "General information about the school"
+    },
+    "privacy": {
+      "metaTitle": "Privacy Policy | Ixlos School",
+      "metaDescription": "How the Ixlos School website uses and stores the personal data from the application form (name, phone, grade) and what rights you have.",
+      "eyebrow": "Document",
+      "h1": "Privacy Policy",
+      "lead": "This document explains how the data you submit in the application form on the Ixlos School website is processed. It is prepared in line with the personal data legislation of the Republic of Uzbekistan.",
+      "sections": [
+        {
+          "title": "What data is collected",
+          "text": "The full name, phone number and grade your child is applying to, as entered in the application form. Technical data for site operation and statistics (browser type, pages viewed, cookies) may also be processed."
+        },
+        {
+          "title": "What it is used for",
+          "text": "Only to contact you, provide admissions information and review your application."
+        },
+        {
+          "title": "Who receives it",
+          "text": "The data is passed to the school's admissions staff. It is not sold to third parties or shared for advertising purposes."
+        },
+        {
+          "title": "Retention period",
+          "text": "Data is kept for as long as the admissions process requires and then deleted."
+        },
+        {
+          "title": "Your rights",
+          "text": "You have the right to request information about your data and to ask for it to be corrected or deleted. To do so, contact the school's admissions office."
+        },
+        {
+          "title": "Cookies and analytics",
+          "text": "The site may use analytics services for visit statistics. You can restrict cookies in your browser settings."
+        }
+      ],
+      "updated": "Last updated: 19.09.2026"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "text": "The page you are looking for does not exist or has been moved.",
+      "cta": "Back to home"
+    },
+    "teachers": {
+      "metaTitle": "Teachers — education, qualifications and experience | Ixlos School",
+      "metaDescription": "Meet the teachers of Ixlos School: their education, qualifications (category, certificates) and years of experience.",
+      "eyebrow": "Teachers",
+      "h1": "The teachers of Ixlos School",
+      "lead": "This page brings together the education, qualifications and experience of our teachers. The list is updated as new details come in."
+    }
+  }
+}

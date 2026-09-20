@@ -7,6 +7,7 @@ import styles from "./logo.module.css";
 export const metadata: Metadata = {
   title: "Logo | Ixlos School",
   description: "Ixlos School rasmiy logotipi va rang variantlari.",
+  robots: { index: false, follow: false },
 };
 
 const variants = [

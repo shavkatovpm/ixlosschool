@@ -1,0 +1,58 @@
+import { BadgeCheck, GraduationCap } from "lucide-react";
+import type { Teacher } from "@/lib/teachers";
+
+export type TeacherFact = { kind: "education" | "credential"; label: string; value: string };
+
+type Translate = (key: string) => string;
+
+export function teacherFacts(teacher: Teacher, t: Translate): TeacherFact[] {
+  return [
+    ...(teacher.education ?? []).map((e) => ({
+      kind: "education" as const,
+      label: t(`facts.${e.degree ?? "education"}`),
+      value: t(`institutions.${e.institution}`),
+    })),
+    ...(teacher.credentials ?? []).map((c) => ({
+      kind: "credential" as const,
+      label: t(`credentials.${c}.label`),
+      value: t(`credentials.${c}.value`),
+    })),
+  ];
+}
+
+export function FactIcon({ kind, size = 18 }: { kind: TeacherFact["kind"]; size?: number }) {
+  const Icon = kind === "education" ? GraduationCap : BadgeCheck;
+  return <Icon size={size} aria-hidden />;
+}
+
+/** Dark glass badge in the photo's top-left corner: years of experience. */
+export function ExperienceBadge({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="absolute left-4 top-4 rounded-[16px] border border-white/15 bg-[#0d2716]/65 px-3.5 py-2.5 text-white backdrop-blur-md">
+      <span className="block font-display text-[22px] font-extrabold leading-none tracking-tight">{value}</span>
+      <span className="mt-1.5 block text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#e5d298]">{label}</span>
+    </div>
+  );
+}
+
+export function TeacherChips({
+  focus,
+  category,
+  className = "",
+}: {
+  focus?: string;
+  category?: string;
+  className?: string;
+}) {
+  if (!focus && !category) return null;
+  return (
+    <div className={`flex flex-wrap gap-2 ${className}`}>
+      {focus ? (
+        <span className="rounded-full bg-lime px-3 py-1 text-[12.5px] font-bold text-[#183e24]">{focus}</span>
+      ) : null}
+      {category ? (
+        <span className="rounded-full bg-khaki px-3 py-1 text-[12.5px] font-bold text-[#183e24]">{category}</span>
+      ) : null}
+    </div>
+  );
+}

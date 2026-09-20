@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "title": "Ixlos School — aniq fanlarga ixtisoslashgan xususiy maktab",
+    "description": "Ixlos School — Toshkentdagi xususiy maktab. Matematika, ingliz tili va IT'ga chuqur ixtisoslashgan, IELTS 5.5+ va kasbiy diplom (Buxgalteriya, IT) kafolatlaydi. 1–11-sinf."
+  },
+  "nav": {
+    "why": "Nega biz",
+    "program": "Ta'lim dasturi",
+    "teachers": "Ustozlar",
+    "life": "Kundalik hayot",
+    "clubs": "To'garaklar",
+    "faq": "Savol-javob",
+    "apply": "Qabul bo'limi",
+    "menu": "Menyu",
+    "mainLabel": "Asosiy navigatsiya",
+    "language": "Tilni tanlash"
+  },
+  "hero": {
+    "eyebrowLeft": "Fikrlaydigan avlod uchun.",
+    "eyebrowRight": "1–11-sinflar / Toshkent",
+    "panelLeft": "Bilimga ixlos.",
+    "panelRight": "Kelajakka ishonch. ↗",
+    "h1Prefix": "Ixlos School — aniq fanlarga ixtisoslashgan xususiy maktab. ",
+    "line1Pre": "Katta",
+    "line1Em": "fikrlar.",
+    "line2": "O'z yo'ling.",
+    "line3": "Aniq qadam.",
+    "lead": "Yodlashdan — tushunishga. Qiziqishdan — qobiliyatga.",
+    "leadStrong": "Farzandingizning kelajagiga mazmun beramiz.",
+    "cta": "Keling, tanishamiz",
+    "quoteLabel": "Ixlos falsafasi / 01",
+    "quoteA": "Bolaning",
+    "quoteAStrong": "fikri bor.",
+    "quoteB": "Uni tinglaydigan",
+    "quoteBStrong": "maktabi ham.",
+    "quoteFoot": "Har bir bola — alohida olam.",
+    "contents": [
+      "O'z darajasidan boshlash",
+      "O'z yo'lini topish",
+      "Har kuni o'sish"
+    ],
+    "gradeUnit": "SINF"
+  },
+  "facts": [
+    {
+      "value": "1–11",
+      "label": "sinflar"
+    },
+    {
+      "value": "A / B / C",
+      "label": "darajaga mos guruhlar"
+    },
+    {
+      "value": "8",
+      "label": "bepul to'garak"
+    },
+    {
+      "value": "3 mahal",
+      "label": "ovqatlanish"
+    }
+  ],
+  "whyUs": {
+    "titleA": "Har bir bolani",
+    "titleEm": "ko'ra oladigan",
+    "titleB": "maktab.",
+    "items": [
+      {
+        "title": "Ixtisoslashgan yo'nalish",
+        "description": "5–9-sinflarda Matematika, Ingliz tili va Informatika chuqurlashtirilgan tarzda o'qitiladi; 10–11-sinfda Buxgalteriya yoki IT bo'yicha kasbiy diplom beriladi."
+      },
+      {
+        "title": "Xalqaro sertifikatlar",
+        "description": "Bitiruvchilarimizga IELTS'dan kamida 5.5 ball kafolatlanadi, shuningdek ACCA va SAT dasturlari ham taqdim etiladi."
+      },
+      {
+        "title": "A/B/C guruh tizimi",
+        "description": "O'quvchilar bilim darajasiga ko'ra guruhlarga ajratiladi, har haftalik imtihon orqali guruhlar yangilanadi. Orqada qolganlar uchun shanba kunlari qo'shimcha darslar: yuqori sinflarda matematika va ingliz tili, boshlang'ich sinflarda tayanch fanlar."
+      },
+      {
+        "title": "To'liq kun va xavfsizlik",
+        "description": "08:30–17:30 dars jarayoni, kuniga 3 mahal ovqat, maktab avtobusi va yuqori xavfsizlik — ota-onalar xotirjam."
+      }
+    ]
+  },
+  "curriculum": {
+    "titleA": "Kichik qadamlar.",
+    "titleEm": "Katta imkoniyatlar.",
+    "firstTag": "Poydevor",
+    "stages": [
+      {
+        "range": "1–4",
+        "title": "Mustahkam poydevor",
+        "copy": "Rus va o'zbek guruhlarida tayanch bilim asoslari shakllantiriladi — fundamental ta'lim dasturi asosida."
+      },
+      {
+        "range": "5–9",
+        "title": "Aniq fanlarga chuqurlashuv",
+        "copy": "Matematika, ingliz tili va informatika chuqurlashtirilgan tarzda o'qitiladi. Bilim darajasiga ko'ra A, B, C guruhlar har hafta yangilanadi."
+      },
+      {
+        "range": "10–11",
+        "title": "Kasbga yo'naltirish",
+        "copy": "Buxgalteriya va IT yo'nalishlari, xalqaro ACCA va SAT dasturlari. Bitiruvchilarga IELTS'dan 5.5+ ball kafolatlanadi."
+      }
+    ]
+  },
+  "teachers": {
+    "titleA": "Farzandingiz bilan ishlaydigan",
+    "titleEm": "ustozlar.",
+    "all": "Barcha ustozlar",
+    "allHint": "Ta'lim, malaka va ish staji",
+    "experience": "{years} yil",
+    "experienceLabel": "ish staji",
+    "photoAlt": "{name} — Ixlos School ustozi",
+    "jobTitle": "O'qituvchi",
+    "facts": {
+      "education": "Ta'lim",
+      "bachelor": "Bakalavr",
+      "master": "Magistratura",
+      "bachelorMaster": "Bakalavr va magistratura"
+    },
+    "category": {
+      "first": "1-toifali o'qituvchi",
+      "highest": "Oliy toifali o'qituvchi"
+    },
+    "focus": {
+      "robotics": "Robototexnika",
+      "acca": "ACCA"
+    },
+    "credentials": {
+      "roboUz": {
+        "label": "Qo'shimcha sertifikat",
+        "value": "RoboUz"
+      },
+      "c1": {
+        "label": "Sertifikat",
+        "value": "C1"
+      },
+      "nationalHistory": {
+        "label": "Tarix fanidan milliy sertifikat",
+        "value": "B+"
+      },
+      "accaPapers": {
+        "label": "ACCA",
+        "value": "F1–F7, F9 (full paper)"
+      }
+    },
+    "institutions": {
+      "umft": "UMFT University",
+      "jahonTillari": "Jahon tillari universiteti",
+      "nizomiyTdpu": "Nizomiy nomidagi Toshkent davlat pedagogika universiteti",
+      "oriental": "Oriental University",
+      "urdu": "Urganch davlat universiteti",
+      "aifu": "AIFU University",
+      "profi": "Profi University",
+      "tdpu": "Toshkent davlat pedagogika universiteti",
+      "buxdpi": "Buxoro davlat pedagogika universiteti",
+      "ozmu": "O'zMU",
+      "isft": "ISFT instituti"
+    },
+    "prev": "Oldingi ustoz",
+    "next": "Keyingi ustoz"
+  },
+  "dailyLife": {
+    "label": "Ixlos'dagi bir kun",
+    "big": "9",
+    "unit": "soat.",
+    "line1": "Bilim olish.",
+    "line2": "Do'st orttirish.",
+    "line3": "O'zini kashf etish.",
+    "hours": "08:30 — 17:30 / DUSHANBA — JUMA",
+    "note": "Uzoqdan qatnovchi o'quvchilar uchun maktab avtobusi, maktab hududida yuqori xavfsizlik va belgilangan maktab formasi.",
+    "cells": [
+      {
+        "value": "08:30",
+        "label": "Darslar boshlanadi"
+      },
+      {
+        "value": "3 mahal",
+        "label": "Ovqatlanish"
+      },
+      {
+        "value": "8 ta",
+        "label": "Bepul to'garak"
+      },
+      {
+        "value": "17:30",
+        "label": "Darslar yakunlanadi"
+      }
+    ]
+  },
+  "clubs": {
+    "titleA": "Qiziqishdan",
+    "titleEm": "qobiliyatga.",
+    "badge": "8 ta to'garak — barchasi bepul",
+    "items": [
+      "Mental arifmetika",
+      "Shaxmat",
+      "Arab tili",
+      "Robototexnika",
+      "IT",
+      "Logoped",
+      "Football",
+      "Dzyudo"
+    ]
+  },
+  "faq": {
+    "titleA": "Aniq",
+    "titleEm": "javoblar.",
+    "items": [
+      {
+        "question": "Nechanchi sinfdan qabul qilinadi?",
+        "answer": "1-sinfdan 11-sinfgacha bo'lgan o'quvchilar qabul qilinadi."
+      },
+      {
+        "question": "Qabul qanday amalga oshiriladi?",
+        "answer": "O'quvchilar matematika va ingliz tili fanlaridan imtihon topshirib qabul qilinadi."
+      },
+      {
+        "question": "10–11-sinflarda qanday yo'nalishlar bor?",
+        "answer": "Buxgalteriya va IT yo'nalishlari, shuningdek xalqaro ACCA va SAT dasturlari. Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+      },
+      {
+        "question": "To'garaklar pullikmi?",
+        "answer": "Yo'q, barcha to'garaklar (Mental arifmetika, Shaxmat, Arab tili, Robototexnika, IT, Logoped, Football, Dzyudo) bepul va o'quv narxiga kiritilgan."
+      },
+      {
+        "question": "Ovqatlanish qanday tashkil etilgan?",
+        "answer": "O'quvchilar kuniga 3 mahal — nonushta, tushlik va ikkinchi tushlik — maxsus taomnoma asosida ovqatlanadi."
+      },
+      {
+        "question": "Transport xizmati bormi?",
+        "answer": "Ha, uzoqdan qatnovchi o'quvchilar uchun maktab avtobusi (school bus) xizmati yo'lga qo'yilgan."
+      },
+      {
+        "question": "To'lovni qanday amalga oshirish mumkin?",
+        "answer": "To'lov yillik yoki oyma-oy bo'lib amalga oshirilishi mumkin."
+      },
+      {
+        "question": "Yuqori natijali o'quvchilar uchun imtiyoz bormi?",
+        "answer": "Ha, choraklik natijalarga ko'ra yuqori ko'rsatkichga ega o'quvchilar oylik stipendiya asosida o'qiydi."
+      },
+      {
+        "question": "Shanba kunlari qo'shimcha darslar bormi?",
+        "answer": "Ha, darslardan orqada qolayotgan o'quvchilar uchun shanba kunlari qo'shimcha darslar o'tkaziladi: yuqori sinflarda matematika va ingliz tilidan, boshlang'ich sinflarda tayanch fanlardan."
+      },
+      {
+        "question": "Guruhlar qanday shakllanadi?",
+        "answer": "O'quvchilar bilim darajasiga ko'ra A, B, C guruhlariga ajratiladi. Guruhlar har haftalik imtihon natijalariga ko'ra yangilanib turadi."
+      },
+      {
+        "question": "Bitiruvchilar qanday hujjat oladi?",
+        "answer": "Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi. Shahodatnoma bilan birga mutaxassislik diplomi ham taqdim etiladi."
+      },
+      {
+        "question": "Dars kuni qanday o'tadi?",
+        "answer": "Darslar 5 kunlik dastur asosida dushanbadan jumagacha, soat 08:30 dan 17:30 gacha davom etadi. Shu vaqt ichida o'quvchilar 3 mahal ovqatlanadi."
+      },
+      {
+        "question": "O'quvchilar maxsus formada o'qiydimi?",
+        "answer": "Ha, o'quvchilar maktab hududida belgilangan maxsus formada o'qishadi."
+      },
+      {
+        "question": "Boshlang'ich sinflarda qaysi tilda o'qitiladi?",
+        "answer": "1–4-sinflarda fundamental ta'lim rus va o'zbek guruhlarida olib boriladi."
+      }
+    ]
+  },
+  "admissions": {
+    "titleA": "Keling,",
+    "titleEm": "tanishamiz.",
+    "description": "1–11-sinf o'quvchilari matematika va ingliz tili bo'yicha imtihon asosida qabul qilinadi. To'lov yillik yoki oyma-oy amalga oshirilishi mumkin.",
+    "nameLabel": "Ism-familiya",
+    "namePlaceholder": "Ismingizni kiriting",
+    "phoneLabel": "Telefon raqam",
+    "phonePlaceholder": "+998 XX XXX XX XX",
+    "gradeLabel": "Farzandingiz nechanchi sinfga o'qishni xohlaydi?",
+    "gradePlaceholder": "Sinfni tanlang",
+    "gradeOption": "{grade}-sinf",
+    "nameError": "Ismingizni kiriting",
+    "phoneError": "Telefon raqamini to'liq kiriting",
+    "gradeError": "Sinfni tanlang",
+    "submit": "Ariza qoldirish",
+    "submitting": "Yuborilmoqda...",
+    "success": "Rahmat! Arizangiz qabul qilindi, tez orada siz bilan bog'lanamiz.",
+    "error": "Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.",
+    "more": "Qabul tartibi haqida batafsil",
+    "consent": "Ariza yuborish orqali siz <link>Maxfiylik siyosati</link> bilan tanishganingizni tasdiqlaysiz."
+  },
+  "footer": {
+    "tagline": "Bilimdan kasbgacha bo'lgan yo'l.",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "top": "Yuqoriga qaytish ↑",
+    "admissions": "Qabul tartibi",
+    "privacy": "Maxfiylik siyosati"
+  },
+  "pages": {
+    "home": "Bosh sahifa",
+    "admissions": {
+      "metaTitle": "Qabul — 1–11-sinf, imtihon asosida | Ixlos School",
+      "metaDescription": "Ixlos School'ga qabul: 1–11-sinf o'quvchilari matematika va ingliz tili imtihoni asosida qabul qilinadi. To'lov yillik yoki oyma-oy, choraklik stipendiya, bepul to'garaklar.",
+      "eyebrow": "Qabul",
+      "h1": "Ixlos School'ga qabul: 1–11-sinf",
+      "lead": "O'quvchilar matematika va ingliz tili bo'yicha imtihon asosida qabul qilinadi. Bu sahifada qabul, o'qish va to'lov tartibi haqida asosiy ma'lumotlar jamlangan.",
+      "blocks": [
+        {
+          "title": "Kimlar qabul qilinadi",
+          "text": "1-sinfdan 11-sinfgacha bo'lgan o'quvchilar. 1–4-sinflarda rus va o'zbek guruhlari mavjud."
+        },
+        {
+          "title": "Qabul imtihoni",
+          "text": "O'quvchilar matematika va ingliz tili fanlaridan imtihon topshirib qabul qilinadi."
+        },
+        {
+          "title": "Guruhlar va o'qish tili",
+          "text": "1–4-sinflarda fundamental ta'lim rus va o'zbek guruhlarida olib boriladi. O'quvchilar bilim darajasiga ko'ra A, B, C guruhlarida o'qiydi, guruhlar har haftalik imtihon natijasiga qarab yangilanadi."
+        },
+        {
+          "title": "To'lov va stipendiya",
+          "text": "To'lov ikki usulda amalga oshiriladi: yillik yoki oyma-oy. Choraklik natijalarga ko'ra yuqori ko'rsatkichga ega o'quvchilar oylik stipendiya asosida o'qiydi. To'lov summasi haqida ma'lumot olish uchun ariza qoldiring."
+        },
+        {
+          "title": "Bitiruvchilar nima oladi",
+          "text": "Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi, shahodatnoma bilan birga mutaxassislik diplomi taqdim etiladi. 10–11-sinflarda Buxgalteriya va IT yo'nalishlari, xalqaro ACCA va SAT dasturlari o'qitiladi."
+        },
+        {
+          "title": "Kun tartibi va qulayliklar",
+          "text": "Darslar dushanbadan jumagacha 08:30–17:30. Kuniga 3 mahal ovqat, uzoqdan qatnovchilar uchun maktab avtobusi, yuqori xavfsizlik va maxsus maktab formasi. Barcha to'garaklar bepul."
+        }
+      ],
+      "formHint": "Qabul muddati, hujjatlar ro'yxati va to'lov summasi haqida ma'lumot olish uchun ariza qoldiring — maktab siz bilan bog'lanadi.",
+      "homeLink": "Maktab haqida umumiy ma'lumot"
+    },
+    "privacy": {
+      "metaTitle": "Maxfiylik siyosati | Ixlos School",
+      "metaDescription": "Ixlos School saytida ariza orqali yig'iladigan shaxsiy ma'lumotlar (ism, telefon, sinf) qanday ishlatilishi, saqlanishi va sizning huquqlaringiz haqida.",
+      "eyebrow": "Hujjat",
+      "h1": "Maxfiylik siyosati",
+      "lead": "Ushbu hujjat Ixlos School saytida ariza qoldirganingizda yig'iladigan ma'lumotlar qanday qayta ishlanishini tushuntiradi va O'zbekiston Respublikasining shaxsga doir ma'lumotlar to'g'risidagi qonunchiligiga muvofiq tuzilgan.",
+      "sections": [
+        {
+          "title": "Qanday ma'lumotlar yig'iladi",
+          "text": "Ariza formasida siz kiritgan ism-familiya, telefon raqam va farzandingiz o'qishni xohlagan sinf. Sayt ishlashi va tashrif statistikasi uchun texnik ma'lumotlar (brauzer turi, ko'rilgan sahifalar, cookie) ham qayta ishlanishi mumkin."
+        },
+        {
+          "title": "Nima uchun ishlatiladi",
+          "text": "Faqat siz bilan bog'lanish, qabul haqida ma'lumot berish va arizangizni ko'rib chiqish uchun."
+        },
+        {
+          "title": "Kimga uzatiladi",
+          "text": "Ma'lumotlar maktabning qabul bo'limi xodimlariga yetkaziladi. Ular uchinchi shaxslarga sotilmaydi va reklama maqsadida berilmaydi."
+        },
+        {
+          "title": "Saqlash muddati",
+          "text": "Ma'lumotlar qabul jarayoni uchun zarur bo'lgan muddat davomida saqlanadi, so'ngra o'chiriladi."
+        },
+        {
+          "title": "Sizning huquqlaringiz",
+          "text": "Ma'lumotlaringiz haqida ma'lumot olish, ularni o'zgartirish yoki o'chirishni so'rash huquqiga egasiz. Buning uchun maktab qabul bo'limiga murojaat qiling."
+        },
+        {
+          "title": "Cookie va statistika",
+          "text": "Sayt tashrif statistikasi uchun analitika xizmatlaridan foydalanishi mumkin. Brauzer sozlamalari orqali cookie'larni cheklashingiz mumkin."
+        }
+      ],
+      "updated": "Oxirgi yangilanish: 19.09.2026"
+    },
+    "notFound": {
+      "title": "Sahifa topilmadi",
+      "text": "Siz izlagan sahifa mavjud emas yoki boshqa manzilga ko'chirilgan.",
+      "cta": "Bosh sahifaga qaytish"
+    },
+    "teachers": {
+      "metaTitle": "Ustozlar — ta'lim, malaka va ish staji | Ixlos School",
+      "metaDescription": "Ixlos School ustozlari bilan tanishing: ta'limi, malakasi (toifa, sertifikatlar) va ish staji haqida ma'lumot.",
+      "eyebrow": "Ustozlar",
+      "h1": "Ixlos School ustozlari",
+      "lead": "Bu yerda ustozlarimizning ta'limi, malakasi va ish staji haqidagi ma'lumotlar jamlangan. Ro'yxat yangi ma'lumotlar bilan to'ldirib boriladi."
+    }
+  }
+}
