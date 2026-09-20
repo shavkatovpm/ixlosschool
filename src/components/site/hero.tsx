@@ -9,7 +9,9 @@ const rise = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 /*
  * On laptop/desktop screens ("fit" variant, see globals.css) the whole hero is exactly one screen
  * tall: everything scales with the viewport height and nothing is pushed below the fold.
- * On phones and tablets it flows normally, with the main panel filling the first screen.
+ * That viewport-based sizing is limited to mouse-driven screens: on phones and tablets the hero is
+ * sized by its content and padding only. Viewport-height units there would resize the hero every time
+ * the browser's address bar hides or shows while scrolling.
  */
 export function Hero() {
   const t = useTranslations("hero");
@@ -19,7 +21,7 @@ export function Hero() {
   const contentHrefs = ["#nega-biz", "#dastur", "#hayot"];
 
   return (
-    <section className="wrap pb-6 pt-4 sm:pt-6 fit:flex fit:h-[calc(100dvh-97px)] fit:max-h-[1040px] fit:min-h-[480px] fit:flex-col fit:pb-[clamp(12px,2.2vh,28px)] fit:pt-[clamp(6px,1.2vh,20px)]">
+    <section className="wrap pb-6 pt-4 sm:pt-6 fit:flex fit:h-[calc(100svh-97px)] fit:max-h-[1040px] fit:min-h-[480px] fit:flex-col fit:pb-[clamp(12px,2.2vh,28px)] fit:pt-[clamp(6px,1.2vh,20px)]">
       <div
         className="anim-fade flex items-center justify-between gap-4 pb-6 fit:shrink-0 fit:pb-[clamp(8px,1.8vh,24px)]"
         style={rise(100)}
@@ -32,7 +34,7 @@ export function Hero() {
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.6fr_1fr] lg:gap-6 fit:min-h-0 fit:flex-1 fit:grid-rows-1">
         <div
-          className="on-dark anim-rise relative flex min-h-[min(calc(100svh_-_180px),700px)] flex-col overflow-hidden rounded-[28px] bg-brand p-6 text-[#f6f7e7] sm:p-12 fit:min-h-0 fit:px-[clamp(28px,3.4vw,56px)] fit:py-[clamp(20px,4.4vh,56px)]"
+          className="on-dark anim-rise relative flex flex-col overflow-hidden rounded-[28px] bg-brand p-6 text-[#f6f7e7] min-[375px]:py-8 sm:p-12 fit:min-h-0 fit:px-[clamp(28px,3.4vw,56px)] fit:py-[clamp(20px,4.4vh,56px)]"
           style={rise(150)}
         >
           <Image
