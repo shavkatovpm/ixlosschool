@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* "fit": laptop/desktop screens where the hero is sized to exactly one screen.
+   "short": the same, but so low that secondary hero content is dropped. */
+@custom-variant fit (@media (min-width: 1024px) and (min-height: 600px));
+@custom-variant short (@media (min-width: 1024px) and (min-height: 600px) and (max-height: 719px));
+
+
 @theme inline {
   --color-paper: #f4f3e9;
   --color-ink: #173c24;
@@ -86,7 +92,25 @@ body {
   }
 }
 
-/* ---------- motion ---------- */
+/* Hero artwork contrast layers keep the card content above the illustrations. */
+.hero-knowledge-shade {
+  background: linear-gradient(90deg, rgb(10 48 25 / 92%) 0%, rgb(10 48 25 / 72%) 48%, rgb(10 48 25 / 8%) 100%);
+}
+
+.hero-dialogue-shade {
+  background: linear-gradient(180deg, #e8dcaf 0%, rgb(232 220 175 / 96%) 30%, rgb(232 220 175 / 12%) 66%, rgb(232 220 175 / 90%) 100%);
+}
+
+.hero-progress-shade {
+  background: linear-gradient(90deg, #e1e9d2 0%, rgb(225 233 210 / 94%) 48%, rgb(225 233 210 / 35%) 100%);
+}
+
+@media (max-width: 639px) {
+  .hero-knowledge-shade {
+    background: linear-gradient(90deg, rgb(10 48 25 / 95%), rgb(10 48 25 / 65%));
+  }
+}
+
 :root {
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
 }

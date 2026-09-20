@@ -47,3 +47,6 @@ next-env.d.ts
 # raw source material (repo is public): original teacher photos and the founders' documents
 /teachers/
 /info/
+
+# image-generation notes live next to the artwork locally; they must not be served publicly
+public/illustrations/*.md
