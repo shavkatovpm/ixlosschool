@@ -73,13 +73,6 @@ export function Admissions({ showMore = false }: { showMore?: boolean }) {
               WebkitMaskImage: "linear-gradient(200deg, #000, transparent 55%)",
             }}
           />
-          <span
-            aria-hidden
-            className="anim-spin-slow pointer-events-none absolute -left-10 -top-10 text-[220px] leading-none text-[#cfdda7]/15"
-          >
-            ✳
-          </span>
-
           <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <div className="flex flex-col justify-center">
               <span className="eyebrow text-[#d4e0c4]">{nav("apply")}</span>
