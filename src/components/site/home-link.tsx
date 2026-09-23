@@ -9,7 +9,7 @@ export function HomeLink({ children }: { children: ReactNode }) {
   return (
     <Link
       href="/#top"
-      className="anim-fade shrink-0"
+      className="anim-fade shrink-0 min-[1200px]:justify-self-start"
       aria-label="Ixlos School"
       onNavigate={(event) => {
         if (pathname !== "/") return;
