@@ -69,7 +69,7 @@ export function Hero() {
               </div>
 
               <ApplyTrigger
-                className="anim-rise group cursor-pointer mx-auto mt-7 flex min-h-14 w-fit max-w-full items-center gap-4 rounded-[12px] bg-khaki px-5 py-3 text-center text-[15px] font-bold text-ink sm:px-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_-10px_rgba(0,0,0,0.45)] active:translate-y-0 sm:mx-0 sm:mt-10 sm:inline-flex fit:mt-[clamp(12px,2.6vh,32px)] fit:min-h-[clamp(46px,6.4vh,56px)]"
+                className="anim-rise group cursor-pointer mx-auto mt-7 max-sm:relative max-sm:-top-[90px] flex min-h-14 w-fit max-w-full items-center gap-4 rounded-[12px] bg-khaki px-5 py-3 text-center text-[15px] font-bold text-ink sm:px-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_-10px_rgba(0,0,0,0.45)] active:translate-y-0 sm:mx-0 sm:mt-10 sm:inline-flex fit:mt-[clamp(12px,2.6vh,32px)] fit:min-h-[clamp(46px,6.4vh,56px)]"
                 style={rise(900)}
               >
                 {t("cta")}
