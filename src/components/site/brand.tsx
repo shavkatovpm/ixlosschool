@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const sizes = {
   header: {
-    crest: "h-12 group-data-[scrolled=true]:h-11 sm:h-[64px] sm:group-data-[scrolled=true]:h-[52px]",
-    word: "text-[21px] sm:text-[27px]",
-    sub: "text-[9px] sm:text-[11px]",
-    gap: "gap-2.5 sm:gap-3.5",
-    wrap: "hidden min-[380px]:flex",
+    crest: "h-10 min-[1200px]:h-[64px] min-[1200px]:group-data-[scrolled=true]:h-[52px]",
+    word: "text-[18px] min-[1200px]:text-[27px]",
+    sub: "text-[8px] min-[1200px]:text-[11px]",
+    gap: "gap-2 min-[1200px]:gap-3.5",
+    wrap: "flex",
   },
   footer: {
     crest: "h-16 sm:h-20",

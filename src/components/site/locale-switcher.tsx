@@ -81,12 +81,10 @@ export function LocaleSwitcher() {
             setOpen(true);
           }
         }}
-        className={`flex h-11 items-center gap-2 rounded-[11px] px-3 text-[13px] font-bold uppercase transition-colors duration-300 sm:px-3.5 ${
-          open ? "bg-tint-c" : "bg-tint-e hover:bg-tint-c"
-        }`}
+        className="flex h-11 items-center gap-1.5 rounded-[14px] px-2.5 text-[12px] font-bold uppercase opacity-75 transition-opacity duration-300 hover:opacity-100 min-[1200px]:gap-2 min-[1200px]:rounded-[11px] min-[1200px]:px-3.5 min-[1200px]:text-[13px]"
       >
-        <Flag locale={locale} />
-        <span className="hidden sm:inline">{locale}</span>
+        <span className="hidden min-[1200px]:inline-flex"><Flag locale={locale} /></span>
+        <span className="inline">{locale}</span>
         <ChevronDown
           size={16}
           aria-hidden
@@ -99,7 +97,7 @@ export function LocaleSwitcher() {
           id={menuId}
           role="menu"
           aria-label={t("language")}
-          className="anim-menu absolute right-0 top-[calc(100%+10px)] z-50 w-[210px] rounded-[16px] border border-line bg-paper p-2 shadow-[0_24px_60px_-12px_rgba(23,60,36,0.3)]"
+          className="anim-menu absolute right-0 top-[calc(100%+10px)] z-50 w-[210px] rounded-[16px] border border-line bg-paper p-2 shadow-[0_24px_60px_-12px_rgba(22,46,37,0.3)]"
         >
           {routing.locales.map((loc, i) => {
             const active = loc === locale;

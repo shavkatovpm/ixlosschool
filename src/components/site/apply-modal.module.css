@@ -1,0 +1,24 @@
+.dialog { position: fixed; inset: 0; width: min(500px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: auto; padding: 0; border: 0; border-radius: 28px; background: var(--color-surface); color: var(--color-ink); box-shadow: 0 32px 90px rgb(16 45 37 / 42%); overflow: hidden; }
+.dialog:focus { outline: none; }
+.dialog[open] { display: flex; flex-direction: column; animation: apply-modal-in 260ms var(--ease-out) both; }
+.dialog::backdrop { background: rgb(16 45 37 / 58%); backdrop-filter: blur(6px); animation: apply-backdrop-in 260ms ease-out both; }
+.head { position: relative; flex-shrink: 0; padding: 30px 32px 28px; overflow: hidden; background: var(--color-brand); color: var(--color-on-brand); }
+.head::before { content: ""; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgb(239 244 247 / 12%) 1px, transparent 1px); background-size: 18px 18px; -webkit-mask-image: linear-gradient(200deg, #000, transparent 65%); mask-image: linear-gradient(200deg, #000, transparent 65%); }
+.brand { position: relative; display: block; color: var(--color-gold); font-size: 11px; font-weight: 700; letter-spacing: .2em; }
+.title { position: relative; margin-top: 12px; padding-right: 52px; font-family: var(--font-display); font-size: 30px; font-weight: 700; line-height: 1.15; letter-spacing: -.03em; }
+.lead { position: relative; max-width: 360px; margin-top: 10px; color: var(--color-on-brand-muted); font-size: 15px; line-height: 1.6; }
+.close { position: absolute; top: 18px; right: 18px; display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 50%; background: color-mix(in srgb, var(--color-on-brand) 14%, transparent); color: var(--color-on-brand); cursor: pointer; transition: background-color 160ms ease, transform 200ms var(--ease-out); }
+.close:hover { background: color-mix(in srgb, var(--color-on-brand) 26%, transparent); transform: rotate(90deg); }
+.close:focus-visible { outline: 2px solid var(--color-on-brand); outline-offset: 2px; }
+.body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 28px 32px 30px; }
+.body [role="status"] { min-height: 260px; height: auto; }
+@keyframes apply-modal-in { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes apply-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 480px) {
+  .dialog { border-radius: 24px; }
+  .head { padding: 24px 20px 22px; }
+  .title { font-size: 26px; }
+  .close { top: 14px; right: 14px; }
+  .body { padding: 22px 20px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .dialog[open], .dialog::backdrop { animation: none; } .close { transition: none; } .close:hover { transform: none; } }

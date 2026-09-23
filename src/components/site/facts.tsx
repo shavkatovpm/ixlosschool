@@ -16,7 +16,7 @@ export function Facts() {
               i % 2 === 1 ? "border-l border-line" : ""
             } ${i > 1 ? "border-t border-line lg:border-t-0" : ""} ${i > 0 ? "lg:border-l lg:border-line" : ""}`}
           >
-            <dt className="text-[14px] font-medium text-ink/65">{item.label}</dt>
+            <dt className="text-[14px] font-medium text-ink/80">{item.label}</dt>
             <dd className="font-display text-[clamp(2rem,3.6vw,3.25rem)] font-extrabold leading-none tracking-tight">
               {item.value}
             </dd>

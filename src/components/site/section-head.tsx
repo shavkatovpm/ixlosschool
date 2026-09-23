@@ -6,7 +6,7 @@ export function SectionHead({
   children,
   className = "",
 }: {
-  index: string;
+  index?: string;
   label: string;
   children: React.ReactNode;
   className?: string;
@@ -14,8 +14,12 @@ export function SectionHead({
   return (
     <Reveal className={className}>
       <span className="eyebrow text-khaki-deep">
-        <span className="text-moss">{index}</span>
-        <span aria-hidden className="h-px w-10 bg-current opacity-35" />
+        {index ? (
+          <>
+            <span className="text-moss">{index}</span>
+            <span aria-hidden className="h-px w-10 bg-current opacity-35" />
+          </>
+        ) : null}
         {label}
       </span>
       <h2 className="section-title mt-6 max-w-3xl">{children}</h2>

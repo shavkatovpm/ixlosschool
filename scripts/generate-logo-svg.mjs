@@ -3,7 +3,7 @@ import sharp from "sharp";
 
 const source = "public/brand/ixlos-school-original.png";
 const variants = {
-  "ixlos-school.svg": { color: [23, 92, 43], label: "yashil" },
+  "ixlos-school.svg": { color: [22, 62, 50], label: "yashil" },
   "ixlos-school-navy.svg": { color: [16, 35, 63], label: "to'q ko'k" },
   "ixlos-school-gold.svg": { color: [200, 164, 90], label: "oltin" },
   "ixlos-school-white.svg": { color: [255, 255, 255], label: "oq" },

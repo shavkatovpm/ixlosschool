@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const variants = [
-  { name: "Asosiy yashil", file: "/brand/ixlos-school.svg", color: "#175C2B", surface: "light" },
+  { name: "Asosiy yashil", file: "/brand/ixlos-school.svg", color: "#163E32", surface: "light" },
   { name: "To‘q ko‘k", file: "/brand/ixlos-school-navy.svg", color: "#10233F", surface: "light" },
   { name: "Oltin", file: "/brand/ixlos-school-gold.svg", color: "#C8A45A", surface: "dark" },
   { name: "Oq", file: "/brand/ixlos-school-white.svg", color: "#FFFFFF", surface: "green" },
@@ -37,7 +37,7 @@ export default function LogoPage() {
             <Image src="/brand/ixlos-school-original.png" alt="Ixlos School original yashil logosi" width={3601} height={3601} priority />
           </div>
           <div className={styles.originalInfo}>
-            <div><span className={styles.swatch} /><p>Asosiy rang</p><strong>#175C2B</strong></div>
+            <div><span className={styles.swatch} style={{ backgroundColor: "#175c2b" }} /><p>Manba rang</p><strong>#175C2B</strong></div>
             <a href="/brand/ixlos-school-original.png" download>PNG yuklab olish <span>↓</span></a>
           </div>
         </div>
@@ -52,7 +52,7 @@ export default function LogoPage() {
           {variants.map((variant) => (
             <article className={styles.card} key={variant.name}>
               <div className={`${styles.preview} ${styles[variant.surface]}`}>
-                <Image src={`${variant.file}?v=2`} alt={`Ixlos School — ${variant.name}`} width={3601} height={3601} />
+                <Image src={`${variant.file}?v=3`} alt={`Ixlos School — ${variant.name}`} width={3601} height={3601} />
                 <span className={styles.corner}>IS</span>
               </div>
               <div className={styles.cardFooter}>

@@ -1,30 +1,43 @@
 @import "tailwindcss";
 
-/* "fit": laptop/desktop screens (mouse, no collapsing browser bars) where the hero is sized to exactly one screen.
+/* "fit": laptop/desktop screens (mouse, no collapsing browser bars) where the hero uses a viewport-based minimum height.
    Touch devices never use viewport-height sizing: the hero there is content-driven, so scrolling can't resize it.
    "short": the same, but so low that secondary hero content is dropped. */
 @custom-variant fit (@media (min-width: 1024px) and (min-height: 600px) and (hover: hover) and (pointer: fine));
 @custom-variant short (@media (min-width: 1024px) and (min-height: 600px) and (max-height: 719px) and (hover: hover) and (pointer: fine));
 
+@theme {
+  --color-paper: #eff4f7;
+  --color-ink: #162e25;
+  --color-brand: #163e32;
+  --color-brand-soft: #285345;
+  --color-moss: #365343;
+  --color-khaki: #e2eaee;
+  --color-khaki-deep: #3d5147;
+  --color-lime: #cdd8bc;
+  --color-gold: #dbc38c;
+  --color-tint-a: #c6cfc0;
+  --color-tint-b: #e7eef2;
+  --color-tint-c: #b7c5b2;
+  --color-tint-d: #d5dacd;
+  --color-tint-e: #c5cebe;
+  --color-sage: #b3c1ad;
+  --color-line: #adbba8;
+  --color-brand-deep: #102d25;
+  --color-brand-surface: #163e32;
+  --color-surface: #ffffff;
+  --color-neutral: #e7eef2;
+  --color-on-brand: #eff4f7;
+  --color-on-brand-muted: #c8d8d1;
+  --color-highlight: #ded4ac;
+  --color-danger-soft: #f6c4b4;
+  --color-danger: #a22b28;
+  --color-danger-bg: #fff3f2;
+  --color-danger-line: #e3b9b7;
+  --color-field-line: #748a7d;
+}
 
 @theme inline {
-  --color-paper: #f4f3e9;
-  --color-ink: #173c24;
-  --color-brand: #175c2b;
-  --color-brand-soft: #1f6f36;
-  --color-moss: #537a3e;
-  --color-khaki: #e8dcaf;
-  --color-khaki-deep: #516040;
-  --color-lime: #d2e0ad;
-  --color-gold: #eed897;
-  --color-tint-a: #e1e9d2;
-  --color-tint-b: #e9e1c7;
-  --color-tint-c: #d8e4bf;
-  --color-tint-d: #e8eddc;
-  --color-tint-e: #e5ebd8;
-  --color-sage: #d6e2bd;
-  --color-line: #c9d4ba;
-
   --font-sans: var(--font-geist-sans);
   --font-display: var(--font-manrope);
   --font-logo: var(--font-bodoni);
@@ -32,7 +45,8 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 96px;
+  /* Fixed header bottom is ~78px; the rest is breathing room above the section content. */
+  scroll-padding-top: 104px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -93,22 +107,40 @@ body {
   }
 }
 
+/* Extra hero height only on phones; larger layouts retain their original sizing. */
+@media (max-width: 639px) {
+  .hero-primary-card { min-height: 540px; }
+}
+
 /* Hero artwork contrast layers keep the card content above the illustrations. */
 .hero-knowledge-shade {
-  background: linear-gradient(90deg, rgb(10 48 25 / 92%) 0%, rgb(10 48 25 / 72%) 48%, rgb(10 48 25 / 8%) 100%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--color-brand) 97%, transparent), color-mix(in srgb, var(--color-brand) 83%, transparent) 48%, color-mix(in srgb, var(--color-brand) 32%, transparent));
 }
 
 .hero-dialogue-shade {
-  background: linear-gradient(180deg, #e8dcaf 0%, rgb(232 220 175 / 96%) 30%, rgb(232 220 175 / 12%) 66%, rgb(232 220 175 / 90%) 100%);
+  background: linear-gradient(180deg, var(--color-khaki), color-mix(in srgb, var(--color-khaki) 96%, transparent) 30%, color-mix(in srgb, var(--color-khaki) 12%, transparent) 66%, color-mix(in srgb, var(--color-khaki) 90%, transparent));
 }
 
 .hero-progress-shade {
-  background: linear-gradient(90deg, #e1e9d2 0%, rgb(225 233 210 / 94%) 48%, rgb(225 233 210 / 35%) 100%);
+  background: linear-gradient(90deg, var(--color-tint-a), color-mix(in srgb, var(--color-tint-a) 94%, transparent) 48%, color-mix(in srgb, var(--color-tint-a) 35%, transparent));
 }
 
-@media (max-width: 639px) {
-  .hero-knowledge-shade {
-    background: linear-gradient(90deg, rgb(10 48 25 / 95%), rgb(10 48 25 / 65%));
+/* "Ixlos'dagi bir kun" photo: a deep green wash keeps the text readable. Stacked layouts get an even wash;
+   side by side, the wash thins in the gap between the two text columns so the middle student shows through. */
+.daily-life-shade {
+  background: color-mix(in srgb, var(--color-brand-surface) 80%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .daily-life-shade {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-brand-surface) 90%, transparent),
+      color-mix(in srgb, var(--color-brand-surface) 86%, transparent) 30%,
+      color-mix(in srgb, var(--color-brand-surface) 52%, transparent) 47%,
+      color-mix(in srgb, var(--color-brand-surface) 76%, transparent) 57%,
+      color-mix(in srgb, var(--color-brand-surface) 90%, transparent) 66%
+    );
   }
 }
 
@@ -258,4 +290,16 @@ body {
 
 .teachers-viewport[data-dragging="true"] {
   cursor: grabbing;
+}
+
+.brand-feature {
+  background-color: var(--color-brand-surface);
+  color: var(--color-on-brand);
+  --color-ink: var(--color-on-brand);
+  --color-brand: var(--color-highlight);
+  --color-moss: var(--color-on-brand-muted);
+  --color-khaki-deep: var(--color-highlight);
+}
+.brand-feature :focus-visible {
+  outline-color: var(--color-on-brand);
 }

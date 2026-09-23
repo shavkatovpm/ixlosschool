@@ -17,7 +17,7 @@ export function PageHero({
 
   return (
     <section className="wrap pb-16 pt-6 sm:pb-20 sm:pt-10 lg:pb-24">
-      <nav aria-label="Breadcrumb" className="anim-fade text-[14px] font-medium text-ink/60">
+      <nav aria-label="Breadcrumb" className="anim-fade text-[14px] font-medium text-ink/75">
         <ol className="flex flex-wrap items-center gap-2">
           <li>
             <Link href="/" className="link-underline hover:text-ink">

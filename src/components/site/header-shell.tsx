@@ -2,13 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-/*
- * The header floats (fixed) and shrinks once the page is scrolled. A fixed header takes no space in
- * the layout, so the spacer below reserves its resting height (76px + 1px border on phones,
- * 96px + 1px from `sm`). Changing the header's own size therefore never moves the page content,
- * which is what used to make the page jitter around the scroll threshold.
- * The spacer also carries id="top" so "back to top" links land at the very top of the document.
- */
+/* Reserve the mobile floating bar's height to prevent layout jumps.
+ * Desktop retains its existing full-width header and scroll behavior. */
 export function HeaderShell({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLElement>(null);
 
@@ -24,11 +19,11 @@ export function HeaderShell({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div id="top" className="h-[77px] sm:h-[97px]">
+    <div id="top" className="h-[88px] sm:h-[96px] min-[1200px]:h-[97px]">
       <header
         ref={ref}
         data-scrolled="false"
-        className="group fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[scrolled=true]:border-line data-[scrolled=true]:bg-paper/85 data-[scrolled=true]:backdrop-blur-xl"
+        className="group fixed inset-x-3 top-3 z-50 rounded-[20px] border border-brand/10 bg-paper/95 shadow-[0_6px_24px_rgba(16,45,37,0.08)] backdrop-blur-xl transition-[background-color,border-color,backdrop-filter] duration-300 min-[1200px]:inset-x-0 min-[1200px]:top-0 min-[1200px]:rounded-none min-[1200px]:border-x-0 min-[1200px]:border-t-0 min-[1200px]:border-transparent min-[1200px]:bg-transparent min-[1200px]:shadow-none min-[1200px]:backdrop-blur-none min-[1200px]:data-[scrolled=true]:border-line min-[1200px]:data-[scrolled=true]:bg-paper/85 min-[1200px]:data-[scrolled=true]:backdrop-blur-xl"
       >
         {children}
       </header>

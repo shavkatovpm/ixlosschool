@@ -1,0 +1,119 @@
+.card {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--color-khaki);
+  color: white;
+}
+
+.photo {
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+/* Reframe this portrait in CSS without altering the original or mobile image. */
+.centeredPortrait {
+  object-position: left top;
+  transform-origin: left top;
+  transform: scale(1.2);
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgb(0 0 0 / 12%) 50%, rgb(0 0 0 / 78%) 100%);
+  pointer-events: none;
+}
+
+.content {
+  position: absolute;
+  inset: auto 10px 10px;
+  padding: 14px;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--color-brand-deep) 84%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.experience {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.experience span {
+  color: rgb(255 255 255 / 75%);
+}
+
+.experience strong {
+  flex-shrink: 0;
+  color: var(--color-gold);
+  font-size: 14px;
+}
+
+.details {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  opacity: 0;
+  transition: grid-template-rows 300ms ease, opacity 250ms ease, visibility 300ms;
+}
+
+.card:hover .details,
+a:focus-visible .details {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+}
+
+.detailsInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.facts {
+  display: grid;
+  gap: 9px;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid rgb(255 255 255 / 18%);
+}
+
+.facts dt {
+  color: rgb(255 255 255 / 80%);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.facts dd {
+  margin-top: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.specialty {
+  margin-top: 10px;
+  color: var(--color-gold);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo, .details { transition: none; }
+}

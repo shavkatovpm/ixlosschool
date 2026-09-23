@@ -1,72 +1,107 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { BookOpen, CircleHelp, GraduationCap, Menu, Phone, School, Trophy, X } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
+import { CONTACT } from "@/lib/contact";
+import { useApplyModal } from "./apply-modal";
+import styles from "./mobile-menu.module.css";
 
-export function MobileMenu({
-  links,
-  cta,
-  label,
-}: {
+const icons = [BookOpen, GraduationCap, Trophy, CircleHelp];
+
+export function MobileMenu({ links, cta, label }: {
   links: { href: string; label: string }[];
   cta: string;
   label: string;
 }) {
   const [open, setOpen] = useState(false);
-  const root = useRef<HTMLDivElement>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const pathname = usePathname();
+  const t = useTranslations("nav");
+  const { open: openApply } = useApplyModal();
 
   useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    const onPointer = (e: PointerEvent) => {
-      if (root.current && !root.current.contains(e.target as Node)) setOpen(false);
-    };
-    window.addEventListener("keydown", onKey);
-    document.addEventListener("pointerdown", onPointer);
+    const element = dialog.current;
+    if (!open || !element) return;
+    // Native modal supplies focus trapping, Escape dismissal and focus restoration.
+    element.showModal();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const desktop = window.matchMedia("(min-width: 1200px)");
+    const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener("change", closeOnDesktop);
     return () => {
-      window.removeEventListener("keydown", onKey);
-      document.removeEventListener("pointerdown", onPointer);
+      element.close();
+      document.body.style.overflow = previousOverflow;
+      desktop.removeEventListener("change", closeOnDesktop);
     };
   }, [open]);
 
   return (
-    <div ref={root} className="relative min-[1200px]:hidden">
+    <div className="min-[1200px]:hidden">
       <button
         type="button"
         aria-label={label}
+        aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls="mobile-menu"
-        onClick={() => setOpen((v) => !v)}
-        className="flex h-11 w-11 items-center justify-center rounded-[11px] border border-ink/15 bg-paper/60 transition-colors hover:bg-tint-e"
+        onClick={() => setOpen(true)}
+        className={styles.trigger}
       >
-        {open ? <X size={20} /> : <Menu size={20} />}
+        <Menu size={21} strokeWidth={1.8} aria-hidden />
       </button>
 
-      {open ? (
-        <nav
-            id="mobile-menu"
-            className="anim-menu absolute right-0 top-14 z-50 flex w-[min(320px,88vw)] flex-col rounded-[18px] border border-line bg-paper p-3 shadow-[0_24px_60px_-12px_rgba(23,60,36,0.28)]"
-          >
-            {links.map((link) => (
+      <dialog
+        ref={dialog}
+        id="mobile-menu"
+        aria-labelledby="mobile-menu-title"
+        className={styles.dialog}
+        onCancel={() => setOpen(false)}
+        onClose={() => setOpen(false)}
+        onClick={(event) => {
+          if (event.target !== event.currentTarget) return;
+          const bounds = event.currentTarget.getBoundingClientRect();
+          if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setOpen(false);
+        }}
+      >
+        <div className={styles.heading}>
+          <div>
+            <p className={styles.brand}>IXLOS SCHOOL</p>
+            <h2 id="mobile-menu-title">{label}</h2>
+          </div>
+          <button type="button" className={styles.close} onClick={() => setOpen(false)} aria-label={t("closeMenu")}>
+            <X size={21} aria-hidden />
+          </button>
+        </div>
+
+        <nav aria-label={t("mainLabel")} className={styles.navigation}>
+          {links.map((link, index) => {
+            const Icon = icons[index] ?? School;
+            const active = pathname === link.href;
+            return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-[10px] px-4 py-3.5 text-[16px] font-semibold transition-colors hover:bg-tint-e"
+                aria-current={active ? "page" : undefined}
+                className={styles.link}
               >
+                <span className={styles.icon}><Icon size={19} strokeWidth={1.7} aria-hidden /></span>
                 {link.label}
+                {active ? <span className={styles.activeDot} aria-hidden /> : null}
               </Link>
-            ))}
-            <Link
-              href="/#ariza"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-[11px] bg-brand px-5 py-4 text-center text-[15px] font-semibold text-white"
-            >
-              {cta}
-            </Link>
+            );
+          })}
         </nav>
-      ) : null}
+
+        <div className={styles.actions}>
+          <button type="button" aria-haspopup="dialog" onClick={() => { setOpen(false); openApply(); }} className={styles.apply}>{cta}</button>
+          <a href={`tel:${CONTACT.phones[0]}`} onClick={() => setOpen(false)} className={styles.phone} aria-label={`${t("call")}: ${CONTACT.phonesDisplay[0]}`}>
+            <Phone size={17} aria-hidden />{CONTACT.phonesDisplay[0]}
+          </a>
+        </div>
+      </dialog>
     </div>
   );
 }

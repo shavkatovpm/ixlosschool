@@ -12,7 +12,7 @@ export function TeacherCard({ teacher, priority = false }: { teacher: Teacher; p
   return (
     <article
       id={teacher.slug}
-      className="group flex h-full flex-col overflow-hidden rounded-[30px] border border-line bg-tint-d transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_48px_-28px_rgba(23,60,36,0.55)]"
+      className="group flex h-full flex-col overflow-hidden rounded-[30px] border border-line bg-tint-d transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_48px_-28px_rgba(22,46,37,0.55)]"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-tint-a">
         <Image
@@ -25,7 +25,7 @@ export function TeacherCard({ teacher, priority = false }: { teacher: Teacher; p
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-[#0d2716] via-[#0d2716]/70 to-transparent"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-brand-deep via-brand-deep/70 to-transparent"
         />
 
         {teacher.experienceYears ? (
@@ -48,7 +48,7 @@ export function TeacherCard({ teacher, priority = false }: { teacher: Teacher; p
         <ul className="flex flex-col gap-4 p-6 sm:p-7">
           {facts.map((fact) => (
             <li key={`${fact.label}-${fact.value}`} className="flex items-start gap-3.5">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand shadow-[0_6px_14px_-8px_rgba(23,60,36,0.5)]">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand shadow-[0_6px_14px_-8px_rgba(22,46,37,0.5)]">
                 <FactIcon kind={fact.kind} />
               </span>
               <span className="min-w-0 pt-0.5">

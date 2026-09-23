@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { SITE_NAME, SITE_URL, schoolNode, websiteNode } from "@/lib/seo";
 import { Analytics } from "@/components/site/analytics";
+import { ApplyModalProvider } from "@/components/site/apply-modal";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { JsonLd } from "@/components/site/json-ld";
@@ -31,19 +32,34 @@ const bodoni = Bodoni_Moda({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#175c2b",
+  themeColor: "#163e32",
 };
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const seo = hasLocale(routing.locales, locale) ? await getTranslations({ locale, namespace: "seo" }) : null;
+
   return {
     metadataBase: new URL(SITE_URL),
     applicationName: SITE_NAME,
     authors: [{ name: SITE_NAME, url: SITE_URL }],
+    creator: SITE_NAME,
+    publisher: SITE_NAME,
+    category: "education",
+    keywords: seo ? (seo.raw("keywords") as string[]) : undefined,
+    referrer: "strict-origin-when-cross-origin",
     formatDetection: { telephone: false },
+    // Allow full-size previews and long snippets: what search and AI answer engines quote.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
+    },
+    other: { "geo.region": "UZ-TK", "geo.placename": "Tashkent" },
     verification: {
       google: process.env.GOOGLE_SITE_VERIFICATION,
       yandex: process.env.YANDEX_VERIFICATION,
@@ -67,15 +83,27 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const meta = await getTranslations({ locale, namespace: "meta" });
   const footer = await getTranslations({ locale, namespace: "footer" });
+  const seo = await getTranslations({ locale, namespace: "seo" });
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${manrope.variable} ${bodoni.variable} antialiased`}>
       <body className="min-h-screen bg-paper font-sans text-ink">
-        <JsonLd graph={[schoolNode(locale, meta("description"), footer("tagline")), websiteNode()]} />
+        <JsonLd
+          graph={[
+            schoolNode(locale, meta("description"), footer("tagline"), {
+              founderTitle: seo("founderTitle"),
+              knowsAbout: seo.raw("knowsAbout") as string[],
+              amenities: seo.raw("amenities") as string[],
+            }),
+            websiteNode(),
+          ]}
+        />
         <NextIntlClientProvider>
-          <Header />
-          {children}
-          <Footer />
+          <ApplyModalProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ApplyModalProvider>
         </NextIntlClientProvider>
         <Analytics />
       </body>

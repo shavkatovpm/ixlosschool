@@ -1,39 +1,83 @@
 {
   "meta": {
-    "title": "Ixlos School — a private school specializing in exact sciences",
-    "description": "Ixlos School is a private school in Tashkent with an in-depth focus on mathematics, English, and IT, guaranteeing IELTS 5.5+ and a professional diploma (Accounting, IT). Grades 1–11."
+    "title": "Ixlos School — Private School in Yunusabad, Tashkent",
+    "description": "Private school in Yunusabad, Tashkent (grades 1–11): finance and IT focus, in-depth math and English in grades 5–9, IELTS 5.5+ guaranteed."
+  },
+  "seo": {
+    "keywords": [
+      "Ixlos School",
+      "private school Tashkent",
+      "private school Yunusabad",
+      "private school admissions Tashkent",
+      "grade 1 admission Tashkent",
+      "full-day school Tashkent",
+      "finance and IT school",
+      "in-depth math and English",
+      "accounting",
+      "coding"
+    ],
+    "founderTitle": "Founder and school director",
+    "knowsAbout": [
+      "Mathematics",
+      "English",
+      "Informatics",
+      "Accounting",
+      "Finance",
+      "IT and coding"
+    ],
+    "amenities": [
+      "School bus",
+      "Three meals a day",
+      "8 free clubs",
+      "School uniform"
+    ],
+    "courses": [
+      {
+        "name": "In-depth exact sciences (grades 5–9)",
+        "description": "Mathematics, English and informatics are taught in depth; students study in A, B and C groups by proficiency."
+      },
+      {
+        "name": "Accounting track (grades 10–11)",
+        "description": "Professional education in accounting; international ACCA and SAT programs are also taught, and graduates receive a professional diploma."
+      },
+      {
+        "name": "IT track (grades 10–11)",
+        "description": "Professional education in IT; graduates receive a professional diploma."
+      }
+    ]
   },
   "nav": {
     "why": "Why us",
     "program": "Curriculum",
     "teachers": "Teachers",
+    "results": "Results",
     "life": "School day",
     "clubs": "Clubs",
     "faq": "FAQ",
-    "apply": "Admissions",
+    "apply": "Apply now",
     "menu": "Menu",
+    "closeMenu": "Close menu",
+    "call": "Call us",
     "mainLabel": "Main navigation",
-    "language": "Choose language"
+    "language": "Choose language",
+    "contact": "Contact"
   },
   "hero": {
     "eyebrowLeft": "For a generation that thinks.",
-    "eyebrowRight": "Grades 1–11 / Tashkent",
-    "panelLeft": "A love of knowledge.",
-    "panelRight": "Trust in the future. ↗",
-    "h1Prefix": "Ixlos School — a private school specializing in exact sciences. ",
-    "line1Pre": "Big",
-    "line1Em": "ideas.",
-    "line2": "Your own path.",
-    "line3": "A clear step.",
-    "lead": "From memorizing — to understanding. From curiosity — to ability.",
-    "leadStrong": "We give your child's future meaning.",
-    "cta": "Apply now",
+    "eyebrowRight": "Grades 1–11 / Tashkent, Yunusabad",
+    "line1Pre": "Ixlos",
+    "line1Em": "School",
+    "line2": "a private school",
+    "line3": "for your child.",
+    "lead": "Education for grades 1–11.",
+    "leadStrong": "A school specializing in finance and IT.",
+    "cta": "Apply for admission",
     "quoteLabel": "The Ixlos philosophy / 01",
     "quoteA": "A child",
     "quoteAStrong": "has a voice.",
     "quoteB": "And a school that",
     "quoteBStrong": "listens to it.",
-    "quoteFoot": "Every child is a world of their own.",
+    "quoteFoot": "Every child is different.",
     "contents": [
       "Start from your own level",
       "Find your own path",
@@ -104,6 +148,19 @@
       }
     ]
   },
+  "leadership": {
+    "eyebrow": "School leadership",
+    "surname": "Ashirmetova",
+    "givenName": "Maxsuma Axrarovna",
+    "role": "Founder of ABCO International Finance Academy\nand Ixlos School private school",
+    "bio": "School director. An international finance professional, accountant, auditor and educator. A leader who brings together professional knowledge and teaching experience.",
+    "yearsLabel": "years of experience",
+    "yearsNote": "Across finance, audit and education.",
+    "dipifr": "ACCA Diploma in International Financial Reporting.",
+    "acca": "F1–F9 qualifications.",
+    "portraitLabel": "Leadership",
+    "photoAlt": "Ashirmetova Maxsuma Axrarovna — Founder of ABCO International Finance Academy and Ixlos School private school"
+  },
   "teachers": {
     "titleA": "The teachers who work",
     "titleEm": "with your child.",
@@ -159,7 +216,62 @@
       "isft": "ISFT Institute"
     },
     "prev": "Previous teacher",
-    "next": "Next teacher"
+    "next": "Next teacher",
+    "badge": "11 teachers — up to 30 years of experience"
+  },
+  "results": {
+    "titleA": "Results our students",
+    "titleEm": "have achieved.",
+    "all": "All results",
+    "prev": "Previous result",
+    "next": "Next result",
+    "alt": {
+      "featured": "An Ixlos School student — IELTS result",
+      "ielts": "IELTS certificate",
+      "olympiad": "Subject olympiad certificate",
+      "sat": "SAT test result",
+      "cefr": "CEFR certificate"
+    }
+  },
+  "testimonials": {
+    "label": "Video stories",
+    "titleA": "Parents and students",
+    "titleEm": "in their own words.",
+    "region": "Video testimonials from parents and students",
+    "play": "Watch video",
+    "close": "Close",
+    "prev": "Previous video",
+    "next": "Next video",
+    "youtube": "Open on YouTube",
+    "apply": "Apply now",
+    "channel": "All videos on YouTube",
+    "items": {
+      "parent": {
+        "chip": "Parent's view",
+        "title": "What mothers say about our school",
+        "description": "Mothers' opinion of Ixlos School."
+      },
+      "english": {
+        "chip": "English",
+        "title": "High results in English",
+        "description": "A video about the high English results achieved at Ixlos School."
+      },
+      "america": {
+        "chip": "Xpert competition",
+        "title": "Winner of the trip to America",
+        "description": "A video about our student who won the Xpert competition and earned a trip to America."
+      },
+      "ielts": {
+        "chip": "IELTS 8.0",
+        "title": "A 9th grader scored 8.0 on IELTS",
+        "description": "Our 9th-grade student scored 8.0 on the international IELTS exam."
+      },
+      "grant": {
+        "chip": "University grants",
+        "title": "Student who won grants from several universities",
+        "description": "Our student, who won grants from several universities, shares their view."
+      }
+    }
   },
   "dailyLife": {
     "label": "One day at Ixlos",
@@ -192,13 +304,12 @@
   "clubs": {
     "titleA": "From curiosity",
     "titleEm": "to ability.",
-    "badge": "8 clubs — all free",
     "items": [
       "Mental Arithmetic",
       "Chess",
       "Arabic",
       "Robotics",
-      "IT",
+      "IT & Coding",
       "Speech Therapy",
       "Football",
       "Judo"
@@ -214,7 +325,7 @@
       },
       {
         "question": "How does admission work?",
-        "answer": "Students are admitted based on an entrance exam in Mathematics and English."
+        "answer": "Students take a test in Mathematics and English and have an interview with the school psychologist. The pass mark is at least 60 points."
       },
       {
         "question": "What tracks are offered in grades 10–11?",
@@ -222,7 +333,7 @@
       },
       {
         "question": "Are the clubs paid?",
-        "answer": "No, all clubs (Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football, Judo) are free and included in the tuition fee."
+        "answer": "No, all clubs (Mental Arithmetic, Chess, Arabic, Robotics, IT & Coding, Speech Therapy, Football, Judo) are free and included in the tuition fee."
       },
       {
         "question": "How are meals organized?",
@@ -263,45 +374,81 @@
       {
         "question": "In which language are primary grades taught?",
         "answer": "In grades 1–4, fundamental education is delivered in Russian- and Uzbek-medium groups."
+      },
+      {
+        "question": "Where is Ixlos School located?",
+        "answer": "Ixlos School is located in Tashkent's Yunusabad district at Bog'ishamol ko'chasi, 219 (Toshkent, Yunusobod tumani, Bog'ishamol ko'chasi, 219-uy). Hours are 08:00–18:00; phone: +998 78 113 36 00."
+      },
+      {
+        "question": "Is Ixlos School a full-day school?",
+        "answer": "Yes. Classes run Monday to Friday from 08:30 to 17:30. Students have three meals a day and attend free clubs after the main lessons; a school bus serves students who live far away."
+      },
+      {
+        "question": "How does admission to grade 1 work?",
+        "answer": "Admission starts from grade 1. Like all other students, a first-grader takes a test in Mathematics and English and has an interview with the school psychologist; the pass mark is at least 60. Grades 1–4 have Uzbek- and Russian-medium groups."
+      },
+      {
+        "question": "Are mathematics and English taught in depth?",
+        "answer": "Yes. In grades 5–9, mathematics, English and informatics are taught in depth. Students are placed in A, B and C groups by proficiency, and groups are updated after weekly exams. Graduates are guaranteed an IELTS score of at least 5.5."
+      },
+      {
+        "question": "Does the school teach IT and programming?",
+        "answer": "Informatics is taught in depth in grades 5–9, and grades 10–11 offer an IT track that leads to a professional diploma. There is also a free IT and coding club after the main lessons."
+      },
+      {
+        "question": "What is the finance and accounting track?",
+        "answer": "Grades 10–11 offer an Accounting track leading to a professional diploma, and the international ACCA program is taught as well. The school's founder holds the ACCA Diploma in International Financial Reporting and F1–F9 qualifications."
+      },
+      {
+        "question": "How much does tuition cost?",
+        "answer": "Tuition depends on the grade level. It can be paid annually or monthly, and students with high quarterly results can study on a scholarship. For current prices, call +998 78 113 36 00 or leave an application."
       }
     ]
   },
   "admissions": {
-    "titleA": "Let's get",
-    "titleEm": "acquainted.",
-    "description": "Students in grades 1–11 are admitted based on an entrance exam in Mathematics and English. Tuition can be paid annually or monthly.",
-    "nameLabel": "Full name",
-    "namePlaceholder": "Enter your name",
+    "eyebrow": "Apply now",
+    "titleA": "Your child’s education",
+    "titleEm": "starts here.",
+    "description": "Leave your details. We’ll call you about admissions.",
+    "modalLead": "Leave your details — the school will contact you shortly.",
+    "callLabel": "Contact us by phone",
+    "formTitle": "Request a call",
+    "nameLabel": "Parent’s name",
+    "namePlaceholder": "Your name",
     "phoneLabel": "Phone number",
-    "phonePlaceholder": "+998 XX XXX XX XX",
-    "gradeLabel": "Which grade is your child applying to?",
+    "phonePlaceholder": "+998 90 123 45 67",
+    "gradeLabel": "Grade to apply for",
     "gradePlaceholder": "Select a grade",
     "gradeOption": "Grade {grade}",
-    "nameError": "Please enter your name",
-    "phoneError": "Please enter the full phone number",
-    "gradeError": "Please select a grade",
-    "submit": "Apply now",
-    "submitting": "Submitting...",
-    "success": "Thank you! Your application has been received — we'll be in touch soon.",
-    "error": "Something went wrong. Please try again.",
-    "more": "More about admissions",
-    "consent": "By submitting, you confirm that you have read the <link>Privacy Policy</link>."
+    "nameError": "Enter your name (2–100 characters).",
+    "phoneError": "Enter your complete phone number. For example: +998 90 123 45 67.",
+    "gradeError": "Select a grade from 1 to 11.",
+    "submit": "Send request",
+    "submitting": "Sending…",
+    "successTitle": "Your request has been sent!",
+    "success": "Thank you! Our admissions team will contact you at the number you provided. You can also call us if you have any questions.",
+    "error": "We couldn’t send your request. Your entries are still here — try again or call us.",
+    "rateLimited": "Several requests were sent in a short time. Please wait and try again, or call us.",
+    "more": "Learn about admissions",
+    "close": "Close"
   },
   "footer": {
     "tagline": "The path from knowledge to a profession.",
     "rights": "All rights reserved.",
     "top": "Back to top ↑",
     "admissions": "Admissions",
-    "privacy": "Privacy Policy"
+    "contactTitle": "Contact",
+    "address": "Address",
+    "hours": "Hours"
   },
   "pages": {
     "home": "Home",
     "admissions": {
-      "metaTitle": "Admissions — Grades 1–11, entrance exam | Ixlos School",
-      "metaDescription": "Admissions at Ixlos School: students in grades 1–11 are admitted based on an entrance exam in Mathematics and English. Annual or monthly tuition, quarterly scholarships, free clubs.",
+      "metaTitle": "Tashkent School Admissions: Grades 1–11 | Ixlos School",
+      "metaDescription": "Admissions to Ixlos School, grades 1–11: Mathematics and English test plus psychologist interview, pass mark 60. Annual or monthly tuition, free clubs.",
       "eyebrow": "Admissions",
       "h1": "Admissions at Ixlos School: Grades 1–11",
-      "lead": "Students are admitted based on an entrance exam in Mathematics and English. This page brings together the essentials about admission, study and tuition.",
+      "lead": "Students are admitted based on a test in Mathematics and English and an interview with the school psychologist. This page brings together the essentials about admission, study and tuition.",
       "blocks": [
         {
           "title": "Who is admitted",
@@ -309,7 +456,7 @@
         },
         {
           "title": "Entrance exam",
-          "text": "Students are admitted based on an exam in Mathematics and English."
+          "text": "Students take a test in Mathematics and English and have an interview with the school psychologist. The pass mark is at least 60 points."
         },
         {
           "title": "Groups and language of instruction",
@@ -331,51 +478,95 @@
       "formHint": "Leave an application to learn about admission dates, the list of documents and tuition — the school will contact you.",
       "homeLink": "General information about the school"
     },
-    "privacy": {
-      "metaTitle": "Privacy Policy | Ixlos School",
-      "metaDescription": "How the Ixlos School website uses and stores the personal data from the application form (name, phone, grade) and what rights you have.",
-      "eyebrow": "Document",
-      "h1": "Privacy Policy",
-      "lead": "This document explains how the data you submit in the application form on the Ixlos School website is processed. It is prepared in line with the personal data legislation of the Republic of Uzbekistan.",
-      "sections": [
-        {
-          "title": "What data is collected",
-          "text": "The full name, phone number and grade your child is applying to, as entered in the application form. Technical data for site operation and statistics (browser type, pages viewed, cookies) may also be processed."
-        },
-        {
-          "title": "What it is used for",
-          "text": "Only to contact you, provide admissions information and review your application."
-        },
-        {
-          "title": "Who receives it",
-          "text": "The data is passed to the school's admissions staff. It is not sold to third parties or shared for advertising purposes."
-        },
-        {
-          "title": "Retention period",
-          "text": "Data is kept for as long as the admissions process requires and then deleted."
-        },
-        {
-          "title": "Your rights",
-          "text": "You have the right to request information about your data and to ask for it to be corrected or deleted. To do so, contact the school's admissions office."
-        },
-        {
-          "title": "Cookies and analytics",
-          "text": "The site may use analytics services for visit statistics. You can restrict cookies in your browser settings."
-        }
-      ],
-      "updated": "Last updated: 19.09.2026"
-    },
     "notFound": {
       "title": "Page not found",
       "text": "The page you are looking for does not exist or has been moved.",
       "cta": "Back to home"
     },
     "teachers": {
-      "metaTitle": "Teachers — education, qualifications and experience | Ixlos School",
+      "metaTitle": "Teachers — qualifications and experience | Ixlos School",
       "metaDescription": "Meet the teachers of Ixlos School: their education, qualifications (category, certificates) and years of experience.",
       "eyebrow": "Teachers",
       "h1": "The teachers of Ixlos School",
       "lead": "This page brings together the education, qualifications and experience of our teachers. The list is updated as new details come in."
+    },
+    "results": {
+      "metaTitle": "Results: IELTS, SAT and Olympiads | Ixlos School",
+      "metaDescription": "Some of Ixlos School students' results in IELTS, SAT and subject olympiads: certificates, test results and video testimonials.",
+      "eyebrow": "Results",
+      "h1": "Our students' results",
+      "lead": "This page gathers some of our students' results in IELTS, SAT and subject olympiads — the certificates and test results themselves.",
+      "sections": {
+        "featured": "Featured results",
+        "ielts": "IELTS certificates",
+        "olympiad": "Subject olympiads",
+        "sat": "SAT results",
+        "cefr": "CEFR certificate"
+      }
+    },
+    "contact": {
+      "metaTitle": "Contact and Address: Yunusabad, Tashkent | Ixlos School",
+      "metaDescription": "Ixlos School address: Bog'ishamol ko'chasi, 219, Yunusabad district, Tashkent. Phone +998 78 113 36 00, open 08:00–18:00. Key facts about the school.",
+      "eyebrow": "Contact",
+      "h1": "Contact and address: Ixlos School, Yunusabad, Tashkent",
+      "lead": "Ixlos School is located in Tashkent's Yunusabad district, on Bog'ishamol street. Call us or leave an application — the admissions office will give you exact information.",
+      "addressTitle": "Address",
+      "phoneTitle": "Phone",
+      "hoursTitle": "Hours",
+      "socialTitle": "Follow us",
+      "mapGoogle": "Open in Google Maps",
+      "mapYandex": "Open in Yandex Maps",
+      "factsTitle": "Ixlos School at a glance",
+      "facts": [
+        {
+          "label": "School stages",
+          "value": "Grades 1–11: grades 1–4 fundamental education, grades 5–9 in-depth exact sciences, grades 10–11 professional orientation."
+        },
+        {
+          "label": "Focus",
+          "value": "Finance and IT: in grades 10–11, a professional diploma in Accounting or IT, plus international ACCA and SAT programs."
+        },
+        {
+          "label": "In-depth subjects",
+          "value": "Mathematics, English and informatics in grades 5–9."
+        },
+        {
+          "label": "Groups and language",
+          "value": "Grades 1–4 have Uzbek- and Russian-medium groups; students are placed in A, B and C groups by proficiency, and groups are updated after weekly exams."
+        },
+        {
+          "label": "Admission",
+          "value": "A test in Mathematics and English plus an interview with the school psychologist; pass mark of at least 60."
+        },
+        {
+          "label": "Graduates receive",
+          "value": "A guaranteed IELTS score of at least 5.5 and a professional diploma."
+        },
+        {
+          "label": "Schedule",
+          "value": "Monday to Friday, 08:30–17:30 (five-day week); Saturday catch-up classes for students who fall behind."
+        },
+        {
+          "label": "Meals",
+          "value": "Three a day: breakfast, lunch and an afternoon snack."
+        },
+        {
+          "label": "Transport",
+          "value": "School bus for students who live far away."
+        },
+        {
+          "label": "Clubs",
+          "value": "8 free clubs: mental arithmetic, chess, Arabic, robotics, IT and coding, speech therapy, football, judo."
+        },
+        {
+          "label": "Uniform and safety",
+          "value": "A designated school uniform; strong security on campus."
+        },
+        {
+          "label": "Tuition",
+          "value": "Paid annually or monthly; a monthly scholarship for students with high quarterly results."
+        }
+      ]
     }
   }
 }

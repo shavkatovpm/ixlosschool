@@ -1,16 +1,23 @@
 import { Brand } from "./brand";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { CONTACT } from "@/lib/contact";
+import { InstagramIcon, YoutubeIcon } from "./social-icons";
 
 const links = [
   { href: "/#nega-biz", key: "why" },
   { href: "/#dastur", key: "program" },
   { href: "/teachers", key: "teachers" },
+  { href: "/results", key: "results" },
   { href: "/#hayot", key: "life" },
   { href: "/#togaraklar", key: "clubs" },
   { href: "/#savol-javob", key: "faq" },
+  { href: "/contact", key: "contact" },
 ] as const;
+
+const socialLinkClass =
+  "flex h-10 w-10 items-center justify-center rounded-full border border-ink/20 text-ink/80 transition-all duration-300 hover:border-brand hover:bg-brand hover:text-white";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -20,10 +27,32 @@ export function Footer() {
   return (
     <footer className="border-t border-line">
       <div className="wrap pb-10 pt-14 sm:pt-16">
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_1fr_auto] md:items-start">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.3fr_1fr_auto] md:items-start">
         <div>
           <Brand variant="footer" />
-          <p className="mt-5 max-w-xs text-[16px] leading-[1.7] text-ink/70">{t("tagline")}</p>
+          <p className="mt-5 max-w-xs text-[16px] leading-[1.7] text-ink/80">{t("tagline")}</p>
+
+          <div className="mt-6 flex flex-col gap-2 text-[15px] leading-[1.6] text-ink/75">
+            <a href={`tel:${CONTACT.phones[0]}`} className="w-fit font-semibold text-ink transition-colors hover:text-brand">
+              {CONTACT.phonesDisplay[0]}
+            </a>
+            <address className="max-w-xs not-italic">{CONTACT.address}</address>
+            <p className="text-ink/75">
+              {t("hours")}: {CONTACT.hours}
+            </p>
+          </div>
+
+          <div className="mt-5 flex items-center gap-3">
+            <a href={CONTACT.telegramUrl} target="_blank" rel="noopener noreferrer" aria-label="Telegram" className={socialLinkClass}>
+              <Send size={17} aria-hidden />
+            </a>
+            <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={socialLinkClass}>
+              <InstagramIcon size={17} />
+            </a>
+            <a href={CONTACT.youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className={socialLinkClass}>
+              <YoutubeIcon size={17} />
+            </a>
+          </div>
         </div>
 
         <nav aria-label={nav("mainLabel")} className="grid grid-cols-2 gap-x-8 gap-y-4 text-[15px] font-semibold">
@@ -46,13 +75,10 @@ export function Footer() {
         </a>
       </div>
 
-      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink/55 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink/75 sm:flex-row sm:items-center sm:justify-between">
         <p>
           © {year} Ixlos School. {t("rights")}
         </p>
-        <Link href="/privacy" className="link-underline w-fit hover:text-ink">
-          {t("privacy")}
-        </Link>
       </div>
       </div>
     </footer>

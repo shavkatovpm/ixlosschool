@@ -1,0 +1,265 @@
+/* Full-screen native <dialog>: the empty area around the player acts as the backdrop. */
+.dialog {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  overflow: hidden;
+  background: transparent;
+  color: #eff4f7;
+}
+
+.dialog::backdrop {
+  background: rgb(6 20 16 / 0.92);
+  backdrop-filter: blur(8px);
+}
+
+:global(html):has(.dialog[open]) {
+  overflow: hidden;
+}
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-inline: 16px;
+}
+
+.top {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 64px;
+}
+
+.meta {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.counter {
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: #c8d8d1;
+}
+
+.chip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tools {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconButton,
+.textButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  background: rgb(255 255 255 / 0.08);
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.iconButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+}
+
+.textButton {
+  gap: 8px;
+  height: 48px;
+  border-radius: 999px;
+  padding-inline: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.iconButton:hover,
+.textButton:hover {
+  border-color: #ded4ac;
+  background: #ded4ac;
+  color: #102d25;
+}
+
+.dialog :focus-visible {
+  outline: 2px solid #ded4ac;
+  outline-offset: 3px;
+}
+
+.youtubeLabel {
+  display: none;
+}
+
+.stage {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.frame {
+  position: relative;
+  flex: none;
+  height: min(100%, calc((100vw - 32px) * 16 / 9), 900px);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #000;
+  box-shadow: 0 30px 80px -24px rgb(0 0 0 / 0.7);
+}
+
+.frame img,
+.frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.sideNav {
+  display: none;
+}
+
+.foot {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+  height: 136px;
+  margin-inline: auto;
+  padding: 0 0 max(6px, env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: #eff4f7;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.apply {
+  flex: 1;
+  border-color: #ded4ac;
+  background: #ded4ac;
+  color: #102d25;
+}
+
+.apply:hover {
+  border-color: #eff4f7;
+  background: #eff4f7;
+}
+
+@media (min-width: 640px) {
+  .shell {
+    padding-inline: 32px;
+  }
+
+  .top {
+    height: 72px;
+  }
+
+  .youtubeLabel {
+    display: inline;
+  }
+
+  .youtubeButton {
+    width: auto;
+    gap: 8px;
+    padding-inline: 20px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .sideNav {
+    display: inline-flex;
+    width: 56px;
+    height: 56px;
+    flex: none;
+  }
+
+  .frame {
+    height: min(100%, 900px);
+  }
+
+  .actions {
+    width: auto;
+  }
+
+  .apply {
+    flex: none;
+    min-width: 220px;
+  }
+
+  .bottomNav {
+    display: none;
+  }
+}
+
+/* Landscape phones: give the player every pixel, drop the extras. */
+@media (max-height: 560px) {
+  .shell {
+    padding-bottom: 12px;
+  }
+
+  .top {
+    height: 56px;
+  }
+
+  .foot {
+    display: none;
+  }
+
+  .frame {
+    height: 100%;
+  }
+}

@@ -1,16 +1,5 @@
 import { NextResponse } from "next/server";
-import { z } from "zod";
-
-const schema = z.object({
-  name: z.string().trim().min(2).max(100),
-  phone: z
-    .string()
-    .trim()
-    .max(25)
-    .refine((v) => v.replace(/\D/g, "").length >= 9),
-  grade: z.enum(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]),
-  locale: z.enum(["uz", "ru", "en"]),
-});
+import { applicationSchema } from "@/lib/application";
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
@@ -61,7 +50,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false }, { status: 429 });
   }
 
-  const parsed = schema.safeParse(raw);
+  const parsed = applicationSchema.safeParse(raw);
   if (!parsed.success) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }

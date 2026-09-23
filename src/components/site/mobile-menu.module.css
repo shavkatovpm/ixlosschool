@@ -1,0 +1,49 @@
+.trigger, .close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+.trigger { background: var(--color-brand); color: var(--color-on-brand); }
+.trigger:hover { background: var(--color-brand-soft); }
+.close { background: var(--color-neutral); color: var(--color-ink); }
+.close:hover { background: var(--color-khaki); }
+.dialog {
+  position: fixed;
+  inset: max(12px, env(safe-area-inset-top)) 12px auto auto;
+  width: min(420px, calc(100vw - 24px));
+  max-width: none;
+  max-height: calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: 0;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--color-brand) 12%, transparent);
+  border-radius: 26px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  box-shadow: 0 24px 80px rgb(16 45 37 / 28%);
+  overflow: hidden;
+}
+.dialog[open] { display: flex; flex-direction: column; animation: mobile-menu-appear 180ms ease-out; }
+.dialog::backdrop { background: rgb(16 45 37 / 40%); backdrop-filter: blur(5px); }
+.heading { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 20px 18px; }
+.brand { color: var(--color-moss); font-size: 10px; font-weight: 700; letter-spacing: .2em; }
+.heading h2 { margin-top: 4px; font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.2; }
+.navigation { display: flex; flex-direction: column; gap: 4px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 12px 12px; }
+.link { display: flex; align-items: center; gap: 12px; min-height: 52px; flex-shrink: 0; padding: 7px 12px; border-radius: 14px; color: var(--color-ink); font-size: 15px; font-weight: 600; line-height: 1.4; transition: background-color 160ms ease; }
+.link:hover, .link:focus-visible { background: var(--color-neutral); }
+.link[aria-current="page"] { background: var(--color-brand); color: var(--color-on-brand); }
+.icon { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 10px; background: var(--color-surface); color: var(--color-brand); }
+.activeDot { width: 6px; height: 6px; flex-shrink: 0; margin-left: auto; border-radius: 50%; background: var(--color-on-brand); }
+.actions { display: grid; flex-shrink: 0; gap: 8px; padding: 16px 20px 14px; border-top: 1px solid var(--color-khaki); background: var(--color-surface); }
+.apply { display: flex; align-items: center; justify-content: center; cursor: pointer; min-height: 50px; padding: 12px; border-radius: 14px; background: var(--color-brand); color: var(--color-on-brand); font-size: 15px; font-weight: 600; text-align: center; }
+.apply:hover { background: var(--color-brand-soft); }
+.phone { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; color: var(--color-brand); font-size: 14px; font-weight: 600; }
+.dialog :focus-visible { outline: 2px solid var(--color-brand); outline-offset: -3px; }
+.dialog .apply:focus-visible, .link[aria-current="page"]:focus-visible { outline-color: var(--color-on-brand); }
+@keyframes mobile-menu-appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .dialog[open] { animation: none; } .trigger, .close, .link { transition: none; } }

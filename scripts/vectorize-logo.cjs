@@ -9,7 +9,7 @@ const options = {
   alphaMax: 1,
   optCurve: true,
   optTolerance: 0.2,
-  color: "#175c2b",
+  color: "#163e32",
   background: "transparent",
 };
 
@@ -18,7 +18,7 @@ potrace.trace(input, options, (error, svg) => {
   fs.writeFileSync("logo/ixlos-school.svg", svg);
   fs.writeFileSync("public/brand/ixlos-school.svg", svg);
   fs.writeFileSync("public/brand/ixlos-school-vector.svg", svg);
-  fs.writeFileSync("public/brand/ixlos-school-navy.svg", svg.replaceAll("#175c2b", "#10233f"));
-  fs.writeFileSync("public/brand/ixlos-school-gold.svg", svg.replaceAll("#175c2b", "#c8a45a"));
-  fs.writeFileSync("public/brand/ixlos-school-white.svg", svg.replaceAll("#175c2b", "#ffffff"));
+  fs.writeFileSync("public/brand/ixlos-school-navy.svg", svg.replaceAll("#163e32", "#10233f"));
+  fs.writeFileSync("public/brand/ixlos-school-gold.svg", svg.replaceAll("#163e32", "#c8a45a"));
+  fs.writeFileSync("public/brand/ixlos-school-white.svg", svg.replaceAll("#163e32", "#ffffff"));
 });

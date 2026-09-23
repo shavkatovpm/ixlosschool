@@ -53,10 +53,10 @@ Mijoz tomonidan tanlangan (dizayn nomi: Bayon — dadil tipografika, yashil pane
 
 Bo'limlar ketma-ketligi: Header (til almashtirgich + mobil menyu) → Hero (yashil panel, iqtibos-karta, mundarija, bosqichlar lentasi) → Faktlar → Nega biz → Ta'lim dasturi → Kundalik hayot ("9 soat") → To'garaklar → Savol-javob (FAQPage schema) → Ariza formasi (`/api/apply`) → Footer.
 
-Hali qo'shilmagan (ma'lumot kelgach): o'qituvchilar, natijalar/statistika, ota-onalar fikri, aloqa/xarita, real fotosuratlar. Soxta ism/raqam/vaqt qo'yilmaydi.
+Qo'shildi: o'qituvchilar, natijalar (IELTS/SAT/olimpiada), aloqa (footer). Video-fikrlar qo'shildi (pastdagi "Video-fikrlar" bo'limiga qarang). Hali qo'shilmagan (ma'lumot kelgach): xarita, o'quv narxi, litsenziya raqami. Soxta ism/raqam/vaqt qo'yilmaydi.
 
 ## Qurilgan ichki sahifalar va SEO/GEO infratuzilmasi (2026-09)
-**Sahifalar (UZ/RU/EN, slug hamma tilda bir xil):** `/` · `/admissions` (qabul tartibi: 6 blok + ariza formasi) · `/privacy` (maxfiylik siyosati — yuridik tekshiruv kerak). Noma'lum yo'l → 404 (tilga mos sahifa, `noindex`).
+**Sahifalar (UZ/RU/EN, slug hamma tilda bir xil):** `/` · `/admissions` (qabul tartibi: 6 blok + ariza formasi) · `/teachers` (ustozlar) · `/results` (natijalar) · `/contact` (aloqa, manzil, maktab bir qarashda) (maxfiylik siyosati sahifasi egasi qaroriga ko'ra olib tashlangan; ariza formasi ham unga havola qilmaydi). Noma'lum yo'l → 404 (tilga mos sahifa, `noindex`).
 
 **Har sahifada:** `canonical` + `hreflang` (uz/ru/en/x-default) → `src/lib/seo.ts` `buildMetadata()`; OpenGraph/Twitter (`public/og/og-{uz,ru,en}.png`, 1200×630); JSON-LD `@graph` (School, WebSite, WebPage, BreadcrumbList; bosh sahifada `FAQPage`) → `src/components/site/json-ld.tsx`. Yangi sahifa qo'shilganda `src/app/sitemap.ts` dagi `pages` ro'yxatiga ham qo'shilsin.
 
@@ -66,12 +66,37 @@ Hali qo'shilmagan (ma'lumot kelgach): o'qituvchilar, natijalar/statistika, ota-o
 
 **Muhit o'zgaruvchilari** (`.env.example`): `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID`, `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION`.
 
-**Hali tasdiqlanmagan (soxta yozilmaydi):** shahar ("Toshkent" — hero va meta'da bor, tasdiq kerak), manzil/telefon/ijtimoiy tarmoq (`School` schema'da `address`/`telephone`/`sameAs` yo'q — kelgach qo'shiladi va NAP hamma joyda bir xil bo'lsin), litsenziya raqami.
+**Hali tasdiqlanmagan (soxta yozilmaydi):** o'quv narxi (summalar berildi — 1–4: 5 900 000, 5–8: 6 200 000, 9–11: 6 500 000, tayyorlov: 4 900 000; oylik/yarim yillik/yillik to'lov mumkin — lekin bu summa yillik jamimi yoki oylik to'lovning o'zimi, aniqlashtirish kerak, shu sabab saytga hali chiqarilmagan), litsenziya raqami. Manzil/telefon/ijtimoiy tarmoq va "Toshkent" endi tasdiqlangan (pastga qarang).
 
 ## Ustozlar (`/teachers` + bosh sahifadagi bo'lim)
 **Ma'lumot manbai:** `src/lib/teachers.ts` (tuzilmali; faqat maktab bergan faktlar). Til bo'yicha o'zgaradigan matnlar (universitet nomlari, yorliqlar) `messages/*.json` → `teachers`. RU sahifada ismlar kirillcha (`nameRu`). Tartib: ish staji bo'yicha (ko'pdan kamga), ma'lumoti yo'qlar oxirida. Yangi ustoz yoki yangi ma'lumot kelganda `teachers.ts` va (yangi rasm bo'lsa) `public/teachers/site/` yangilanadi. Asl rasmlar/ma'lumotlar (`teachers/`, `info/`) repo ochiq bo'lgani uchun git'ga qo'shilmaydi (`.gitignore`).
 **Rasmlar:** `public/teachers/site/<slug>.jpg` — 800×1000, yuz aniqlash bilan bir xil o'lchamda qirqilgan (asl fayllar lokal `teachers/` papkada).
 **Bosh sahifa:** rasm ustida ma'lumot beruvchi kartalar gorizontal cheksiz oqimda (o'ngdan chapga, CSS animatsiya). Sichqoncha ustiga borsa to'xtaydi; tegilganda/sudralganda/gorizontal scroll qilinganda/Tab bosilganda oddiy scroll'ga o'tadi (joyi o'zgarmaydi), 8 soniya tegilmasa yana oqadi. `prefers-reduced-motion`da oqim yo'q. Kod: `teachers-carousel.tsx`, `teacher-slide.tsx`.
 **/teachers:** grid; ism rasm ustida, ma'lumotlar ikonkali ro'yxatda (`teacher-card.tsx`). `Person` + `ItemList` JSON-LD. Ustoz qo'shilganda `sitemap.ts` o'zgartirilmaydi (bitta sahifa).
+
+## Natijalar (`/results` + bosh sahifadagi bo'lim)
+**Ma'lumot manbai:** `23.09/natijalar/` (asl rasmlar, git'ga qo'shilmaydi) → qayta ishlangan holda `public/results/` ga joylandi, ro'yxati `src/lib/results.ts` da. Har rasmning o'zida ism/ball/sertifikat matni chizilgan (maktab tayyorlagan tayyor grafika) — kod ularni qayta terib chiqmaydi, faqat tartiblab ko'rsatadi. 5 toifa: **featured** (4 ta — talaba rasmi + IELTS ball, bosh sahifada ko'rinadi), **ielts** (6), **olympiad** (8, fan olimpiadasi sertifikatlari), **sat** (3), **cefr** (1). Bosh sahifada faqat `featured` 4 tasi + "Barcha natijalar" tugmasi (`/results`); to'liq sahifada hammasi toifalarga bo'lib ko'rsatiladi. Yangi natija kelsa: rasmni `23.09/natijalar/`ga qo'yib ayting — men `public/results/`ga optimallashtirib, `results.ts`ga qo'shaman.
+
+## Pozitsiyalash: "Moliya va IT" (2026-09)
+Maktab o'z Instagramida "Moliya va IT yo'nalishiga ixtisoslashgan maktab" deydi — hero (`hero.leadStrong`), sahifa sarlavhasi/tavsifi (`meta.*`), manifest va `llms.txt` shu iborada. Chuqurlashtirilgan o'qitish (matematika, ingliz tili, informatika) faqat **5–9-sinflar** uchun tasdiqlangan (asosiy hujjat) — uni hamma sinfga tegishli qilib yozmaslik kerak; dastur bo'limlari (`whyUs`, `curriculum`) aynan shunday yozilgan. Diplom nomi hujjatda "Buxgalteriya" — maktab boshqacha demaguncha o'zgartirilmaydi. Ochiq qolgan: `public/og/og-*.png` (ulashish rasmi) ichida hali "Aniq fanlarga ixtisoslashgan xususiy maktab" yozuvi bor — rasm qayta chiziladi (yangi ranglar bilan birga).
+
+## SEO/GEO texnik qatlam (2026-09)
+- **Sarlavha/tavsif qoidasi:** title ≤ 60, description ≤ 160 belgi, har sahifada noyob, kalit so'z + joylashuv ("Yunusobod, Toshkent"); matnlar `messages/*.json` → `meta`, `pages.*.metaTitle/metaDescription`. Yangi sahifa qo'shilganda shu uzunlik tekshiriladi.
+- **Meta teglar (`src/app/[locale]/layout.tsx`):** `robots` + `googlebot` (`max-image-preview:large`, `max-snippet:-1`, `max-video-preview:-1`), `keywords` (`messages seo.keywords`; Google/Yandex ular hisobga olmaydi, Bing uchun zarar qilmaydi), `creator/publisher/category`, `referrer` (YouTube embed uchun `strict-origin-when-cross-origin` shart), `geo.region=UZ-TK`, `geo.placename=Tashkent`. 404 sahifasi o'zining `noindex`ini beradi (Next nested metadata'ni to'liq almashtiradi).
+- **JSON-LD:** `School` (address, `contactPoint` x2, `founder`, `knowsAbout`, `amenityFeature`, `sameAs` Telegram/Instagram/YouTube); bosh sahifada 3 ta `Course` (5–9-sinf chuqurlashtirilgan fanlar, Buxgalteriya, IT — narx/offer yo'q), 5 ta `VideoObject`, `FAQPage` (21 savol); `/contact` da `ContactPage`. Matnlar `messages seo.*`da, kod `src/lib/seo.ts`.
+- **HTTP sarlavhalar (`next.config.ts`):** `X-Content-Type-Options`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy`, `Permissions-Policy`; `poweredByHeader` o'chirilgan; rasmlar AVIF/WebP.
+- **Ochiq qolgan:** `openingHoursSpecification` (kunlar noma'lum), `geo`/`hasMap` (koordinata/mo'ljal kerak), narx/`Offer` (qaror kutilmoqda), `public/og/og-*.png` (eski yozuv + eski ranglar).
+- **Kalit so'zlar va blog:** 26 ta so'rov (13 SEO + 13 GEO) → postlar xaritasi `docs/blog-reja.md`da.
+- **Narx:** yuqoridagi jadvalda narx shaffofligi tavsiya qilingan, lekin maktab hozircha e'lon qilmaslikni tanlagan — bu Toshkent/Yunusobod/Ixlos narx so'rovlarida sayt chiqmasligini bildiradi; qaror o'zgarsa `/admissions` va FAQ'ga narx jadvali qo'shiladi.
+
+## Video-fikrlar (bosh sahifa + `/results`)
+Maktabning rasmiy YouTube kanalidagi 5 ta Shorts (ota-ona fikri, ingliz tili natijalari, Xpert musobaqasi g'olibi / Amerika yo'llanmasi, 9-sinf o'quvchisi IELTS 8.0, bir necha universitetdan grant yutgan o'quvchi). Ro'yxat va yuklangan sanalar (kanal feed'idan olingan, taxminiy emas) — `src/lib/testimonials.ts`; sarlavha/izohlar `messages/*.json` → `testimonials.items.<key>`. Videolar o'zbek tilida bo'lgani uchun JSON-LD'da `inLanguage: "uz"`.
+
+**Joylashuvi:** bosh sahifada "Natijalar"dan keyin, "To'garaklar"dan oldin (raqamlar/sertifikatlardan keyin — jonli ovoz); `/results` sahifasida galereyadan keyin, ariza formasidan oldin. To'q yashil (`brand-feature`) to'liq kenglikdagi band — och bo'limlar orasida ritm beradi. Mobil/planshet (<1280px): snap-scroll lenta (keyingi karta "ko'rinib turadi", ≥768px da strelkalar), 1280px+ da 5 ustunli setka. Karta bosilganda: to'liq ekranli `<dialog>` (Esc, orqa fonga bosish, ← → tugmalari, oldingi/keyingi, "YouTube'da ochish", "Ariza qoldirish" → `#ariza`) va faqat shunda `youtube-nocookie.com` iframe yuklanadi (sahifa tezligi uchun oldindan yuklanmaydi). Kartalardagi rasmlar — `public/testimonials/` (YouTube thumbnail'dan 9:16 kesilgan).
+
+**SEO:** har bir video uchun `VideoObject` (`src/lib/testimonials-ld.ts`; `embedUrl`, `thumbnailUrl`, `uploadDate`). YouTube kanali `School.sameAs` da va footer'da. Yangi video qo'shish: thumbnail'ni `public/testimonials/`ga, yozuvni `testimonials.ts` va 3 tildagi `messages`ga qo'shing.
+
+## Aloqa (footer + JSON-LD)
+Manzil, telefon (x2), ish vaqti, Telegram, Instagram, YouTube (`https://www.youtube.com/@IXLOSMAKTAB`) — `src/lib/contact.ts` da bitta joyda (NAP hamma yerda bir xil bo'lishi uchun). Footer'da (manzil `<address>` ichida) va `/contact` sahifasida (kartalar, Google/Yandex xarita havolalari, "Ixlos School bir qarashda" fakt jadvali `school-facts.tsx`) ko'rinadi; header'ga qo'shilmagan (menyu to'la); `School` JSON-LD'da `address`/`telephone`/`sameAs` sifatida ham bor. Ish kunlari (haftaning qaysi kunlari) berilmagani uchun `openingHoursSpecification` qo'shilmadi — faqat matn sifatida "08:00–18:00".
 
 **Domen:** asosiy host `https://www.ixlosschool.uz` (Vercel'da `ixlosschool.uz` → `www` ga 308). `SITE_URL` (`src/lib/seo.ts`), sitemap, canonical, hreflang, `llms.txt` shu host bilan yozilgan; host o'zgarsa hammasini birga o'zgartirish kerak.

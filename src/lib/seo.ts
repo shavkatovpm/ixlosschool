@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
+import { CONTACT } from "@/lib/contact";
 
 export const SITE_URL = "https://www.ixlosschool.uz";
 export const SITE_NAME = "Ixlos School";
+const FOUNDER_NAME = "Maxsuma Axrarovna Ashirmetova";
 
 const OG_LOCALE: Record<string, string> = { uz: "uz_UZ", ru: "ru_RU", en: "en_US" };
 
@@ -47,7 +49,9 @@ export function buildMetadata({
   };
 }
 
-export function schoolNode(locale: string, description: string, slogan: string) {
+export type SchoolExtras = { founderTitle: string; knowsAbout: string[]; amenities: string[] };
+
+export function schoolNode(locale: string, description: string, slogan: string, extras: SchoolExtras) {
   return {
     "@type": "School",
     "@id": `${SITE_URL}/#school`,
@@ -57,7 +61,25 @@ export function schoolNode(locale: string, description: string, slogan: string) 
     image: `${SITE_URL}/og/og-${locale}.png`,
     description,
     slogan,
+    telephone: CONTACT.phones[0],
+    address: { "@type": "PostalAddress", ...CONTACT.addressParts },
+    contactPoint: CONTACT.phones.map((telephone) => ({ "@type": "ContactPoint", telephone, contactType: "admissions" })),
+    founder: { "@type": "Person", name: FOUNDER_NAME, jobTitle: extras.founderTitle },
+    knowsAbout: extras.knowsAbout,
+    amenityFeature: extras.amenities.map((name) => ({ "@type": "LocationFeatureSpecification", name, value: true })),
+    sameAs: [CONTACT.telegramUrl, CONTACT.instagramUrl, CONTACT.youtubeUrl],
   };
+}
+
+// Programme facts only (no prices or offers): each Course restates what the school itself publishes.
+export function courseNodes(locale: string, courses: { name: string; description: string }[]) {
+  return courses.map((course, i) => ({
+    "@type": "Course",
+    "@id": `${absoluteUrl(locale)}#course-${i + 1}`,
+    name: course.name,
+    description: course.description,
+    provider: { "@id": `${SITE_URL}/#school` },
+  }));
 }
 
 export function websiteNode() {
@@ -74,12 +96,14 @@ export function websiteNode() {
 export function webPageNode({
   locale,
   path = "",
+  type = "WebPage",
   name,
   description,
   breadcrumb,
 }: {
   locale: string;
   path?: string;
+  type?: "WebPage" | "ContactPage" | "AboutPage";
   name: string;
   description: string;
   breadcrumb?: { name: string; path: string }[];
@@ -87,7 +111,7 @@ export function webPageNode({
   const url = absoluteUrl(locale, path);
   return [
     {
-      "@type": "WebPage",
+      "@type": type,
       "@id": `${url}#webpage`,
       url,
       name,

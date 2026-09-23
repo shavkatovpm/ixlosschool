@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const SPEED = 42; // px per second while drifting on its own
+const SPEED = 42 * 1.3; // 54.6 px/s: mobile auto-scroll is 30% faster
 const IDLE_RESUME_MS = 8000; // drift restarts this long after the visitor stops touching it
 const CARD_GAP = 20;
 
@@ -212,7 +212,7 @@ export function TeachersCarousel({ head, action, copy, children, label, prevLabe
         ref={viewportRef}
         role="region"
         aria-label={label}
-        className="teachers-viewport mt-6 select-none overflow-x-auto overflow-y-hidden overscroll-x-contain py-8 pl-[clamp(20px,4.5vw,56px)] [mask-image:linear-gradient(to_right,transparent,#000_4%,#000_96%,transparent)] [scrollbar-width:none] sm:mt-8 [&::-webkit-scrollbar]:hidden"
+        className="teachers-viewport mt-5 select-none overflow-x-auto overflow-y-hidden overscroll-x-contain py-6 pl-[clamp(20px,4.5vw,56px)] [mask-image:linear-gradient(to_right,transparent,#000_4%,#000_96%,transparent)] [scrollbar-width:none] sm:mt-6 [&::-webkit-scrollbar]:hidden"
       >
         <div ref={trackRef} data-mode="idle" className="teachers-track flex w-max">
           <div ref={setRef} className="flex shrink-0 gap-5 pr-5">
@@ -224,7 +224,7 @@ export function TeachersCarousel({ head, action, copy, children, label, prevLabe
         </div>
       </div>
 
-      <div className="wrap mt-4 flex justify-center">{action}</div>
+      <div className="wrap mt-3 flex justify-center">{action}</div>
     </>
   );
 }

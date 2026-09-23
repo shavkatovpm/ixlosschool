@@ -1,0 +1,92 @@
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+  border-radius: 30px;
+  background: var(--color-brand-deep);
+  color: var(--color-on-brand);
+}
+
+.portrait {
+  position: relative;
+  min-height: 620px;
+  background: var(--color-brand);
+}
+
+.photo { object-fit: cover; object-position: 64% 45%; }
+.photoShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 75%, color-mix(in srgb, var(--color-brand-deep) 65%, transparent));
+  pointer-events: none;
+}
+.photoCaption {
+  position: absolute;
+  top: 27px;
+  left: 30px;
+  right: 20px;
+  width: fit-content;
+  max-width: calc(100% - 50px);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  line-height: 1.6;
+  color: #fff;
+}
+.photoCaption span { margin-inline: 10px; opacity: .5; }
+.content { padding: clamp(30px, 4vw, 56px); align-self: center; }
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+.eyebrow span { height: 1px; width: 28px; background: currentColor; }
+.name {
+  margin-top: 28px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.15vw, 44px);
+  font-weight: 600;
+  line-height: 1.17;
+  letter-spacing: -.04em;
+  overflow-wrap: anywhere;
+}
+.name span { color: var(--color-on-brand); }
+.role { margin-top: 14px; color: var(--color-gold); font-size: 17.5px; font-weight: 500; line-height: 1.6; white-space: pre-line; }
+.bio { margin-top: 24px; max-width: 390px; color: var(--color-on-brand-muted); font-size: 15px; line-height: 1.8; }
+.experience {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-block: 26px;
+  margin-top: 25px;
+  border-block: 1px solid color-mix(in srgb, var(--color-gold) 22%, transparent);
+}
+.years { font-family: var(--font-display); color: var(--color-gold); font-size: 86px; font-weight: 500; line-height: .95; letter-spacing: -.065em; }
+.yearsLabel { font-size: 18px; font-weight: 600; line-height: 1.3; }
+.yearsNote { margin-top: 7px; max-width: 190px; color: var(--color-on-brand-muted); font-size: 12px; line-height: 1.6; }
+.credentials { display: grid; grid-template-columns: 1fr 1fr; margin-top: 26px; gap: 24px; }
+.credentials > div + div { border-left: 1px solid color-mix(in srgb, var(--color-gold) 22%, transparent); padding-left: 24px; }
+.credentials dt { font-family: var(--font-display); font-size: 20px; font-weight: 600; line-height: 1.4; }
+.credentials dt span { display: inline-block; color: var(--color-gold); }
+.credentials dd { margin-top: 6px; max-width: 185px; color: var(--color-on-brand-muted); font-size: 11px; line-height: 1.65; }
+
+@media (max-width: 767px) {
+  .panel { grid-template-columns: 1fr; border-radius: 24px; }
+  .portrait { min-height: 0; aspect-ratio: 1 / 1; }
+  .photo { object-position: 60% 34%; }
+  .photoCaption { left: 24px; top: 20px; font-size: 11px; }
+  .content { padding: 30px 24px 32px; }
+  .name { margin-top: 22px; font-size: clamp(26px, 7vw, 38px); }
+  .bio { margin-top: 20px; font-size: 14px; }
+  .experience { gap: 20px; padding-block: 24px; }
+  .years { font-size: 76px; }
+  .yearsLabel { font-size: 16px; }
+  .credentials { gap: 16px; }
+  .credentials > div + div { padding-left: 16px; }
+  .credentials dt { font-size: 18px; }
+}

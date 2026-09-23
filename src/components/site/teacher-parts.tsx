@@ -28,9 +28,9 @@ export function FactIcon({ kind, size = 18 }: { kind: TeacherFact["kind"]; size?
 /** Dark glass badge in the photo's top-left corner: years of experience. */
 export function ExperienceBadge({ value, label }: { value: string; label: string }) {
   return (
-    <div className="absolute left-4 top-4 rounded-[16px] border border-white/15 bg-[#0d2716]/65 px-3.5 py-2.5 text-white backdrop-blur-md">
+    <div className="absolute left-4 top-4 rounded-[16px] border border-white/15 bg-brand-deep/85 px-3.5 py-2.5 text-white backdrop-blur-md">
       <span className="block font-display text-[22px] font-extrabold leading-none tracking-tight">{value}</span>
-      <span className="mt-1.5 block text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#e5d298]">{label}</span>
+      <span className="mt-1.5 block text-[10.5px] font-bold uppercase tracking-[0.14em] text-gold">{label}</span>
     </div>
   );
 }
@@ -48,10 +48,10 @@ export function TeacherChips({
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>
       {focus ? (
-        <span className="rounded-full bg-lime px-3 py-1 text-[12.5px] font-bold text-[#183e24]">{focus}</span>
+        <span className="rounded-full bg-lime px-3 py-1 text-[12.5px] font-bold text-ink">{focus}</span>
       ) : null}
       {category ? (
-        <span className="rounded-full bg-khaki px-3 py-1 text-[12.5px] font-bold text-[#183e24]">{category}</span>
+        <span className="rounded-full bg-khaki px-3 py-1 text-[12.5px] font-bold text-ink">{category}</span>
       ) : null}
     </div>
   );

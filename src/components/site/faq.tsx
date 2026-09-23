@@ -16,7 +16,7 @@ export function Faq() {
     <section id="savol-javob" className="bg-tint-e py-20 sm:py-24 lg:py-32">
       <div className="wrap grid grid-cols-1 gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div className="lg:sticky lg:top-32 lg:self-start">
-          <SectionHead index="05" label={nav("faq")}>
+          <SectionHead index="07" label={nav("faq")}>
             {t("titleA")} <span className="text-moss">{t("titleEm")}</span>
           </SectionHead>
         </div>
