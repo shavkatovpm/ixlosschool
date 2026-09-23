@@ -16,23 +16,20 @@ export function MobileMenu({ links, cta, label }: {
   label: string;
 }) {
   const [open, setOpen] = useState(false);
-  const dialog = useRef<HTMLDialogElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const t = useTranslations("nav");
   const { open: openApply } = useApplyModal();
 
   useEffect(() => {
-    const element = dialog.current;
+    const element = menu.current;
     if (!open || !element) return;
-    // Native modal supplies focus trapping, Escape dismissal and focus restoration.
-    element.showModal();
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const desktop = window.matchMedia("(min-width: 1200px)");
-    const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
+    const closeOnDesktop = () => { if (desktop.matches) element.hidePopover(); };
     desktop.addEventListener("change", closeOnDesktop);
     return () => {
-      element.close();
       document.body.style.overflow = previousOverflow;
       desktop.removeEventListener("change", closeOnDesktop);
     };
@@ -42,37 +39,29 @@ export function MobileMenu({ links, cta, label }: {
     <div className="min-[1200px]:hidden">
       <button
         type="button"
-        aria-label={label}
-        aria-haspopup="dialog"
+        aria-label={open ? t("closeMenu") : label}
         aria-expanded={open}
         aria-controls="mobile-menu"
-        onClick={() => setOpen(true)}
+        popoverTarget="mobile-menu"
+        popoverTargetAction="toggle"
         className={styles.trigger}
       >
-        <Menu size={21} strokeWidth={1.8} aria-hidden />
+        {open ? <X size={21} strokeWidth={1.8} aria-hidden /> : <Menu size={21} strokeWidth={1.8} aria-hidden />}
       </button>
 
-      <dialog
-        ref={dialog}
+      <div
+        ref={menu}
         id="mobile-menu"
+        popover="auto"
         aria-labelledby="mobile-menu-title"
         className={styles.dialog}
-        onCancel={() => setOpen(false)}
-        onClose={() => setOpen(false)}
-        onClick={(event) => {
-          if (event.target !== event.currentTarget) return;
-          const bounds = event.currentTarget.getBoundingClientRect();
-          if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) setOpen(false);
-        }}
+        onToggle={(event) => setOpen(event.newState === "open")}
       >
         <div className={styles.heading}>
           <div>
             <p className={styles.brand}>IXLOS SCHOOL</p>
             <h2 id="mobile-menu-title">{label}</h2>
           </div>
-          <button type="button" className={styles.close} onClick={() => setOpen(false)} aria-label={t("closeMenu")}>
-            <X size={21} aria-hidden />
-          </button>
         </div>
 
         <nav aria-label={t("mainLabel")} className={styles.navigation}>
@@ -83,7 +72,7 @@ export function MobileMenu({ links, cta, label }: {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setOpen(false)}
+                onClick={() => menu.current?.hidePopover()}
                 aria-current={active ? "page" : undefined}
                 className={styles.link}
               >
@@ -96,12 +85,12 @@ export function MobileMenu({ links, cta, label }: {
         </nav>
 
         <div className={styles.actions}>
-          <button type="button" aria-haspopup="dialog" onClick={() => { setOpen(false); openApply(); }} className={styles.apply}>{cta}</button>
-          <a href={`tel:${CONTACT.phones[0]}`} onClick={() => setOpen(false)} className={styles.phone} aria-label={`${t("call")}: ${CONTACT.phonesDisplay[0]}`}>
+          <button type="button" aria-haspopup="dialog" onClick={() => { menu.current?.hidePopover(); openApply(); }} className={styles.apply}>{cta}</button>
+          <a href={`tel:${CONTACT.phones[0]}`} onClick={() => menu.current?.hidePopover()} className={styles.phone} aria-label={`${t("call")}: ${CONTACT.phonesDisplay[0]}`}>
             <Phone size={17} aria-hidden />{CONTACT.phonesDisplay[0]}
           </a>
         </div>
-      </dialog>
+      </div>
     </div>
   );
 }

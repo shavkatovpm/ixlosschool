@@ -1,4 +1,4 @@
-.trigger, .close {
+.trigger {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,14 +11,14 @@
 }
 .trigger { background: var(--color-brand); color: var(--color-on-brand); }
 .trigger:hover { background: var(--color-brand-soft); }
-.close { background: var(--color-neutral); color: var(--color-ink); }
-.close:hover { background: var(--color-khaki); }
 .dialog {
+  /* Match the space reserved below the floating navbar in HeaderShell. */
+  --menu-top: 88px;
   position: fixed;
-  inset: max(12px, env(safe-area-inset-top)) 12px auto auto;
+  inset: var(--menu-top) 12px auto auto;
   width: min(420px, calc(100vw - 24px));
   max-width: none;
-  max-height: calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  max-height: calc(100dvh - var(--menu-top) - 12px - env(safe-area-inset-bottom));
   margin: 0;
   padding: 0;
   border: 1px solid color-mix(in srgb, var(--color-brand) 12%, transparent);
@@ -28,8 +28,9 @@
   box-shadow: 0 24px 80px rgb(16 45 37 / 28%);
   overflow: hidden;
 }
-.dialog[open] { display: flex; flex-direction: column; animation: mobile-menu-appear 180ms ease-out; }
-.dialog::backdrop { background: rgb(16 45 37 / 40%); backdrop-filter: blur(5px); }
+.dialog:popover-open { display: flex; flex-direction: column; animation: mobile-menu-appear 180ms ease-out; }
+.dialog::backdrop { background: transparent; backdrop-filter: none; }
+@media (min-width: 640px) { .dialog { --menu-top: 96px; } }
 .heading { display: flex; flex-shrink: 0; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 20px 18px; }
 .brand { color: var(--color-moss); font-size: 10px; font-weight: 700; letter-spacing: .2em; }
 .heading h2 { margin-top: 4px; font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.2; }
@@ -46,4 +47,4 @@
 .dialog :focus-visible { outline: 2px solid var(--color-brand); outline-offset: -3px; }
 .dialog .apply:focus-visible, .link[aria-current="page"]:focus-visible { outline-color: var(--color-on-brand); }
 @keyframes mobile-menu-appear { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-@media (prefers-reduced-motion: reduce) { .dialog[open] { animation: none; } .trigger, .close, .link { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .dialog:popover-open { animation: none; } .trigger, .link { transition: none; } }

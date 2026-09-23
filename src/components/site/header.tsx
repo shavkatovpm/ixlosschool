@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { ApplyTrigger } from "./apply-modal";
 import { Brand } from "./brand";
 import { HeaderShell } from "./header-shell";
+import { HomeLink } from "./home-link";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileMenu } from "./mobile-menu";
 
@@ -21,9 +22,9 @@ export function Header() {
   return (
     <HeaderShell>
       <div className="wrap flex h-[64px] items-center gap-2 !px-3 sm:h-[72px] min-[1200px]:h-[96px] min-[1200px]:!px-[clamp(20px,4.5vw,56px)] min-[1200px]:group-data-[scrolled=true]:h-[76px] transition-[height] duration-300 min-[1440px]:gap-4">
-        <Link href="/" className="anim-fade shrink-0" aria-label="Ixlos School">
+        <HomeLink>
           <Brand variant="header" />
-        </Link>
+        </HomeLink>
 
         <nav aria-label={t("mainLabel")} className="ml-auto hidden items-center gap-2.5 text-[14px] min-[1200px]:flex min-[1366px]:gap-4 font-semibold">
           {items.map((l) => (
