@@ -1,6 +1,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { getContact } from "@/lib/center";
-import { testimonialVideos } from "@/lib/testimonials";
+import { publicTestimonials } from "@/lib/content/testimonials";
+import type { ContentLocale } from "@/lib/content/shared";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 import { YoutubeIcon } from "./social-icons";
@@ -11,13 +12,14 @@ export function Testimonials({ index, id = "video-fikrlar" }: { index?: string; 
   const locale = useLocale();
   const CONTACT = getContact();
 
-  const items = testimonialVideos.map((video) => ({
+  const items = publicTestimonials(locale as ContentLocale).map((video) => ({
     id: video.id,
     thumb: video.thumb,
-    chip: t(`items.${video.key}.chip`),
-    title: t(`items.${video.key}.title`),
-    description: t(`items.${video.key}.description`),
+    chip: video.chip,
+    title: video.title,
+    description: video.description,
   }));
+  if (items.length === 0) return null;
 
   return (
     <section id={id} className="brand-feature py-16 sm:py-20 lg:py-24">

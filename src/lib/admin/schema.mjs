@@ -73,6 +73,31 @@ const MIGRATIONS = [
      value TEXT NOT NULL,
      updated_at INTEGER NOT NULL
    );`,
+  // FAQ entries (every text in Uzbek, Russian and English).
+  `CREATE TABLE faq (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     position INTEGER NOT NULL,
+     published INTEGER NOT NULL DEFAULT 1,
+     q_uz TEXT NOT NULL, a_uz TEXT NOT NULL,
+     q_ru TEXT NOT NULL, a_ru TEXT NOT NULL,
+     q_en TEXT NOT NULL, a_en TEXT NOT NULL,
+     updated_at INTEGER NOT NULL
+   );
+   CREATE INDEX faq_position ON faq(position);`,
+  // Video testimonials (YouTube Shorts / videos shown in the "Video fikrlar" wall).
+  `CREATE TABLE testimonials (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     position INTEGER NOT NULL,
+     published INTEGER NOT NULL DEFAULT 1,
+     youtube_id TEXT NOT NULL UNIQUE,
+     thumb TEXT NOT NULL,
+     upload_date TEXT NOT NULL,
+     chip_uz TEXT NOT NULL, title_uz TEXT NOT NULL, desc_uz TEXT NOT NULL,
+     chip_ru TEXT NOT NULL, title_ru TEXT NOT NULL, desc_ru TEXT NOT NULL,
+     chip_en TEXT NOT NULL, title_en TEXT NOT NULL, desc_en TEXT NOT NULL,
+     updated_at INTEGER NOT NULL
+   );
+   CREATE INDEX testimonials_position ON testimonials(position);`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */

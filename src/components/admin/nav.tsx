@@ -34,8 +34,8 @@ const GROUPS: Group[] = [
     items: [
       { href: "/admin/teachers", label: "Ustozlar", icon: GraduationCap, soon: true },
       { href: "/admin/articles", label: "Maqolalar", icon: Newspaper, soon: true },
-      { href: "/admin/testimonials", label: "O'quvchilar fikri", icon: MessageSquareQuote, soon: true },
-      { href: "/admin/faq", label: "FAQ", icon: CircleHelp, soon: true },
+      { href: "/admin/testimonials", label: "O'quvchilar fikri", icon: MessageSquareQuote },
+      { href: "/admin/faq", label: "FAQ", icon: CircleHelp },
     ],
   },
   {

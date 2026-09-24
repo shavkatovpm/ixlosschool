@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildMetadata, webPageNode, absoluteUrl, courseNodes } from "@/lib/seo";
 import { testimonialVideoNodes } from "@/lib/testimonials-ld";
+import { publicFaq } from "@/lib/content/faq";
+import type { ContentLocale } from "@/lib/content/shared";
 import { JsonLd } from "@/components/site/json-ld";
 import { Hero } from "@/components/site/hero";
 import { Facts } from "@/components/site/facts";
@@ -26,8 +28,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   setRequestLocale(locale);
   const meta = await getTranslations({ locale, namespace: "meta" });
-  const faq = await getTranslations({ locale, namespace: "faq" });
-  const faqItems = faq.raw("items") as { question: string; answer: string }[];
+  const faqItems = publicFaq(locale as ContentLocale);
   const videos = await testimonialVideoNodes(locale);
   const seo = await getTranslations({ locale, namespace: "seo" });
   const courses = courseNodes(locale, seo.raw("courses") as { name: string; description: string }[]);
@@ -39,16 +40,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           ...webPageNode({ locale, name: meta("title"), description: meta("description") }),
           ...courses,
           ...videos,
-          {
-            "@type": "FAQPage",
-            "@id": `${absoluteUrl(locale)}#faq`,
-            inLanguage: locale,
-            mainEntity: faqItems.map((item) => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: { "@type": "Answer", text: item.answer },
-            })),
-          },
+          ...(faqItems.length
+            ? [
+                {
+                  "@type": "FAQPage",
+                  "@id": `${absoluteUrl(locale)}#faq`,
+                  inLanguage: locale,
+                  mainEntity: faqItems.map((item) => ({
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: { "@type": "Answer", text: item.answer },
+                  })),
+                },
+              ]
+            : []),
         ]}
       />
       <main>
@@ -62,7 +67,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <ResultsPreview />
         <Testimonials index="05" />
         <Clubs />
-        <Faq />
+        <Faq items={faqItems} />
         <Admissions showMore />
       </main>
     </>

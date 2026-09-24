@@ -8,6 +8,8 @@ const standalone = process.env.STANDALONE === "1";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Photos uploaded in the admin panel arrive through server actions (the default limit is 1 MB).
+  experimental: { serverActions: { bodySizeLimit: "12mb" } },
   ...(standalone ? { output: "standalone" as const } : {}),
   images: standalone
     ? // The droplet has a single small CPU: skip slow AVIF encoding and keep optimized images for a month.

@@ -97,6 +97,7 @@ export function TestimonialWall({ items, labels, locale }: { items: WallItem[]; 
                       src={item.thumb}
                       alt=""
                       fill
+                      unoptimized={item.thumb.startsWith("/media/")}
                       draggable={false}
                       sizes="(min-width: 1280px) 260px, (min-width: 640px) 250px, 64vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
@@ -171,7 +172,7 @@ export function TestimonialWall({ items, labels, locale }: { items: WallItem[]; 
               </button>
 
               <div className={styles.frame}>
-                <Image src={current.thumb} alt="" fill sizes="(min-width: 640px) 506px, 100vw" />
+                <Image src={current.thumb} alt="" fill unoptimized={current.thumb.startsWith("/media/")} sizes="(min-width: 640px) 506px, 100vw" />
                 <iframe
                   key={current.id}
                   src={`https://www.youtube-nocookie.com/embed/${current.id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=${locale}`}

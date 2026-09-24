@@ -6,11 +6,12 @@ import { useTranslations } from "next-intl";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 
-export function Faq() {
+export function Faq({ items }: { items: { question: string; answer: string }[] }) {
   const t = useTranslations("faq");
   const nav = useTranslations("nav");
-  const items = t.raw("items") as { question: string; answer: string }[];
   const [open, setOpen] = useState<number | null>(0);
+
+  if (items.length === 0) return null;
 
   return (
     <section id="savol-javob" className="bg-tint-e py-20 sm:py-24 lg:py-32">
