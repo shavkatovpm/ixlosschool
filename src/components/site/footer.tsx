@@ -2,7 +2,7 @@ import { Brand } from "./brand";
 import { ArrowUp, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CONTACT } from "@/lib/contact";
+import { CONTACT, LEGAL } from "@/lib/contact";
 import { InstagramIcon, YoutubeIcon } from "./social-icons";
 
 const links = [
@@ -75,7 +75,11 @@ export function Footer() {
         </a>
       </div>
 
-      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink/75 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink/75">
+        <p className="max-w-4xl leading-[1.7]">
+          {t("legal", { taxId: LEGAL.taxIdDisplay })}{" "}
+          {t("license", { number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay })}
+        </p>
         <p>
           © {year} Ixlos School. {t("rights")}
         </p>

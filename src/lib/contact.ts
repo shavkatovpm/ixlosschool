@@ -19,3 +19,15 @@ export const CONTACT = {
   instagramHandle: "@ixlos_school",
   youtubeUrl: "https://www.youtube.com/@IXLOSMAKTAB",
 } as const;
+
+// Legal entity and licence, from the registration certificate and licence supplied by the school
+// (originals stay in the git-ignored /tasdiqnoma folder). The activity address on the licence is
+// Yunusobod, Bog'ishamol ko'chasi, 221-uy, while CONTACT.address says 219-uy: see docs/sayt-arxitekturasi.md.
+export const LEGAL = {
+  legalName: "\"ABCO UNIVERSITY\" nodavlat ta'lim muassasasi",
+  taxId: "310060070",
+  taxIdDisplay: "310 060 070",
+  licenseNumber: "1697880",
+  licenseDate: "2026-07-08",
+  licenseDateDisplay: "08.07.2026",
+} as const;

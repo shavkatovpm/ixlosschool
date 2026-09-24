@@ -395,7 +395,9 @@
     "admissions": "Admissions",
     "contactTitle": "Contact",
     "address": "Address",
-    "hours": "Hours"
+    "hours": "Hours",
+    "legal": "“ABCO UNIVERSITY” non-state educational institution, TIN {taxId}.",
+    "license": "Licence No. {number} (valid from {date}, unlimited): general secondary education services. Issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan."
   },
   "pages": {
     "home": "Home",
@@ -522,7 +524,11 @@
           "label": "Tuition",
           "value": "Paid annually or monthly; a monthly scholarship for students with high quarterly results."
         }
-      ]
+      ],
+      "legalLabel": "Legal entity",
+      "legalValue": "Ixlos School operates under the licence of “ABCO UNIVERSITY”, a non-state educational institution. TIN: {taxId}.",
+      "licenseLabel": "Licence",
+      "licenseValue": "No. {number}, valid from {date}, unlimited. Activity: general secondary education services (grades 1–11). Issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan."
     }
   }
 }

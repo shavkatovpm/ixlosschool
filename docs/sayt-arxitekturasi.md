@@ -53,7 +53,7 @@ Mijoz tomonidan tanlangan (dizayn nomi: Bayon — dadil tipografika, yashil pane
 
 Bo'limlar ketma-ketligi: Header (til almashtirgich + mobil menyu) → Hero (yashil panel, iqtibos-karta, mundarija, bosqichlar lentasi) → Faktlar → Nega biz → Ta'lim dasturi → Kundalik hayot ("9 soat") → To'garaklar → Savol-javob (FAQPage schema) → Ariza formasi (`/api/apply`) → Footer.
 
-Qo'shildi: o'qituvchilar, natijalar (IELTS/SAT/onlayn matematika olimpiadasi), aloqa (footer). Video-fikrlar qo'shildi (pastdagi "Video-fikrlar" bo'limiga qarang). Hali qo'shilmagan (ma'lumot kelgach): xarita, o'quv narxi, litsenziya raqami. Soxta ism/raqam/vaqt qo'yilmaydi.
+Qo'shildi: o'qituvchilar, natijalar (IELTS/SAT/onlayn matematika olimpiadasi), aloqa (footer). Video-fikrlar qo'shildi (pastdagi "Video-fikrlar" bo'limiga qarang). Hali qo'shilmagan (ma'lumot kelgach): xarita, o'quv narxi. Soxta ism/raqam/vaqt qo'yilmaydi.
 
 ## Qurilgan ichki sahifalar va SEO/GEO infratuzilmasi (2026-09)
 **Sahifalar (UZ/RU/EN, slug hamma tilda bir xil):** `/` · `/admissions` (qabul tartibi: 6 blok + ariza formasi) · `/teachers` (ustozlar) · `/results` (natijalar) · `/contact` (aloqa, manzil, maktab bir qarashda) (maxfiylik siyosati sahifasi egasi qaroriga ko'ra olib tashlangan; ariza formasi ham unga havola qilmaydi). Noma'lum yo'l → 404 (tilga mos sahifa, `noindex`).
@@ -79,6 +79,14 @@ Qo'shildi: o'qituvchilar, natijalar (IELTS/SAT/onlayn matematika olimpiadasi), a
 
 ## Pozitsiyalash: "Moliya va IT" (2026-09)
 Maktab o'z Instagramida "Moliya va IT yo'nalishiga ixtisoslashgan maktab" deydi — hero (`hero.leadStrong`), sahifa sarlavhasi/tavsifi (`meta.*`), manifest va `llms.txt` shu iborada. Chuqurlashtirilgan o'qitish (matematika, ingliz tili, informatika) faqat **5–9-sinflar** uchun tasdiqlangan (asosiy hujjat) — uni hamma sinfga tegishli qilib yozmaslik kerak; dastur bo'limlari (`whyUs`, `curriculum`) aynan shunday yozilgan. Diplom nomi hujjatda "Buxgalteriya" — maktab boshqacha demaguncha o'zgartirilmaydi.
+
+## Yuridik ma'lumot va litsenziya (2026-09-24, hujjatlar asosida)
+Manba: maktab bergan ikkita hujjat (`/tasdiqnoma/`, git'ga tushmaydi): yuridik shaxsni davlat ro'yxatidan o'tkazish guvohnomasi va litsenziya.
+- **Yuridik shaxs:** "ABCO UNIVERSITY" nodavlat ta'lim muassasasi (NTM), STIR 310 060 070; 02.12.2022 da Olmazor tumani DXM tomonidan ro'yxatdan o'tgan; yuridik (pochta) manzili: Toshkent sh., Olmazor tumani, Sebzor MFY, Sebzor Ts17/18 mavzesi, 194-uy. Olimpiada sertifikatlaridagi "ABCO UNIVERSITY NTM, Olmazor tumani" yozuvi shu yuridik shaxsdir.
+- **Litsenziya:** №1697880 (reestr tartib raqami L-4409830101299), holati "Faol", 08.07.2026 dan muddatsiz; faoliyat turi: umumiy o'rta ta'lim xizmatlari, 1–11-sinf; beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi. QR: license.gov.uz/registry/…; STIR ikkala hujjatda bir xil.
+- **Saytda:** footer'dagi yuridik/litsenziya qatori, `/contact` fakt jadvalidagi ikki qator, School JSON-LD (`legalName`, `taxID`, `identifier`). Raqamlar bir joyda: `LEGAL` (`src/lib/contact.ts`).
+- **Manzil qarori (2026-09-24):** litsenziyadagi **faoliyat manzili** Yunusobod tumani, Posira MFY, Bog'ishamol ko'chasi, **221**-uy; saytda esa rahbarlar aytganidek **219**-uy qoldirildi (egasi: "rahbarlar bergan xabar asosida to'g'ri bo'lsa kerak"). Bu rahbarlar tomonidan **aniq tasdiqlanmagan**: 219 haqiqiy bino raqami ekanini (yoki litsenziyada xato borligini) rahbarlardan so'rash kerak. O'zgarsa: `contact.ts`, JSON-LD, Google/2GIS/Yandex profillari va `llms.txt` bir vaqtda yangilansin.
+- Rahbar (Ashirmetova) ma'lumotlari bu hujjatlarda yo'q: ular hali tasdiqlanmagan.
 
 ## SEO/GEO texnik qatlam (2026-09)
 - **Sarlavha/tavsif qoidasi:** title ≤ 60, description ≤ 160 belgi, har sahifada noyob, kalit so'z + joylashuv ("Yunusobod, Toshkent"); matnlar `messages/*.json` → `meta`, `pages.*.metaTitle/metaDescription`. Yangi sahifa qo'shilganda shu uzunlik tekshiriladi.

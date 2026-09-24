@@ -395,7 +395,9 @@
     "admissions": "Qabul tartibi",
     "contactTitle": "Bog'lanish",
     "address": "Manzil",
-    "hours": "Ish vaqti"
+    "hours": "Ish vaqti",
+    "legal": "\"ABCO UNIVERSITY\" nodavlat ta'lim muassasasi, STIR {taxId}.",
+    "license": "Litsenziya №{number} ({date} dan, muddatsiz): umumiy o'rta ta'lim xizmatlari. Beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi."
   },
   "pages": {
     "home": "Bosh sahifa",
@@ -522,7 +524,11 @@
           "label": "To'lov",
           "value": "Yillik yoki oyma-oy; choraklik natijalarga ko'ra yuqori ko'rsatkichli o'quvchilarga oylik stipendiya."
         }
-      ]
+      ],
+      "legalLabel": "Yuridik shaxs",
+      "legalValue": "Ixlos School \"ABCO UNIVERSITY\" nodavlat ta'lim muassasasi (NTM) litsenziyasi asosida faoliyat yuritadi. STIR: {taxId}.",
+      "licenseLabel": "Litsenziya",
+      "licenseValue": "№{number}, {date} dan muddatsiz. Faoliyat turi: umumiy o'rta ta'lim xizmatlari (1–11-sinf). Beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi."
     }
   }
 }

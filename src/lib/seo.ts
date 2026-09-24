@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
-import { CONTACT } from "@/lib/contact";
+import { CONTACT, LEGAL } from "@/lib/contact";
 
 export const SITE_URL = "https://www.ixlosschool.uz";
 export const SITE_NAME = "Ixlos School";
@@ -60,6 +60,9 @@ export function schoolNode(locale: string, description: string, extras: SchoolEx
     logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ixlos-school-original.png`, width: 3601, height: 3601 },
     image: `${SITE_URL}/og/og-${locale}.png`,
     description,
+    legalName: LEGAL.legalName,
+    taxID: LEGAL.taxId,
+    identifier: { "@type": "PropertyValue", propertyID: "Litsenziya / license", value: LEGAL.licenseNumber },
     telephone: CONTACT.phones[0],
     address: { "@type": "PostalAddress", ...CONTACT.addressParts },
     contactPoint: CONTACT.phones.map((telephone) => ({ "@type": "ContactPoint", telephone, contactType: "admissions" })),

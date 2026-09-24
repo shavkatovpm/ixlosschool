@@ -7,7 +7,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { SchoolFacts, type Fact } from "@/components/site/school-facts";
 import { InstagramIcon, YoutubeIcon } from "@/components/site/social-icons";
-import { CONTACT } from "@/lib/contact";
+import { CONTACT, LEGAL } from "@/lib/contact";
 import { buildMetadata, webPageNode } from "@/lib/seo";
 
 const PATH = "/contact";
@@ -28,7 +28,12 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages.contact" });
   const home = await getTranslations({ locale, namespace: "pages" });
-  const facts = t.raw("facts") as Fact[];
+  const legal = { taxId: LEGAL.taxIdDisplay, number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay };
+  const facts = [
+    ...(t.raw("facts") as Fact[]),
+    { label: t("legalLabel"), value: t("legalValue", legal) },
+    { label: t("licenseLabel"), value: t("licenseValue", legal) },
+  ];
 
   const mapQuery = encodeURIComponent(`Ixlos School, ${CONTACT.address}`);
   const googleMaps = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
