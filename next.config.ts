@@ -3,9 +3,16 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
+// STANDALONE=1 is set only by the Docker build (droplet). Vercel builds ignore it and keep AVIF.
+const standalone = process.env.STANDALONE === "1";
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  images: { formats: ["image/avif", "image/webp"] },
+  ...(standalone ? { output: "standalone" as const } : {}),
+  images: standalone
+    ? // The droplet has a single small CPU: skip slow AVIF encoding and keep optimized images for a month.
+      { formats: ["image/webp"], minimumCacheTTL: 60 * 60 * 24 * 30 }
+    : { formats: ["image/avif", "image/webp"] },
   async headers() {
     return [
       {

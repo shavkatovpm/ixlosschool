@@ -1,0 +1,18 @@
+# Keep the build context small and never send raw source material or secrets to the image build.
+node_modules
+.next
+.git
+.github
+.vercel
+.claude
+.env*
+!.env.example
+Owner
+teachers
+info
+23.09
+1 kun
+tasdiqnoma
+docs
+*.tsbuildinfo
+.DS_Store
