@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdminForm, CheckboxField, Field, FormSection, SelectField } from "@/components/admin/form";
+import { OptionalBlock } from "@/components/admin/optional-block";
 import { PageHeader } from "@/components/admin/ui";
 import { CREDENTIAL_SLOTS, EDUCATION_SLOTS } from "@/lib/admin/validate-teacher";
 import { CONTENT_LOCALES, LOCALE_NAMES } from "@/lib/content/shared";
@@ -68,7 +69,8 @@ export default async function TeacherEditPage({ params }: { params: Promise<{ id
         {slots(EDUCATION_SLOTS).map((i) => {
           const edu = row?.education[i - 1];
           return (
-            <FormSection key={i} title={`Ta'lim ${i}`} hint={i === 1 ? "Bo'sh qoldirilgan bloklar saytda ko'rsatilmaydi." : undefined}>
+            <OptionalBlock key={i} prefix={`edu${i}_`} open={i === 1 || Boolean(edu)} summary={`Ta'lim ${i}`}>
+            <FormSection title={`Ta'lim ${i}`} hint={i === 1 ? "Bo'sh qoldirilgan bloklar saytda ko'rsatilmaydi." : undefined}>
               <SelectField
                 name={`edu${i}_degree`}
                 label="Daraja"
@@ -85,18 +87,21 @@ export default async function TeacherEditPage({ params }: { params: Promise<{ id
                 <Field key={locale} name={`edu${i}_${locale}`} label={`O'quv yurti — ${LOCALE_NAMES[locale].toLowerCase()}`} defaultValue={edu?.institution[locale] ?? ""} maxLength={120} className={locale === "uz" ? "sm:col-span-2" : ""} />
               ))}
             </FormSection>
+            </OptionalBlock>
           );
         })}
 
         {slots(CREDENTIAL_SLOTS).map((i) => {
           const cred = row?.credentials[i - 1];
           return (
-            <FormSection key={i} title={`Sertifikat / malaka ${i}`} hint={i === 1 ? "Masalan: «Sertifikat» — C1; «ACCA» — F1–F7, F9. Nomi uch tilda, qiymat bitta." : undefined}>
+            <OptionalBlock key={i} prefix={`cred${i}_`} open={i === 1 || Boolean(cred)} summary={`Sertifikat / malaka ${i}`}>
+            <FormSection title={`Sertifikat / malaka ${i}`} hint={i === 1 ? "Masalan: «Sertifikat» — C1; «ACCA» — F1–F7, F9. Nomi uch tilda, qiymat bitta." : undefined}>
               {CONTENT_LOCALES.map((locale) => (
                 <Field key={locale} name={`cred${i}_label_${locale}`} label={`Nomi — ${LOCALE_NAMES[locale].toLowerCase()}`} defaultValue={cred?.label[locale] ?? ""} maxLength={80} />
               ))}
               <Field name={`cred${i}_value`} label="Qiymat" defaultValue={cred?.value ?? ""} maxLength={80} />
             </FormSection>
+            </OptionalBlock>
           );
         })}
 

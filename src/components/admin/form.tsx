@@ -8,6 +8,9 @@ import { fieldClass, primaryButton } from "./ui";
 
 const FormContext = createContext<FormState>(initialFormState);
 
+/** The latest answer of the surrounding <AdminForm> (errors and submitted values). */
+export const useFormState = () => useContext(FormContext);
+
 export function SubmitButton({
   children,
   className = primaryButton,

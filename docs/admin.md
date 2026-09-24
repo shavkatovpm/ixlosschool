@@ -74,7 +74,7 @@ Compose'da `ADMIN_ENABLED`, `DATABASE_PATH=/data/ixlos.db`, `ixlos_data` volume'
 ## Zaxira va tiklash
 
 - Panel har kuni `/data/backups/ixlos-YYYYMMDD-HHMMSS.db` nusxasini oladi (oxirgi 14 ta); Sozlamalar'dan qo'lda olish va yuklab olish mumkin. Nusxalar **o'sha diskda**: server darajasidagi zaxira uchun DigitalOcean Backups'ni yoqing.
-- Tiklash: konteyner ishlab turganda `docker cp <nusxa> ixlos-web:/data/ixlos.db` emas (WAL), balki: `docker compose stop web`, nusxani `ixlos_data` volume'idagi `ixlos.db` ustiga qo'yish (`-wal`/`-shm` fayllarni o'chirish), `docker compose up -d web`. Yuklangan rasmlar `/data/uploads` da alohida turadi.
+- Tiklash: `cd /opt/ixlosschool && docker compose stop web`, tanlangan nusxani `ixlos_data` volume'idagi `ixlos.db` ustiga nusxalang (eski `ixlos.db-wal` va `ixlos.db-shm` fayllarni o'chiring), so'ng `docker compose up -d web`. Yuklangan rasmlar `/data/uploads` da alohida turadi va bazaga bog'liq emas.
 
 ## Yangi bo'lim qo'shish
 
