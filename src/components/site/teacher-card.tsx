@@ -1,13 +1,12 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
-import { teacherName, type Teacher } from "@/lib/teachers";
-import { ExperienceBadge, FactIcon, TeacherChips, teacherFacts } from "./teacher-parts";
+import { useTranslations } from "next-intl";
+import type { PublicTeacher } from "@/lib/content/teachers";
+import { ExperienceBadge, FactIcon, TeacherChips } from "./teacher-parts";
 
-export function TeacherCard({ teacher, priority = false }: { teacher: Teacher; priority?: boolean }) {
+export function TeacherCard({ teacher, priority = false }: { teacher: PublicTeacher; priority?: boolean }) {
   const t = useTranslations("teachers");
-  const locale = useLocale();
-  const name = teacherName(teacher, locale);
-  const facts = teacherFacts(teacher, t);
+  const name = teacher.name;
+  const facts = teacher.facts;
 
   return (
     <article
@@ -20,6 +19,7 @@ export function TeacherCard({ teacher, priority = false }: { teacher: Teacher; p
           alt={t("photoAlt", { name })}
           fill
           priority={priority}
+          unoptimized={teacher.photo.startsWith("/media/")}
           sizes="(min-width: 1024px) 400px, (min-width: 560px) 46vw, 92vw"
           className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
         />
@@ -37,8 +37,8 @@ export function TeacherCard({ teacher, priority = false }: { teacher: Teacher; p
             {name}
           </h2>
           <TeacherChips
-            focus={teacher.focus ? t(`focus.${teacher.focus}`) : undefined}
-            category={teacher.category ? t(`category.${teacher.category}`) : undefined}
+            focus={teacher.focus}
+            category={teacher.category}
             className="mt-3.5"
           />
         </div>

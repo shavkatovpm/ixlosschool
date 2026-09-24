@@ -1,15 +1,13 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
-import { teacherName, type Teacher } from "@/lib/teachers";
-import { teacherFacts } from "./teacher-parts";
+import { useTranslations } from "next-intl";
+import type { PublicTeacher } from "@/lib/content/teachers";
 import styles from "./teacher-poster.module.css";
 
 /** Desktop portrait: essential information stays visible; focus/hover reveals details. */
-export function TeacherPoster({ teacher }: { teacher: Teacher }) {
+export function TeacherPoster({ teacher }: { teacher: PublicTeacher }) {
   const t = useTranslations("teachers");
-  const locale = useLocale();
-  const name = teacherName(teacher, locale);
-  const facts = teacherFacts(teacher, t);
+  const name = teacher.name;
+  const facts = teacher.facts;
   const hasDetails = facts.length > 0 || teacher.focus || teacher.category;
 
   return (
@@ -18,6 +16,7 @@ export function TeacherPoster({ teacher }: { teacher: Teacher }) {
         src={teacher.photo}
         alt={t("photoAlt", { name })}
         fill
+        unoptimized={teacher.photo.startsWith("/media/")}
         sizes="(min-width: 1280px) 240px, 23vw"
         className={`${styles.photo} ${teacher.slug === "mukarram-rahmatillayeva" ? styles.centeredPortrait : ""}`}
       />
@@ -37,7 +36,7 @@ export function TeacherPoster({ teacher }: { teacher: Teacher }) {
             <div className={styles.detailsInner}>
               {teacher.focus || teacher.category ? (
                 <p className={styles.specialty}>
-                  {[teacher.focus && t(`focus.${teacher.focus}`), teacher.category && t(`category.${teacher.category}`)].filter(Boolean).join(" · ")}
+                  {[teacher.focus, teacher.category].filter(Boolean).join(" · ")}
                 </p>
               ) : null}
               <dl className={styles.facts}>

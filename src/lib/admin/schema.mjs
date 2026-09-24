@@ -98,6 +98,20 @@ const MIGRATIONS = [
      updated_at INTEGER NOT NULL
    );
    CREATE INDEX testimonials_position ON testimonials(position);`,
+  // Teachers. Language-dependent details (focus, education, credential labels) live in the JSON column.
+  `CREATE TABLE teachers (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     position INTEGER NOT NULL,
+     published INTEGER NOT NULL DEFAULT 1,
+     slug TEXT NOT NULL UNIQUE,
+     photo TEXT NOT NULL,
+     name_latin TEXT NOT NULL,
+     name_cyrillic TEXT NOT NULL,
+     experience_years INTEGER,
+     data TEXT NOT NULL,
+     updated_at INTEGER NOT NULL
+   );
+   CREATE INDEX teachers_position ON teachers(position);`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */

@@ -32,7 +32,7 @@ const GROUPS: Group[] = [
   {
     title: "Kontent",
     items: [
-      { href: "/admin/teachers", label: "Ustozlar", icon: GraduationCap, soon: true },
+      { href: "/admin/teachers", label: "Ustozlar", icon: GraduationCap },
       { href: "/admin/articles", label: "Maqolalar", icon: Newspaper, soon: true },
       { href: "/admin/testimonials", label: "O'quvchilar fikri", icon: MessageSquareQuote },
       { href: "/admin/faq", label: "FAQ", icon: CircleHelp },

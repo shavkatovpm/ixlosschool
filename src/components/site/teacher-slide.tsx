@@ -1,18 +1,17 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { teacherName, type Teacher } from "@/lib/teachers";
-import { ExperienceBadge, TeacherChips, teacherFacts } from "./teacher-parts";
+import type { PublicTeacher } from "@/lib/content/teachers";
+import { ExperienceBadge, TeacherChips } from "./teacher-parts";
 
 /**
  * Card for the homepage marquee: all info sits on top of the photo.
  * `hidden` marks the duplicate set that makes the loop seamless (no focus, no alt text).
  */
-export function TeacherSlide({ teacher, hidden = false }: { teacher: Teacher; hidden?: boolean }) {
+export function TeacherSlide({ teacher, hidden = false }: { teacher: PublicTeacher; hidden?: boolean }) {
   const t = useTranslations("teachers");
-  const locale = useLocale();
-  const name = teacherName(teacher, locale);
-  const [first, ...rest] = teacherFacts(teacher, t);
+  const name = teacher.name;
+  const [first, ...rest] = teacher.facts;
 
   return (
     <Link
@@ -26,6 +25,7 @@ export function TeacherSlide({ teacher, hidden = false }: { teacher: Teacher; hi
         alt={hidden ? "" : t("photoAlt", { name })}
         fill
         draggable={false}
+        unoptimized={teacher.photo.startsWith("/media/")}
         sizes="400px"
         className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
       />
@@ -39,8 +39,8 @@ export function TeacherSlide({ teacher, hidden = false }: { teacher: Teacher; hi
           {name}
         </h3>
         <TeacherChips
-          focus={teacher.focus ? t(`focus.${teacher.focus}`) : undefined}
-          category={teacher.category ? t(`category.${teacher.category}`) : undefined}
+          focus={teacher.focus}
+          category={teacher.category}
           className="mt-2.5"
         />
 

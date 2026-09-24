@@ -1,24 +1,7 @@
 import { BadgeCheck, GraduationCap } from "lucide-react";
-import type { Teacher } from "@/lib/teachers";
+import type { TeacherFact } from "@/lib/content/teachers";
 
-export type TeacherFact = { kind: "education" | "credential"; label: string; value: string };
-
-type Translate = (key: string) => string;
-
-export function teacherFacts(teacher: Teacher, t: Translate): TeacherFact[] {
-  return [
-    ...(teacher.education ?? []).map((e) => ({
-      kind: "education" as const,
-      label: t(`facts.${e.degree ?? "education"}`),
-      value: t(`institutions.${e.institution}`),
-    })),
-    ...(teacher.credentials ?? []).map((c) => ({
-      kind: "credential" as const,
-      label: t(`credentials.${c}.label`),
-      value: t(`credentials.${c}.value`),
-    })),
-  ];
-}
+export type { TeacherFact };
 
 export function FactIcon({ kind, size = 18 }: { kind: TeacherFact["kind"]; size?: number }) {
   const Icon = kind === "education" ? GraduationCap : BadgeCheck;

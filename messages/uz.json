@@ -217,7 +217,8 @@
     },
     "prev": "Oldingi ustoz",
     "next": "Keyingi ustoz",
-    "badge": "11 ustoz — 30 yilgacha tajriba"
+    "badge": "{count} ustoz — {years} yilgacha tajriba",
+    "badgeCount": "{count} ustoz"
   },
   "results": {
     "titleA": "O'quvchilarimiz erishgan",

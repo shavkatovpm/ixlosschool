@@ -25,3 +25,21 @@ export function defaultTestimonialText(key: DefaultTestimonialKey) {
   });
   return { chip: pick("chip"), title: pick("title"), description: pick("description") };
 }
+
+export type TeacherMessageKeys = {
+  degreeLabel: Record<string, Localized>;
+  categoryLabel: Record<string, Localized>;
+};
+
+const pickAll = (read: (m: typeof uz) => string): Localized => ({ uz: read(uz), ru: read(ru), en: read(en) });
+
+export const degreeLabels = (degree: string | null): Localized =>
+  pickAll((m) => (m.teachers.facts as Record<string, string>)[degree ?? "education"] ?? m.teachers.facts.education);
+
+export const categoryLabels = (category: string): Localized =>
+  pickAll((m) => (m.teachers.category as Record<string, string>)[category] ?? "");
+
+export const focusLabels = (key: string): Localized => pickAll((m) => (m.teachers.focus as Record<string, string>)[key] ?? "");
+export const institutionLabels = (key: string): Localized => pickAll((m) => (m.teachers.institutions as Record<string, string>)[key] ?? "");
+export const credentialLabel = (key: string): Localized => pickAll((m) => (m.teachers.credentials as Record<string, { label: string }>)[key]?.label ?? "");
+export const credentialValue = (key: string): string => (uz.teachers.credentials as Record<string, { value: string }>)[key]?.value ?? "";

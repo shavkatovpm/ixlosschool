@@ -217,7 +217,8 @@
     },
     "prev": "Предыдущий учитель",
     "next": "Следующий учитель",
-    "badge": "11 учителей — опыт до 30 лет"
+    "badge": "{count, plural, one {# учитель} few {# учителя} many {# учителей} other {# учителя}} — опыт до {years} {years, plural, one {года} other {лет}}",
+    "badgeCount": "{count, plural, one {# учитель} few {# учителя} many {# учителей} other {# учителя}}"
   },
   "results": {
     "titleA": "Результаты, которых достигли",

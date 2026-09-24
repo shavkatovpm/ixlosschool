@@ -217,7 +217,8 @@
     },
     "prev": "Previous teacher",
     "next": "Next teacher",
-    "badge": "11 teachers — up to 30 years of experience"
+    "badge": "{count, plural, one {# teacher} other {# teachers}} — up to {years, plural, one {# year} other {# years}} of experience",
+    "badgeCount": "{count, plural, one {# teacher} other {# teachers}}"
   },
   "results": {
     "titleA": "Results our students",

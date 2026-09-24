@@ -6,7 +6,8 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { TeacherCard } from "@/components/site/teacher-card";
 import { SITE_URL, absoluteUrl, buildMetadata, webPageNode } from "@/lib/seo";
-import { teacherName, teachers } from "@/lib/teachers";
+import type { ContentLocale } from "@/lib/content/shared";
+import { publicTeachers } from "@/lib/content/teachers";
 
 const PATH = "/teachers";
 
@@ -23,23 +24,21 @@ export default async function TeachersPage({ params }: { params: Promise<{ local
   const tt = await getTranslations({ locale, namespace: "teachers" });
   const home = await getTranslations({ locale, namespace: "pages" });
   const pageUrl = absoluteUrl(locale, PATH);
+  const teachers = publicTeachers(locale as ContentLocale);
 
   const people = teachers.map((teacher) => ({
     "@type": "Person",
     "@id": `${pageUrl}#${teacher.slug}`,
-    name: teacherName(teacher, locale),
+    name: teacher.name,
     image: `${SITE_URL}${teacher.photo}`,
     jobTitle: tt("jobTitle"),
     worksFor: { "@id": `${SITE_URL}/#school` },
-    ...(teacher.education?.length
+    ...(teacher.institutions.length
       ? {
-          alumniOf: teacher.education.map((e) => ({
-            "@type": "EducationalOrganization",
-            name: tt(`institutions.${e.institution}`),
-          })),
+          alumniOf: teacher.institutions.map((name) => ({ "@type": "EducationalOrganization", name })),
         }
       : {}),
-    ...(teacher.focus ? { knowsAbout: tt(`focus.${teacher.focus}`) } : {}),
+    ...(teacher.focus ? { knowsAbout: teacher.focus } : {}),
   }));
 
   return (

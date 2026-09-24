@@ -1,7 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { teachers } from "@/lib/teachers";
+import type { ContentLocale } from "@/lib/content/shared";
+import { publicTeachers } from "@/lib/content/teachers";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 import { TeacherSlide } from "./teacher-slide";
@@ -12,6 +13,10 @@ export function TeachersPreview() {
   const t = useTranslations("teachers");
   const nav = useTranslations("nav");
   const page = useTranslations("pages.teachers");
+  const teachers = publicTeachers(useLocale() as ContentLocale);
+  if (teachers.length === 0) return null;
+  const years = Math.max(0, ...teachers.map((teacher) => teacher.experienceYears ?? 0));
+  const badge = years > 0 ? t("badge", { count: teachers.length, years }) : t("badgeCount", { count: teachers.length });
 
   const cards = (hidden: boolean) =>
     teachers.map((teacher) => <TeacherSlide key={teacher.slug} teacher={teacher} hidden={hidden} />);
@@ -21,7 +26,7 @@ export function TeachersPreview() {
       <div className="mx-auto hidden max-w-[1480px] px-10 lg:block xl:px-16">
         <div className="mb-12 text-center">
           <h2 className="font-display text-4xl font-extrabold uppercase tracking-tight text-ink">{page("h1")}</h2>
-          <p className="mt-3 text-xl text-moss">{t("badge")}</p>
+          <p className="mt-3 text-xl text-moss">{badge}</p>
         </div>
         <ul className="grid grid-cols-4 justify-center gap-7 xl:grid-cols-5 xl:gap-8">
           {teachers.slice(0, 10).map((teacher) => (
@@ -48,7 +53,7 @@ export function TeachersPreview() {
               <Reveal delay={150}>
                 <span className="inline-flex items-center gap-2.5 rounded-full bg-khaki px-5 py-3 text-[14px] font-bold">
                   <span aria-hidden className="h-2 w-2 rounded-full bg-brand" />
-                  {t("badge")}
+                  {badge}
                 </span>
               </Reveal>
             </div>
