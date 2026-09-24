@@ -107,7 +107,7 @@ export function Footer() {
           ]}
           labels={{ heading: t("documents.heading"), view: t("documents.view"), close: t("documents.close"), pdf: t("documents.pdf") }}
         />
-        <p className="mt-1 max-w-4xl leading-[1.7]">
+        <p className="mt-2 max-w-4xl leading-[1.7]">
           {t("legal", { orgName: LEGAL.orgName, taxId: LEGAL.taxIdDisplay })}{" "}
           {t("license", { number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay })}
         </p>
