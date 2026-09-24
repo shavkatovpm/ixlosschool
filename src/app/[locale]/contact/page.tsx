@@ -7,7 +7,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { SchoolFacts, type Fact } from "@/components/site/school-facts";
 import { InstagramIcon, YoutubeIcon } from "@/components/site/social-icons";
-import { CONTACT, LEGAL } from "@/lib/contact";
+import { getContact, getLegal } from "@/lib/center";
 import { buildMetadata, webPageNode } from "@/lib/seo";
 
 const PATH = "/contact";
@@ -26,6 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const CONTACT = getContact();
+  const LEGAL = getLegal();
   const t = await getTranslations({ locale, namespace: "pages.contact" });
   const home = await getTranslations({ locale, namespace: "pages" });
   const legal = { taxId: LEGAL.taxIdDisplay, number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay };

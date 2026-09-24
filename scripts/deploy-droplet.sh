@@ -34,6 +34,7 @@ cp -R .next/standalone/. "$APP/"
 cp -R .next/static "$APP/.next/static"
 cp -R public "$APP/public"
 mkdir -p "$APP/.next/cache" # mount point for the image-optimizer cache volume
+echo "$REL" > "$APP/RELEASE" # shown in the admin panel (Sozlamalar → Tizim)
 # Admin tools (create/reset the admin user): docker exec -it ixlos-web node tools/scripts/admin-create.mjs
 mkdir -p "$APP/tools/scripts" "$APP/tools/src/lib/admin"
 cp scripts/admin-create.mjs "$APP/tools/scripts/"

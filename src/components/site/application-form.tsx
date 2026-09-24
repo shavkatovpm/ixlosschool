@@ -7,8 +7,8 @@ import { Check, ChevronDown, GraduationCap, Loader2, Phone, UserRound } from "lu
 import { useLocale, useTranslations } from "next-intl";
 import { applicationFormSchema, type ApplicationFormValues } from "@/lib/application";
 import { readAttribution, trackingAllowed } from "@/lib/attribution";
-import { CONTACT } from "@/lib/contact";
 import { trackLead } from "@/lib/track";
+import { useContact } from "./contact-context";
 import styles from "./admissions.module.css";
 
 const grades = Array.from({ length: 11 }, (_, i) => String(i + 1));
@@ -22,6 +22,7 @@ type Props = {
 export function ApplicationForm({ variant = "card", onSuccess }: Props) {
   const t = useTranslations("admissions");
   const locale = useLocale();
+  const contact = useContact();
   const id = useId();
   const inModal = variant === "modal";
   const [status, setStatus] = useState<"idle" | "success" | "error" | "rateLimited">("idle");
@@ -69,7 +70,7 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
         <span className={styles.successIcon}><Check size={30} strokeWidth={2} aria-hidden /></span>
         <h3>{t("successTitle")}</h3>
         <p>{t("success")}</p>
-        <a className={styles.successPhone} href={`tel:${CONTACT.phones[0]}`}><Phone size={17} aria-hidden />{CONTACT.phonesDisplay[0]}</a>
+        <a className={styles.successPhone} href={`tel:${contact.phone}`}><Phone size={17} aria-hidden />{contact.phoneDisplay}</a>
       </div>
     );
   }
@@ -114,7 +115,7 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
         {status === "error" || status === "rateLimited" ? (
           <div role="alert" className={styles.errorBanner}>
             <p>{t(status === "rateLimited" ? "rateLimited" : "error")}</p>
-            <a href={`tel:${CONTACT.phones[0]}`}>{t("callLabel")}: {CONTACT.phonesDisplay[0]}</a>
+            <a href={`tel:${contact.phone}`}>{t("callLabel")}: {contact.phoneDisplay}</a>
           </div>
         ) : null}
         <button type="submit" disabled={isSubmitting} className={styles.submit}>
@@ -122,7 +123,7 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
           {t(isSubmitting ? "submitting" : "submit")}
         </button>
       </fieldset>
-      <a href={`tel:${CONTACT.phones[0]}`} className={styles.mobileContact} aria-label={`${t("callLabel")}: ${CONTACT.phonesDisplay[0]}`}><Phone size={16} aria-hidden />{CONTACT.phonesDisplay[0]}</a>
+      <a href={`tel:${contact.phone}`} className={styles.mobileContact} aria-label={`${t("callLabel")}: ${contact.phoneDisplay}`}><Phone size={16} aria-hidden />{contact.phoneDisplay}</a>
     </form>
   );
 }

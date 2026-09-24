@@ -1,4 +1,9 @@
-# Ixlos School
+import type { Contact, Legal } from "./center";
+
+// llms.txt for AI assistants. Contact and legal facts come from the editable centre details; the rest is fixed text
+// that restates what the school itself publishes. Articles are appended by the route.
+export function llmsTemplate(c: Contact, l: Legal): string {
+  return `# Ixlos School
 
 > Ixlos School is a private school in the Yunusabad district of Tashkent, Uzbekistan, for grades 1–11, specializing in finance and IT. Grades 5–9 study mathematics, English and informatics in depth; grades 10–11 follow an Accounting or IT track. The school guarantees graduates an IELTS score of at least 5.5 and awards a professional diploma (Accounting or IT). The website is available in Uzbek (default), Russian and English.
 
@@ -6,14 +11,14 @@ Facts on this page come from the school's own materials.
 
 ## Contact
 
-- Address: Bog'ishamol ko'chasi, 219-uy, Yunusobod tumani, Toshkent, Uzbekistan
-- Phone: +998 78 113 36 00, +998 77 113 36 00
-- Hours: 08:00–18:00
-- Telegram: https://t.me/ixlos_maktabi
-- Instagram: https://www.instagram.com/ixlos_school
-- YouTube: https://www.youtube.com/@IXLOSMAKTAB
-- Legal entity: "ABCO UNIVERSITY" non-state educational institution (NTM), TIN (STIR) 310 060 070.
-- Licence: No. 1697880, valid from 08.07.2026 (unlimited), issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan; activity: general secondary education services, grades 1–11.
+- Address: ${c.addressParts.streetAddress}, ${c.addressParts.addressRegion}, ${c.addressParts.addressLocality}, Uzbekistan
+- Phone: ${c.phonesDisplay.join(", ")}
+- Hours: ${c.hours}
+- Telegram: ${c.telegramUrl}
+- Instagram: ${c.instagramUrl}
+- YouTube: ${c.youtubeUrl}
+- Legal entity: ${l.legalName} (non-state educational institution, NTM), TIN (STIR) ${l.taxIdDisplay}.
+- Licence: No. ${l.licenseNumber}, valid from ${l.licenseDateDisplay} (unlimited), issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan; activity: general secondary education services, grades 1–11.
 
 ## Pages
 
@@ -43,13 +48,13 @@ Facts on this page come from the school's own materials.
 - Five-day school week, Monday to Friday, 08:30–17:30. Three meals a day. School bus for students who live far away. School uniform.
 - Eight free clubs included in tuition: Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football, Judo.
 - Payment: annual or monthly. Students with high quarterly results study on a monthly scholarship.
-- Location: Bog'ishamol ko'chasi, 219, Yunusabad district (Yunusobod tumani), Tashkent. Phone +998 78 113 36 00.
+- Location: ${c.address}. Phone ${c.phonesDisplay[0]}.
 - Full-day school: classes 08:30–17:30 Monday to Friday, three meals a day, free clubs after lessons, school bus for students who live far away.
 - Grade 1 admission: like every grade, by a test in mathematics and English plus an interview with the school psychologist (pass mark at least 60).
 - Language: grades 1–4 have Uzbek- and Russian-medium groups. The school does not state the language of instruction for grades 5–11.
 - IT and programming: informatics is taught in depth in grades 5–9; grades 10–11 have an IT track with a professional diploma; a free IT and coding club runs after lessons.
 - Finance and accounting: grades 10–11 have an Accounting track with a professional diploma and the international ACCA programme; the founder holds the ACCA Diploma in International Financial Reporting and F1–F9 qualifications.
-- Tuition: depends on the grade level; paid annually or monthly, with a scholarship for students with high quarterly results. Current prices are given by the admissions office (+998 78 113 36 00); they are not published on the site.
+- Tuition: depends on the grade level; paid annually or monthly, with a scholarship for students with high quarterly results. Current prices are given by the admissions office (${c.phonesDisplay[0]}); they are not published on the site.
 - Students' results page shows named IELTS and SAT scores and certificates of participation in an online mathematics olympiad.
 - Video testimonials (Uzbek, on the school's YouTube channel): parents' opinions, English results, an Xpert competition winner who earned a trip to America, a 9th grader with IELTS 8.0, and a student who won grants from several universities.
 
@@ -60,7 +65,7 @@ Facts on this page come from the school's own materials.
 - Bitiruvchilarga IELTS 5.5+ kafolatlanadi, Buxgalteriya yoki IT bo'yicha kasbiy diplom beriladi.
 - A/B/C guruhlar har haftalik imtihon natijasiga ko'ra yangilanadi; shanba kunlari qo'shimcha darslar bor.
 - Dushanbadan jumagacha 08:30–17:30, kuniga 3 mahal ovqat, maktab avtobusi, 8 ta bepul to'garak.
-- Manzil: Bog'ishamol ko'chasi, 219-uy, Yunusobod tumani, Toshkent. Tel: +998 78 113 36 00.
+- Manzil: ${c.address}. Tel: ${c.phonesDisplay[0]}.
 
 ## Основные факты (по-русски)
 
@@ -69,4 +74,6 @@ Facts on this page come from the school's own materials.
 - Выпускникам гарантирован IELTS не ниже 5.5 и профессиональный диплом (Бухгалтерия или IT).
 - Группы A/B/C обновляются по итогам еженедельных экзаменов; по субботам проходят дополнительные занятия.
 - С понедельника по пятницу 08:30–17:30, трёхразовое питание, школьный автобус, 8 бесплатных кружков.
-- Адрес: улица Богишамол, 219, Юнусабадский район, Ташкент. Тел: +998 78 113 36 00.
+- Адрес: ${c.address}. Тел: ${c.phonesDisplay[0]}.
+`;
+}

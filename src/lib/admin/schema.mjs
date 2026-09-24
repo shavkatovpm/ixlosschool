@@ -67,6 +67,12 @@ const MIGRATIONS = [
    ALTER TABLE leads ADD COLUMN landing TEXT NOT NULL DEFAULT '';
    ALTER TABLE leads ADD COLUMN device TEXT NOT NULL DEFAULT '';
    CREATE INDEX leads_source ON leads(source);`,
+  // Site settings edited in the panel (centre details, integrations): JSON values by key.
+  `CREATE TABLE settings (
+     key TEXT PRIMARY KEY,
+     value TEXT NOT NULL,
+     updated_at INTEGER NOT NULL
+   );`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */

@@ -3,6 +3,7 @@ import { applicationSchema } from "@/lib/application";
 import { adminEnabled } from "@/lib/admin/config";
 import { insertLead } from "@/lib/admin/leads";
 import { classifySource, parseDevice } from "@/lib/analytics-shared";
+import { sendToTelegram } from "@/lib/telegram";
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
@@ -18,24 +19,6 @@ function rateLimited(ip: string) {
 }
 
 const escapeHtml = (v: string) => v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-async function sendToTelegram(text: string): Promise<"sent" | "failed" | "not_configured"> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  if (!token || !chatId) return "not_configured";
-
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML", disable_web_page_preview: true }),
-      signal: AbortSignal.timeout(8000),
-    });
-    return res.ok ? "sent" : "failed";
-  } catch {
-    return "failed";
-  }
-}
 
 export async function POST(request: Request) {
   const raw = await request.json().catch(() => null);

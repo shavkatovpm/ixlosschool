@@ -2,7 +2,7 @@ import { Brand } from "./brand";
 import { ArrowUp, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CONTACT, LEGAL } from "@/lib/contact";
+import { getContact, getLegal } from "@/lib/center";
 import { InstagramIcon, YoutubeIcon } from "./social-icons";
 
 const links = [
@@ -23,6 +23,8 @@ export function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
   const year = new Date().getFullYear();
+  const CONTACT = getContact();
+  const LEGAL = getLegal();
 
   return (
     <footer className="border-t border-line">

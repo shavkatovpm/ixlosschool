@@ -41,8 +41,8 @@ const GROUPS: Group[] = [
   {
     title: "Sayt",
     items: [
-      { href: "/admin/center", label: "Markaz ma'lumotlari", icon: Building2, soon: true },
-      { href: "/admin/settings", label: "Sozlamalar", icon: Settings, soon: true },
+      { href: "/admin/center", label: "Markaz ma'lumotlari", icon: Building2 },
+      { href: "/admin/settings", label: "Sozlamalar", icon: Settings },
     ],
   },
 ];

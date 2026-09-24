@@ -4,9 +4,12 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { getContact } from "@/lib/center";
+import { getIntegrations } from "@/lib/integrations";
 import { SITE_NAME, SITE_URL, schoolNode, websiteNode } from "@/lib/seo";
 import { Analytics } from "@/components/site/analytics";
 import { ApplyModalProvider } from "@/components/site/apply-modal";
+import { ContactProvider } from "@/components/site/contact-context";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { JsonLd } from "@/components/site/json-ld";
@@ -39,6 +42,10 @@ export const viewport: Viewport = {
 // Unknown first segments (scanner probes like /info.php) get a plain 404 instead of a render + cache write.
 export const dynamicParams = false;
 
+// The pages show content edited in the admin panel (contact details, FAQ, teachers, videos, articles), so they are
+// rendered per request instead of being frozen at build time. Where there is no panel the built-in defaults are used.
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -46,6 +53,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const seo = hasLocale(routing.locales, locale) ? await getTranslations({ locale, namespace: "seo" }) : null;
+  const integrations = getIntegrations();
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -65,8 +73,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     other: { "geo.region": "UZ-TK", "geo.placename": "Tashkent" },
     verification: {
-      google: process.env.GOOGLE_SITE_VERIFICATION,
-      yandex: process.env.YANDEX_VERIFICATION,
+      google: integrations.googleVerification || undefined,
+      yandex: integrations.yandexVerification || undefined,
     },
   };
 }
@@ -87,6 +95,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const meta = await getTranslations({ locale, namespace: "meta" });
   const seo = await getTranslations({ locale, namespace: "seo" });
+  const contact = getContact();
 
   return (
     <html lang={locale} className={`${geistSans.variable} ${manrope.variable} ${bodoni.variable} antialiased`}>
@@ -102,11 +111,13 @@ export default async function LocaleLayout({
           ]}
         />
         <NextIntlClientProvider>
-          <ApplyModalProvider>
-            <Header />
-            {children}
-            <Footer />
-          </ApplyModalProvider>
+          <ContactProvider value={{ phone: contact.phones[0], phoneDisplay: contact.phonesDisplay[0] }}>
+            <ApplyModalProvider>
+              <Header />
+              {children}
+              <Footer />
+            </ApplyModalProvider>
+          </ContactProvider>
         </NextIntlClientProvider>
         <Analytics />
         <Tracker />

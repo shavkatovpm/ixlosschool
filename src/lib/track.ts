@@ -2,11 +2,12 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     ym?: (...args: unknown[]) => void;
+    /** Yandex Metrica counter id, set by the analytics snippet (it is editable in the admin panel, so not a build-time constant). */
+    ixlosYmId?: number;
   }
 }
 
 export function trackLead() {
   window.gtag?.("event", "generate_lead");
-  const ymId = Number(process.env.NEXT_PUBLIC_YM_ID);
-  if (ymId) window.ym?.(ymId, "reachGoal", "lead");
+  if (window.ixlosYmId) window.ym?.(window.ixlosYmId, "reachGoal", "lead");
 }

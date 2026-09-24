@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
-import { CONTACT, LEGAL } from "@/lib/contact";
+import { getContact, getLegal } from "@/lib/center";
 
 export const SITE_URL = "https://www.ixlosschool.uz";
 export const SITE_NAME = "Ixlos School";
@@ -52,6 +52,8 @@ export function buildMetadata({
 export type SchoolExtras = { founderTitle: string; knowsAbout: string[]; amenities: string[] };
 
 export function schoolNode(locale: string, description: string, extras: SchoolExtras) {
+  const CONTACT = getContact();
+  const LEGAL = getLegal();
   return {
     "@type": "School",
     "@id": `${SITE_URL}/#school`,

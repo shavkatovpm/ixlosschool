@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from "next-intl";
-import { CONTACT } from "@/lib/contact";
+import { getContact } from "@/lib/center";
 import { testimonialVideos } from "@/lib/testimonials";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
@@ -9,6 +9,7 @@ import { TestimonialWall } from "./testimonial-wall";
 export function Testimonials({ index, id = "video-fikrlar" }: { index?: string; id?: string }) {
   const t = useTranslations("testimonials");
   const locale = useLocale();
+  const CONTACT = getContact();
 
   const items = testimonialVideos.map((video) => ({
     id: video.id,

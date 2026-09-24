@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { BookOpen, CircleHelp, GraduationCap, Menu, Phone, School, Trophy, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { CONTACT } from "@/lib/contact";
 import { useApplyModal } from "./apply-modal";
+import { useContact } from "./contact-context";
 import styles from "./mobile-menu.module.css";
 
 const icons = [BookOpen, GraduationCap, Trophy, CircleHelp];
@@ -20,6 +20,7 @@ export function MobileMenu({ links, cta, label }: {
   const pathname = usePathname();
   const t = useTranslations("nav");
   const { open: openApply } = useApplyModal();
+  const contact = useContact();
 
   useEffect(() => {
     const element = menu.current;
@@ -86,8 +87,8 @@ export function MobileMenu({ links, cta, label }: {
 
         <div className={styles.actions}>
           <button type="button" aria-haspopup="dialog" onClick={() => { menu.current?.hidePopover(); openApply(); }} className={styles.apply}>{cta}</button>
-          <a href={`tel:${CONTACT.phones[0]}`} onClick={() => menu.current?.hidePopover()} className={styles.phone} aria-label={`${t("call")}: ${CONTACT.phonesDisplay[0]}`}>
-            <Phone size={17} aria-hidden />{CONTACT.phonesDisplay[0]}
+          <a href={`tel:${contact.phone}`} onClick={() => menu.current?.hidePopover()} className={styles.phone} aria-label={`${t("call")}: ${contact.phoneDisplay}`}>
+            <Phone size={17} aria-hidden />{contact.phoneDisplay}
           </a>
         </div>
       </div>
