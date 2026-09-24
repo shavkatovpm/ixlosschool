@@ -1,14 +1,15 @@
 # Ixlos School — admin panel
 
 > **Holat (2026-09-24):** poydevor, "Arizalar" va "Hisob" bo'limlari tayyor va **serverda yoqilgan** (`https://www.ixlosschool.uz/admin`). Birinchi hisob `admin@ixlosschool.uz` vaqtinchalik parol bilan yaratilgan; egasi birinchi kirishda parolini almashtiradi. Boshqa bo'limlar rejada (pastga qarang). Bitta super-admin yetarli: foydalanuvchilar/rollar va imtihon jadvali egasi qaroriga ko'ra **chiqarib tashlangan**.
+>
+> **Tamoyil (egasi):** panel **faqat sayt boshqaruvi** uchun. Arizalarni "yuritish" (CRM: holatlar, izohlar, hisoblagichlar) qilinmaydi: qabul bo'limi arizalar bilan Telegram'da ishlaydi. Panelda arizalar faqat oddiy arxiv ro'yxati va CSV sifatida turadi.
 
 ## Nima bor
 
 - **Kirish:** `/admin/login` (email + parol). Sayt tilidan mustaqil (til prefiksi yo'q, o'zbekcha interfeys).
-- **Bosh sahifa** (`/admin`): yangi/bugun/7 kun/jami arizalar, holatlar bo'yicha sonlar, oxirgi arizalar.
-- **Arizalar** (`/admin/leads`): holat bo'yicha filtr, ism/telefon/izoh bo'yicha qidiruv, har ariza uchun holat + izoh saqlash, CSV yuklash (`/admin/leads/export`, Excel uchun UTF-8 BOM bilan).
+- **Bosh sahifa** (`/admin`): bo'limlarga havolalar (bo'limlar qo'shilgan sari ko'payadi) va "Saytni ochish".
+- **Arizalar** (`/admin/leads`): faqat o'qish uchun arxiv ro'yxati (sana, ism, telefon, sinf, til), ism/telefon bo'yicha qidiruv, CSV yuklash (`/admin/leads/export`, Excel uchun UTF-8 BOM bilan). Holat/izoh yo'q.
 - **Hisob** (`/admin/account`): email va parolni o'zgartirish (joriy parol talab qilinadi; o'zgargach boshqa sessiyalar tugatiladi). Vaqtinchalik parol bilan yaratilgan hisob (`ADMIN_MUST_CHANGE=1`) birinchi kirishda **faqat shu sahifaga** o'tkaziladi va yangi parol o'rnatmaguncha panelning boshqa joyiga kira olmaydi.
-- Holatlar: Yangi, Qo'ng'iroq qilindi, Imtihonga yozildi, Qabul qilindi, Rad etildi (`src/lib/admin/leads.ts`).
 - Saytdagi forma (`/api/apply`) arizani Telegram'ga yuborishdan **oldin** bazaga yozadi (faqat panel yoqilgan joyda). Telegram ishlamasa ham ariza yo'qolmaydi va foydalanuvchiga muvaffaqiyat qaytadi.
 
 ## Rejadagi bo'limlar (tartib bilan)
@@ -23,7 +24,7 @@ Har matn uch tilda to'ldirilmasa saqlanmaydi (loyihaning standing qoidasi).
 | Nima | Qayerda |
 |---|---|
 | Sahifalar | `src/app/admin/` (o'z root layout'i, `[locale]`dan tashqarida). `login/` ochiq, `(panel)/` guruhi `requireAdmin()` bilan himoyalangan |
-| Server amallari | `src/app/admin/actions.ts` (`loginAction`, `logoutAction`, `updateLeadAction`). **Har bir yozuvchi amal `requireAdmin()` bilan boshlanishi shart** |
+| Server amallari | `src/app/admin/actions.ts` (`loginAction`, `logoutAction`, `changeAccountAction`). **Har bir yozuvchi amal `requireAdmin()` bilan boshlanishi shart** |
 | Baza | `src/lib/admin/db.ts`: Node'ning o'rnatilgan SQLite'i (`node:sqlite`, Node ≥ 22.13; native modul yo'q, shuning uchun serverga qo'shimcha binar jo'natish kerak emas). Fayl: `DATABASE_PATH` yoki `./data/ixlos.db` |
 | Sxema | `src/lib/admin/schema.mjs`: **faqat oxiriga qo'shiladigan** migratsiyalar (mavjud yozuvni tahrirlamang, yangisini qo'shing). `schema.mjs` va `password.mjs` CLI bilan umumiy |
 | Kirish/sessiya | `src/lib/admin/auth.ts` |

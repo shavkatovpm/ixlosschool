@@ -1,18 +1,7 @@
 import { getDb, type Row } from "./db";
 
-export const LEAD_STATUSES = ["new", "contacted", "exam", "accepted", "rejected"] as const;
-export type LeadStatus = (typeof LEAD_STATUSES)[number];
-
-export const STATUS_LABEL: Record<LeadStatus, string> = {
-  new: "Yangi",
-  contacted: "Qo'ng'iroq qilindi",
-  exam: "Imtihonga yozildi",
-  accepted: "Qabul qilindi",
-  rejected: "Rad etildi",
-};
-
-export const isLeadStatus = (value: unknown): value is LeadStatus => LEAD_STATUSES.includes(value as LeadStatus);
-
+// Applications are an archive of what the site form received (the admissions team works from Telegram),
+// so there is deliberately no status/notes workflow here.
 export type Lead = {
   id: number;
   createdAt: number;
@@ -20,8 +9,6 @@ export type Lead = {
   phone: string;
   grade: string;
   locale: string;
-  status: LeadStatus;
-  note: string;
 };
 
 const toLead = (row: Row): Lead => ({
@@ -31,8 +18,6 @@ const toLead = (row: Row): Lead => ({
   phone: String(row.phone),
   grade: String(row.grade),
   locale: String(row.locale),
-  status: isLeadStatus(row.status) ? row.status : "new",
-  note: String(row.note ?? ""),
 });
 
 export function insertLead(lead: { name: string; phone: string; grade: string; locale: string }) {
@@ -42,25 +27,14 @@ export function insertLead(lead: { name: string; phone: string; grade: string; l
     .run(now, now, lead.name, lead.phone, lead.grade, lead.locale);
 }
 
-type Filter = { status?: LeadStatus; q?: string };
-
-function where({ status, q }: Filter) {
-  const clauses: string[] = [];
-  const params: unknown[] = [];
-  if (status) {
-    clauses.push("status = ?");
-    params.push(status);
-  }
-  if (q) {
-    clauses.push("(name LIKE ? ESCAPE '\\' OR phone LIKE ? ESCAPE '\\' OR note LIKE ? ESCAPE '\\')");
-    const like = `%${q.replace(/[\\%_]/g, "\\$&")}%`;
-    params.push(like, like, like);
-  }
-  return { sql: clauses.length ? `WHERE ${clauses.join(" AND ")}` : "", params };
+function where(q?: string) {
+  if (!q) return { sql: "", params: [] as unknown[] };
+  const like = `%${q.replace(/[\\%_]/g, "\\$&")}%`;
+  return { sql: "WHERE name LIKE ? ESCAPE '\\' OR phone LIKE ? ESCAPE '\\'", params: [like, like] };
 }
 
-export function listLeads(filter: Filter, limit: number, offset: number) {
-  const { sql, params } = where(filter);
+export function listLeads(q: string | undefined, limit: number, offset: number) {
+  const { sql, params } = where(q);
   const db = getDb();
   const total = Number(db.prepare(`SELECT COUNT(*) AS c FROM leads ${sql}`).get(...params)?.c ?? 0);
   const rows = db
@@ -74,25 +48,8 @@ export function allLeads() {
   return getDb().prepare("SELECT * FROM leads ORDER BY created_at DESC, id DESC").all().map(toLead);
 }
 
-export function statusCounts(): Record<LeadStatus | "all", number> {
-  const counts = { all: 0, new: 0, contacted: 0, exam: 0, accepted: 0, rejected: 0 };
-  for (const row of getDb().prepare("SELECT status, COUNT(*) AS c FROM leads GROUP BY status").all()) {
-    const c = Number(row.c);
-    counts.all += c;
-    if (isLeadStatus(row.status)) counts[row.status] = c;
-  }
-  return counts;
-}
-
-function leadsSince(timestamp: number) {
-  return Number(getDb().prepare("SELECT COUNT(*) AS c FROM leads WHERE created_at >= ?").get(timestamp)?.c ?? 0);
-}
-
-export const leadsToday = () => leadsSince(startOfTodayTashkent());
-export const leadsInLastDays = (days: number) => leadsSince(Date.now() - days * 24 * 60 * 60 * 1000);
-
-export function updateLead(id: number, status: LeadStatus, note: string) {
-  getDb().prepare("UPDATE leads SET status = ?, note = ?, updated_at = ? WHERE id = ?").run(status, note, Date.now(), id);
+export function leadsTotal() {
+  return Number(getDb().prepare("SELECT COUNT(*) AS c FROM leads").get()?.c ?? 0);
 }
 
 const TASHKENT = "Asia/Tashkent";
@@ -108,10 +65,4 @@ export function formatDateTime(timestamp: number) {
   }).formatToParts(timestamp);
   const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
   return `${get("day")}.${get("month")}.${get("year")} ${get("hour")}:${get("minute")}`;
-}
-
-/** Start of the current day in Tashkent (UTC+5, no DST) as a UTC timestamp. */
-export function startOfTodayTashkent(now = Date.now()) {
-  const offset = 5 * 60 * 60 * 1000;
-  return Math.floor((now + offset) / 86_400_000) * 86_400_000 - offset;
 }

@@ -33,6 +33,12 @@ const MIGRATIONS = [
    CREATE INDEX leads_status_created ON leads(status, created_at DESC);`,
   // Accounts created with a temporary password must change it on first sign-in.
   `ALTER TABLE admin_users ADD COLUMN must_change_password INTEGER NOT NULL DEFAULT 0;`,
+  // The panel manages the website, not the sales pipeline: applications are only archived (Telegram is
+  // where the admissions team works), so the status/note columns are removed.
+  `DROP INDEX leads_status_created;
+   ALTER TABLE leads DROP COLUMN status;
+   ALTER TABLE leads DROP COLUMN note;
+   CREATE INDEX leads_created ON leads(created_at DESC);`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */
