@@ -11,5 +11,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Loyiha qoidalari (Codex va Claude uchun)
 
 - Sayt uch tilda (UZ asosiy / RU / EN) to'liq bo'lishi shart. Maqsad: ishonch + sotuv + SEO/GEO. Arxitektura va SEO/GEO qoidalari: `docs/sayt-arxitekturasi.md`.
-- **Deploy workflow: `docs/deploy.md`** (hozir Vercel, keyinroq DigitalOcean droplet). Faqat egasi aniq "deploy" desa push qilinadi; commit/push'dan oldin o'sha faylni o'qing. Repozitoriy ochiq: xom manba papkalari (`/teachers/`, `/info/`, `/23.09/`, `/1 kun/`, `/Owner/`) va `.env*` hech qachon commit qilinmaydi.
+- **Deploy workflow: `docs/deploy.md`** (hozir Vercel, keyinroq DigitalOcean droplet). Faqat egasi aniq "deploy" desa push qilinadi; commit/push'dan oldin o'sha faylni o'qing. Repozitoriy ochiq: xom manba papkalari (`/teachers/`, `/info/`, `/23.09/`, `/1 kun/`, `/Owner/`, `/tasdiqnoma/`) va `.env*` hech qachon commit qilinmaydi.
 - Maktab ma'lumotlarini (narx, natija, unvon, tarbiya, til va h.k.) o'zingizdan to'qimang: faqat maktab bergan yoki hujjatda ko'ringan faktlar. Blog rejasi: `docs/blog-reja.md`.

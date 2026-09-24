@@ -50,6 +50,7 @@ next-env.d.ts
 /23.09/
 /1 kun/
 /Owner/
+/tasdiqnoma/
 
 # image-generation notes live next to the artwork locally; they must not be served publicly
 public/illustrations/*.md

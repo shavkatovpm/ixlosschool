@@ -35,6 +35,9 @@ export const viewport: Viewport = {
   themeColor: "#163e32",
 };
 
+// Unknown first segments (scanner probes like /info.php) get a plain 404 instead of a render + cache write.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

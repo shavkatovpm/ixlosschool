@@ -1,21 +1,22 @@
 # Ixlos School — deploy workflow
 
-> **Holat: vaqtinchalik.** Hozir sayt Vercel'da turibdi; keyinroq DigitalOcean droplet'ga ko'chiriladi. Ko'chirgandan keyin shu faylni yangilang (pastdagi "Droplet'ga ko'chish" bo'limiga qarang). Oxirgi yangilanish: 2026-09-24.
+> **Holat (2026-09-24): production DigitalOcean droplet'da.** `www.ixlosschool.uz` droplet'dagi Caddy orqali xizmat qilinadi. Vercel loyihasi ulangan holda qoldi va **zaxira** vazifasini bajaradi (DNS'ni qaytarsangiz sayt Vercel'dan chiqadi). Shu faylni ishonchli manba deb hisoblang va o'zgarish qilsangiz yangilang. Oxirgi yangilanish: 2026-09-24.
 
 ## Qisqacha
 
-- **Kod:** GitHub `shavkatovpm/ixlosschool`, branch `main`.
-- **Hosting:** Vercel, project `shavkatovs-projects/ixlosschool`. Lokal ulanish `.vercel/` papkasida (gitignored).
-- **Deploy = `git push origin main`.** Vercel'ning GitHub integratsiyasi `main`ga har bir push'da production build va deploy qiladi (~30 soniya). Boshqa deploy skripti yo'q; preview/staging muhiti ham yo'q, har deploy production.
-- **Domen:** asosiy host `https://www.ixlosschool.uz` (`SITE_URL` shu, `src/lib/seo.ts`). `ixlosschool.uz` Vercel domen sozlamasida `www`ga yo'naltiriladi. Root `/` brauzerni `/uz`ga yuboradi (`src/proxy.ts`, next-intl).
-- **Stack:** Next.js 16 (Turbopack), React 19, Tailwind v4, next-intl (UZ default / RU / EN). `npm run build` = `next build`, `npm start` = `next start`. `@vercel/*` paketlari ishlatilmaydi, kod Vercel runtime'iga bog'liq emas.
+- **Kod:** GitHub `shavkatovpm/ixlosschool` (ochiq repozitoriy), branch `main`.
+- **Hosting:** DigitalOcean droplet (Ubuntu 24.04, 1 vCPU, 1 GB RAM + 2 GB swap). **Server ABCO loyihasi bilan bo'lishilgan** (pastdagi "Server va ABCO'dan ajratish" bo'limi).
+- **Deploy = commit + push + `scripts/deploy-droplet.sh`.** Skript faqat commit qilingan kodni (HEAD) shu kompyuterda quradi, tayyor papkani serverga yuboradi va oddiy Node konteynerida ishga tushiradi. Serverda hech narsa build qilinmaydi.
+- **Domen:** `https://www.ixlosschool.uz` asosiy host (`SITE_URL`, `src/lib/seo.ts`). `ixlosschool.uz` → `www` ga 308. HTTP → HTTPS avtomatik. DNS Vercel nameserver'larida (`ns1/ns2.vercel-dns.com`), yozuvlar Vercel DNS'da.
+- **Stack:** Next.js 16 (Turbopack), React 19, Tailwind v4, next-intl (UZ default / RU / EN), `output: "standalone"` (faqat `STANDALONE=1` bilan; Vercel build'lari o'zgarmagan).
 
 ## Qoidalar (kim va qachon deploy qiladi)
 
-1. **Faqat egasi aniq "deploy" desa** push qilinadi. Codex bilan UI ishlari parallel ketishi mumkin: yarim tayyor ish chiqib ketmasin.
-2. `main`ga to'g'ridan-to'g'ri push (PR jarayoni yo'q). Force-push yo'q, hook'lar o'tkazib yuborilmaydi (`--no-verify` yo'q).
-3. **Repozitoriy ochiq (public).** Xom manba papkalari `.gitignore`da: `/teachers/`, `/info/`, `/23.09/`, `/1 kun/`, `/Owner/`. `.env*` (faqat `.env.example` dan tashqari), token va parollar hech qachon commit qilinmaydi.
-4. Codex va Claude bitta ishchi papkada ishlaydi: fayl tahrirlashdan oldin uni qayta o'qing (boshqasi o'zgartirgan bo'lishi mumkin), o'zgarishlarni kichik va aniq qiling.
+1. **Faqat egasi aniq "deploy" desa** push va serverga joylash qilinadi. Codex bilan UI ishlari parallel ketishi mumkin: yarim tayyor ish chiqib ketmasin.
+2. `main`ga to'g'ridan-to'g'ri push (PR yo'q). Force-push yo'q, hook'lar o'tkazib yuborilmaydi (`--no-verify` yo'q).
+3. **Repozitoriy ochiq (public).** Xom manba papkalari `.gitignore`da: `/teachers/`, `/info/`, `/23.09/`, `/1 kun/`, `/Owner/`, `/tasdiqnoma/`. `.env*` (faqat `.env.example`dan tashqari), token, parol va **server IP'si** hech qachon repozitoriyga yozilmaydi.
+4. Codex va Claude bitta ishchi papkada ishlaydi: fayl tahrirlashdan oldin uni qayta o'qing, o'zgarishlarni kichik va aniq qiling.
+5. **Server ABCO loyihasiga tegmaslik** (pastga qarang). Serverda faqat `/opt/edge` va `/opt/ixlosschool` ichida ishlang.
 
 ## Deploydan oldin tekshiruv (hammasi o'tishi shart)
 
@@ -24,33 +25,28 @@ npx tsc --noEmit
 npx eslint .
 ```
 
-Keyin production build **alohida nusxada** (bir papkada `next build` ishlayotgan `next dev`ning `.next` papkasini buzadi):
+Production build alohida nusxada (bir papkada `next build` ishlayotgan `next dev`ning `.next` papkasini buzadi). `scripts/deploy-droplet.sh` o'zi ham `git archive HEAD` nusxasida quradi va build yiqilsa to'xtaydi, shuning uchun alohida build tekshiruvi ixtiyoriy; baribir kerak bo'lsa:
 
 ```bash
 COPY=$(mktemp -d)
 rsync -a --exclude /node_modules --exclude /.next --exclude /.git --exclude /.vercel \
-  --exclude /Owner --exclude /teachers --exclude /info --exclude /23.09 --exclude "/1 kun" --exclude /.claude \
+  --exclude /Owner --exclude /teachers --exclude /info --exclude /23.09 --exclude "/1 kun" --exclude /tasdiqnoma --exclude /.claude \
   ./ "$COPY/"
-cp -Rc node_modules "$COPY/node_modules"   # macOS/APFS: deyarli bir zumda. Linux: cp -R --reflink=auto
+cp -Rc node_modules "$COPY/node_modules"   # macOS/APFS. Linux: cp -R --reflink=auto
 cd "$COPY" && npx next build; echo "exit: $?"
 ```
 
-- `--exclude` **boshida `/` bilan** yozilishi shart. `--exclude teachers` deb yozilsa `src/app/[locale]/teachers` va `public/teachers` ham tushib qoladi va build "o'tib" ketadi, lekin sahifa yo'q bo'ladi.
-- Kutilgan natija: `exit: 0`, statik sahifalar (hozir 25 ta): `/uz`, `/ru`, `/en` va har biri uchun `admissions`, `contact`, `results`, `teachers`. Sahifa qo'shilsa/olinsa bu son o'zgaradi.
-- `next/font/google` (Geist, Manrope, Bodoni Moda) build paytida internetdan yuklaydi: build uchun tarmoq kerak.
-- Route o'chirilsa yoki nomi o'zgarsa, dev'ning `.next/types` papkasi eskirib qoladi va `tsc` yiqiladi. Yechim: `npx next typegen`, so'ng eski `.next/types/app/[locale]/<eski-yo'l>` papkasini o'chirish.
+- `--exclude` **boshida `/` bilan** yozilishi shart (aks holda `src/app/[locale]/teachers` va `public/teachers` ham tushib qoladi).
+- Kutilgan natija: `exit: 0`, 27 ta statik sahifa (`/uz|ru|en` + `admissions`, `contact`, `results`, `teachers` har biri uchun, + `_not-found` va boshqalar). Sahifa qo'shilsa/olinsa bu son o'zgaradi.
+- `next/font/google` build paytida internetdan yuklaydi: tarmoq kerak.
+- Route o'chirilsa/nomi o'zgarsa `.next/types` eskirib `tsc` yiqiladi: `npx next typegen` va eski `.next/types/app/[locale]/<yo'l>` papkasini o'chiring. `next.config.ts` o'zgarganda dev server qayta ishga tushadi va bir necha soniya `tsc` xato berishi mumkin.
 - Yangi matn `messages/uz.json`, `ru.json`, `en.json` uchalasida ham bo'lishi kerak. Sahifa title ≤ 60, description ≤ 160 belgi.
-- Sir-tekshiruv (staged diff ichida token/kalit yo'qligiga ishonch hosil qiling):
-
-```bash
-git diff --cached | grep -n -i -E "[0-9]{8,}:AA[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|BEGIN (RSA|PRIVATE)|password\s*[:=]"
-```
+- Sir-tekshiruv: `git diff --cached | grep -n -i -E "[0-9]{8,}:AA[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9]{20,}|BEGIN (RSA|PRIVATE)|password\s*[:=]"`
 
 ## Commit va push
 
 ```bash
-git add .gitignore docs messages public scripts src next.config.ts   # aniq yo'llar; `git add -A` emas
-git status --short                                                    # xom fotolar, .env tushmaganini ko'ring
+git add <aniq yo'llar>          # `git add -A` emas; keyin `git status --short` bilan tekshiring
 git commit -F - <<'EOF'
 Add <nima qilindi> (inglizcha, buyruq shaklida, ~70 belgigacha)
 
@@ -61,69 +57,83 @@ EOF
 git push origin main
 ```
 
-Trailer faqat Claude ishtirok etgan commit'larda. Commit sarlavhasi uslubi: "Add 3D illustrations to the clubs section", "Stop the page from jumping while scrolling on phones and tablets".
+Trailer faqat Claude ishtirok etgan commit'larda. Push Vercel'da ham build ishga tushiradi (zaxira nusxa yangilanib turadi), lekin trafik unga bormaydi.
 
-## Deploy holatini kuzatish
-
-`gh` (GitHub CLI) bu kompyuterda **login qilinmagan**, shuning uchun GitHub commit status API ishlamaydi. Vercel CLI ishlaydi (akkaunt `shavkatovpm-3711`):
+## Droplet'ga joylash
 
 ```bash
-npx vercel ls                      # eng yangi Production qatori "● Ready" bo'lishi kerak (odatda 20–40 soniya)
-npx vercel inspect <deployment-url>
-npx vercel env ls                  # faqat nomlar
+DEPLOY_HOST=root@<droplet-ip> bash scripts/deploy-droplet.sh
 ```
 
-Jonli tekshiruv (`curl`):
+Skript: (1) `git archive HEAD` → vaqtinchalik papka, (2) `npm ci`, (3) `STANDALONE=1 next build`, (4) standalone + static + public'ni yig'adi, (5) `sharp`ning macOS fayllarini Linux/x64 bilan almashtiradi, (6) `rsync` bilan `/opt/ixlosschool/releases/<vaqt>-<sha>/` ga yuboradi, (7) `current` symlink'ni almashtirib `ixlos-web` konteynerini qayta yaratadi, (8) sog'liq tekshiruvi o'tmasa **avtomatik oldingi versiyaga qaytaradi**, (9) oxirgi 3 ta release'ni saqlaydi. Uncommitted o'zgarishlar joylanmaydi.
+
+Qo'lda qaytarish: serverda `cd /opt/ixlosschool && ln -sfn releases/<oldingi> current && docker compose up -d --force-recreate web`.
+
+Tekshiruv (`curl`):
 
 ```bash
 for p in /uz /ru /en /uz/results /uz/contact /uz/teachers /uz/admissions /robots.txt /sitemap.xml /llms.txt; do
   printf "%-20s " "$p"; curl -s -o /dev/null -w "%{http_code}\n" -L "https://www.ixlosschool.uz$p"
 done
-curl -sI https://www.ixlosschool.uz/uz | grep -i -E "x-frame|x-content-type|referrer-policy|permissions-policy"
+curl -sI https://www.ixlosschool.uz/uz | grep -i -E "^via|strict-transport|x-frame|x-content-type|referrer-policy|permissions-policy"
 ```
 
-Kutilgan: yuqoridagilar 200; `/uz/privacy` **404** (maxfiylik sahifasi egasi qaroriga ko'ra olib tashlangan); `sitemap.xml`da 15 ta URL; sarlavhalar `next.config.ts` dagidek. `<title>`, JSON-LD (School, Course, VideoObject, FAQPage) va meta teglarni sahifa manbasidan ko'rib tekshirish mumkin.
+Kutilgan: hammasi 200 (`/uz/privacy` **404**: maxfiylik sahifasi egasi qaroriga ko'ra olib tashlangan), `via: 1.1 Caddy`, `sitemap.xml`da 15 URL.
 
-**Rollback:** Vercel dashboard, Deployments, oldingi "Ready" deployment, "Promote to Production" (yoki `npx vercel rollback <url>`). Yoki `git revert <sha>` va push.
+## Server va ABCO'dan ajratish
+
+Droplet nomi `ABCO`: u ABCO academy loyihasining Postgres bazasini (Docker, `/root/abco-db`) ham ishlatadi. Ikkala loyiha rahbariyatga tegishli, lekin **bir-biriga aralashmasligi shart**.
+
+| | ABCO (tegilmaydi) | Ixlos School |
+|---|---|---|
+| Papka | `/root/abco-db` | `/opt/ixlosschool`, `/opt/edge` |
+| Compose loyiha | `abco-db` | `ixlos` (sayt), `edge` (Caddy) |
+| Konteynerlar | `abco-db-postgres-1`, `abco-db-pgbouncer-1` | `ixlos-web`, `edge-caddy` |
+| Tarmoq / volume | `abco-db_default`, `abco-db_abco_postgres_data` | `edge` (umumiy proxy tarmog'i), `ixlos_ixlos_next_cache` |
+| Portlar | 5432, 6432 (butun internetga ochiq: ABCO qarori) | 80, 443 (faqat Caddy) |
+| Baza | Postgres | Ixlos ABCO Postgres'ini **ishlatmaydi** (admin panel SQLite bo'ladi, o'z volume'ida) |
+
+- `ixlos-web` hech qanday port e'lon qilmaydi: Caddy unga `edge` tarmog'i orqali `ixlos-web:3000` deb ulanadi. `mem_limit: 450m`, Caddy `96m`: xotira yetmasa ABCO Postgres emas, Ixlos konteyneri chegaralanadi.
+- `/opt/ixlosschool/.env` (chmod 600, faqat root): `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Repozitoriyda emas.
+- Serverda faqat `docker compose ...` ni `/opt/ixlosschool` yoki `/opt/edge` ichida ishlating. `docker system prune`, `docker volume prune`, `docker stop $(docker ps -q)` kabi umumiy buyruqlar **taqiqlangan** (ABCO'ga tegadi).
+- Swap: 2 GB (`/swapfile`), `vm.swappiness=10`. Umumiy server uchun foydali.
+- Bilinadigan xavflar (ABCO tomoni): baza **zaxira nusxasi yo'q**, Postgres porti ochiq, ~42 ta kutilayotgan yangilanish, `PermitRootLogin yes` (faqat kalit bilan). Bularga egasi aytmaguncha tegilmaydi.
+
+## Caddy va HTTPS
+
+- `/opt/edge/Caddyfile`: `www.ixlosschool.uz` → `ixlos-web:3000` (siqish zstd/gzip), `ixlosschool.uz` → `www` ga 308. Sertifikatlar Let's Encrypt'dan avtomatik olinadi va yangilanadi (volume `edge_caddy_data`).
+- **HSTS hozircha qisqa** (`max-age=300`). Hammasi bir-ikki hafta barqaror ishlagach `31536000` ga ko'tariladi (Caddyfile'da `header Strict-Transport-Security`, so'ng `docker exec edge-caddy caddy reload --config /etc/caddy/Caddyfile`).
+- Yangi sayt/loyiha qo'shish: alohida compose'da `edge` tarmog'iga ulanib, Caddyfile'ga yangi blok qo'shiladi. Eski HTTP-only variant: `/opt/edge/Caddyfile.http-phase`.
+- Sertifikat olish uchun 80-port ochiq bo'lishi va domen serverga qarab turishi shart.
+
+## DNS va Vercel'ga qaytish (rollback)
+
+Vercel DNS'da (`npx vercel dns ls ixlosschool.uz`) qo'shilgan yozuvlar: apex `A → droplet` (`rec_a0cdae76e3540553f743ba67`) va `www A → droplet` (`rec_9fca3063bff4f768583fb1d6`). Ular Vercel'ning standart ALIAS yozuvlarini ustidan bosib turadi. **Vercel'ga qaytarish:** `npx vercel dns rm <record-id>` ikkalasiga; ~1 daqiqada sayt yana Vercel'dan chiqadi (Vercel loyihasi va uning env'lari saqlangan). Search Console tasdiqlash TXT yozuviga (`google-site-verification=...`) tegmang.
 
 ## Environment variables
 
-`.env.example`da namunalar bor. **Holat (2026-09-24):** Vercel Production'da `TELEGRAM_BOT_TOKEN` va `TELEGRAM_CHAT_ID` o'rnatilgan (qiymatlari ko'rinmaydi) va jonli formadan sinov arizasi muvaffaqiyatli yuborilgan; GA, Yandex Metrica va verification env'lari hali yo'q. Ariza boti: **@ixlosformbot** ("Ixlos Form"), arizalar "Leads IXLOS website" guruhiga keladi (oddiy guruh; supergroup'ga aylansa chat ID o'zgaradi va Vercel'dagi qiymatni yangilash kerak). Token faqat Vercel'da turadi: hech qachon repozitoriyga, hujjatga yoki chatga yozilmaydi.
+`.env.example`da namunalar bor.
 
-| Nomi | Vazifa | Holat |
+| Nomi | Vazifa | Joyi va holati |
 |---|---|---|
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Ariza formasi (`/api/apply`) Telegram'ga yuboradi | **Majburiy.** Ularsiz production'da 503 qaytadi va arizalar yo'qoladi. Chat ID topish: botga /start yozing yoki uni guruhga qo'shib xabar yuboring, so'ng `https://api.telegram.org/bot<TOKEN>/getUpdates` dan `chat.id` ni oling (guruh ID'si manfiy bo'ladi) |
-| `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID` | Google Analytics / Yandex Metrica | Ixtiyoriy (bo'sh bo'lsa skript yuklanmaydi) |
-| `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION` | Search Console / Yandex Webmaster tasdiqlash meta tegi | Ixtiyoriy |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Ariza formasi (`/api/apply`) Telegram'ga yuboradi | Droplet `/opt/ixlosschool/.env` **va** Vercel Production'da o'rnatilgan. Bot: **@ixlosformbot**, guruh "Leads IXLOS website" (oddiy guruh; supergroup'ga aylansa chat ID o'zgaradi) |
+| `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID` | Google Analytics / Yandex Metrica | Yo'q (ixtiyoriy). `NEXT_PUBLIC_*` **build vaqtida** kiradi: deploy skripti build qiladigan kompyuterda shell env sifatida berilishi kerak |
+| `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION` | Tasdiqlash meta tegi | Yo'q (Google DNS TXT orqali tasdiqlangan) |
 
-- Qo'shish: Vercel, Project, Settings, Environment Variables yoki `npx vercel env add NAME production`. Yangi env faqat **keyingi deploydan** kuchga kiradi: qiymat qo'shgach `main`ga bo'sh commit (`git commit --allow-empty`) push qiling. `vercel redeploy` 2026-09-24 da Turbopack shrift xatosi bilan yiqildi, shuning uchun ishlatilmasin.
-- `NEXT_PUBLIC_*` va verification qiymatlari **build/render vaqtida** kiradi: o'zgartirgandan keyin qayta deploy kerak.
+- Serverdagi env o'zgarsa: `/opt/ixlosschool/.env` ni tahrirlab `docker compose up -d --force-recreate web`.
+- Token hech qachon repozitoriyga, hujjatga yoki chatga yozilmaydi. `@BotFather`da `/revoke` qilib yangilash mumkin, so'ng Vercel va serverdagi qiymatni almashtiring.
 
-## Ma'lum muammolar
+## Ma'lum muammolar va eslatmalar
 
+- `gh` (GitHub CLI) bu kompyuterda login qilinmagan; git ulanishi tokeni `workflow` ruxsatiga ega emas, shuning uchun `.github/workflows/` fayllarini push qilib bo'lmaydi. Kelajakdagi CI varianti tayyor: `Dockerfile`, `.dockerignore` va `docs/github-actions-docker.yml` (GHCR'ga image chiqaradi). Ishlatish uchun faylni GitHub veb-saytida `.github/workflows/docker.yml` sifatida qo'shing va paketni Public qiling; hozirgi jarayon unga bog'liq emas.
 - Turbopack image cache: `/_next/image` eski rasmni beraversa `rm -rf .next` va dev serverni qayta ishga tushiring.
-- `next.config.ts` o'zgarsa dev server o'zi qayta ishga tushadi (bir necha soniya).
-- `/api/apply` ichidagi so'rovlar limiti (10 daqiqada 5 ta) xotirada (`Map`), IP `x-forwarded-for`ning birinchi qiymatidan olinadi.
+- `next.config.ts`da `standalone` (Docker/droplet) rejimida rasmlar faqat WebP va 30 kun keshlanadi (bitta kichik CPU uchun); Vercel build'i AVIF'ni saqlaydi.
+- Bot skanerlari (`/info.php`, `/*.json` va h.k.) yangi domenga tez keladi: `[locale]` layout'ida `dynamicParams = false`, catch-all sahifa `force-dynamic`, shuning uchun ular keshlanmaydi va oddiy 404 oladi. Release papkasi konteynerda **faqat o'qish uchun** ulangan.
+- `/api/apply` limiti (10 daqiqada 5 ta) xotirada, IP `x-forwarded-for`ning birinchi qiymatidan (Caddy uni qo'shadi). Konteyner qayta ishga tushsa limit tozalanadi.
 - macOS'da `timeout` buyrug'i yo'q.
 
-## Vercel'ga xos narsalar (droplet'ga ko'chganda almashtiriladi)
+## Keyingi rejalar
 
-- `main`ga push'da avtomatik deploy (GitHub integratsiyasi).
-- Vercel domen/SSL boshqaruvi va apex-to-`www` yo'naltirish.
-- Vercel `Strict-Transport-Security` sarlavhasini o'zi qo'shadi; droplet'da buni web-server sozlashi kerak.
-- Rasm optimizatsiyasi va CDN keshi.
-- Environment variables Vercel paneli orqali.
-- `.vercel/` papkasi (lokal ulanish).
-
-## Droplet'ga ko'chish uchun eslatmalar (rejalashtirilgan, hali qilinmagan)
-
-- **Build/run:** serverda `npm ci`, `npm run build`, `npm start`. Rasm optimizatsiyasi uchun `sharp` kerak: u `next`ning o'z `optionalDependencies`ida bor va `npm ci` bilan o'rnatiladi (linux uchun binar avtomatik tanlanadi; o'rnatilganini `npm ls sharp` bilan tekshiring). Jarayonni `systemd` yoki PM2 boshqarsin. Ixtiyoriy: `output: "standalone"`.
-- **Reverse proxy:** nginx yoki Caddy → `localhost:3000`. SSL (Let's Encrypt), HSTS, gzip/brotli. **`X-Forwarded-For`ni uzating**, aks holda ariza limiti hamma foydalanuvchini bitta IP deb hisoblaydi.
-- **Host qoidalari:** `www.ixlosschool.uz` asosiy, apex `ixlosschool.uz` → `www`ga 301/308. `SITE_URL`, sitemap, canonical, hreflang va `llms.txt` shu hostda yozilgan: host o'zgarmasa, ularga tegish shart emas.
-- **Admin panel (rejalashtirilgan):** keyinroq admin panel qo'shiladi va u ham droplet'da ishlaydi. Shuning uchun ko'chishda ma'lumotlar bazasi, autentifikatsiya, doimiy saqlash (fayl/rasm) va zaxira nusxa (backup) ham rejalashtirilsin; ariza formasi hozir faqat Telegram'ga yuboradi va hech narsa saqlamaydi.
-- **Env:** serverda `.env.production` (commit qilinmaydi) yoki systemd `EnvironmentFile`; yuqoridagi jadvaldagi nomlar.
-- **Rasm keshi:** `.next/cache/images` deploylar orasida saqlansin (aks holda har deployda qayta kodlanadi). AVIF (`next.config.ts`da yoqilgan) protsessorni ko'p yeydi; kichik droplet'da sekin bo'lsa faqat `image/webp`ga qaytaring.
-- **CI/CD:** Vercel integratsiyasi o'rniga GitHub Actions (SSH bilan `git pull`, build, `reload`) yoki serverdagi deploy skripti. Ikki marta deploy bo'lmasligi uchun ko'chirgach Vercel'dagi GitHub integratsiyasini o'chiring. Rollback uchun `releases/` papkalari va `current` symlink tavsiya etiladi.
-- **DNS:** ko'chishdan oldin TTL'ni pasaytiring, droplet'da to'liq tekshirib bo'lgach A yozuvini almashtiring.
-- **O'zgarishsiz qoladi:** `next.config.ts` dagi sarlavhalar (`next start` ostida ham ishlaydi), `src/proxy.ts` (Node), "Qoidalar" va "Deploydan oldin tekshiruv" bo'limlari.
-- Ko'chgandan keyin: bu faylni yangilang va "Vercel'ga xos narsalar" bo'limini olib tashlang.
+- **Admin panel** (bitta super-admin, SQLite `ixlos_data` volume'ida, `ADMIN_ENABLED` belgisi bilan): serverdagi shu tuzilmada ishlaydi. Baza va yuklangan fayllar uchun **zaxira nusxa (backup)** albatta rejalashtirilsin (droplet'ga DigitalOcean Backups yoki kunlik nusxa).
+- ABCO bazasi uchun zaxira nusxa va port himoyasi: egasi qaroridan keyin.
+- Trafik oshsa: droplet'ni 2 GB'ga oshirish yoki oldiga CDN (masalan Cloudflare) qo'yish.
