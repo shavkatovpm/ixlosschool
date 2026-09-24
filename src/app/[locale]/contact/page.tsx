@@ -30,7 +30,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const LEGAL = getLegal();
   const t = await getTranslations({ locale, namespace: "pages.contact" });
   const home = await getTranslations({ locale, namespace: "pages" });
-  const legal = { taxId: LEGAL.taxIdDisplay, number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay };
+  const legal = { orgName: LEGAL.orgName, taxId: LEGAL.taxIdDisplay, number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay };
   const facts = [
     ...(t.raw("facts") as Fact[]),
     { label: t("legalLabel"), value: t("legalValue", legal) },

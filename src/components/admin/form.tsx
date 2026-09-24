@@ -8,10 +8,21 @@ import { fieldClass, primaryButton } from "./ui";
 
 const FormContext = createContext<FormState>(initialFormState);
 
-export function SubmitButton({ children, className = primaryButton }: { children: React.ReactNode; className?: string }) {
+export function SubmitButton({
+  children,
+  className = primaryButton,
+  name,
+  value,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  /** Lets one form have several submit buttons that the action tells apart. */
+  name?: string;
+  value?: string;
+}) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} aria-busy={pending} className={`${className} disabled:opacity-70`}>
+    <button type="submit" name={name} value={value} disabled={pending} aria-busy={pending} className={`${className} disabled:opacity-70`}>
       {pending ? <Loader2 size={16} className="animate-spin" aria-hidden /> : null}
       {children}
     </button>
@@ -26,12 +37,16 @@ export function AdminForm({
   action,
   children,
   submit = "Saqlash",
+  submitName,
+  submitValue,
   extra,
   encType,
 }: {
   action: FormAction;
   children: React.ReactNode;
   submit?: string;
+  submitName?: string;
+  submitValue?: string;
   /** Rendered next to the submit button (e.g. a cancel link). */
   extra?: React.ReactNode;
   encType?: "multipart/form-data";
@@ -53,7 +68,7 @@ export function AdminForm({
         ) : null}
         {children}
         <div className="flex flex-wrap items-center gap-3">
-          <SubmitButton>{submit}</SubmitButton>
+          <SubmitButton name={submitName} value={submitValue}>{submit}</SubmitButton>
           {extra}
         </div>
       </form>

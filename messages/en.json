@@ -60,7 +60,8 @@
     "call": "Call us",
     "mainLabel": "Main navigation",
     "language": "Choose language",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
   "hero": {
     "eyebrowLeft": "For a generation that thinks.",
@@ -397,11 +398,26 @@
     "contactTitle": "Contact",
     "address": "Address",
     "hours": "Hours",
-    "legal": "“ABCO UNIVERSITY” non-state educational institution, TIN {taxId}.",
+    "legal": "“{orgName}” non-state educational institution, TIN {taxId}.",
     "license": "Licence No. {number} (valid from {date}, unlimited): general secondary education services. Issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan."
   },
   "pages": {
     "home": "Home",
+    "blog": {
+      "metaTitle": "Ixlos School blog: advice for parents",
+      "metaDescription": "Articles for parents: choosing a private school, preparing for admission, and practical advice on mathematics, English and IT.",
+      "eyebrow": "Blog",
+      "h1": "Articles for parents",
+      "lead": "Practical advice on choosing a school, preparing for admission and supporting your child's studies. The articles are written by the Ixlos School team.",
+      "empty": "Articles are coming soon.",
+      "readTime": "{minutes} min read",
+      "published": "Published",
+      "updated": "Updated",
+      "related": "More articles",
+      "back": "All articles",
+      "coverAlt": "{title} — article image",
+      "author": "The Ixlos School team"
+    },
     "admissions": {
       "metaTitle": "Tashkent School Admissions: Grades 1–11 | Ixlos School",
       "metaDescription": "Admissions to Ixlos School, grades 1–11: Mathematics and English test plus psychologist interview, pass mark 60. Annual or monthly tuition, free clubs.",
@@ -527,7 +543,7 @@
         }
       ],
       "legalLabel": "Legal entity",
-      "legalValue": "Ixlos School operates under the licence of “ABCO UNIVERSITY”, a non-state educational institution. TIN: {taxId}.",
+      "legalValue": "Ixlos School operates under the licence of “{orgName}”, a non-state educational institution. TIN: {taxId}.",
       "licenseLabel": "Licence",
       "licenseValue": "No. {number}, valid from {date}, unlimited. Activity: general secondary education services (grades 1–11). Issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan."
     }

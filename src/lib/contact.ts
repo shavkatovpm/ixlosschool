@@ -24,6 +24,8 @@ export const CONTACT = {
 // (originals stay in the git-ignored /tasdiqnoma folder). The activity address on the licence is
 // Yunusobod, Bog'ishamol ko'chasi, 221-uy, while CONTACT.address says 219-uy: see docs/sayt-arxitekturasi.md.
 export const LEGAL = {
+  // The organisation's name without its form; the site adds "nodavlat ta'lim muassasasi" and the translations.
+  orgName: "ABCO UNIVERSITY",
   legalName: "\"ABCO UNIVERSITY\" nodavlat ta'lim muassasasi",
   taxId: "310060070",
   taxIdDisplay: "310 060 070",

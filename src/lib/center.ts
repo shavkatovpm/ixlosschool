@@ -14,7 +14,7 @@ export type CenterInput = {
   telegramUrl: string;
   instagramUrl: string;
   youtubeUrl: string;
-  legalName: string;
+  orgName: string;
   taxId: string;
   licenseNumber: string;
   licenseDate: string;
@@ -34,6 +34,7 @@ export type Contact = {
 };
 
 export type Legal = {
+  orgName: string;
   legalName: string;
   taxId: string;
   taxIdDisplay: string;
@@ -54,7 +55,7 @@ export const DEFAULT_CENTER: CenterInput = {
   telegramUrl: CONTACT.telegramUrl,
   instagramUrl: CONTACT.instagramUrl,
   youtubeUrl: CONTACT.youtubeUrl,
-  legalName: LEGAL.legalName,
+  orgName: LEGAL.orgName,
   taxId: LEGAL.taxId,
   licenseNumber: LEGAL.licenseNumber,
   licenseDate: LEGAL.licenseDate,
@@ -101,7 +102,8 @@ export function resolveContact(input: CenterInput): Contact {
 
 export function resolveLegal(input: CenterInput): Legal {
   return {
-    legalName: input.legalName,
+    orgName: input.orgName,
+    legalName: `"${input.orgName}" nodavlat ta'lim muassasasi`,
     taxId: input.taxId,
     taxIdDisplay: formatTaxId(input.taxId),
     licenseNumber: input.licenseNumber,

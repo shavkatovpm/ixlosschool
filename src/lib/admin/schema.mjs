@@ -112,6 +112,21 @@ const MIGRATIONS = [
      updated_at INTEGER NOT NULL
    );
    CREATE INDEX teachers_position ON teachers(position);`,
+  // Blog articles: one row per article with the three language versions side by side. A draft may be incomplete;
+  // publishing requires title, description and body in Uzbek, Russian and English.
+  `CREATE TABLE articles (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     slug TEXT NOT NULL UNIQUE,
+     status TEXT NOT NULL DEFAULT 'draft',
+     cover TEXT NOT NULL DEFAULT '',
+     title_uz TEXT NOT NULL DEFAULT '', desc_uz TEXT NOT NULL DEFAULT '', body_uz TEXT NOT NULL DEFAULT '',
+     title_ru TEXT NOT NULL DEFAULT '', desc_ru TEXT NOT NULL DEFAULT '', body_ru TEXT NOT NULL DEFAULT '',
+     title_en TEXT NOT NULL DEFAULT '', desc_en TEXT NOT NULL DEFAULT '', body_en TEXT NOT NULL DEFAULT '',
+     created_at INTEGER NOT NULL,
+     updated_at INTEGER NOT NULL,
+     published_at INTEGER
+   );
+   CREATE INDEX articles_status_published ON articles(status, published_at DESC);`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */

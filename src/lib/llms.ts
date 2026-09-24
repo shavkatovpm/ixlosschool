@@ -1,8 +1,15 @@
 import type { Contact, Legal } from "./center";
 
+export type LlmsArticle = { slug: string; title: Record<"uz" | "ru" | "en", string>; description: Record<"uz" | "ru" | "en", string> };
+
 // llms.txt for AI assistants. Contact and legal facts come from the editable centre details; the rest is fixed text
 // that restates what the school itself publishes. Articles are appended by the route.
-export function llmsTemplate(c: Contact, l: Legal): string {
+export function llmsTemplate(c: Contact, l: Legal, articles: LlmsArticle[] = []): string {
+  const blog = articles.length
+    ? `\n\n## Blog (articles for parents)\n\n${articles
+        .map((a) => `- [${a.title.en}](https://www.ixlosschool.uz/en/blog/${a.slug}): ${a.description.en} (Uzbek: https://www.ixlosschool.uz/uz/blog/${a.slug}; Russian: https://www.ixlosschool.uz/ru/blog/${a.slug})`)
+        .join("\n")}`
+    : "";
   return `# Ixlos School
 
 > Ixlos School is a private school in the Yunusabad district of Tashkent, Uzbekistan, for grades 1–11, specializing in finance and IT. Grades 5–9 study mathematics, English and informatics in depth; grades 10–11 follow an Accounting or IT track. The school guarantees graduates an IELTS score of at least 5.5 and awards a professional diploma (Accounting or IT). The website is available in Uzbek (default), Russian and English.
@@ -75,5 +82,6 @@ Facts on this page come from the school's own materials.
 - Группы A/B/C обновляются по итогам еженедельных экзаменов; по субботам проходят дополнительные занятия.
 - С понедельника по пятницу 08:30–17:30, трёхразовое питание, школьный автобус, 8 бесплатных кружков.
 - Адрес: ${c.address}. Тел: ${c.phonesDisplay[0]}.
+${blog}
 `;
 }

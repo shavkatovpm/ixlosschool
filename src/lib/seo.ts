@@ -24,26 +24,31 @@ export function buildMetadata({
   path = "",
   title,
   description,
+  image: customImage,
+  article,
 }: {
   locale: string;
   path?: string;
   title: string;
   description: string;
+  /** Site-relative or absolute image for link previews; defaults to the language's social card. */
+  image?: string;
+  article?: { publishedTime: string; modifiedTime: string };
 }): Metadata {
-  const image = `/og/og-${locale}.png`;
+  const image = customImage ?? `/og/og-${locale}.png`;
   return {
     title,
     description,
     alternates: { canonical: `/${locale}${path}`, languages: languageAlternates(path) },
     openGraph: {
-      type: "website",
+      ...(article ? { type: "article" as const, publishedTime: article.publishedTime, modifiedTime: article.modifiedTime } : { type: "website" as const }),
       siteName: SITE_NAME,
       title,
       description,
       url: `/${locale}${path}`,
       locale: OG_LOCALE[locale],
       alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
-      images: [{ url: image, width: 1200, height: 630, alt: title }],
+      images: [customImage ? { url: image, alt: title } : { url: image, width: 1200, height: 630, alt: title }],
     },
     twitter: { card: "summary_large_image", title, description, images: [image] },
   };

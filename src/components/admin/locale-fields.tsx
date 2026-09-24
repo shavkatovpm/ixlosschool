@@ -8,6 +8,9 @@ export type LocaleFieldSpec = {
   maxLength?: number;
   hint?: string;
   counter?: { soft: number; max?: number };
+  /** Defaults to true. Drafts (articles) may be saved with some languages still empty. */
+  required?: boolean;
+  mono?: boolean;
 };
 
 /** One block per language (Uzbek, Russian, English) with the same fields: every text on the site must exist in all three. */
@@ -27,7 +30,8 @@ export function LocaleFields({ fields, values }: { fields: LocaleFieldSpec[]; va
                 name={`${field.key}_${locale}`}
                 label={field.label}
                 defaultValue={values?.[field.key]?.[locale] ?? ""}
-                required
+                required={field.required ?? true}
+                mono={field.mono}
                 multiline={field.multiline}
                 maxLength={field.maxLength}
                 hint={field.hint}

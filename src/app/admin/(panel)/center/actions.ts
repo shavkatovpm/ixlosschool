@@ -26,7 +26,7 @@ export async function saveCenterAction(previous: FormState, formData: FormData):
     telegramUrl: value.telegramUrl,
     instagramUrl: value.instagramUrl,
     youtubeUrl: value.youtubeUrl,
-    legalName: value.legalName,
+    orgName: value.orgName,
     taxId: value.taxId,
     licenseNumber: value.licenseNumber,
     licenseDate: value.licenseDate,

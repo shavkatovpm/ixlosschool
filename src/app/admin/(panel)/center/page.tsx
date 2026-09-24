@@ -57,7 +57,7 @@ export default function CenterPage() {
         </FormSection>
 
         <FormSection title="Yuridik ma'lumot va litsenziya" hint="Sayt pastki qismida va Google uchun ma'lumotlarda ko'rsatiladi. Faqat hujjatlardagi qiymatlarni kiriting.">
-          <Field name="legalName" label="Yuridik shaxs nomi" defaultValue={c.legalName} required maxLength={200} className="sm:col-span-2" />
+          <Field name="orgName" label="Tashkilot nomi (qo'shtirnoqsiz)" defaultValue={c.orgName} required maxLength={120} className="sm:col-span-2" hint="Faqat nomning o'zi, masalan ABCO UNIVERSITY. «nodavlat ta'lim muassasasi» so'zlari saytda uch tilda avtomatik qo'shiladi." />
           <Field name="taxId" label="STIR (9 ta raqam)" defaultValue={c.taxId} required maxLength={12} />
           <Field name="licenseNumber" label="Litsenziya raqami" defaultValue={c.licenseNumber} required maxLength={30} />
           <Field name="licenseDate" label="Litsenziya berilgan sana" type="date" defaultValue={c.licenseDate} required />

@@ -66,7 +66,7 @@ export function parseCenterForm(values: Record<string, string>): { value?: Cente
     else links[key] = url;
   }
 
-  const legalName = text("legalName", "Yuridik nom", 200);
+  const orgName = text("orgName", "Tashkilot nomi", 120);
   const taxId = (values.taxId ?? "").replace(/\s+/g, "");
   if (!/^\d{9}$/.test(taxId)) errors.taxId = "STIR 9 ta raqamdan iborat bo'lsin.";
   const licenseNumber = (values.licenseNumber ?? "").trim();
@@ -86,7 +86,7 @@ export function parseCenterForm(values: Record<string, string>): { value?: Cente
       telegramUrl: links.telegramUrl!,
       instagramUrl: links.instagramUrl!,
       youtubeUrl: links.youtubeUrl!,
-      legalName,
+      orgName,
       taxId,
       licenseNumber,
       licenseDate,

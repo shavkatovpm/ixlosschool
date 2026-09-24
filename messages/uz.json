@@ -60,7 +60,8 @@
     "call": "Qo‘ng‘iroq qilish",
     "mainLabel": "Asosiy navigatsiya",
     "language": "Tilni tanlash",
-    "contact": "Aloqa"
+    "contact": "Aloqa",
+    "blog": "Blog"
   },
   "hero": {
     "eyebrowLeft": "Fikrlaydigan avlod uchun.",
@@ -397,11 +398,26 @@
     "contactTitle": "Bog'lanish",
     "address": "Manzil",
     "hours": "Ish vaqti",
-    "legal": "\"ABCO UNIVERSITY\" nodavlat ta'lim muassasasi, STIR {taxId}.",
+    "legal": "\"{orgName}\" nodavlat ta'lim muassasasi, STIR {taxId}.",
     "license": "Litsenziya №{number} ({date} dan, muddatsiz): umumiy o'rta ta'lim xizmatlari. Beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi."
   },
   "pages": {
     "home": "Bosh sahifa",
+    "blog": {
+      "metaTitle": "Ixlos School blogi: ota-onalar uchun maslahatlar",
+      "metaDescription": "Ota-onalar uchun maqolalar: xususiy maktab tanlash, qabulga tayyorlanish, matematika, ingliz tili va IT bo'yicha amaliy maslahatlar.",
+      "eyebrow": "Blog",
+      "h1": "Ota-onalar uchun maqolalar",
+      "lead": "Maktab tanlash, qabulga tayyorlanish va farzandingizning o'qishi haqida amaliy maslahatlar. Maqolalarni Ixlos School jamoasi tayyorlaydi.",
+      "empty": "Maqolalar tez orada paydo bo'ladi.",
+      "readTime": "{minutes} daqiqa o'qish",
+      "published": "Chop etilgan",
+      "updated": "Yangilangan",
+      "related": "Boshqa maqolalar",
+      "back": "Barcha maqolalar",
+      "coverAlt": "{title} — maqola rasmi",
+      "author": "Ixlos School jamoasi"
+    },
     "admissions": {
       "metaTitle": "Toshkent xususiy maktabiga qabul: 1–11-sinf | Ixlos School",
       "metaDescription": "Ixlos School'ga 1-sinfdan 11-sinfgacha qabul: matematika va ingliz tili testi, psixolog suhbati, o'tish bali 60. To'lov yillik yoki oyma-oy, bepul to'garaklar.",
@@ -527,7 +543,7 @@
         }
       ],
       "legalLabel": "Yuridik shaxs",
-      "legalValue": "Ixlos School \"ABCO UNIVERSITY\" nodavlat ta'lim muassasasi (NTM) litsenziyasi asosida faoliyat yuritadi. STIR: {taxId}.",
+      "legalValue": "Ixlos School \"{orgName}\" nodavlat ta'lim muassasasi (NTM) litsenziyasi asosida faoliyat yuritadi. STIR: {taxId}.",
       "licenseLabel": "Litsenziya",
       "licenseValue": "№{number}, {date} dan muddatsiz. Faoliyat turi: umumiy o'rta ta'lim xizmatlari (1–11-sinf). Beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi."
     }
