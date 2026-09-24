@@ -26,6 +26,7 @@ Facts on this page come from the school's own materials.
 - YouTube: ${c.youtubeUrl}
 - Legal entity: ${l.legalName} (non-state educational institution, NTM), TIN (STIR) ${l.taxIdDisplay}.
 - Licence: No. ${l.licenseNumber}, valid from ${l.licenseDateDisplay} (unlimited), issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan; activity: general secondary education services, grades 1–11.
+- Documents (scans, also shown in the site footer): [State registration certificate (PDF)](https://www.ixlosschool.uz/legal/guvohnoma-ixlos-school.pdf), [Educational activity licence (PDF)](https://www.ixlosschool.uz/legal/litsenziya-1697880.pdf)
 
 ## Pages
 

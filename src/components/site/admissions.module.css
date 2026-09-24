@@ -33,12 +33,22 @@
 .selectWrap select { appearance: none; padding-right: 42px; cursor: pointer; }
 .selectWrap select:invalid { color: var(--color-moss); }
 .selectWrap option { background: var(--color-surface); color: var(--color-ink); }
-.selectChevron { position: absolute; right: 16px; top: 21px; color: var(--color-brand); pointer-events: none; }
+.selectChevron { position: absolute; right: 16px; top: 21px; color: var(--color-brand); pointer-events: none; transition: transform 200ms ease; }
+.selectTrigger { display: flex; align-items: center; width: 100%; height: 60px; min-width: 0; border: 0; border-radius: inherit; padding: 0 44px 0 60px; background: transparent; color: var(--color-ink); font: inherit; font-size: 16px; line-height: 1.5; text-align: left; cursor: pointer; }
+.selectTrigger:focus { outline: none; }
+.selectTrigger[data-placeholder="true"] { color: var(--color-moss); }
+.selectTrigger[aria-expanded="true"] ~ .selectChevron { transform: rotate(180deg); }
+.selectPanel { position: fixed; inset: auto; margin: 0; padding: 10px; border: 0; border-radius: 20px; background: var(--color-surface); color: var(--color-ink); overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 0 0 1px var(--color-line), 0 28px 60px -20px rgb(16 45 37 / 50%); }
+.selectPanel:popover-open { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 6px; animation: select-in 150ms ease-out both; }
+.selectOption { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 46px; padding: 0 8px; border-radius: 13px; background: var(--color-paper); font-size: 15px; font-weight: 600; white-space: nowrap; cursor: pointer; user-select: none; transition: background-color 120ms ease, color 120ms ease, box-shadow 120ms ease; }
+.selectOption[data-active="true"] { background: var(--color-tint-b); box-shadow: inset 0 0 0 1.5px var(--color-brand); }
+.selectOption[aria-selected="true"] { background: var(--color-brand); color: var(--color-on-brand); }
+@keyframes select-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
 .submit { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 54px; margin-top: 4px; padding: 14px 18px; border-radius: 12px; background: var(--color-brand); color: var(--color-on-brand); font-size: 15px; font-weight: 600; line-height: 1.5; cursor: pointer; transition: background-color 150ms ease; }
 .submit:hover { background: var(--color-brand-soft); }
 .submit:focus-visible { outline-color: var(--color-brand); outline-offset: 3px; }
 .submit:disabled { background: var(--color-brand-soft); cursor: wait; }
-.fields:disabled input, .fields:disabled select { cursor: wait; }
+.fields:disabled input, .fields:disabled select, .fields:disabled .selectTrigger { cursor: wait; }
 .errorBanner { padding: 14px; border: 1px solid var(--color-danger-line); border-radius: 12px; background: var(--color-danger-bg); color: var(--color-danger); font-size: 13px; line-height: 1.6; }
 .errorBanner a { display: block; margin-top: 7px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .mobileContact { display: none; }
@@ -69,4 +79,4 @@
   .fields { gap: 20px; }
   .success { min-height: 320px; }
 }
-@media (prefers-reduced-motion: reduce) { .inputWrap, .inputIcon, .submit { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .inputWrap, .inputIcon, .submit, .selectChevron, .selectOption { transition: none; } .selectPanel:popover-open { animation: none; } }

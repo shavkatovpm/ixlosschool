@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getContact, getLegal } from "@/lib/center";
 import { hasPublishedArticles } from "@/lib/content/articles";
+import { LegalDocuments } from "./legal-documents";
 import { InstagramIcon, YoutubeIcon } from "./social-icons";
 
 const links = [
@@ -84,8 +85,29 @@ export function Footer() {
         </a>
       </div>
 
-      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink/75">
-        <p className="max-w-4xl leading-[1.7]">
+      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-8 text-[13px] text-ink/75">
+        <LegalDocuments
+          docs={[
+            {
+              key: "registration",
+              title: t("documents.registration"),
+              alt: t("documents.alt", { title: t("documents.registration") }),
+              thumb: { src: "/legal/guvohnoma-thumb.webp", width: 360, height: 510 },
+              full: { src: "/legal/guvohnoma.webp", width: 1100, height: 1557 },
+              pdf: "/legal/guvohnoma-ixlos-school.pdf",
+            },
+            {
+              key: "license",
+              title: t("documents.license"),
+              alt: t("documents.alt", { title: t("documents.license") }),
+              thumb: { src: "/legal/litsenziya-thumb.webp", width: 360, height: 563 },
+              full: { src: "/legal/litsenziya.webp", width: 1100, height: 1722 },
+              pdf: "/legal/litsenziya-1697880.pdf",
+            },
+          ]}
+          labels={{ heading: t("documents.heading"), view: t("documents.view"), close: t("documents.close"), pdf: t("documents.pdf") }}
+        />
+        <p className="mt-3 max-w-4xl leading-[1.7]">
           {t("legal", { orgName: LEGAL.orgName, taxId: LEGAL.taxIdDisplay })}{" "}
           {t("license", { number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay })}
         </p>

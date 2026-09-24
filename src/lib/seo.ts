@@ -63,7 +63,8 @@ export function schoolNode(locale: string, description: string, extras: SchoolEx
     "@type": "School",
     "@id": `${SITE_URL}/#school`,
     name: SITE_NAME,
-    url: absoluteUrl(locale),
+    // One address for the organisation on every page and language: the default-language home page.
+    url: absoluteUrl(routing.defaultLocale),
     logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/ixlos-school-original.png`, width: 3601, height: 3601 },
     image: `${SITE_URL}/og/og-${locale}.png`,
     description,
@@ -95,7 +96,7 @@ export function websiteNode() {
   return {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    url: SITE_URL,
+    url: absoluteUrl(routing.defaultLocale),
     name: SITE_NAME,
     inLanguage: routing.locales,
     publisher: { "@id": `${SITE_URL}/#school` },

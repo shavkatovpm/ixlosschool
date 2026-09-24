@@ -398,6 +398,15 @@
     "contactTitle": "Bog'lanish",
     "address": "Manzil",
     "hours": "Ish vaqti",
+    "documents": {
+      "heading": "Hujjatlar",
+      "registration": "Davlat ro'yxatidan o'tkazilganlik guvohnomasi",
+      "license": "Ta'lim faoliyati litsenziyasi",
+      "view": "Ko'rish",
+      "close": "Yopish",
+      "pdf": "PDF yuklab olish",
+      "alt": "{title} (skan nusxa)"
+    },
     "legal": "\"{orgName}\" nodavlat ta'lim muassasasi, STIR {taxId}.",
     "license": "Litsenziya №{number} ({date} dan, muddatsiz): umumiy o'rta ta'lim xizmatlari. Beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi."
   },

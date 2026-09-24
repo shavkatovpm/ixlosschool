@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Check, ChevronDown, GraduationCap, Loader2, Phone, UserRound } from "lucide-react";
+import { Check, Loader2, Phone, UserRound } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { applicationFormSchema, type ApplicationFormValues } from "@/lib/application";
 import { readAttribution, trackingAllowed } from "@/lib/attribution";
 import { trackLead } from "@/lib/track";
 import { useContact } from "./contact-context";
+import { GradeSelect } from "./grade-select";
 import styles from "./admissions.module.css";
 
 const grades = Array.from({ length: 11 }, (_, i) => String(i + 1));
@@ -27,11 +28,14 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
   const inModal = variant === "modal";
   const [status, setStatus] = useState<"idle" | "success" | "error" | "rateLimited">("idle");
   const successRef = useRef<HTMLDivElement>(null);
-  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ApplicationFormValues>({
+  const { register, handleSubmit, reset, setValue, control, formState: { errors, isSubmitting } } = useForm<ApplicationFormValues>({
     resolver: zodResolver(applicationFormSchema),
     mode: "onTouched",
     reValidateMode: "onChange",
   });
+
+  const grade = useWatch({ control, name: "grade" });
+  const gradeField = register("grade");
 
   useEffect(() => {
     if (status === "success") successRef.current?.focus();
@@ -101,14 +105,18 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
         </div>
         <div className={styles.field}>
           <label htmlFor={`${id}-grade`}>{t("gradeLabel")}</label>
-          <div className={`${styles.inputWrap} ${styles.selectWrap}`}>
-            <span className={styles.inputIcon}><GraduationCap size={20} strokeWidth={1.7} aria-hidden /></span>
-            <select id={`${id}-grade`} defaultValue="" required aria-invalid={!!errors.grade} aria-describedby={errors.grade ? `${id}-grade-error` : undefined} {...register("grade")}>
-              <option value="" disabled>{t("gradePlaceholder")}</option>
-              {grades.map((g) => <option key={g} value={g}>{t("gradeOption", { grade: g })}</option>)}
-            </select>
-            <ChevronDown className={styles.selectChevron} size={18} aria-hidden />
-          </div>
+          <GradeSelect
+            id={`${id}-grade`}
+            label={t("gradeLabel")}
+            placeholder={t("gradePlaceholder")}
+            options={grades.map((g) => ({ value: g, label: t("gradeOption", { grade: g }) }))}
+            value={grade ?? ""}
+            onChange={(value) => setValue("grade", value as ApplicationFormValues["grade"], { shouldValidate: true, shouldTouch: true, shouldDirty: true })}
+            onBlur={() => gradeField.onBlur({ target: { name: "grade", value: grade ?? "" }, type: "blur" })}
+            invalid={!!errors.grade}
+            describedBy={errors.grade ? `${id}-grade-error` : undefined}
+          />
+          <input type="hidden" {...gradeField} />
           {errors.grade ? <p id={`${id}-grade-error`} className={styles.fieldError} role="alert">{t("gradeError")}</p> : null}
         </div>
         <input type="text" tabIndex={-1} autoComplete="off" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" {...register("company")} />

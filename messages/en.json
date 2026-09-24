@@ -398,6 +398,15 @@
     "contactTitle": "Contact",
     "address": "Address",
     "hours": "Hours",
+    "documents": {
+      "heading": "Documents",
+      "registration": "State registration certificate",
+      "license": "Educational activity licence",
+      "view": "View",
+      "close": "Close",
+      "pdf": "Download PDF",
+      "alt": "{title} (scan)"
+    },
     "legal": "“{orgName}” non-state educational institution, TIN {taxId}.",
     "license": "Licence No. {number} (valid from {date}, unlimited): general secondary education services. Issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan."
   },

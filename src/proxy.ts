@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { adminEnabled } from "./lib/admin/config";
@@ -30,6 +30,12 @@ function noteCrawler(request: NextRequest) {
 }
 
 export default function proxy(request: NextRequest) {
+  // "/" always opens Uzbek, so the redirect is permanent: search engines then treat /uz as the home page.
+  if (request.nextUrl.pathname === "/") {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${routing.defaultLocale}`;
+    return NextResponse.redirect(url, 308);
+  }
   noteCrawler(request);
   return intl(request);
 }

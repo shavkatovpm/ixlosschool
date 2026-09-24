@@ -14,13 +14,14 @@ const pages = [
   { path: "/contact", changeFrequency: "monthly", priority: 0.7 },
 ] as const;
 
-type Entry = { path: string; changeFrequency: "weekly" | "monthly"; priority: number; lastModified: Date };
+type Entry = { path: string; changeFrequency: "weekly" | "monthly"; priority: number; lastModified?: Date };
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const articles = publishedSlugs();
   const entries: Entry[] = [
-    ...pages.map((page) => ({ ...page, lastModified: now })),
+    // No lastmod for the fixed pages: they have no tracked change date, and a value that changes on every request
+    // ("now") teaches search engines to ignore lastmod. Articles carry their real update time.
+    ...pages,
     ...(articles.length
       ? [
           { path: "/blog", changeFrequency: "weekly" as const, priority: 0.7, lastModified: new Date(Math.max(...articles.map((a) => a.updatedAt))) },
@@ -32,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return entries.flatMap((page) =>
     routing.locales.map((locale) => ({
       url: `${SITE_URL}/${locale}${page.path}`,
-      lastModified: page.lastModified,
+      ...(page.lastModified ? { lastModified: page.lastModified } : {}),
       changeFrequency: page.changeFrequency,
       priority: locale === routing.defaultLocale ? page.priority : Math.max(page.priority - 0.1, 0.1),
       alternates: {
