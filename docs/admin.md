@@ -1,6 +1,6 @@
 # Ixlos School — admin panel
 
-> **Holat (2026-09-24):** panel to'liq: **Dashboard, Trafik, Leadlar** (asosiy) va **Ustozlar, Maqolalar, O'quvchilar fikri, FAQ, Markaz ma'lumotlari, Sozlamalar**. Serverda `https://www.ixlosschool.uz/admin` (kod deploy qilingandan keyin ishlaydi; yangi bo'limlar deploydan so'ng ko'rinadi).
+> **Holat (2026-09-24):** panel to'liq: **Dashboard, Trafik, Leadlar** (asosiy) va **Ustozlar, Maqolalar, O'quvchilar fikri, FAQ, Markaz ma'lumotlari, Sozlamalar**. Serverda `https://www.ixlosschool.uz/admin` (2026-09-25 deploy qilingan, release `20260925-001035-9939f84`).
 >
 > **Tamoyillar (egasi):** bitta super-admin (foydalanuvchilar/rollar yo'q); imtihon jadvali moduli yo'q; panel **faqat sayt boshqaruvi** uchun: arizalarni yuritish (CRM: holatlar, izohlar) qilinmaydi, arizalar bilan Telegram'da ishlanadi. Har matn uch tilda (UZ/RU/EN) to'liq bo'lishi shart.
 

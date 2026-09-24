@@ -1,6 +1,6 @@
 # Ixlos School — deploy workflow
 
-> **Holat (2026-09-24): production DigitalOcean droplet'da.** `www.ixlosschool.uz` droplet'dagi Caddy orqali xizmat qilinadi. Vercel loyihasi ulangan holda qoldi va **zaxira** vazifasini bajaradi (DNS'ni qaytarsangiz sayt Vercel'dan chiqadi). Shu faylni ishonchli manba deb hisoblang va o'zgarish qilsangiz yangilang. Oxirgi yangilanish: 2026-09-24.
+> **Holat (2026-09-24): production DigitalOcean droplet'da.** `www.ixlosschool.uz` droplet'dagi Caddy orqali xizmat qilinadi. Vercel loyihasi ulangan holda qoldi va **zaxira** vazifasini bajaradi (DNS'ni qaytarsangiz sayt Vercel'dan chiqadi). Shu faylni ishonchli manba deb hisoblang va o'zgarish qilsangiz yangilang. Oxirgi yangilanish: 2026-09-25 (droplet'dagi oxirgi release: `20260925-001035-9939f84`, to'liq admin panel bilan; baza sxemasi v11).
 
 ## Qisqacha
 
