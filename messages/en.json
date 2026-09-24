@@ -228,7 +228,7 @@
     "alt": {
       "featured": "An Ixlos School student — IELTS result",
       "ielts": "IELTS certificate",
-      "olympiad": "Subject olympiad certificate",
+      "olympiad": "Online mathematics olympiad certificate",
       "sat": "SAT test result",
       "cefr": "CEFR certificate"
     }
@@ -258,8 +258,8 @@
       },
       "america": {
         "chip": "Xpert competition",
-        "title": "Winner of the trip to America",
-        "description": "A video about our student who won the Xpert competition and earned a trip to America."
+        "title": "Winner of the Xpert competition and the trip to America",
+        "description": "A video about our student, a winner of the Xpert competition and of the trip to America."
       },
       "ielts": {
         "chip": "IELTS 8.0",
@@ -320,88 +320,44 @@
     "titleEm": "answers.",
     "items": [
       {
-        "question": "From which grade does the school admit students?",
-        "answer": "Students are admitted from grade 1 through grade 11."
-      },
-      {
-        "question": "How does admission work?",
-        "answer": "Students take a test in Mathematics and English and have an interview with the school psychologist. The pass mark is at least 60 points."
-      },
-      {
-        "question": "What tracks are offered in grades 10–11?",
-        "answer": "Accounting and IT tracks, along with international ACCA and SAT programs. Graduates are guaranteed a minimum IELTS score of 5.5."
-      },
-      {
-        "question": "Are the clubs paid?",
-        "answer": "No, all clubs (Mental Arithmetic, Chess, Arabic, Robotics, IT & Coding, Speech Therapy, Football, Judo) are free and included in the tuition fee."
-      },
-      {
-        "question": "How are meals organized?",
-        "answer": "Students receive three meals a day — breakfast, lunch, and an afternoon snack — based on a specially prepared menu."
-      },
-      {
-        "question": "Is there a transport service?",
-        "answer": "Yes, a school bus service is available for students commuting from afar."
-      },
-      {
-        "question": "How can tuition be paid?",
-        "answer": "Tuition can be paid either annually or on a monthly basis."
-      },
-      {
-        "question": "Are there benefits for high-achieving students?",
-        "answer": "Yes, students with high quarterly results study on a monthly scholarship basis."
-      },
-      {
-        "question": "Are there extra classes on Saturdays?",
-        "answer": "Yes, students who are falling behind can attend Saturday catch-up classes: math and English in upper grades, and core subjects in primary grades."
-      },
-      {
-        "question": "How are the groups formed?",
-        "answer": "Students are placed into A, B, and C groups by proficiency level. Groups are updated based on weekly assessment results."
-      },
-      {
-        "question": "What do graduates receive?",
-        "answer": "Graduates are guaranteed an IELTS score of at least 5.5. Along with the school certificate, they receive a professional diploma."
-      },
-      {
-        "question": "What does the school day look like?",
-        "answer": "Classes run on a five-day schedule, Monday to Friday, from 8:30 AM to 5:30 PM. Students have three meals during the day."
-      },
-      {
-        "question": "Do students wear a uniform?",
-        "answer": "Yes, students wear the designated school uniform on campus."
-      },
-      {
-        "question": "In which language are primary grades taught?",
-        "answer": "In grades 1–4, fundamental education is delivered in Russian- and Uzbek-medium groups."
-      },
-      {
         "question": "Where is Ixlos School located?",
         "answer": "Ixlos School is located in Tashkent's Yunusabad district at Bog'ishamol ko'chasi, 219 (Toshkent, Yunusobod tumani, Bog'ishamol ko'chasi, 219-uy). Hours are 08:00–18:00; phone: +998 78 113 36 00."
       },
       {
-        "question": "Is Ixlos School a full-day school?",
-        "answer": "Yes. Classes run Monday to Friday from 08:30 to 17:30. Students have three meals a day and attend free clubs after the main lessons; a school bus serves students who live far away."
+        "question": "Which grades are admitted and how does admission work?",
+        "answer": "Students are admitted from grade 1 through grade 11. Everyone takes a test in Mathematics and English and has an interview with the school psychologist; the pass mark is at least 60. Grades 1–4 have Uzbek- and Russian-medium groups."
       },
       {
-        "question": "How does admission to grade 1 work?",
-        "answer": "Admission starts from grade 1. Like all other students, a first-grader takes a test in Mathematics and English and has an interview with the school psychologist; the pass mark is at least 60. Grades 1–4 have Uzbek- and Russian-medium groups."
+        "question": "Is it a full-day school? Meals, transport and daily schedule",
+        "answer": "Yes. Classes run Monday to Friday from 08:30 to 17:30. Students have three meals a day — breakfast, lunch and an afternoon snack — from a specially prepared menu, attend free clubs after the main lessons, and a school bus serves students who live far away. Students wear the designated school uniform."
       },
       {
         "question": "Are mathematics and English taught in depth?",
-        "answer": "Yes. In grades 5–9, mathematics, English and informatics are taught in depth. Students are placed in A, B and C groups by proficiency, and groups are updated after weekly exams. Graduates are guaranteed an IELTS score of at least 5.5."
+        "answer": "Yes. In grades 5–9, mathematics, English and informatics are taught in depth. Students are placed in A, B and C groups by proficiency, and groups are updated after weekly exams. Saturday catch-up classes are held for students who fall behind. Graduates are guaranteed an IELTS score of at least 5.5."
       },
       {
         "question": "Does the school teach IT and programming?",
         "answer": "Informatics is taught in depth in grades 5–9, and grades 10–11 offer an IT track that leads to a professional diploma. There is also a free IT and coding club after the main lessons."
       },
       {
-        "question": "What is the finance and accounting track?",
-        "answer": "Grades 10–11 offer an Accounting track leading to a professional diploma, and the international ACCA program is taught as well. The school's founder holds the ACCA Diploma in International Financial Reporting and F1–F9 qualifications."
+        "question": "Is there a finance and accounting track in grades 10–11? What do graduates receive?",
+        "answer": "Yes. Grades 10–11 offer Accounting and IT tracks, along with the international ACCA and SAT programs. Along with the school certificate, graduates receive a professional diploma and are guaranteed an IELTS score of at least 5.5."
       },
       {
-        "question": "How much does tuition cost?",
-        "answer": "Tuition depends on the grade level. It can be paid annually or monthly, and students with high quarterly results can study on a scholarship. For current prices, call +998 78 113 36 00 or leave an application."
+        "question": "In which language are primary grades taught?",
+        "answer": "In grades 1–4, fundamental education is delivered in Russian- and Uzbek-medium groups."
+      },
+      {
+        "question": "Are the clubs paid?",
+        "answer": "No, all clubs (Mental Arithmetic, Chess, Arabic, Robotics, IT & Coding, Speech Therapy, Football, Judo) are free and included in the tuition fee."
+      },
+      {
+        "question": "How much does tuition cost and how can it be paid?",
+        "answer": "Tuition depends on the grade level. It can be paid annually or monthly. For current prices, call +998 78 113 36 00 or leave an application."
+      },
+      {
+        "question": "Are there benefits for high-achieving students?",
+        "answer": "Yes, students with high quarterly results study on a monthly scholarship basis."
       }
     ]
   },
@@ -491,15 +447,15 @@
       "lead": "This page brings together the education, qualifications and experience of our teachers. The list is updated as new details come in."
     },
     "results": {
-      "metaTitle": "Results: IELTS, SAT and Olympiads | Ixlos School",
-      "metaDescription": "Some of Ixlos School students' results in IELTS, SAT and subject olympiads: certificates, test results and video testimonials.",
+      "metaTitle": "Results: IELTS, SAT, Math Olympiad | Ixlos School",
+      "metaDescription": "Some of Ixlos School students' results in IELTS, SAT and an online mathematics olympiad: certificates, test results and video testimonials.",
       "eyebrow": "Results",
       "h1": "Our students' results",
-      "lead": "This page gathers some of our students' results in IELTS, SAT and subject olympiads — the certificates and test results themselves.",
+      "lead": "This page gathers some of our students' results in IELTS, SAT and an online mathematics olympiad — the certificates and test results themselves.",
       "sections": {
         "featured": "Featured results",
         "ielts": "IELTS certificates",
-        "olympiad": "Subject olympiads",
+        "olympiad": "Mathematics olympiad (online)",
         "sat": "SAT results",
         "cefr": "CEFR certificate"
       }

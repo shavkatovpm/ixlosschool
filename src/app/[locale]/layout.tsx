@@ -82,7 +82,6 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const meta = await getTranslations({ locale, namespace: "meta" });
-  const footer = await getTranslations({ locale, namespace: "footer" });
   const seo = await getTranslations({ locale, namespace: "seo" });
 
   return (
@@ -90,7 +89,7 @@ export default async function LocaleLayout({
       <body className="min-h-screen bg-paper font-sans text-ink">
         <JsonLd
           graph={[
-            schoolNode(locale, meta("description"), footer("tagline"), {
+            schoolNode(locale, meta("description"), {
               founderTitle: seo("founderTitle"),
               knowsAbout: seo.raw("knowsAbout") as string[],
               amenities: seo.raw("amenities") as string[],

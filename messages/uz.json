@@ -228,7 +228,7 @@
     "alt": {
       "featured": "Ixlos School o'quvchisi — IELTS natijasi",
       "ielts": "IELTS sertifikati",
-      "olympiad": "Fanlar olimpiadasi sertifikati",
+      "olympiad": "Onlayn matematika olimpiadasi sertifikati",
       "sat": "SAT test natijasi",
       "cefr": "CEFR sertifikati"
     }
@@ -258,8 +258,8 @@
       },
       "america": {
         "chip": "Xpert musobaqasi",
-        "title": "Amerika yo'llanmasi g'olibi",
-        "description": "Xpert musobaqasida g'olib bo'lib, Amerika yo'llanmasini qo'lga kiritgan o'quvchimiz haqida video."
+        "title": "Xpert musobaqasi va Amerika yo'llanmasi g'olibi",
+        "description": "Xpert musobaqasi hamda Amerika yo'llanmasi g'olibi bo'lgan o'quvchimiz haqida video."
       },
       "ielts": {
         "chip": "IELTS 8.0",
@@ -320,88 +320,44 @@
     "titleEm": "javoblar.",
     "items": [
       {
-        "question": "Nechanchi sinfdan qabul qilinadi?",
-        "answer": "1-sinfdan 11-sinfgacha bo'lgan o'quvchilar qabul qilinadi."
-      },
-      {
-        "question": "Qabul qanday amalga oshiriladi?",
-        "answer": "O'quvchilar matematika va ingliz tili fanidan test hamda psixolog bilan suhbatdan o'tadi. Qabul qilinish uchun kamida 60 ball to'plash kerak."
-      },
-      {
-        "question": "10–11-sinflarda qanday yo'nalishlar bor?",
-        "answer": "Buxgalteriya va IT yo'nalishlari, shuningdek xalqaro ACCA va SAT dasturlari. Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
-      },
-      {
-        "question": "To'garaklar pullikmi?",
-        "answer": "Yo'q, barcha to'garaklar (Mental arifmetika, Shaxmat, Arab tili, Robototexnika, IT va dasturlash, Logoped, Football, Dzyudo) bepul va o'quv narxiga kiritilgan."
-      },
-      {
-        "question": "Ovqatlanish qanday tashkil etilgan?",
-        "answer": "O'quvchilar kuniga 3 mahal — nonushta, tushlik va ikkinchi tushlik — maxsus taomnoma asosida ovqatlanadi."
-      },
-      {
-        "question": "Transport xizmati bormi?",
-        "answer": "Ha, uzoqdan qatnovchi o'quvchilar uchun maktab avtobusi (school bus) xizmati yo'lga qo'yilgan."
-      },
-      {
-        "question": "To'lovni qanday amalga oshirish mumkin?",
-        "answer": "To'lov yillik yoki oyma-oy bo'lib amalga oshirilishi mumkin."
-      },
-      {
-        "question": "Yuqori natijali o'quvchilar uchun imtiyoz bormi?",
-        "answer": "Ha, choraklik natijalarga ko'ra yuqori ko'rsatkichga ega o'quvchilar oylik stipendiya asosida o'qiydi."
-      },
-      {
-        "question": "Shanba kunlari qo'shimcha darslar bormi?",
-        "answer": "Ha, darslardan orqada qolayotgan o'quvchilar uchun shanba kunlari qo'shimcha darslar o'tkaziladi: yuqori sinflarda matematika va ingliz tilidan, boshlang'ich sinflarda tayanch fanlardan."
-      },
-      {
-        "question": "Guruhlar qanday shakllanadi?",
-        "answer": "O'quvchilar bilim darajasiga ko'ra A, B, C guruhlariga ajratiladi. Guruhlar har haftalik imtihon natijalariga ko'ra yangilanib turadi."
-      },
-      {
-        "question": "Bitiruvchilar qanday hujjat oladi?",
-        "answer": "Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi. Shahodatnoma bilan birga mutaxassislik diplomi ham taqdim etiladi."
-      },
-      {
-        "question": "Dars kuni qanday o'tadi?",
-        "answer": "Darslar 5 kunlik dastur asosida dushanbadan jumagacha, soat 08:30 dan 17:30 gacha davom etadi. Shu vaqt ichida o'quvchilar 3 mahal ovqatlanadi."
-      },
-      {
-        "question": "O'quvchilar maxsus formada o'qiydimi?",
-        "answer": "Ha, o'quvchilar maktab hududida belgilangan maxsus formada o'qishadi."
-      },
-      {
-        "question": "Boshlang'ich sinflarda qaysi tilda o'qitiladi?",
-        "answer": "1–4-sinflarda fundamental ta'lim rus va o'zbek guruhlarida olib boriladi."
-      },
-      {
         "question": "Ixlos School qayerda joylashgan?",
         "answer": "Ixlos School Toshkent shahrining Yunusobod tumanida, Bog'ishamol ko'chasi, 219-uyda joylashgan. Ish vaqti 08:00–18:00, telefon: +998 78 113 36 00."
       },
       {
-        "question": "Ixlos School to'liq kunlik maktabmi?",
-        "answer": "Ha. Darslar dushanbadan jumagacha 08:30 dan 17:30 gacha davom etadi. O'quvchilar kuniga 3 mahal ovqatlanadi, asosiy darslardan keyin bepul to'garaklarga qatnashadi; uzoqdan qatnovchilar uchun maktab avtobusi bor."
+        "question": "Qaysi sinflarga va qanday qabul qilinadi?",
+        "answer": "1-sinfdan 11-sinfgacha qabul qilinadi. O'quvchi matematika va ingliz tilidan test hamda psixolog bilan suhbatdan o'tadi; o'tish bali — kamida 60. 1–4-sinflarda o'zbek va rus guruhlari mavjud."
       },
       {
-        "question": "1-sinfga qabul qanday amalga oshiriladi?",
-        "answer": "Qabul 1-sinfdan boshlanadi. Boshqa o'quvchilar kabi 1-sinf o'quvchisi ham matematika va ingliz tilidan test hamda psixolog bilan suhbatdan o'tadi; o'tish bali — kamida 60. 1–4-sinflarda o'zbek va rus guruhlari mavjud."
+        "question": "To'liq kunlik maktabmi? Ovqat, avtobus va kun tartibi qanday?",
+        "answer": "Ha. Darslar dushanbadan jumagacha 08:30 dan 17:30 gacha davom etadi. O'quvchilar kuniga 3 mahal — nonushta, tushlik va ikkinchi tushlik — maxsus taomnoma asosida ovqatlanadi, asosiy darslardan keyin bepul to'garaklarga qatnashadi; uzoqdan qatnovchilar uchun maktab avtobusi bor. O'quvchilar belgilangan maktab formasida o'qiydi."
       },
       {
         "question": "Matematika va ingliz tili chuqurlashtirib o'qitiladimi?",
-        "answer": "Ha, 5–9-sinflarda matematika, ingliz tili va informatika chuqurlashtirilgan tarzda o'qitiladi. O'quvchilar bilim darajasiga ko'ra A, B, C guruhlarga bo'linadi, guruhlar har haftalik imtihon natijasiga qarab yangilanadi. Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+        "answer": "Ha, 5–9-sinflarda matematika, ingliz tili va informatika chuqurlashtirilgan tarzda o'qitiladi. O'quvchilar bilim darajasiga ko'ra A, B, C guruhlarga bo'linadi, guruhlar har haftalik imtihon natijasiga qarab yangilanadi. Orqada qolayotganlar uchun shanba kunlari qo'shimcha darslar o'tkaziladi. Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
       },
       {
         "question": "Maktabda IT va dasturlash o'qitiladimi?",
         "answer": "5–9-sinflarda informatika chuqurlashtirilgan tarzda o'qitiladi, 10–11-sinflarda esa IT yo'nalishi bo'yicha mutaxassislik diplomi beriladi. Bundan tashqari, asosiy darslardan keyin bepul IT va dasturlash to'garagi ishlaydi."
       },
       {
-        "question": "Moliya va buxgalteriya yo'nalishi nima?",
-        "answer": "10–11-sinflarda Buxgalteriya yo'nalishi o'qitiladi va bitiruvchiga mutaxassislik diplomi beriladi; xalqaro ACCA dasturi ham o'qitiladi. Maktab asoschisi ACCA bo'yicha xalqaro moliyaviy hisobot diplomiga va F1–F9 darajalariga ega."
+        "question": "10–11-sinfda moliya va buxgalteriya yo'nalishi bormi? Bitiruvchi nima oladi?",
+        "answer": "Ha. 10–11-sinflarda Buxgalteriya va IT yo'nalishlari, shuningdek xalqaro ACCA va SAT dasturlari o'qitiladi. Bitiruvchilarga shahodatnoma bilan birga mutaxassislik diplomi beriladi va IELTS'dan kamida 5.5 ball kafolatlanadi."
       },
       {
-        "question": "Ta'lim narxi qancha?",
-        "answer": "Ta'lim narxi sinf bosqichiga qarab belgilanadi. To'lov yillik yoki oyma-oy amalga oshiriladi; choraklik natijasi yuqori o'quvchilar uchun stipendiya bor. Joriy narxlarni bilish uchun +998 78 113 36 00 raqamiga qo'ng'iroq qiling yoki ariza qoldiring."
+        "question": "Boshlang'ich sinflarda qaysi tilda o'qitiladi?",
+        "answer": "1–4-sinflarda fundamental ta'lim rus va o'zbek guruhlarida olib boriladi."
+      },
+      {
+        "question": "To'garaklar pullikmi?",
+        "answer": "Yo'q, barcha to'garaklar (Mental arifmetika, Shaxmat, Arab tili, Robototexnika, IT va dasturlash, Logoped, Football, Dzyudo) bepul va o'quv narxiga kiritilgan."
+      },
+      {
+        "question": "Ta'lim narxi qancha va to'lov qanday amalga oshiriladi?",
+        "answer": "Ta'lim narxi sinf bosqichiga qarab belgilanadi. To'lov yillik yoki oyma-oy amalga oshiriladi. Joriy narxlarni bilish uchun +998 78 113 36 00 raqamiga qo'ng'iroq qiling yoki ariza qoldiring."
+      },
+      {
+        "question": "Yuqori natijali o'quvchilar uchun imtiyoz bormi?",
+        "answer": "Ha, choraklik natijalarga ko'ra yuqori ko'rsatkichga ega o'quvchilar oylik stipendiya asosida o'qiydi."
       }
     ]
   },
@@ -491,15 +447,15 @@
       "lead": "Bu yerda ustozlarimizning ta'limi, malakasi va ish staji haqidagi ma'lumotlar jamlangan. Ro'yxat yangi ma'lumotlar bilan to'ldirib boriladi."
     },
     "results": {
-      "metaTitle": "Natijalar — IELTS, SAT va olimpiada yutuqlari | Ixlos School",
-      "metaDescription": "Ixlos School o'quvchilarining IELTS, SAT va fanlar olimpiadasidagi ba'zi natijalari: sertifikatlar, test natijalari va video fikrlar.",
+      "metaTitle": "Natijalar: IELTS, SAT, matematika olimpiadasi | Ixlos School",
+      "metaDescription": "Ixlos School o'quvchilarining IELTS, SAT va onlayn matematika olimpiadasidagi ba'zi natijalari: sertifikatlar, test natijalari va video fikrlar.",
       "eyebrow": "Natijalar",
       "h1": "O'quvchilarimizning natijalari",
-      "lead": "Bu sahifada o'quvchilarimizning IELTS, SAT va fanlar olimpiadasidagi ba'zi natijalari jamlangan — sertifikat va test natijalarining o'zi.",
+      "lead": "Bu sahifada o'quvchilarimizning IELTS, SAT va onlayn matematika olimpiadasidagi ba'zi natijalari jamlangan — sertifikat va test natijalarining o'zi.",
       "sections": {
         "featured": "Tanlangan natijalar",
         "ielts": "IELTS sertifikatlari",
-        "olympiad": "Fanlar olimpiadasi",
+        "olympiad": "Matematika olimpiadasi (onlayn)",
         "sat": "SAT natijalari",
         "cefr": "CEFR sertifikati"
       }

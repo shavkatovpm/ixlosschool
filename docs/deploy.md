@@ -88,15 +88,15 @@ Kutilgan: yuqoridagilar 200; `/uz/privacy` **404** (maxfiylik sahifasi egasi qar
 
 ## Environment variables
 
-`.env.example`da namunalar bor. **2026-09-24 holatida Vercel'da birortasi ham o'rnatilmagan.**
+`.env.example`da namunalar bor. **Holat (2026-09-24):** Vercel Production'da `TELEGRAM_BOT_TOKEN` va `TELEGRAM_CHAT_ID` o'rnatilgan (qiymatlari ko'rinmaydi) va jonli formadan sinov arizasi muvaffaqiyatli yuborilgan; GA, Yandex Metrica va verification env'lari hali yo'q. Ariza boti: **@ixlosformbot** ("Ixlos Form"), arizalar "Leads IXLOS website" guruhiga keladi (oddiy guruh; supergroup'ga aylansa chat ID o'zgaradi va Vercel'dagi qiymatni yangilash kerak). Token faqat Vercel'da turadi: hech qachon repozitoriyga, hujjatga yoki chatga yozilmaydi.
 
 | Nomi | Vazifa | Holat |
 |---|---|---|
-| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Ariza formasi (`/api/apply`) Telegram'ga yuboradi | **Majburiy.** Ularsiz production'da 503 qaytadi va arizalar yo'qoladi |
+| `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Ariza formasi (`/api/apply`) Telegram'ga yuboradi | **Majburiy.** Ularsiz production'da 503 qaytadi va arizalar yo'qoladi. Chat ID topish: botga /start yozing yoki uni guruhga qo'shib xabar yuboring, so'ng `https://api.telegram.org/bot<TOKEN>/getUpdates` dan `chat.id` ni oling (guruh ID'si manfiy bo'ladi) |
 | `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID` | Google Analytics / Yandex Metrica | Ixtiyoriy (bo'sh bo'lsa skript yuklanmaydi) |
 | `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION` | Search Console / Yandex Webmaster tasdiqlash meta tegi | Ixtiyoriy |
 
-- Qo'shish: Vercel, Project, Settings, Environment Variables yoki `npx vercel env add NAME production`.
+- Qo'shish: Vercel, Project, Settings, Environment Variables yoki `npx vercel env add NAME production`. Yangi env faqat **keyingi deploydan** kuchga kiradi: qiymat qo'shgach `main`ga bo'sh commit (`git commit --allow-empty`) push qiling. `vercel redeploy` 2026-09-24 da Turbopack shrift xatosi bilan yiqildi, shuning uchun ishlatilmasin.
 - `NEXT_PUBLIC_*` va verification qiymatlari **build/render vaqtida** kiradi: o'zgartirgandan keyin qayta deploy kerak.
 
 ## Ma'lum muammolar
@@ -120,6 +120,7 @@ Kutilgan: yuqoridagilar 200; `/uz/privacy` **404** (maxfiylik sahifasi egasi qar
 - **Build/run:** serverda `npm ci`, `npm run build`, `npm start`. Rasm optimizatsiyasi uchun `sharp` kerak: u `next`ning o'z `optionalDependencies`ida bor va `npm ci` bilan o'rnatiladi (linux uchun binar avtomatik tanlanadi; o'rnatilganini `npm ls sharp` bilan tekshiring). Jarayonni `systemd` yoki PM2 boshqarsin. Ixtiyoriy: `output: "standalone"`.
 - **Reverse proxy:** nginx yoki Caddy → `localhost:3000`. SSL (Let's Encrypt), HSTS, gzip/brotli. **`X-Forwarded-For`ni uzating**, aks holda ariza limiti hamma foydalanuvchini bitta IP deb hisoblaydi.
 - **Host qoidalari:** `www.ixlosschool.uz` asosiy, apex `ixlosschool.uz` → `www`ga 301/308. `SITE_URL`, sitemap, canonical, hreflang va `llms.txt` shu hostda yozilgan: host o'zgarmasa, ularga tegish shart emas.
+- **Admin panel (rejalashtirilgan):** keyinroq admin panel qo'shiladi va u ham droplet'da ishlaydi. Shuning uchun ko'chishda ma'lumotlar bazasi, autentifikatsiya, doimiy saqlash (fayl/rasm) va zaxira nusxa (backup) ham rejalashtirilsin; ariza formasi hozir faqat Telegram'ga yuboradi va hech narsa saqlamaydi.
 - **Env:** serverda `.env.production` (commit qilinmaydi) yoki systemd `EnvironmentFile`; yuqoridagi jadvaldagi nomlar.
 - **Rasm keshi:** `.next/cache/images` deploylar orasida saqlansin (aks holda har deployda qayta kodlanadi). AVIF (`next.config.ts`da yoqilgan) protsessorni ko'p yeydi; kichik droplet'da sekin bo'lsa faqat `image/webp`ga qaytaring.
 - **CI/CD:** Vercel integratsiyasi o'rniga GitHub Actions (SSH bilan `git pull`, build, `reload`) yoki serverdagi deploy skripti. Ikki marta deploy bo'lmasligi uchun ko'chirgach Vercel'dagi GitHub integratsiyasini o'chiring. Rollback uchun `releases/` papkalari va `current` symlink tavsiya etiladi.
