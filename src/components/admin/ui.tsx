@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowDownRight, ArrowUpRight, Minus } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Minus, Users, Eye, Inbox, Activity } from "lucide-react";
 
 export function PageHeader({ title, text, actions }: { title: string; text?: string; actions?: React.ReactNode }) {
   return (
-    <header className="flex flex-wrap items-end justify-between gap-4">
+    <header className="admin-page-header flex flex-wrap items-end justify-between gap-4">
       <div>
         <h1 className="font-display text-[30px] font-extrabold tracking-tight sm:text-[34px]">{title}</h1>
         {text ? <p className="mt-2 max-w-2xl text-[15px] leading-[1.65] text-ink/75">{text}</p> : null}
@@ -27,7 +27,7 @@ export function Panel({
   className?: string;
 }) {
   return (
-    <section className={`rounded-[22px] bg-surface p-5 sm:p-6 ${className}`}>
+    <section className={`admin-panel rounded-[22px] bg-surface p-5 sm:p-6 ${className}`}>
       {title ? (
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
@@ -79,11 +79,11 @@ export function Stat({
   hint?: string;
   tone?: "a" | "b" | "c" | "d";
 }) {
-  const bg = { a: "bg-tint-a", b: "bg-tint-b", c: "bg-tint-c", d: "bg-tint-d" }[tone];
+  const Icon = { a: Users, b: Eye, c: Inbox, d: Activity }[tone];
   return (
-    <div className={`rounded-[20px] p-5 ${bg}`}>
-      <p className="text-[13px] font-semibold text-ink/75">{label}</p>
-      <p className="mt-2 font-display text-[30px] font-extrabold leading-none tracking-tight tabular-nums">{value}</p>
+    <div className="admin-stat p-5" data-tone={tone}>
+      <p className="admin-stat-label text-[13px] font-semibold text-ink/75">{label}<span className="admin-stat-icon"><Icon size={16} aria-hidden /></span></p>
+      <p className="admin-stat-value mt-2 font-display text-[30px] font-extrabold leading-none tracking-tight tabular-nums">{value}</p>
       <div className="mt-2 flex min-h-5 items-center gap-2">
         {compare ? <Delta {...compare} /> : null}
         {hint ? <span className="text-[12px] text-ink/65">{hint}</span> : null}
@@ -94,7 +94,7 @@ export function Stat({
 
 export function RangeTabs({ base, days, options = [7, 30, 90] }: { base: string; days: number; options?: number[] }) {
   return (
-    <nav aria-label="Davr" className="inline-flex rounded-full bg-surface p-1">
+    <nav aria-label="Davr" className="admin-range inline-flex rounded-full bg-surface p-1">
       {options.map((option) => (
         <Link
           key={option}
@@ -128,8 +128,8 @@ export function Chip({ children, tone = "neutral" }: { children: React.ReactNode
 }
 
 export const fieldClass =
-  "h-11 rounded-[12px] border border-field-line bg-surface px-3 text-[14px] outline-none transition-colors focus:border-brand";
+  "admin-field h-11 rounded-[12px] border border-field-line bg-surface px-3 text-[14px] outline-none transition-colors focus:border-brand";
 export const primaryButton =
-  "inline-flex h-11 items-center justify-center gap-2 rounded-[12px] bg-brand px-5 text-[14px] font-bold text-on-brand transition-colors hover:bg-brand-soft";
+  "admin-primary inline-flex h-11 items-center justify-center gap-2 rounded-[12px] bg-brand px-5 text-[14px] font-bold text-on-brand transition-colors hover:bg-brand-soft";
 export const ghostButton =
-  "inline-flex h-11 items-center justify-center gap-2 rounded-full border border-line px-5 text-[14px] font-semibold transition-colors hover:bg-tint-a";
+  "admin-ghost inline-flex h-11 items-center justify-center gap-2 rounded-full border border-line px-5 text-[14px] font-semibold transition-colors hover:bg-tint-a";

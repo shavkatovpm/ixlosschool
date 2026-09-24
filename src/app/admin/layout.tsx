@@ -3,6 +3,7 @@ import { Geist, Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
 import { adminEnabled } from "@/lib/admin/config";
 import "../globals.css";
+import "./admin.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin", "cyrillic"] });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin", "cyrillic"], weight: ["600", "700", "800"] });
@@ -19,7 +20,7 @@ export default function AdminRootLayout({ children }: { children: React.ReactNod
   if (!adminEnabled()) notFound();
   return (
     <html lang="uz" className={`${geistSans.variable} ${manrope.variable} antialiased`}>
-      <body className="min-h-screen bg-paper font-sans text-ink">{children}</body>
+      <body className="admin-app min-h-screen bg-paper font-sans text-ink">{children}</body>
     </html>
   );
 }

@@ -49,7 +49,7 @@ const GROUPS: Group[] = [
 
 const ACCOUNT: Item = { href: "/admin/account", label: "Hisob", icon: UserRound };
 
-const base = "flex min-h-11 shrink-0 items-center gap-3 rounded-[12px] px-4 text-[15px] font-semibold transition-colors";
+const base = "admin-nav-link flex min-h-11 shrink-0 items-center gap-3 rounded-[12px] px-4 text-[15px] font-semibold transition-colors";
 
 export function AdminNav() {
   const pathname = usePathname();
@@ -78,7 +78,7 @@ export function AdminNav() {
     <nav aria-label="Admin menyu" className="flex gap-1 overflow-x-auto px-3 pb-3 lg:block lg:overflow-visible lg:px-4 lg:pb-0">
       {GROUPS.map((group) => (
         <div key={group.title} className="flex gap-1 lg:mt-5 lg:block lg:space-y-1 first:lg:mt-0">
-          <p className="hidden px-4 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-khaki-deep lg:block">{group.title}</p>
+          <p className="admin-nav-group hidden px-4 pb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-khaki-deep lg:block">{group.title}</p>
           {group.items.map(renderItem)}
         </div>
       ))}

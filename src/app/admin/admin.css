@@ -1,0 +1,94 @@
+/* Admin-only visual layer. Content, forms and server actions remain independent. */
+.admin-app {
+  --color-paper: #edf2ef;
+  --color-surface: #ffffff;
+  --color-line: #d4e0da;
+  --color-field-line: #a4b9ae;
+  background: radial-gradient(ellipse at 88% 0%, #d6e8dc 0, transparent 42%), radial-gradient(ellipse at 15% 70%, #e3e8d5 0, transparent 40%), #edf2ef;
+  background-attachment: fixed;
+}
+.admin-shell { max-width: 1920px; margin: 0 auto; }
+.admin-sidebar {
+  background: linear-gradient(155deg, #173f34, #102e27);
+  color: #f3f7f4;
+  border: 1px solid #ffffff18;
+  box-shadow: 0 16px 45px #163e321a;
+}
+.admin-brand { display: flex; align-items: center; gap: 12px; }
+.admin-brand-mark { display: grid; place-items: center; width: 44px; height: 48px; border: 1px solid #ffffff30; border-radius: 15px; background: #ffffff0e; }
+.admin-sidebar .admin-brand-caption { color: #b7cfc1; font-size: 10px; letter-spacing: .2em; margin-top: 3px; }
+.admin-nav-link { position: relative; min-height: 45px; font-size: 13px; color: #cfdfd5; border: 1px solid transparent; transition: background 160ms, color 160ms, border-color 160ms; }
+.admin-nav-link:hover { background: #ffffff0c; color: white; }
+.admin-nav-link[aria-current="page"] { background: linear-gradient(110deg, #e3edbb, #c9dfa8); color: #153c2c; border-color: #eff6d3; box-shadow: 0 5px 18px #00000012; }
+.admin-nav-link svg { flex-shrink: 0; opacity: .85; }
+.admin-sidebar .admin-nav-group { color: #a2beb0; font-size: 10px; letter-spacing: .18em; }
+.admin-sidebar .admin-profile-email { color: #d4e3da; }
+.admin-sidebar button { border-color: #ffffff25; color: #e6eee9; background: #ffffff06; }
+.admin-sidebar button:hover { background: #ffffff12; }
+.admin-main { padding: 28px 20px 48px; }
+.admin-topline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 30px; padding-bottom: 18px; border-bottom: 1px solid #244c3614; color: #536c5e; font-size: 12px; }
+.admin-topline a { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+.admin-topline a:hover { color: #173f34; }
+.admin-page-header { padding: 8px 0 12px; }
+.admin-page-header h1 { font-size: clamp(28px, 3vw, 38px); line-height: 1.2; letter-spacing: -.045em; }
+.admin-page-header p { font-size: 14px; }
+.admin-panel, .admin-form-section, .admin-auth-card {
+  border: 1px solid #ffffffd9;
+  background: #ffffffc4;
+  box-shadow: 0 8px 32px #254e3410, inset 0 1px 0 #ffffff;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.admin-panel, .admin-form-section { border-radius: 24px; }
+.admin-panel h2, .admin-form-section h2 { letter-spacing: -.025em; }
+.admin-stat { position: relative; isolation: isolate; overflow: hidden; border: 1px solid #ffffffde; border-radius: 22px; background: #ffffffb8; box-shadow: 0 8px 24px #244d3210; backdrop-filter: blur(14px); }
+.admin-stat::after { content: ''; position: absolute; z-index: -1; right: -25px; top: -38px; width: 120px; height: 120px; border-radius: 50%; background: var(--stat-glow, #dcebc9); opacity: .7; filter: blur(18px); pointer-events: none; }
+.admin-stat[data-tone="b"] { --stat-glow: #d2e6f3; }
+.admin-stat[data-tone="c"] { --stat-glow: #f3e3bd; }
+.admin-stat[data-tone="d"] { --stat-glow: #dcd9f3; }
+.admin-stat-value { margin-top: 18px; font-size: clamp(28px, 3vw, 38px); }
+.admin-stat-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.admin-stat-icon { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 10px; background: #ffffffa6; color: #375f47; flex-shrink: 0; }
+.admin-app .admin-field { background: #ffffffd9; border-color: #b4c5bc; box-shadow: inset 0 1px 2px #173f3404; }
+.admin-app .admin-field:focus { border-color: #347855; box-shadow: 0 0 0 3px #34785518; }
+.admin-app .admin-field[aria-invalid="true"] { border-color: var(--color-danger); }
+.admin-primary { background: linear-gradient(130deg, #285c43, #173f34); box-shadow: 0 4px 12px #153c2c20, inset 0 1px 0 #ffffff20; }
+.admin-primary:hover { background: #31694e; }
+.admin-ghost { background: #ffffff80; border-color: #ffffff; box-shadow: 0 2px 8px #254e3408; }
+.admin-range { border: 1px solid white; background: #ffffff99; box-shadow: 0 3px 12px #254e3408; }
+.admin-app table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.admin-app thead { background: #e9efea; }
+.admin-app th { color: #52685b; font-size: 11px; letter-spacing: .035em; }
+.admin-app tbody tr { transition: background 150ms; }
+.admin-app tbody tr:hover { background: #eef4edaa; }
+.admin-app :is(button, a, input, select, textarea):focus-visible { outline: 2px solid #568062; outline-offset: 3px; }
+.admin-app button { cursor: pointer; }
+.admin-app button:disabled { cursor: not-allowed; }
+.admin-auth-card { position: relative; border-radius: 30px; }
+.admin-auth-card::before { content: ''; display: block; width: 44px; height: 5px; margin-bottom: 24px; border-radius: 9px; background: #477653; }
+@media (min-width: 1024px) {
+  .admin-shell { grid-template-columns: 258px minmax(0, 1fr); gap: 0; padding: 16px; }
+  .admin-sidebar { top: 16px; height: calc(100dvh - 32px); border-radius: 26px; scrollbar-width: thin; scrollbar-color: #ffffff30 transparent; }
+  .admin-main { padding: 20px clamp(24px, 3vw, 48px) 48px; }
+}
+@media (max-width: 639px) {
+  .admin-main { padding: 22px 16px 36px; }
+  .admin-topline { margin-bottom: 20px; }
+  .admin-stat { padding: 15px; }
+  .admin-stat-label { align-items: flex-start; }
+  .admin-stat-icon { width: 25px; height: 25px; }
+  .admin-stat > div:last-child { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-app *, .admin-app *::before, .admin-app *::after { transition: none !important; animation: none !important; }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .admin-panel, .admin-form-section, .admin-stat, .admin-auth-card { background: #fafcf9; }
+}
+.admin-main :is(ol, ul, form, p).bg-surface {
+  border: 1px solid #ffffffd9;
+  background: #ffffffc4;
+  box-shadow: 0 8px 32px #254e3410;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}

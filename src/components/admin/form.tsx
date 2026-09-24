@@ -222,7 +222,7 @@ export function CheckboxField({ name, label, defaultChecked = false, hint }: { n
 
 export function FormSection({ title, hint, children }: { title: string; hint?: string; children: React.ReactNode }) {
   return (
-    <fieldset className="rounded-[22px] bg-surface p-5 sm:p-6">
+    <fieldset className="admin-form-section rounded-[22px] bg-surface p-5 sm:p-6">
       <legend className="sr-only">{title}</legend>
       <h2 aria-hidden className="font-display text-[17px] font-bold tracking-tight">
         {title}
