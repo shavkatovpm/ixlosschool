@@ -85,7 +85,7 @@ export function Footer() {
         </a>
       </div>
 
-      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-8 text-[13px] text-ink/75">
+      <div className="mt-14 flex flex-col gap-3 border-t border-line pt-6 text-[13px] text-ink/75">
         <LegalDocuments
           docs={[
             {
@@ -107,7 +107,7 @@ export function Footer() {
           ]}
           labels={{ heading: t("documents.heading"), view: t("documents.view"), close: t("documents.close"), pdf: t("documents.pdf") }}
         />
-        <p className="mt-3 max-w-4xl leading-[1.7]">
+        <p className="mt-1 max-w-4xl leading-[1.7]">
           {t("legal", { orgName: LEGAL.orgName, taxId: LEGAL.taxIdDisplay })}{" "}
           {t("license", { number: LEGAL.licenseNumber, date: LEGAL.licenseDateDisplay })}
         </p>

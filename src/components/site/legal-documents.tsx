@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Download, FileText, X } from "lucide-react";
+import { Download, X } from "lucide-react";
 
 export type LegalDoc = {
   key: string;
@@ -36,10 +36,10 @@ export function LegalDocuments({ docs, labels }: { docs: LegalDoc[]; labels: Leg
 
   return (
     <section aria-labelledby="legal-docs-title">
-      <h2 id="legal-docs-title" className="text-[12px] font-bold uppercase tracking-[0.14em] text-khaki-deep">
+      <h2 id="legal-docs-title" className="sr-only">
         {labels.heading}
       </h2>
-      <ul className="mt-4 flex flex-wrap gap-4">
+      <ul className="flex flex-wrap gap-x-8 gap-y-3">
         {docs.map((doc) => (
           <li key={doc.key}>
             <button
@@ -49,7 +49,7 @@ export function LegalDocuments({ docs, labels }: { docs: LegalDoc[]; labels: Leg
                 opener.current = event.currentTarget;
                 setActive(doc);
               }}
-              className="group flex w-full max-w-[340px] items-center gap-4 rounded-[18px] border border-line bg-surface p-3 pr-5 text-left transition-all duration-300 hover:-translate-y-0.5 hover:border-brand hover:shadow-[0_18px_34px_-22px_rgba(22,46,37,0.55)]"
+              className="group flex max-w-[300px] items-center gap-3 text-left"
             >
               <Image
                 src={doc.thumb.src}
@@ -58,14 +58,10 @@ export function LegalDocuments({ docs, labels }: { docs: LegalDoc[]; labels: Leg
                 alt=""
                 unoptimized
                 loading="lazy"
-                className="h-[88px] w-auto shrink-0 rounded-[8px] border border-line object-cover object-top"
+                className="h-12 w-auto shrink-0 rounded-[4px] border border-line object-cover object-top transition-transform duration-300 group-hover:-translate-y-0.5"
               />
-              <span className="min-w-0">
-                <span className="block text-[14px] font-bold leading-snug text-ink">{doc.title}</span>
-                <span className="mt-1.5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand group-hover:underline">
-                  <FileText size={14} aria-hidden />
-                  {labels.view}
-                </span>
+              <span className="text-[13px] font-semibold leading-snug text-ink/80 underline-offset-4 transition-colors group-hover:text-brand group-hover:underline">
+                {doc.title}
               </span>
             </button>
           </li>
@@ -109,14 +105,14 @@ export function LegalDocuments({ docs, labels }: { docs: LegalDoc[]; labels: Leg
                 </button>
               </div>
             </div>
-            <div className="min-h-0 overflow-y-auto overscroll-contain bg-tint-b p-3 sm:p-5">
+            <div className="min-h-0 overflow-y-auto overscroll-contain p-3 sm:p-5">
               <Image
                 src={active.full.src}
                 width={active.full.width}
                 height={active.full.height}
                 alt={active.alt}
                 unoptimized
-                className="mx-auto h-auto w-full max-w-[640px] rounded-[10px] bg-white shadow-[0_8px_30px_-12px_rgba(22,46,37,0.5)]"
+                className="mx-auto h-auto w-full max-w-[640px] rounded-[6px] border border-line"
               />
             </div>
           </div>
