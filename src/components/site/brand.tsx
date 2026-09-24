@@ -2,10 +2,11 @@ import Image from "next/image";
 
 const sizes = {
   header: {
-    crest: "h-10 min-[1200px]:h-[64px] min-[1200px]:group-data-[scrolled=true]:h-[52px]",
-    word: "text-[18px] min-[1200px]:text-[27px]",
-    sub: "text-[8px] min-[1200px]:text-[11px]",
-    gap: "gap-2 min-[1200px]:gap-3.5",
+    // Desktop sizes are 80% of the original (64/52px crest, 27px wordmark, 11px "School", 14px gap).
+    crest: "h-10 min-[1200px]:h-[51px] min-[1200px]:group-data-[scrolled=true]:h-[42px]",
+    word: "text-[18px] min-[1200px]:text-[21.6px]",
+    sub: "text-[8px] min-[1200px]:text-[8.8px]",
+    gap: "gap-2 min-[1200px]:gap-[11.2px]",
     wrap: "flex",
   },
   footer: {
