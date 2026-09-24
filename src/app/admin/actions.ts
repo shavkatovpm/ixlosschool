@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getSession, login, logout, requireAdmin } from "@/lib/admin/auth";
+import { changeAccount, getSession, login, logout, requireAdmin } from "@/lib/admin/auth";
 import { isLeadStatus, updateLead } from "@/lib/admin/leads";
 
 export async function loginAction(formData: FormData) {
@@ -26,4 +26,17 @@ export async function updateLeadAction(formData: FormData) {
   if (!Number.isInteger(id) || id < 1 || !isLeadStatus(status)) return;
   updateLead(id, status, note);
   revalidatePath("/admin", "layout");
+}
+
+export async function changeAccountAction(formData: FormData) {
+  const session = await requireAdmin();
+  const text = (name: string) => String(formData.get(name) ?? "").slice(0, 200);
+  const result = await changeAccount(session, {
+    currentPassword: text("currentPassword"),
+    newPassword: text("newPassword"),
+    confirmPassword: text("confirmPassword"),
+    email: text("email"),
+  });
+  if (!result.ok) redirect(`/admin/account?e=${result.error}`);
+  redirect("/admin?updated=1");
 }

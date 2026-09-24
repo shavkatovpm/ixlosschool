@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { LayoutDashboard, LogOut, Users } from "lucide-react";
+import { redirect } from "next/navigation";
+import { LayoutDashboard, LogOut, UserRound, Users } from "lucide-react";
 import { requireAdmin } from "@/lib/admin/auth";
 import { logoutAction } from "../actions";
 
 const nav = [
   { href: "/admin", label: "Bosh sahifa", icon: LayoutDashboard },
   { href: "/admin/leads", label: "Arizalar", icon: Users },
+  { href: "/admin/account", label: "Hisob", icon: UserRound },
 ] as const;
 
 const linkClass =
@@ -13,6 +15,7 @@ const linkClass =
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const session = await requireAdmin();
+  if (session.mustChangePassword) redirect("/admin/account");
 
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[260px_1fr]">

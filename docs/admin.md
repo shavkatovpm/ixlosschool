@@ -7,6 +7,7 @@
 - **Kirish:** `/admin/login` (email + parol). Sayt tilidan mustaqil (til prefiksi yo'q, o'zbekcha interfeys).
 - **Bosh sahifa** (`/admin`): yangi/bugun/7 kun/jami arizalar, holatlar bo'yicha sonlar, oxirgi arizalar.
 - **Arizalar** (`/admin/leads`): holat bo'yicha filtr, ism/telefon/izoh bo'yicha qidiruv, har ariza uchun holat + izoh saqlash, CSV yuklash (`/admin/leads/export`, Excel uchun UTF-8 BOM bilan).
+- **Hisob** (`/admin/account`): email va parolni o'zgartirish (joriy parol talab qilinadi; o'zgargach boshqa sessiyalar tugatiladi). Vaqtinchalik parol bilan yaratilgan hisob (`ADMIN_MUST_CHANGE=1`) birinchi kirishda **faqat shu sahifaga** o'tkaziladi va yangi parol o'rnatmaguncha panelning boshqa joyiga kira olmaydi.
 - Holatlar: Yangi, Qo'ng'iroq qilindi, Imtihonga yozildi, Qabul qilindi, Rad etildi (`src/lib/admin/leads.ts`).
 - Saytdagi forma (`/api/apply`) arizani Telegram'ga yuborishdan **oldin** bazaga yozadi (faqat panel yoqilgan joyda). Telegram ishlamasa ham ariza yo'qolmaydi va foydalanuvchiga muvaffaqiyat qaytadi.
 
@@ -54,9 +55,10 @@ npm run admin:create                    # email va parolni so'raydi (parol yashi
 1. `/opt/ixlosschool/docker-compose.yml`ga: `environment`ga `ADMIN_ENABLED: "1"` va `DATABASE_PATH: /data/ixlos.db`, `volumes`ga `- ixlos_data:/data`, pastdagi `volumes:` bo'limiga `ixlos_data:`.
 2. Volume egasini konteyner foydalanuvchisiga (uid 1000) berish: `docker run --rm -v ixlos_ixlos_data:/data busybox chown 1000:1000 /data`.
 3. Deploy: `scripts/deploy-droplet.sh` (u `tools/scripts/admin-create.mjs` ni ham release'ga qo'shadi).
-4. Admin yaratish (parolni o'zingiz yashirin kiritasiz):
-   `ssh root@<droplet-ip> "docker exec -it ixlos-web node tools/scripts/admin-create.mjs"`
-   Parolni unutsangiz shu buyruq bilan yangilanadi (barcha sessiyalar tugatiladi).
+4. Admin yaratish. Ikki usul:
+   - **Interaktiv** (parolni o'zingiz yashirin kiritasiz): `ssh root@<droplet-ip> "docker exec -it ixlos-web node tools/scripts/admin-create.mjs"`.
+   - **Vaqtinchalik parol** (egasi terminal ishlatmasa): `docker exec -e ADMIN_EMAIL=... -e ADMIN_PASSWORD=<tasodifiy> -e ADMIN_MUST_CHANGE=1 ixlos-web node tools/scripts/admin-create.mjs`; parol egasiga bir marta beriladi va birinchi kirishda majburan almashtiriladi.
+   Parolni unutsangiz shu buyruq bilan qayta o'rnatiladi (barcha sessiyalar tugatiladi).
 5. `https://www.ixlosschool.uz/admin` orqali kirish.
 
 ## Zaxira nusxa (backup) — majburiy

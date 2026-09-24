@@ -31,6 +31,8 @@ const MIGRATIONS = [
      note TEXT NOT NULL DEFAULT ''
    );
    CREATE INDEX leads_status_created ON leads(status, created_at DESC);`,
+  // Accounts created with a temporary password must change it on first sign-in.
+  `ALTER TABLE admin_users ADD COLUMN must_change_password INTEGER NOT NULL DEFAULT 0;`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */

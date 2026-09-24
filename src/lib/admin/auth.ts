@@ -75,18 +75,18 @@ export async function login(email: string, password: string): Promise<LoginResul
   return { ok: true };
 }
 
-export type Session = { userId: number; email: string };
+export type Session = { userId: number; email: string; mustChangePassword: boolean };
 
 export async function getSession(): Promise<Session | null> {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!token) return null;
   const row = getDb()
     .prepare(
-      "SELECT u.id AS id, u.email AS email, s.expires_at AS expires_at FROM admin_sessions s JOIN admin_users u ON u.id = s.user_id WHERE s.token_hash = ?",
+      "SELECT u.id AS id, u.email AS email, u.must_change_password AS must_change, s.expires_at AS expires_at FROM admin_sessions s JOIN admin_users u ON u.id = s.user_id WHERE s.token_hash = ?",
     )
     .get(sha256(token));
   if (!row || Number(row.expires_at) < Date.now()) return null;
-  return { userId: Number(row.id), email: String(row.email) };
+  return { userId: Number(row.id), email: String(row.email), mustChangePassword: Number(row.must_change) === 1 };
 }
 
 export async function requireAdmin(): Promise<Session> {
@@ -104,4 +104,37 @@ export async function logout() {
 
 export function hasAdminUser() {
   return Number(getDb().prepare("SELECT COUNT(*) AS c FROM admin_users").get()?.c ?? 0) > 0;
+}
+
+export type AccountChange = { ok: true } | { ok: false; error: "wrong_current" | "mismatch" | "short" | "weak" | "same" | "email_invalid" | "email_taken" };
+
+export const MIN_PASSWORD_LENGTH = 12;
+
+/** Changes the signed-in admin's password (and optionally e-mail); all other sessions are ended. */
+export async function changeAccount(
+  session: Session,
+  input: { currentPassword: string; newPassword: string; confirmPassword: string; email: string },
+): Promise<AccountChange> {
+  const db = getDb();
+  const user = db.prepare("SELECT password_hash FROM admin_users WHERE id = ?").get(session.userId);
+  if (!user || !(await verifyPassword(input.currentPassword, String(user.password_hash)))) return { ok: false, error: "wrong_current" };
+
+  const email = input.email.trim().toLowerCase() || session.email;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { ok: false, error: "email_invalid" };
+  const taken = db.prepare("SELECT id FROM admin_users WHERE email = ? AND id != ?").get(email, session.userId);
+  if (taken) return { ok: false, error: "email_taken" };
+
+  if (input.newPassword !== input.confirmPassword) return { ok: false, error: "mismatch" };
+  if (input.newPassword.length < MIN_PASSWORD_LENGTH) return { ok: false, error: "short" };
+  if (input.newPassword === input.currentPassword) return { ok: false, error: "same" };
+  if (input.newPassword.toLowerCase().includes(email.split("@")[0])) return { ok: false, error: "weak" };
+
+  db.prepare("UPDATE admin_users SET email = ?, password_hash = ?, must_change_password = 0 WHERE id = ?").run(
+    email,
+    await hashPassword(input.newPassword),
+    session.userId,
+  );
+  const token = (await cookies()).get(SESSION_COOKIE)?.value;
+  db.prepare("DELETE FROM admin_sessions WHERE user_id = ? AND token_hash != ?").run(session.userId, token ? sha256(token) : "");
+  return { ok: true };
 }
