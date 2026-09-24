@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { applicationSchema } from "@/lib/application";
+import { adminEnabled } from "@/lib/admin/config";
+import { insertLead } from "@/lib/admin/leads";
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
@@ -67,9 +69,23 @@ export async function POST(request: Request) {
     `Vaqt: ${new Date().toISOString()}`,
   ].join("\n");
 
+  // Where the admin panel exists the application is stored first, so it survives a Telegram outage.
+  let saved = false;
+  if (adminEnabled()) {
+    try {
+      insertLead({ name, phone, grade, locale });
+      saved = true;
+    } catch (error) {
+      console.error("[apply] could not store the lead:", error);
+    }
+  }
+
   const result = await sendToTelegram(text);
 
-  if (result === "sent") return NextResponse.json({ ok: true });
+  if (result === "sent" || saved) {
+    if (result !== "sent") console.error(`[apply] telegram ${result}, lead is stored:`, { name, phone });
+    return NextResponse.json({ ok: true });
+  }
 
   console.error(`[apply] delivery ${result}:`, { name, phone, grade, locale });
 

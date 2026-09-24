@@ -52,5 +52,8 @@ next-env.d.ts
 /Owner/
 /tasdiqnoma/
 
+# local admin-panel database (SQLite)
+/data/
+
 # image-generation notes live next to the artwork locally; they must not be served publicly
 public/illustrations/*.md

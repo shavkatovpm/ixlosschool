@@ -119,6 +119,7 @@ Vercel DNS'da (`npx vercel dns ls ixlosschool.uz`) qo'shilgan yozuvlar: apex `A 
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Ariza formasi (`/api/apply`) Telegram'ga yuboradi | Droplet `/opt/ixlosschool/.env` **va** Vercel Production'da o'rnatilgan. Bot: **@ixlosformbot**, guruh "Leads IXLOS website" (oddiy guruh; supergroup'ga aylansa chat ID o'zgaradi) |
 | `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID` | Google Analytics / Yandex Metrica | Yo'q (ixtiyoriy). `NEXT_PUBLIC_*` **build vaqtida** kiradi: deploy skripti build qiladigan kompyuterda shell env sifatida berilishi kerak |
 | `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION` | Tasdiqlash meta tegi | Yo'q (Google DNS TXT orqali tasdiqlangan) |
+| `ADMIN_ENABLED`, `DATABASE_PATH` | Admin panelni yoqish va SQLite fayl yo'li (`/data/ixlos.db`) | Kod tayyor, serverda hali yoqilmagan: `docs/admin.md` "Serverda yoqish" |
 
 - Serverdagi env o'zgarsa: `/opt/ixlosschool/.env` ni tahrirlab `docker compose up -d --force-recreate web`.
 - Token hech qachon repozitoriyga, hujjatga yoki chatga yozilmaydi. `@BotFather`da `/revoke` qilib yangilash mumkin, so'ng Vercel va serverdagi qiymatni almashtiring.
@@ -134,6 +135,6 @@ Vercel DNS'da (`npx vercel dns ls ixlosschool.uz`) qo'shilgan yozuvlar: apex `A 
 
 ## Keyingi rejalar
 
-- **Admin panel** (bitta super-admin, SQLite `ixlos_data` volume'ida, `ADMIN_ENABLED` belgisi bilan): serverdagi shu tuzilmada ishlaydi. Baza va yuklangan fayllar uchun **zaxira nusxa (backup)** albatta rejalashtirilsin (droplet'ga DigitalOcean Backups yoki kunlik nusxa).
+- **Admin panel:** poydevor va arizalar bo'limi kodda tayyor (`docs/admin.md`); serverda yoqish (volume `ixlos_data`, env, super-admin yaratish) va **zaxira nusxa** (DigitalOcean Backups + kunlik `VACUUM INTO`) deploy bosqichida qilinadi.
 - ABCO bazasi uchun zaxira nusxa va port himoyasi: egasi qaroridan keyin.
 - Trafik oshsa: droplet'ni 2 GB'ga oshirish yoki oldiga CDN (masalan Cloudflare) qo'yish.

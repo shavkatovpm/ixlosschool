@@ -34,6 +34,10 @@ cp -R .next/standalone/. "$APP/"
 cp -R .next/static "$APP/.next/static"
 cp -R public "$APP/public"
 mkdir -p "$APP/.next/cache" # mount point for the image-optimizer cache volume
+# Admin tools (create/reset the admin user): docker exec -it ixlos-web node tools/scripts/admin-create.mjs
+mkdir -p "$APP/tools/scripts" "$APP/tools/src/lib/admin"
+cp scripts/admin-create.mjs "$APP/tools/scripts/"
+cp src/lib/admin/password.mjs src/lib/admin/schema.mjs "$APP/tools/src/lib/admin/"
 
 echo "==> Swapping sharp's native binaries for linux/x64 (server runs Debian on x86_64)"
 SHARP_VERSION=$(node -p "require('$APP/node_modules/sharp/package.json').version")
