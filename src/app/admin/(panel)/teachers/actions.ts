@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePanel } from "@/lib/admin/panel";
 import { errorState, formValues, okState, type FormState } from "@/lib/admin/form-state";
 import { UploadError, deleteUpload, saveImageFile } from "@/lib/admin/uploads";
 import { parseTeacherForm } from "@/lib/admin/validate-teacher";
@@ -17,13 +17,13 @@ const id = (formData: FormData) => {
 const PHOTO = { width: 800, height: 1000, quality: 82 } as const;
 
 export async function startTeachersEditingAction() {
-  await requireAdmin();
+  await requirePanel();
   startTeachersEditing();
   redirect("/admin/teachers");
 }
 
 export async function saveTeacherAction(previous: FormState, formData: FormData): Promise<FormState> {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const existing = rowId !== null ? getTeacherRow(rowId) : null;
   if (rowId !== null && !existing) redirect("/admin/teachers");
@@ -69,21 +69,21 @@ export async function saveTeacherAction(previous: FormState, formData: FormData)
 }
 
 export async function moveTeacherAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) moveTeacher(rowId, formData.get("dir") === "up" ? "up" : "down");
   revalidatePath("/admin/teachers");
 }
 
 export async function toggleTeacherAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) setTeacherPublished(rowId, formData.get("published") === "1");
   revalidatePath("/admin/teachers");
 }
 
 export async function deleteTeacherAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const row = rowId !== null ? getTeacherRow(rowId) : null;
   if (row) {

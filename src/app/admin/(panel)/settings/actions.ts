@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePanel } from "@/lib/admin/panel";
 import { createBackup } from "@/lib/admin/backup";
 import { errorState, formValues, okState, type FormState } from "@/lib/admin/form-state";
 import { GA_ID_RE, INTEGRATIONS_KEY, VERIFICATION_RE, YM_ID_RE, type Integrations } from "@/lib/integrations";
@@ -15,7 +15,7 @@ function verificationCode(raw: string) {
 }
 
 export async function saveIntegrationsAction(previous: FormState, formData: FormData): Promise<FormState> {
-  await requireAdmin();
+  await requirePanel();
   const values = formValues(formData, 400);
   const errors: Record<string, string> = {};
 
@@ -35,7 +35,7 @@ export async function saveIntegrationsAction(previous: FormState, formData: Form
 }
 
 export async function createBackupAction() {
-  await requireAdmin();
+  await requirePanel();
   try {
     createBackup();
   } catch (error) {
@@ -46,7 +46,7 @@ export async function createBackupAction() {
 }
 
 export async function testTelegramAction() {
-  await requireAdmin();
+  await requirePanel();
   if (!telegramConfigured()) redirect("/admin/settings?done=telegram-missing");
   const result = await sendToTelegram("Test");
   redirect(`/admin/settings?done=${result === "sent" ? "telegram-sent" : "telegram-failed"}`);

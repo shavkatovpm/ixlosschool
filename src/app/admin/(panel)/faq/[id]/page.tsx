@@ -5,8 +5,10 @@ import { LocaleFields } from "@/components/admin/locale-fields";
 import { PageHeader } from "@/components/admin/ui";
 import { getFaqRow } from "@/lib/content/faq";
 import { saveFaqAction } from "../actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 export default async function FaqEditPage({ params }: { params: Promise<{ id: string }> }) {
+  await requirePanel();
   const { id } = await params;
   const isNew = id === "new";
   const row = isNew ? null : getFaqRow(Number(id));

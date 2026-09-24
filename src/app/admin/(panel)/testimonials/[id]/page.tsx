@@ -6,8 +6,10 @@ import { LocaleFields } from "@/components/admin/locale-fields";
 import { PageHeader } from "@/components/admin/ui";
 import { getTestimonialRow } from "@/lib/content/testimonials";
 import { saveTestimonialAction } from "../actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 export default async function TestimonialEditPage({ params }: { params: Promise<{ id: string }> }) {
+  await requirePanel();
   const { id } = await params;
   const isNew = id === "new";
   const row = isNew ? null : getTestimonialRow(Number(id));

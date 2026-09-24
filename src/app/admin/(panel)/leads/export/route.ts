@@ -12,7 +12,8 @@ const cell = (value: string | number) => quote(String(value));
 const freeText = (value: string) => quote(/^[=+\-@\t\r]/.test(value) ? `'${value}` : value);
 
 export async function GET(request: Request) {
-  if (!adminEnabled() || !(await getSession())) return new Response("Unauthorized", { status: 401 });
+  const session = adminEnabled() ? await getSession() : null;
+  if (!session || session.mustChangePassword) return new Response("Unauthorized", { status: 401 });
   const filter = filterFrom(Object.fromEntries(new URL(request.url).searchParams));
   const header = ["ID", "Sana", "Ism", "Telefon", "Sinf", "Til", "Manba", "Kampaniya", "Qurilma", "Kirish sahifasi"];
   const lines = allLeads(filter).map((lead) =>

@@ -17,10 +17,12 @@ import {
 import { DEVICE_LABEL, LOCALE_LABEL, formatAgo, pageLabel, sourceWithMedium } from "@/lib/admin/format";
 import { formatDateTime } from "@/lib/admin/leads";
 import { BOT_KIND_LABEL } from "@/lib/analytics-shared";
+import { requirePanel } from "@/lib/admin/panel";
 
 const RANGES = [7, 30, 90];
 
 export default async function TrafficPage({ searchParams }: { searchParams: Promise<{ days?: string }> }) {
+  await requirePanel();
   const { days: raw } = await searchParams;
   const days = RANGES.includes(Number(raw)) ? Number(raw) : 30;
   const { current, previous } = rangeOf(days);

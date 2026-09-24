@@ -6,8 +6,10 @@ import { ListControls, StatusChip } from "@/components/admin/list-controls";
 import { Empty, PageHeader, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
 import { defaultTeachers, listTeachers, teachersCustomized } from "@/lib/content/teachers";
 import { deleteTeacherAction, moveTeacherAction, startTeachersEditingAction, toggleTeacherAction } from "./actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 export default async function TeachersAdminPage({ searchParams }: { searchParams: Promise<{ saved?: string }> }) {
+  await requirePanel();
   const { saved } = await searchParams;
   const customized = teachersCustomized();
   const rows = listTeachers();

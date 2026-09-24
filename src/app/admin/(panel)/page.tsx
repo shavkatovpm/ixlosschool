@@ -14,8 +14,10 @@ import {
 } from "@/lib/admin/analytics";
 import { formatAgo, pageLabel, sourceWithMedium } from "@/lib/admin/format";
 import { formatDateTime, leadsTotal, recentLeads } from "@/lib/admin/leads";
+import { requirePanel } from "@/lib/admin/panel";
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  await requirePanel();
   const { current, previous } = rangeOf(7);
   const now = totals(current);
   const before = totals(previous);

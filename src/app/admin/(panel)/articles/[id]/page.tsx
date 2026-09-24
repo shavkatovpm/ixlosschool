@@ -9,8 +9,10 @@ import { ARTICLE_LIMITS } from "@/lib/admin/validate-article";
 import { getArticleRow } from "@/lib/content/articles";
 import { CONTENT_LOCALES, LOCALE_NAMES } from "@/lib/content/shared";
 import { saveArticleAction } from "../actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 export default async function ArticleEditPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ created?: string }> }) {
+  await requirePanel();
   const { id } = await params;
   const { created } = await searchParams;
   const isNew = id === "new";

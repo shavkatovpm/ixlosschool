@@ -117,9 +117,9 @@ Vercel DNS'da (`npx vercel dns ls ixlosschool.uz`) qo'shilgan yozuvlar: apex `A 
 | Nomi | Vazifa | Joyi va holati |
 |---|---|---|
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID` | Ariza formasi (`/api/apply`) Telegram'ga yuboradi | Droplet `/opt/ixlosschool/.env` **va** Vercel Production'da o'rnatilgan. Bot: **@ixlosformbot**, guruh "Leads IXLOS website" (oddiy guruh; supergroup'ga aylansa chat ID o'zgaradi) |
-| `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID` | Google Analytics / Yandex Metrica | Yo'q (ixtiyoriy). `NEXT_PUBLIC_*` **build vaqtida** kiradi: deploy skripti build qiladigan kompyuterda shell env sifatida berilishi kerak |
-| `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION` | Tasdiqlash meta tegi | Yo'q (Google DNS TXT orqali tasdiqlangan) |
-| `ADMIN_ENABLED`, `DATABASE_PATH` | Admin panelni yoqish va SQLite fayl yo'li (`/data/ixlos.db`) | Kod tayyor, serverda hali yoqilmagan: `docs/admin.md` "Serverda yoqish" |
+| `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_YM_ID`, `GOOGLE_SITE_VERIFICATION`, `YANDEX_VERIFICATION` | Analitika va tasdiqlash kodlari | **Endi admin panelda** (Sozlamalar), deploy talab qilmaydi. Env faqat panel bo'lmagan joy (Vercel) uchun zaxira qiymat |
+| `ADMIN_ENABLED`, `DATABASE_PATH` | Admin panelni yoqish va SQLite fayl yo'li (`/data/ixlos.db`) | Serverda yoqilgan (compose `environment`da) |
+| `UPLOAD_DIR`, `BACKUP_DIR` | Panelda yuklangan rasmlar va baza nusxalari papkasi | Berilmasa `DATABASE_PATH` yonidagi `uploads/` va `backups/` (droplet'da `/data/uploads`, `/data/backups`, ya'ni `ixlos_data` volume'i ichida) |
 
 - Serverdagi env o'zgarsa: `/opt/ixlosschool/.env` ni tahrirlab `docker compose up -d --force-recreate web`.
 - Token hech qachon repozitoriyga, hujjatga yoki chatga yozilmaydi. `@BotFather`da `/revoke` qilib yangilash mumkin, so'ng Vercel va serverdagi qiymatni almashtiring.
@@ -132,9 +132,12 @@ Vercel DNS'da (`npx vercel dns ls ixlosschool.uz`) qo'shilgan yozuvlar: apex `A 
 - Bot skanerlari (`/info.php`, `/*.json` va h.k.) yangi domenga tez keladi: `[locale]` layout'ida `dynamicParams = false`, catch-all sahifa `force-dynamic`, shuning uchun ular keshlanmaydi va oddiy 404 oladi. Release papkasi konteynerda **faqat o'qish uchun** ulangan.
 - `/api/apply` limiti (10 daqiqada 5 ta) xotirada, IP `x-forwarded-for`ning birinchi qiymatidan (Caddy uni qo'shadi). Konteyner qayta ishga tushsa limit tozalanadi.
 - macOS'da `timeout` buyrug'i yo'q.
+- **Sahifalar endi har so'rovda render qilinadi** (`[locale]/layout.tsx`da `dynamic = "force-dynamic"`): kontent (aloqa ma'lumoti, FAQ, ustozlar, videolar, maqolalar) admin paneldan o'zgaradi va deploy talab qilmaydi. Panel yo'q joyda (Vercel) sahifalar kod ichidagi standart kontentni ko'rsatadi. Local o'lchov: bosh sahifa ~13 ms CPU/so'rov; droplet'da ham kunlik trafik uchun yetarli.
+- `/media/*` (panelda yuklangan rasmlar) `ixlos_data` volume'idan beriladi; volume'ni o'chirmang. Rasmlar bazadagi nusxaga kirmaydi: server darajasidagi zaxira (DigitalOcean Backups) ularni ham saqlaydi.
+- Deploy skripti release papkasiga `RELEASE` faylini yozadi (panel: Sozlamalar → Tizim → Versiya).
 
 ## Keyingi rejalar
 
-- **Admin panel:** poydevor va arizalar bo'limi kodda tayyor (`docs/admin.md`); serverda yoqish (volume `ixlos_data`, env, super-admin yaratish) va **zaxira nusxa** (DigitalOcean Backups + kunlik `VACUUM INTO`) deploy bosqichida qilinadi.
+- **Admin panel:** to'liq (`docs/admin.md`); kunlik `VACUUM INTO` nusxasi panel o'zi oladi. Server darajasidagi **DigitalOcean Backups** hali yoqilmagan (egasi qarori).
 - ABCO bazasi uchun zaxira nusxa va port himoyasi: egasi qaroridan keyin.
 - Trafik oshsa: droplet'ni 2 GB'ga oshirish yoki oldiga CDN (masalan Cloudflare) qo'yish.

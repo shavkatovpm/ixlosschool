@@ -7,10 +7,12 @@ import { CREDENTIAL_SLOTS, EDUCATION_SLOTS } from "@/lib/admin/validate-teacher"
 import { CONTENT_LOCALES, LOCALE_NAMES } from "@/lib/content/shared";
 import { getTeacherRow } from "@/lib/content/teachers";
 import { saveTeacherAction } from "../actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 const slots = (count: number) => Array.from({ length: count }, (_, i) => i + 1);
 
 export default async function TeacherEditPage({ params }: { params: Promise<{ id: string }> }) {
+  await requirePanel();
   const { id } = await params;
   const isNew = id === "new";
   const row = isNew ? null : getTeacherRow(Number(id));

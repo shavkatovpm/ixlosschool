@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePanel } from "@/lib/admin/panel";
 import { errorState, formValues, okState, type FormState } from "@/lib/admin/form-state";
 import { readLocalized } from "@/lib/admin/localized";
 import { UploadError, deleteUpload, saveImageBuffer, saveImageFile } from "@/lib/admin/uploads";
@@ -25,13 +25,13 @@ const id = (formData: FormData) => {
 const THUMB = { width: 540, height: 960, quality: 80 } as const;
 
 export async function startTestimonialsEditingAction() {
-  await requireAdmin();
+  await requirePanel();
   startTestimonialsEditing();
   redirect("/admin/testimonials");
 }
 
 export async function saveTestimonialAction(previous: FormState, formData: FormData): Promise<FormState> {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const existing = rowId !== null ? getTestimonialRow(rowId) : null;
   if (rowId !== null && !existing) redirect("/admin/testimonials");
@@ -85,21 +85,21 @@ export async function saveTestimonialAction(previous: FormState, formData: FormD
 }
 
 export async function moveTestimonialAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) moveTestimonial(rowId, formData.get("dir") === "up" ? "up" : "down");
   revalidatePath("/admin/testimonials");
 }
 
 export async function toggleTestimonialAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) setTestimonialPublished(rowId, formData.get("published") === "1");
   revalidatePath("/admin/testimonials");
 }
 
 export async function deleteTestimonialAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const row = rowId !== null ? getTestimonialRow(rowId) : null;
   if (row) {

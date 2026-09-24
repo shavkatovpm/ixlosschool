@@ -6,8 +6,10 @@ import { ListControls, StatusChip } from "@/components/admin/list-controls";
 import { Empty, PageHeader, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
 import { defaultTestimonials, listTestimonials, testimonialsCustomized } from "@/lib/content/testimonials";
 import { deleteTestimonialAction, moveTestimonialAction, startTestimonialsEditingAction, toggleTestimonialAction } from "./actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 export default async function TestimonialsPage({ searchParams }: { searchParams: Promise<{ saved?: string }> }) {
+  await requirePanel();
   const { saved } = await searchParams;
   const customized = testimonialsCustomized();
   const rows = listTestimonials();

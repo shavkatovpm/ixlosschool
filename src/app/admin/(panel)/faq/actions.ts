@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePanel } from "@/lib/admin/panel";
 import { errorState, formValues, okState, type FormState } from "@/lib/admin/form-state";
 import { readLocalized } from "@/lib/admin/localized";
 import { deleteFaq, getFaqRow, moveFaq, saveFaq, setFaqPublished, startFaqEditing } from "@/lib/content/faq";
@@ -13,13 +13,13 @@ const id = (formData: FormData) => {
 };
 
 export async function startFaqEditingAction() {
-  await requireAdmin();
+  await requirePanel();
   startFaqEditing();
   redirect("/admin/faq");
 }
 
 export async function saveFaqAction(previous: FormState, formData: FormData): Promise<FormState> {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null && !getFaqRow(rowId)) redirect("/admin/faq");
   const values = formValues(formData, 3000);
@@ -36,21 +36,21 @@ export async function saveFaqAction(previous: FormState, formData: FormData): Pr
 }
 
 export async function moveFaqAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) moveFaq(rowId, formData.get("dir") === "up" ? "up" : "down");
   revalidatePath("/admin/faq");
 }
 
 export async function toggleFaqAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) setFaqPublished(rowId, formData.get("published") === "1");
   revalidatePath("/admin/faq");
 }
 
 export async function deleteFaqAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   if (rowId !== null) deleteFaq(rowId);
   revalidatePath("/admin/faq");

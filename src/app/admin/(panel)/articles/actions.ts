@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePanel } from "@/lib/admin/panel";
 import { errorState, formValues, okState, type FormState } from "@/lib/admin/form-state";
 import { UploadError, deleteUpload, saveImageFile } from "@/lib/admin/uploads";
 import { parseArticleForm, publishErrors } from "@/lib/admin/validate-article";
@@ -16,7 +16,7 @@ const id = (formData: FormData) => {
 const COVER = { width: 1200, height: 630, quality: 82 } as const;
 
 export async function saveArticleAction(previous: FormState, formData: FormData): Promise<FormState> {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const existing = rowId !== null ? getArticleRow(rowId) : null;
   if (rowId !== null && !existing) redirect("/admin/articles");
@@ -78,7 +78,7 @@ export async function saveArticleAction(previous: FormState, formData: FormData)
 }
 
 export async function toggleArticleAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const row = rowId !== null ? getArticleRow(rowId) : null;
   if (!row) redirect("/admin/articles");
@@ -93,7 +93,7 @@ export async function toggleArticleAction(formData: FormData) {
 }
 
 export async function deleteArticleAction(formData: FormData) {
-  await requireAdmin();
+  await requirePanel();
   const rowId = id(formData);
   const row = rowId !== null ? getArticleRow(rowId) : null;
   if (row) {

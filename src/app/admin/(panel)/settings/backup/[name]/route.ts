@@ -8,7 +8,8 @@ export const dynamic = "force-dynamic";
 
 // The backup holds every stored application (names and phone numbers): only a signed-in admin may download it.
 export async function GET(_request: Request, { params }: { params: Promise<{ name: string }> }) {
-  if (!adminEnabled() || !(await getSession())) return new Response("Unauthorized", { status: 401 });
+  const session = adminEnabled() ? await getSession() : null;
+  if (!session || session.mustChangePassword) return new Response("Unauthorized", { status: 401 });
   const { name } = await params;
   const file = backupPath(name);
   if (!file) return new Response("Not found", { status: 404 });

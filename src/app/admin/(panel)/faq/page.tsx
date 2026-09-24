@@ -6,10 +6,12 @@ import { SubmitButton } from "@/components/admin/form";
 import { defaultFaq } from "@/lib/content/defaults";
 import { faqCustomized, listFaq } from "@/lib/content/faq";
 import { deleteFaqAction, moveFaqAction, startFaqEditingAction, toggleFaqAction } from "./actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 const TARGET = { min: 8, max: 12 };
 
 export default async function FaqPage({ searchParams }: { searchParams: Promise<{ saved?: string }> }) {
+  await requirePanel();
   const { saved } = await searchParams;
   const customized = faqCustomized();
   const rows = listFaq();

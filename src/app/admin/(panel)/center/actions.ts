@@ -1,14 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { requireAdmin } from "@/lib/admin/auth";
+import { requirePanel } from "@/lib/admin/panel";
 import { errorState, formValues, okState, type FormState } from "@/lib/admin/form-state";
 import { parseCenterForm } from "@/lib/admin/validate-center";
 import { CENTER_KEY, formatPhone } from "@/lib/center";
 import { writeSetting } from "@/lib/settings";
 
 export async function saveCenterAction(previous: FormState, formData: FormData): Promise<FormState> {
-  await requireAdmin();
+  await requirePanel();
   const values = formValues(formData, 300);
   const { value, errors } = parseCenterForm(values);
   if (!value) return errorState(previous, errors ?? {}, values);

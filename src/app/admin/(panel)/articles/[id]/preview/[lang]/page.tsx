@@ -3,9 +3,11 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/site/article-body";
 import { getArticleRow, readMinutes } from "@/lib/content/articles";
 import { isContentLocale, LOCALE_NAMES } from "@/lib/content/shared";
+import { requirePanel } from "@/lib/admin/panel";
 
 // Shows the draft the way the site will render its body (the page frame is not reproduced).
 export default async function ArticlePreviewPage({ params }: { params: Promise<{ id: string; lang: string }> }) {
+  await requirePanel();
   const { id, lang } = await params;
   const row = getArticleRow(Number(id));
   if (!row || !isContentLocale(lang)) notFound();

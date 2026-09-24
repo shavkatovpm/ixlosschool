@@ -5,8 +5,10 @@ import { formatDateTime } from "@/lib/admin/leads";
 import { CENTER_KEY, formatPhone, getCenterInput } from "@/lib/center";
 import { settingUpdatedAt } from "@/lib/settings";
 import { saveCenterAction } from "./actions";
+import { requirePanel } from "@/lib/admin/panel";
 
-export default function CenterPage() {
+export default async function CenterPage() {
+  await requirePanel();
   const c = getCenterInput();
   const updated = settingUpdatedAt(CENTER_KEY);
 

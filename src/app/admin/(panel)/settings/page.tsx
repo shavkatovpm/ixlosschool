@@ -9,6 +9,7 @@ import { formatBytes, systemInfo } from "@/lib/admin/system";
 import { getIntegrations } from "@/lib/integrations";
 import { telegramConfigured } from "@/lib/telegram";
 import { createBackupAction, saveIntegrationsAction, testTelegramAction } from "./actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 const DONE: Record<string, { text: string; error?: boolean }> = {
   backup: { text: "Zaxira nusxa yaratildi." },
@@ -19,6 +20,7 @@ const DONE: Record<string, { text: string; error?: boolean }> = {
 };
 
 export default async function SettingsPage({ searchParams }: { searchParams: Promise<{ done?: string }> }) {
+  await requirePanel();
   const { done } = await searchParams;
   const notice = done ? DONE[done] : undefined;
   const integrations = getIntegrations();

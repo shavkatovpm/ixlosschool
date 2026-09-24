@@ -4,12 +4,14 @@ import { Chip, PageHeader, fieldClass, ghostButton, primaryButton } from "@/comp
 import { DEVICE_LABEL, LOCALE_LABEL, sourceWithMedium } from "@/lib/admin/format";
 import { filterFrom } from "@/lib/admin/lead-filter";
 import { formatDateTime, leadGrades, leadSources, listLeads } from "@/lib/admin/leads";
+import { requirePanel } from "@/lib/admin/panel";
 
 const PAGE_SIZE = 30;
 
 type Search = { q?: string; page?: string; from?: string; to?: string; source?: string; locale?: string; grade?: string };
 
 export default async function LeadsPage({ searchParams }: { searchParams: Promise<Search> }) {
+  await requirePanel();
   const sp = await searchParams;
   const filter = filterFrom(sp);
   const page = Math.max(1, Math.floor(Number(sp.page)) || 1);

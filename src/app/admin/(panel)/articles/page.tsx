@@ -6,11 +6,13 @@ import { formatDateTime } from "@/lib/admin/leads";
 import { listArticles } from "@/lib/content/articles";
 import { CONTENT_LOCALES } from "@/lib/content/shared";
 import { deleteArticleAction, toggleArticleAction } from "./actions";
+import { requirePanel } from "@/lib/admin/panel";
 
 const iconButton =
   "flex h-10 w-10 items-center justify-center rounded-full border border-line transition-colors hover:bg-tint-a";
 
 export default async function ArticlesPage({ searchParams }: { searchParams: Promise<{ e?: string; id?: string }> }) {
+  await requirePanel();
   const { e, id } = await searchParams;
   const rows = listArticles();
 
