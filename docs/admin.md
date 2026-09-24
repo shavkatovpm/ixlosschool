@@ -1,6 +1,6 @@
 # Ixlos School — admin panel
 
-> **Holat (2026-09-24):** poydevor va "Arizalar" bo'limi tayyor va lokalda sinalgan; **serverga hali joylanmagan** (egasi "deploy" demagan). Boshqa bo'limlar rejada (pastga qarang). Bitta super-admin yetarli: foydalanuvchilar/rollar va imtihon jadvali egasi qaroriga ko'ra **chiqarib tashlangan**.
+> **Holat (2026-09-24):** poydevor, "Arizalar" va "Hisob" bo'limlari tayyor va **serverda yoqilgan** (`https://www.ixlosschool.uz/admin`). Birinchi hisob `admin@ixlosschool.uz` vaqtinchalik parol bilan yaratilgan; egasi birinchi kirishda parolini almashtiradi. Boshqa bo'limlar rejada (pastga qarang). Bitta super-admin yetarli: foydalanuvchilar/rollar va imtihon jadvali egasi qaroriga ko'ra **chiqarib tashlangan**.
 
 ## Nima bor
 

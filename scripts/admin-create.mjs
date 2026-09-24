@@ -50,6 +50,7 @@ if (password.toLowerCase().includes(email.split("@")[0])) fail("parol email nomi
 
 const file = process.env.DATABASE_PATH || path.join(process.cwd(), "data", "ixlos.db");
 fs.mkdirSync(path.dirname(file), { recursive: true });
+if (!fs.existsSync(file)) fs.closeSync(fs.openSync(file, "a", 0o600)); // owner-only
 const db = new DatabaseSync(file);
 migrate(db);
 

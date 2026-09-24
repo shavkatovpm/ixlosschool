@@ -29,6 +29,7 @@ export function getDb(): Database {
     // The old handle is already unusable; nothing to release.
   }
   fs.mkdirSync(path.dirname(file), { recursive: true });
+  if (!fs.existsSync(file)) fs.closeSync(fs.openSync(file, "a", 0o600)); // owner-only; SQLite's -wal/-shm files copy it
   const sqlite = process.getBuiltinModule("node:sqlite") as unknown as { DatabaseSync: new (file: string) => Database };
   const db = new sqlite.DatabaseSync(file);
   migrate(db);
