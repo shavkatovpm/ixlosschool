@@ -39,6 +39,34 @@ const MIGRATIONS = [
    ALTER TABLE leads DROP COLUMN status;
    ALTER TABLE leads DROP COLUMN note;
    CREATE INDEX leads_created ON leads(created_at DESC);`,
+  // First-party, cookieless traffic statistics. No IP address or user agent is stored: visitors are a
+  // per-day salted hash, so nobody can be followed across days.
+  `CREATE TABLE pageviews (
+     id INTEGER PRIMARY KEY AUTOINCREMENT,
+     at INTEGER NOT NULL,
+     day TEXT NOT NULL,
+     path TEXT NOT NULL,
+     locale TEXT NOT NULL DEFAULT '',
+     visitor TEXT NOT NULL DEFAULT '',
+     source TEXT NOT NULL DEFAULT 'direct',
+     medium TEXT NOT NULL DEFAULT 'direct',
+     campaign TEXT NOT NULL DEFAULT '',
+     device TEXT NOT NULL DEFAULT '',
+     browser TEXT NOT NULL DEFAULT '',
+     kind TEXT NOT NULL DEFAULT 'human',
+     bot TEXT NOT NULL DEFAULT '',
+     bot_kind TEXT NOT NULL DEFAULT ''
+   );
+   CREATE INDEX pageviews_kind_day ON pageviews(kind, day);
+   CREATE INDEX pageviews_at ON pageviews(at);
+   CREATE TABLE daily_salts (day TEXT PRIMARY KEY, salt TEXT NOT NULL);`,
+  // Where an application came from (first-touch attribution sent by the site form).
+  `ALTER TABLE leads ADD COLUMN source TEXT NOT NULL DEFAULT '';
+   ALTER TABLE leads ADD COLUMN medium TEXT NOT NULL DEFAULT '';
+   ALTER TABLE leads ADD COLUMN campaign TEXT NOT NULL DEFAULT '';
+   ALTER TABLE leads ADD COLUMN landing TEXT NOT NULL DEFAULT '';
+   ALTER TABLE leads ADD COLUMN device TEXT NOT NULL DEFAULT '';
+   CREATE INDEX leads_source ON leads(source);`,
 ];
 
 /** @param {{ exec(sql: string): void, prepare(sql: string): { get(): any, run(...p: any[]): any } }} db */

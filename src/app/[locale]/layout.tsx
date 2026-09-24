@@ -10,6 +10,7 @@ import { ApplyModalProvider } from "@/components/site/apply-modal";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { JsonLd } from "@/components/site/json-ld";
+import { Tracker } from "@/components/site/tracker";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -108,6 +109,7 @@ export default async function LocaleLayout({
           </ApplyModalProvider>
         </NextIntlClientProvider>
         <Analytics />
+        <Tracker />
       </body>
     </html>
   );

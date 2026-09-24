@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Check, ChevronDown, GraduationCap, Loader2, Phone, UserRound } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { applicationFormSchema, type ApplicationFormValues } from "@/lib/application";
+import { readAttribution, trackingAllowed } from "@/lib/attribution";
 import { CONTACT } from "@/lib/contact";
 import { trackLead } from "@/lib/track";
 import styles from "./admissions.module.css";
@@ -43,7 +44,7 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
       const res = await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, locale }),
+        body: JSON.stringify({ ...values, locale, attr: trackingAllowed() ? readAttribution() : undefined }),
         signal: controller.signal,
       });
       if (res.status === 429) { setStatus("rateLimited"); return; }

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { applicationSchema } from "@/lib/application";
 import { adminEnabled } from "@/lib/admin/config";
 import { insertLead } from "@/lib/admin/leads";
+import { classifySource, parseDevice } from "@/lib/analytics-shared";
 
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
@@ -73,7 +74,26 @@ export async function POST(request: Request) {
   let saved = false;
   if (adminEnabled()) {
     try {
-      insertLead({ name, phone, grade, locale });
+      const attr = ((raw as { attr?: unknown }).attr ?? {}) as Record<string, unknown>;
+      const str = (value: unknown, max: number) => (typeof value === "string" ? value.slice(0, max) : "");
+      const origin = classifySource({
+        referrer: str(attr.ref, 300),
+        utmSource: str(attr.us, 60),
+        utmMedium: str(attr.um, 60),
+        utmCampaign: str(attr.uc, 80),
+      });
+      const hasAttr = Object.keys(attr).length > 0;
+      insertLead({
+        name,
+        phone,
+        grade,
+        locale,
+        source: hasAttr ? origin.source : "",
+        medium: hasAttr ? origin.medium : "",
+        campaign: origin.campaign,
+        landing: str(attr.lp, 160),
+        device: parseDevice(request.headers.get("user-agent") ?? ""),
+      });
       saved = true;
     } catch (error) {
       console.error("[apply] could not store the lead:", error);
