@@ -1,29 +1,36 @@
 import Link from "next/link";
 import { Download, Phone } from "lucide-react";
+import { DateFilter } from "@/components/admin/date-filter";
 import { Chip, PageShell, fieldClass, ghostButton, primaryButton } from "@/components/admin/ui";
 import { DEVICE_LABEL, LOCALE_LABEL, sourceWithMedium } from "@/lib/admin/format";
-import { filterFrom } from "@/lib/admin/lead-filter";
+import { filterFrom, leadPeriod } from "@/lib/admin/lead-filter";
 import { formatDateTime, leadGrades, leadSources, listLeads } from "@/lib/admin/leads";
 import { requirePanel } from "@/lib/admin/panel";
+import { availableMonths, describePeriod } from "@/lib/admin/period";
 
 const PAGE_SIZE = 30;
 
-type Search = { q?: string; page?: string; from?: string; to?: string; source?: string; locale?: string; grade?: string };
+type Search = { q?: string; page?: string; p?: string; m?: string; source?: string; locale?: string; grade?: string };
 
 export default async function LeadsPage({ searchParams }: { searchParams: Promise<Search> }) {
   await requirePanel();
   const sp = await searchParams;
   const filter = filterFrom(sp);
+  const period = leadPeriod(sp);
   const page = Math.max(1, Math.floor(Number(sp.page)) || 1);
   const { rows, total } = listLeads(filter, PAGE_SIZE, (page - 1) * PAGE_SIZE);
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const sources = leadSources();
   const grades = leadGrades();
-  const filtered = Object.values(filter).some(Boolean);
+  // Anything besides the period narrows the list (the period always applies).
+  const filtered = Boolean(filter.q || filter.source || filter.locale || filter.grade);
+  const kept = { q: filter.q, source: filter.source, locale: filter.locale, grade: filter.grade };
 
   const query = (target?: number) => {
     const params = new URLSearchParams();
-    for (const [key, value] of Object.entries(filter)) if (value) params.set(key, value);
+    for (const [key, value] of Object.entries(kept)) if (value) params.set(key, value);
+    params.set("p", period.preset);
+    if (period.preset === "month") params.set("m", period.month);
     if (target && target > 1) params.set("page", String(target));
     const text = params.toString();
     return text ? `?${text}` : "";
@@ -41,18 +48,16 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
         </a>
       }
     >
-      <form action="/admin/leads" className="grid gap-3 rounded-[22px] bg-surface p-5 sm:grid-cols-2 lg:grid-cols-6">
+      <form action="/admin/leads" className="grid gap-3 rounded-[22px] bg-surface p-5 sm:grid-cols-2 lg:grid-cols-5">
+        <input type="hidden" name="p" value={period.preset} />
+        {period.preset === "month" ? <input type="hidden" name="m" value={period.month} /> : null}
+        <div className="flex flex-wrap items-center justify-between gap-3 sm:col-span-2 lg:col-span-5">
+          <DateFilter base="/admin/leads" period={period} months={availableMonths()} keep={kept} />
+          <p className="text-[13px] font-semibold text-ink/65">{describePeriod(period)}</p>
+        </div>
         <label className="text-[13px] font-semibold lg:col-span-2">
           Ism yoki telefon
           <input name="q" defaultValue={filter.q} maxLength={60} placeholder="Qidirish" className={`${fieldClass} mt-1 w-full`} />
-        </label>
-        <label className="text-[13px] font-semibold">
-          Qaysi sanadan
-          <input type="date" name="from" defaultValue={filter.from} className={`${fieldClass} mt-1 w-full`} />
-        </label>
-        <label className="text-[13px] font-semibold">
-          Qaysi sanagacha
-          <input type="date" name="to" defaultValue={filter.to} className={`${fieldClass} mt-1 w-full`} />
         </label>
         <label className="text-[13px] font-semibold">
           Manba
@@ -100,11 +105,11 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
       </form>
 
       <p className="text-[14px] font-semibold text-ink/75">
-        {filtered ? `Filtr bo'yicha ${total} ta` : `Jami ${total} ta ariza`}
+        {filtered ? `Filtr bo'yicha ${total} ta ariza` : `${total} ta ariza`}
       </p>
 
       {rows.length === 0 ? (
-        <p className="rounded-[22px] bg-surface p-6 text-[15px] text-ink/75">{filtered ? "Hech narsa topilmadi." : "Hali ariza yo'q."}</p>
+        <p className="rounded-[22px] bg-surface p-6 text-[15px] text-ink/75">{filtered ? "Hech narsa topilmadi." : period.preset === "all" ? "Hali ariza yo'q." : "Tanlangan davrda ariza yo'q. «Doimiy» tugmasi barcha arizalarni ko'rsatadi."}</p>
       ) : (
         <ul className="divide-y divide-line rounded-[22px] bg-surface">
           {rows.map((lead) => (

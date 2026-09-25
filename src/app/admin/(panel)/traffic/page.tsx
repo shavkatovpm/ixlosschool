@@ -1,14 +1,13 @@
 import { BarChart, BarList } from "@/components/admin/charts";
 import { ExcludeDevice } from "@/components/admin/exclude-device";
-import { Empty, PageShell, Panel, RangeTabs, Stat } from "@/components/admin/ui";
+import { DateFilter } from "@/components/admin/date-filter";
+import { Empty, PageShell, Panel, Stat } from "@/components/admin/ui";
 import {
   bots,
   browsers,
   campaigns,
-  dailySeries,
   devices,
   languages,
-  rangeOf,
   sources,
   topPages,
   totals,
@@ -17,19 +16,19 @@ import {
 import { DEVICE_LABEL, LOCALE_LABEL, formatAgo, pageLabel, sourceWithMedium } from "@/lib/admin/format";
 import { formatDateTime } from "@/lib/admin/leads";
 import { BOT_KIND_LABEL } from "@/lib/analytics-shared";
+import { chartSeries } from "@/lib/admin/chart-series";
 import { requirePanel } from "@/lib/admin/panel";
+import { availableMonths, describePeriod, resolvePeriod } from "@/lib/admin/period";
 
-const RANGES = [7, 30, 90];
-
-export default async function TrafficPage({ searchParams }: { searchParams: Promise<{ days?: string }> }) {
+export default async function TrafficPage({ searchParams }: { searchParams: Promise<{ p?: string; m?: string }> }) {
   await requirePanel();
-  const { days: raw } = await searchParams;
-  const days = RANGES.includes(Number(raw)) ? Number(raw) : 30;
-  const { current, previous } = rangeOf(days);
+  const sp = await searchParams;
+  const period = resolvePeriod(sp);
+  const current = period.range;
 
   const now = totals(current);
-  const before = totals(previous);
-  const series = dailySeries(current);
+  const before = period.previous ? totals(period.previous) : null;
+  const chart = chartSeries(period);
   const pages = topPages(current, 8);
   const sourceRows = sources(current, 8);
   const langRows = languages(current);
@@ -41,7 +40,7 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
 
   const perVisit = now.visitors ? (now.views / now.visitors).toFixed(1) : "—";
   const conversion = now.visitors ? `${((now.leads / now.visitors) * 100).toFixed(1)}%` : "—";
-  const conversionBefore = before.visitors ? (before.leads / before.visitors) * 100 : 0;
+  const conversionBefore = before?.visitors ? (before.leads / before.visitors) * 100 : 0;
   const noData = now.views === 0;
 
   return (
@@ -49,7 +48,8 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
       width="6xl"
       title="Trafik"
       text="Kim, qayerdan kelgan, nimani ko'rgan va nechtasi ariza qoldirgan."
-      actions={<RangeTabs base="/admin/traffic" days={days} />}
+      stacked
+      actions={<DateFilter base="/admin/traffic" period={period} months={availableMonths()} />}
     >
       {noData ? (
         <Empty>
@@ -60,24 +60,27 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
       ) : null}
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Tashrifchilar" value={now.visitors} compare={{ current: now.visitors, previous: before.visitors }} hint="kunlik noyob" tone="a" />
-        <Stat label="Sahifa ko'rishlari" value={now.views} compare={{ current: now.views, previous: before.views }} tone="b" />
-        <Stat label="Ariza qoldirganlar" value={now.leads} compare={{ current: now.leads, previous: before.leads }} tone="c" />
+        <Stat label="Tashrifchilar" value={now.visitors} compare={before ? { current: now.visitors, previous: before.visitors } : undefined} hint="kunlik noyob" tone="a" />
+        <Stat label="Sahifa ko'rishlari" value={now.views} compare={before ? { current: now.views, previous: before.views } : undefined} tone="b" />
+        <Stat label="Ariza qoldirganlar" value={now.leads} compare={before ? { current: now.leads, previous: before.leads } : undefined} tone="c" />
         <Stat
           label="Konversiya"
           value={conversion}
           hint={`tashrifga ${perVisit} sahifa`}
-          compare={{ current: Math.round((now.visitors ? (now.leads / now.visitors) * 1000 : 0)), previous: Math.round(conversionBefore * 10) }}
+          compare={before ? { current: Math.round(now.visitors ? (now.leads / now.visitors) * 1000 : 0), previous: Math.round(conversionBefore * 10) } : undefined}
           tone="d"
         />
       </div>
 
-      <Panel title="Kunlar bo'yicha tashrifchilar" hint={`Oxirgi ${days} kun (Toshkent vaqti bilan)`}>
-        <BarChart label="Tashrifchilar" points={series.map((d) => ({ day: d.day, value: d.visitors }))} />
+      <Panel
+        title={chart.unit === "soat" ? "Soatlar bo'yicha tashrifchilar" : chart.unit === "hafta" ? "Haftalar bo'yicha tashrifchilar" : "Kunlar bo'yicha tashrifchilar"}
+        hint={`${describePeriod(period)} · Toshkent vaqti bilan`}
+      >
+        <BarChart label="Tashrifchilar" points={chart.points.map((d) => ({ day: d.day, label: d.label, value: d.visitors }))} />
         {now.leads > 0 ? (
           <div className="mt-4 border-t border-line/60 pt-4">
-            <p className="mb-1 text-[13px] font-semibold text-ink/75">Kunlik arizalar</p>
-            <BarChart label="Arizalar" color="var(--color-danger)" height={110} points={series.map((d) => ({ day: d.day, value: d.leads }))} />
+            <p className="mb-1 text-[13px] font-semibold text-ink/75">Arizalar</p>
+            <BarChart label="Arizalar" color="var(--color-danger)" height={110} points={chart.points.map((d) => ({ day: d.day, label: d.label, value: d.leads }))} />
           </div>
         ) : null}
       </Panel>

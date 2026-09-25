@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Minus, Users, Eye, Inbox, Activity } from "lucide-react";
 
 const CONTENT_WIDTH = { "3xl": "max-w-3xl", "4xl": "max-w-4xl", "5xl": "max-w-5xl", "6xl": "max-w-6xl" } as const;
@@ -13,17 +12,20 @@ export function PageShell({
   text,
   actions,
   width = "4xl",
+  stacked = false,
   children,
 }: {
   title: string;
   text?: string;
   actions?: React.ReactNode;
   width?: keyof typeof CONTENT_WIDTH;
+  /** Keep the description on its own line under the title/actions (for pages whose actions are wide). */
+  stacked?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <>
-      <header className="admin-navbar">
+      <header className="admin-navbar" data-stacked={stacked || undefined}>
         <div className="admin-navbar-grid">
           <h1 className="admin-navbar-title font-display font-extrabold">{title}</h1>
           {text ? (
@@ -121,25 +123,6 @@ export function Stat({
         {hint ? <span className="text-[12px] text-ink/65">{hint}</span> : null}
       </div>
     </div>
-  );
-}
-
-export function RangeTabs({ base, days, options = [7, 30, 90] }: { base: string; days: number; options?: number[] }) {
-  return (
-    <nav aria-label="Davr" className="admin-range inline-flex rounded-full bg-surface p-1">
-      {options.map((option) => (
-        <Link
-          key={option}
-          href={`${base}?days=${option}`}
-          aria-current={option === days ? "true" : undefined}
-          className={`inline-flex h-9 items-center rounded-full px-4 text-[13px] font-bold transition-colors ${
-            option === days ? "bg-brand text-on-brand" : "text-ink/75 hover:bg-tint-b"
-          }`}
-        >
-          {option} kun
-        </Link>
-      ))}
-    </nav>
   );
 }
 

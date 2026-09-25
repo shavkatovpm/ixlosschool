@@ -251,3 +251,41 @@ export function currentVisitors(minutes = 5) {
     getDb().prepare("SELECT COUNT(DISTINCT visitor) AS c FROM pageviews WHERE kind = 'human' AND at >= ?").get(since)?.c,
   );
 }
+
+export type HourPoint = { hour: number; views: number; visitors: number; leads: number };
+
+/** One Tashkent calendar day split into 24 hours (used by the "Bugun" view). */
+export function hourlySeries(day: string): HourPoint[] {
+  const db = getDb();
+  const views = new Map(
+    db
+      .prepare(
+        `SELECT CAST(((at + ?) / 3600000) % 24 AS INTEGER) AS hour, COUNT(*) AS views, COUNT(DISTINCT visitor) AS visitors
+         FROM pageviews WHERE kind = 'human' AND day = ? GROUP BY hour`,
+      )
+      .all(TZ_OFFSET_MS, day)
+      .map((r) => [num(r.hour), r]),
+  );
+  const leads = new Map<number, number>();
+  for (const r of db
+    .prepare("SELECT created_at FROM leads WHERE created_at >= ? AND created_at < ?")
+    .all(dayStart(day), dayStart(addDays(day, 1)))) {
+    const hour = Math.floor(((num(r.created_at) + TZ_OFFSET_MS) / 3_600_000) % 24);
+    leads.set(hour, (leads.get(hour) ?? 0) + 1);
+  }
+  return Array.from({ length: 24 }, (_, hour) => ({
+    hour,
+    views: num(views.get(hour)?.views),
+    visitors: num(views.get(hour)?.visitors),
+    leads: leads.get(hour) ?? 0,
+  }));
+}
+
+/** The first day with any recorded page view or application (Tashkent), or null on a fresh database. */
+export function firstDataDay(): string | null {
+  const db = getDb();
+  const view = db.prepare("SELECT MIN(day) AS d FROM pageviews WHERE kind = 'human'").get()?.d;
+  const lead = db.prepare("SELECT MIN(created_at) AS t FROM leads").get()?.t;
+  const days = [view == null ? null : String(view), lead == null ? null : dayOf(num(lead))].filter((d): d is string => Boolean(d));
+  return days.length ? days.sort()[0] : null;
+}

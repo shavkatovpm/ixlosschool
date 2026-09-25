@@ -23,6 +23,7 @@ export default async function ArticleEditPage({ params, searchParams }: { params
   return (
     <PageShell
       width="3xl"
+      stacked
       title={isNew ? "Yangi maqola" : "Maqolani tahrirlash"}
       text="Avval qoralama saqlang, so'ng uch tilda to'ldirib chop eting."
       actions={

@@ -1,6 +1,6 @@
 import { formatDay } from "@/lib/admin/format";
 
-type Point = { day: string; value: number };
+type Point = { day: string; value: number; /** Shown instead of the formatted day (hours, weeks). */ label?: string };
 
 type ChartProps = { points: Point[]; label: string; color?: string; height?: number };
 
@@ -35,11 +35,11 @@ function ChartSvg({ points, label, color, height, width, className }: Required<C
         return (
           <g key={p.day}>
             <rect x={x} y={pad.top + innerH - h} width={barW} height={Math.max(h, p.value > 0 ? 2 : 0)} rx={Math.min(4, barW / 3)} fill={color}>
-              <title>{`${formatDay(p.day)}: ${p.value}`}</title>
+              <title>{`${p.label ?? formatDay(p.day)}: ${p.value}`}</title>
             </rect>
             {i % labelEvery === 0 ? (
               <text x={x + barW / 2} y={height - 6} textAnchor="middle" fontSize={11} fill="var(--color-khaki-deep)">
-                {formatDay(p.day)}
+                {p.label ?? formatDay(p.day)}
               </text>
             ) : null}
           </g>
