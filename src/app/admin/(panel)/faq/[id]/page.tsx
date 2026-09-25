@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdminForm, CheckboxField } from "@/components/admin/form";
 import { LocaleFields } from "@/components/admin/locale-fields";
-import { PageHeader } from "@/components/admin/ui";
+import { PageShell, ghostButton } from "@/components/admin/ui";
 import { getFaqRow } from "@/lib/content/faq";
 import { saveFaqAction } from "../actions";
 import { requirePanel } from "@/lib/admin/panel";
@@ -15,11 +15,16 @@ export default async function FaqEditPage({ params }: { params: Promise<{ id: st
   if (!isNew && !row) notFound();
 
   return (
-    <div className="max-w-3xl space-y-6">
-      <PageHeader
-        title={isNew ? "Yangi savol" : "Savolni tahrirlash"}
-        text="Savolni odamlar qidiruvda yozadigan ko'rinishda bering, javobni esa 1–3 gapda, aniq faktlar bilan. Uch tilning hammasi to'ldirilishi shart."
-      />
+    <PageShell
+      width="3xl"
+      title={isNew ? "Yangi savol" : "Savolni tahrirlash"}
+      text="Uch tilning hammasi to'ldirilishi shart."
+      actions={
+        <Link href="/admin/faq" className={ghostButton}>
+          ← Ro&apos;yxatga qaytish
+        </Link>
+      }
+    >
       <AdminForm
         action={saveFaqAction}
         extra={
@@ -38,6 +43,6 @@ export default async function FaqEditPage({ params }: { params: Promise<{ id: st
         />
         <CheckboxField name="published" label="Saytda ko'rsatilsin" defaultChecked={row ? row.published : true} />
       </AdminForm>
-    </div>
+    </PageShell>
   );
 }

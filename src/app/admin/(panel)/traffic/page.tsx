@@ -1,6 +1,6 @@
 import { BarChart, BarList } from "@/components/admin/charts";
 import { ExcludeDevice } from "@/components/admin/exclude-device";
-import { Empty, PageHeader, Panel, RangeTabs, Stat } from "@/components/admin/ui";
+import { Empty, PageShell, Panel, RangeTabs, Stat } from "@/components/admin/ui";
 import {
   bots,
   browsers,
@@ -45,13 +45,12 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
   const noData = now.views === 0;
 
   return (
-    <div className="max-w-6xl space-y-6">
-      <PageHeader
-        title="Trafik"
-        text="Saytga kelganlar: qancha odam, qayerdan, qaysi sahifalarni ko'rgan va nechtasi ariza qoldirgan."
-        actions={<RangeTabs base="/admin/traffic" days={days} />}
-      />
-
+    <PageShell
+      width="6xl"
+      title="Trafik"
+      text="Kim, qayerdan kelgan, nimani ko'rgan va nechtasi ariza qoldirgan."
+      actions={<RangeTabs base="/admin/traffic" days={days} />}
+    >
       {noData ? (
         <Empty>
           {started
@@ -175,6 +174,6 @@ export default async function TrafficPage({ searchParams }: { searchParams: Prom
         </ul>
         <ExcludeDevice />
       </Panel>
-    </div>
+    </PageShell>
   );
 }

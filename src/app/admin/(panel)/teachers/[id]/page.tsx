@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdminForm, CheckboxField, Field, FormSection, SelectField } from "@/components/admin/form";
 import { OptionalBlock } from "@/components/admin/optional-block";
-import { PageHeader } from "@/components/admin/ui";
+import { PageShell, ghostButton } from "@/components/admin/ui";
 import { CREDENTIAL_SLOTS, EDUCATION_SLOTS } from "@/lib/admin/validate-teacher";
 import { CONTENT_LOCALES, LOCALE_NAMES } from "@/lib/content/shared";
 import { getTeacherRow } from "@/lib/content/teachers";
@@ -20,11 +20,16 @@ export default async function TeacherEditPage({ params }: { params: Promise<{ id
   if (!isNew && !row) notFound();
 
   return (
-    <div className="max-w-3xl space-y-6">
-      <PageHeader
-        title={isNew ? "Yangi ustoz" : "Ustozni tahrirlash"}
-        text="Faqat maktab bergan tasdiqlangan ma'lumotlarni kiriting: diplom, sertifikat va staj hujjatlarga mos bo'lsin. Ruscha/inglizcha maydon bo'sh qolsa, o'zbekcha matn ishlatiladi."
-      />
+    <PageShell
+      width="3xl"
+      title={isNew ? "Yangi ustoz" : "Ustozni tahrirlash"}
+      text="Ma'lumotlar hujjatlarga mos bo'lsin; ruscha/inglizcha bo'sh bo'lsa o'zbekcha ishlatiladi."
+      actions={
+        <Link href="/admin/teachers" className={ghostButton}>
+          ← Ro&apos;yxatga qaytish
+        </Link>
+      }
+    >
       <AdminForm
         action={saveTeacherAction}
         encType="multipart/form-data"
@@ -107,6 +112,6 @@ export default async function TeacherEditPage({ params }: { params: Promise<{ id
 
         <CheckboxField name="published" label="Saytda ko'rsatilsin" defaultChecked={row ? row.published : true} />
       </AdminForm>
-    </div>
+    </PageShell>
   );
 }

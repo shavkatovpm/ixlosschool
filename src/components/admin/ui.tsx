@@ -1,15 +1,47 @@
 import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Minus, Users, Eye, Inbox, Activity } from "lucide-react";
 
-export function PageHeader({ title, text, actions }: { title: string; text?: string; actions?: React.ReactNode }) {
+const CONTENT_WIDTH = { "3xl": "max-w-3xl", "4xl": "max-w-4xl", "5xl": "max-w-5xl", "6xl": "max-w-6xl" } as const;
+
+/**
+ * The frame of every panel page: a sticky navbar carrying the section name (large), a one-line description and the
+ * page's own actions, then the content column. Putting the title and actions in the bar keeps the content directly
+ * below it instead of under a tall heading.
+ */
+export function PageShell({
+  title,
+  text,
+  actions,
+  width = "4xl",
+  children,
+}: {
+  title: string;
+  text?: string;
+  actions?: React.ReactNode;
+  width?: keyof typeof CONTENT_WIDTH;
+  children: React.ReactNode;
+}) {
   return (
-    <header className="admin-page-header flex flex-wrap items-end justify-between gap-4">
-      <div>
-        <h1 className="font-display text-[30px] font-extrabold tracking-tight sm:text-[34px]">{title}</h1>
-        {text ? <p className="mt-2 max-w-2xl text-[15px] leading-[1.65] text-ink/75">{text}</p> : null}
-      </div>
-      {actions}
-    </header>
+    <>
+      <header className="admin-navbar">
+        <div className="admin-navbar-grid">
+          <h1 className="admin-navbar-title font-display font-extrabold">{title}</h1>
+          {text ? (
+            <p className="admin-navbar-text" title={text}>
+              {text}
+            </p>
+          ) : null}
+          <div className="admin-navbar-actions">
+            {actions}
+            <a href="/uz" target="_blank" rel="noopener noreferrer" className="admin-navbar-site">
+              Saytni ko&apos;rish
+              <ArrowUpRight size={15} aria-hidden />
+            </a>
+          </div>
+        </div>
+      </header>
+      <div className={`${CONTENT_WIDTH[width]} space-y-6 pt-6`}>{children}</div>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ExternalLink, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 import { BarChart, BarList } from "@/components/admin/charts";
-import { Chip, Empty, PageHeader, Panel, Stat } from "@/components/admin/ui";
+import { Chip, Empty, PageShell, Panel, Stat } from "@/components/admin/ui";
 import {
   currentVisitors,
   dailySeries,
@@ -32,23 +32,11 @@ export default async function DashboardPage() {
   const aiBot = crawlers.find((c) => c.kind === "ai");
 
   return (
-    <div className="max-w-6xl space-y-6">
-      <PageHeader
-        title="Dashboard"
-        text="Saytning oxirgi 7 kunlik holati (oldingi 7 kun bilan solishtirilgan)."
-        actions={
-          <a
-            href="/uz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-brand underline-offset-4 hover:underline"
-          >
-            <ExternalLink size={16} aria-hidden />
-            Saytni ochish
-          </a>
-        }
-      />
-
+    <PageShell
+      width="6xl"
+      title="Dashboard"
+      text="Oxirgi 7 kun, oldingi 7 kun bilan solishtirilgan."
+    >
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         <Stat label="Tashrifchilar" value={now.visitors} compare={{ current: now.visitors, previous: before.visitors }} hint="7 kun" tone="a" />
         <Stat label="Sahifa ko'rishlari" value={now.views} compare={{ current: now.views, previous: before.views }} hint="7 kun" tone="b" />
@@ -144,6 +132,6 @@ export default async function DashboardPage() {
       {started ? (
         <p className="text-[12px] text-ink/60">Statistika {formatDateTime(started).slice(0, 10)} dan beri yig&apos;ilmoqda. Vaqt: Toshkent.</p>
       ) : null}
-    </div>
+    </PageShell>
   );
 }

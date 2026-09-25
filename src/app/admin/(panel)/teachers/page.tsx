@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CircleCheck, ExternalLink, Plus } from "lucide-react";
 import { SubmitButton } from "@/components/admin/form";
 import { ListControls, StatusChip } from "@/components/admin/list-controls";
-import { Empty, PageHeader, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
+import { Empty, PageShell, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
 import { defaultTeachers, listTeachers, teachersCustomized } from "@/lib/content/teachers";
 import { deleteTeacherAction, moveTeacherAction, startTeachersEditingAction, toggleTeacherAction } from "./actions";
 import { requirePanel } from "@/lib/admin/panel";
@@ -15,20 +15,19 @@ export default async function TeachersAdminPage({ searchParams }: { searchParams
   const rows = listTeachers();
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <PageHeader
-        title="Ustozlar"
-        text="Bosh sahifadagi ustozlar bo'limi va «Ustozlar» sahifasi. Ustoz qo'shish, ma'lumotini o'zgartirish, tartibini belgilash yoki vaqtincha yashirish mumkin."
-        actions={
-          customized ? (
-            <Link href="/admin/teachers/new" className={primaryButton}>
-              <Plus size={16} aria-hidden />
-              Ustoz qo&apos;shish
-            </Link>
-          ) : null
-        }
-      />
-
+    <PageShell
+      width="4xl"
+      title="Ustozlar"
+      text="Bosh sahifa va «Ustozlar» sahifasidagi ro'yxat."
+      actions={
+        customized ? (
+          <Link href="/admin/teachers/new" className={primaryButton}>
+            <Plus size={16} aria-hidden />
+            Ustoz qo&apos;shish
+          </Link>
+        ) : null
+      }
+    >
       {saved ? (
         <p role="status" className="flex items-center gap-2 rounded-[12px] bg-tint-b px-4 py-3 text-[14px] font-semibold text-brand">
           <CircleCheck size={18} aria-hidden />
@@ -81,6 +80,6 @@ export default async function TeachersAdminPage({ searchParams }: { searchParams
         <ExternalLink size={16} aria-hidden />
         Saytda ko&apos;rish
       </a>
-    </div>
+    </PageShell>
   );
 }

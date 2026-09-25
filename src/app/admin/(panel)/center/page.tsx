@@ -1,6 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { AdminForm, Field, FormSection } from "@/components/admin/form";
-import { PageHeader } from "@/components/admin/ui";
+import { PageShell, ghostButton } from "@/components/admin/ui";
 import { formatDateTime } from "@/lib/admin/leads";
 import { CENTER_KEY, formatPhone, getCenterInput } from "@/lib/center";
 import { settingUpdatedAt } from "@/lib/settings";
@@ -13,18 +13,18 @@ export default async function CenterPage() {
   const updated = settingUpdatedAt(CENTER_KEY);
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <PageHeader
-        title="Markaz ma'lumotlari"
-        text="Telefon, manzil, ish vaqti, ijtimoiy tarmoqlar va yuridik ma'lumotlar. Bu yerda o'zgartirilgan qiymat saytning hamma joyida (sahifa pastki qismi, Aloqa sahifasi, ariza formasi, Google uchun ma'lumotlar va llms.txt) birdaniga yangilanadi."
-        actions={
-          <a href="/uz/contact" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-brand underline-offset-4 hover:underline">
-            <ExternalLink size={16} aria-hidden />
-            Aloqa sahifasi
-          </a>
-        }
-      />
-      <p className="text-[13px] text-ink/60">{updated ? `Oxirgi o'zgartirish: ${formatDateTime(updated)}` : "Hozircha saytdagi standart ma'lumotlar ko'rsatilgan; saqlaganingizdan keyin shu yerdagi qiymatlar ishlaydi."}</p>
+    <PageShell
+      width="4xl"
+      title="Markaz ma'lumotlari"
+      text="O'zgartirilgan qiymat saytning hamma joyida yangilanadi."
+      actions={
+        <a href="/uz/contact" target="_blank" rel="noopener noreferrer" className={ghostButton}>
+          <ExternalLink size={16} aria-hidden />
+          Aloqa sahifasi
+        </a>
+      }
+    >
+      <p className="text-[13px] text-ink/60">{updated ? `Oxirgi o'zgartirish: ${formatDateTime(updated)}. ` : "Hozircha saytdagi standart ma'lumotlar ko'rsatilgan. "}Sahifa pastki qismi, Aloqa sahifasi, ariza formasi, Google uchun ma&apos;lumotlar va llms.txt shu yerdan yangilanadi.</p>
 
       <AdminForm action={saveCenterAction}>
         <FormSection title="Telefon raqamlar" hint="Birinchi raqam saytda asosiy (tugmalar, footer, ariza formasi) bo'lib chiqadi. Qolganlari Aloqa sahifasida va Google uchun ma'lumotlarda ko'rsatiladi.">
@@ -65,6 +65,6 @@ export default async function CenterPage() {
           <Field name="licenseDate" label="Litsenziya berilgan sana" type="date" defaultValue={c.licenseDate} required />
         </FormSection>
       </AdminForm>
-    </div>
+    </PageShell>
   );
 }

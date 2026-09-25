@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CircleCheck } from "lucide-react";
 import { AdminForm, Field, FormSection, SubmitButton } from "@/components/admin/form";
 import { LocaleFields } from "@/components/admin/locale-fields";
-import { PageHeader, Panel, ghostButton } from "@/components/admin/ui";
+import { PageShell, Panel, ghostButton } from "@/components/admin/ui";
 import { ARTICLE_LIMITS } from "@/lib/admin/validate-article";
 import { getArticleRow } from "@/lib/content/articles";
 import { CONTENT_LOCALES, LOCALE_NAMES } from "@/lib/content/shared";
@@ -21,12 +21,28 @@ export default async function ArticleEditPage({ params, searchParams }: { params
   const live = row?.status === "published";
 
   return (
-    <div className="max-w-3xl space-y-6">
-      <PageHeader
-        title={isNew ? "Yangi maqola" : "Maqolani tahrirlash"}
-        text="Avval qoralama sifatida saqlang, so'ng uch tilda to'ldirib chop eting. Faqat tekshirilgan, maktab tasdiqlagan ma'lumotlarni yozing: narx, natija va va'dalarni o'zingizdan qo'shmang."
-      />
-
+    <PageShell
+      width="3xl"
+      title={isNew ? "Yangi maqola" : "Maqolani tahrirlash"}
+      text="Avval qoralama saqlang, so'ng uch tilda to'ldirib chop eting."
+      actions={
+        <>
+          {row ? (
+            <div className="flex items-center gap-1.5">
+              <span className="text-[12px] font-semibold text-ink/60">Ko&apos;rib chiqish</span>
+              {CONTENT_LOCALES.map((l) => (
+                <Link key={l} href={`/admin/articles/${row.id}/preview/${l}`} target="_blank" title={LOCALE_NAMES[l]} className="admin-ghost inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-line px-3 text-[13px] font-bold uppercase transition-colors hover:bg-tint-a">
+                  {l}
+                </Link>
+              ))}
+            </div>
+          ) : null}
+          <Link href="/admin/articles" className={ghostButton}>
+            ← Ro&apos;yxatga qaytish
+          </Link>
+        </>
+      }
+    >
       {created ? (
         <p role="status" className="flex items-center gap-2 rounded-[12px] bg-tint-b px-4 py-3 text-[14px] font-semibold text-brand">
           <CircleCheck size={18} aria-hidden />
@@ -34,15 +50,9 @@ export default async function ArticleEditPage({ params, searchParams }: { params
         </p>
       ) : null}
 
-      {row ? (
-        <div className="flex flex-wrap gap-2">
-          {CONTENT_LOCALES.map((l) => (
-            <Link key={l} href={`/admin/articles/${row.id}/preview/${l}`} target="_blank" className={ghostButton}>
-              Ko&apos;rib chiqish · {LOCALE_NAMES[l]}
-            </Link>
-          ))}
-        </div>
-      ) : null}
+      <p className="text-[13px] leading-[1.6] text-ink/65">
+        Faqat tekshirilgan, maktab tasdiqlagan ma&apos;lumotlarni yozing: narx, natija va va&apos;dalarni o&apos;zingizdan qo&apos;shmang.
+      </p>
 
       <AdminForm
         action={saveArticleAction}
@@ -115,6 +125,6 @@ Oddiy matn. **Qalin**, *qiya*, [havola](https://…) yoki [ichki](/uz/admissions
 ---  (ajratuvchi chiziq)`}</pre>
         </Panel>
       </AdminForm>
-    </div>
+    </PageShell>
   );
 }

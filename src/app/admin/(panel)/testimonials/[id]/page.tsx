@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AdminForm, CheckboxField, Field, FormSection } from "@/components/admin/form";
 import { LocaleFields } from "@/components/admin/locale-fields";
-import { PageHeader } from "@/components/admin/ui";
+import { PageShell, ghostButton } from "@/components/admin/ui";
 import { getTestimonialRow } from "@/lib/content/testimonials";
 import { saveTestimonialAction } from "../actions";
 import { requirePanel } from "@/lib/admin/panel";
@@ -16,11 +16,16 @@ export default async function TestimonialEditPage({ params }: { params: Promise<
   if (!isNew && !row) notFound();
 
   return (
-    <div className="max-w-3xl space-y-6">
-      <PageHeader
-        title={isNew ? "Video qo'shish" : "Videoni tahrirlash"}
-        text="Videoning YouTube havolasini kiriting: rasmi (miniatyura) avtomatik olinadi. Video o'zbek tilida bo'lsa ham, matnlar uch tilda yoziladi."
-      />
+    <PageShell
+      width="3xl"
+      title={isNew ? "Video qo'shish" : "Videoni tahrirlash"}
+      text="YouTube havolasi yetarli: miniatyura avtomatik olinadi."
+      actions={
+        <Link href="/admin/testimonials" className={ghostButton}>
+          ← Ro&apos;yxatga qaytish
+        </Link>
+      }
+    >
       <AdminForm
         action={saveTestimonialAction}
         encType="multipart/form-data"
@@ -62,6 +67,6 @@ export default async function TestimonialEditPage({ params }: { params: Promise<
         />
         <CheckboxField name="published" label="Saytda ko'rsatilsin" defaultChecked={row ? row.published : true} />
       </AdminForm>
-    </div>
+    </PageShell>
   );
 }

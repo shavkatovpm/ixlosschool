@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { LogOut, GraduationCap, ArrowUpRight } from "lucide-react";
+import { LogOut, GraduationCap } from "lucide-react";
 import { AdminNav } from "@/components/admin/nav";
 import { requireAdmin } from "@/lib/admin/auth";
 import { logoutAction } from "../actions";
@@ -37,10 +37,6 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         </div>
       </aside>
       <main className="admin-main min-w-0">
-        <div className="admin-topline">
-          <span>Ixlos School <span className="mx-2 opacity-40">/</span> Boshqaruv paneli</span>
-          <a href="/uz" target="_blank" rel="noopener noreferrer">Saytni ko&apos;rish <ArrowUpRight size={15} aria-hidden /></a>
-        </div>
         {children}
       </main>
     </div>

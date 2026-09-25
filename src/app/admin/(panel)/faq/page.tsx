@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CircleCheck, ExternalLink, Plus } from "lucide-react";
 import { ListControls, StatusChip } from "@/components/admin/list-controls";
-import { Empty, PageHeader, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
+import { Empty, PageShell, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
 import { SubmitButton } from "@/components/admin/form";
 import { defaultFaq } from "@/lib/content/defaults";
 import { faqCustomized, listFaq } from "@/lib/content/faq";
@@ -18,25 +18,24 @@ export default async function FaqPage({ searchParams }: { searchParams: Promise<
   const shown = rows.filter((r) => r.published).length;
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <PageHeader
-        title="FAQ (savol-javob)"
-        text="Bosh sahifadagi «Savol-javob» bo'limi. Har savol uch tilda kiritiladi. Bu bo'lim Google va AI yordamchilari (ChatGPT, Gemini) uchun ham «FAQPage» ma'lumoti sifatida ishlatiladi."
-        actions={
-          customized ? (
-            <Link href="/admin/faq/new" className={primaryButton}>
-              <Plus size={16} aria-hidden />
-              Yangi savol
-            </Link>
-          ) : (
-            <a href="/uz#savol-javob" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-brand underline-offset-4 hover:underline">
-              <ExternalLink size={16} aria-hidden />
-              Saytda ko&apos;rish
-            </a>
-          )
-        }
-      />
-
+    <PageShell
+      width="4xl"
+      title="FAQ (savol-javob)"
+      text="Bosh sahifadagi savol-javob; Google va AI uchun ham xizmat qiladi."
+      actions={
+        customized ? (
+          <Link href="/admin/faq/new" className={primaryButton}>
+            <Plus size={16} aria-hidden />
+            Yangi savol
+          </Link>
+        ) : (
+          <a href="/uz#savol-javob" target="_blank" rel="noopener noreferrer" className={ghostButton}>
+            <ExternalLink size={16} aria-hidden />
+            Saytdagi bo&apos;lim
+          </a>
+        )
+      }
+    >
       {saved ? (
         <p role="status" className="flex items-center gap-2 rounded-[12px] bg-tint-b px-4 py-3 text-[14px] font-semibold text-brand">
           <CircleCheck size={18} aria-hidden />
@@ -90,6 +89,6 @@ export default async function FaqPage({ searchParams }: { searchParams: Promise<
           </a>
         </>
       )}
-    </div>
+    </PageShell>
   );
 }

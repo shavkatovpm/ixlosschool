@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CircleAlert, CircleCheck, ExternalLink, Eye, EyeOff, Pencil, Plus, Trash2 } from "lucide-react";
 import { ConfirmButton } from "@/components/admin/confirm-button";
-import { Empty, PageHeader, primaryButton } from "@/components/admin/ui";
+import { Empty, PageShell, primaryButton } from "@/components/admin/ui";
 import { formatDateTime } from "@/lib/admin/leads";
 import { listArticles } from "@/lib/content/articles";
 import { CONTENT_LOCALES } from "@/lib/content/shared";
@@ -17,18 +17,17 @@ export default async function ArticlesPage({ searchParams }: { searchParams: Pro
   const rows = listArticles();
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <PageHeader
-        title="Maqolalar"
-        text="Saytdagi blog. Maqola uch tilda yoziladi va qidiruv tizimlariga (Google, Yandex) hamda AI yordamchilariga avtomatik taqdim etiladi. Chop etilmagan maqola (qoralama) saytda ko'rinmaydi."
-        actions={
-          <Link href="/admin/articles/new" className={primaryButton}>
-            <Plus size={16} aria-hidden />
-            Yangi maqola
-          </Link>
-        }
-      />
-
+    <PageShell
+      width="4xl"
+      title="Maqolalar"
+      text="Blog: uch tilda yoziladi, qoralama saytda ko'rinmaydi."
+      actions={
+        <Link href="/admin/articles/new" className={primaryButton}>
+          <Plus size={16} aria-hidden />
+          Yangi maqola
+        </Link>
+      }
+    >
       {e === "incomplete" ? (
         <p role="alert" className="flex items-center gap-2 rounded-[12px] bg-danger-bg px-4 py-3 text-[14px] font-semibold text-danger">
           <CircleAlert size={18} aria-hidden />
@@ -93,6 +92,6 @@ export default async function ArticlesPage({ searchParams }: { searchParams: Pro
           })}
         </ul>
       )}
-    </div>
+    </PageShell>
   );
 }

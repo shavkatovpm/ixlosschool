@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CircleCheck, ExternalLink, Plus } from "lucide-react";
 import { SubmitButton } from "@/components/admin/form";
 import { ListControls, StatusChip } from "@/components/admin/list-controls";
-import { Empty, PageHeader, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
+import { Empty, PageShell, Panel, ghostButton, primaryButton } from "@/components/admin/ui";
 import { defaultTestimonials, listTestimonials, testimonialsCustomized } from "@/lib/content/testimonials";
 import { deleteTestimonialAction, moveTestimonialAction, startTestimonialsEditingAction, toggleTestimonialAction } from "./actions";
 import { requirePanel } from "@/lib/admin/panel";
@@ -15,20 +15,19 @@ export default async function TestimonialsPage({ searchParams }: { searchParams:
   const rows = listTestimonials();
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <PageHeader
-        title="O'quvchilar fikri"
-        text="Bosh sahifa va «Natijalar» sahifasidagi video fikrlar (YouTube). Har biri uch tilda tavsiflanadi; videolar Google'ga «VideoObject» ma'lumoti sifatida ham beriladi."
-        actions={
-          customized ? (
-            <Link href="/admin/testimonials/new" className={primaryButton}>
-              <Plus size={16} aria-hidden />
-              Video qo&apos;shish
-            </Link>
-          ) : null
-        }
-      />
-
+    <PageShell
+      width="4xl"
+      title="O'quvchilar fikri"
+      text="Bosh sahifa va «Natijalar»dagi video fikrlar (YouTube)."
+      actions={
+        customized ? (
+          <Link href="/admin/testimonials/new" className={primaryButton}>
+            <Plus size={16} aria-hidden />
+            Video qo&apos;shish
+          </Link>
+        ) : null
+      }
+    >
       {saved ? (
         <p role="status" className="flex items-center gap-2 rounded-[12px] bg-tint-b px-4 py-3 text-[14px] font-semibold text-brand">
           <CircleCheck size={18} aria-hidden />
@@ -84,6 +83,6 @@ export default async function TestimonialsPage({ searchParams }: { searchParams:
         <ExternalLink size={16} aria-hidden />
         Saytda ko&apos;rish
       </a>
-    </div>
+    </PageShell>
   );
 }

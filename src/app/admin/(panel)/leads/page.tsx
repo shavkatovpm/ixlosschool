@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Download, Phone } from "lucide-react";
-import { Chip, PageHeader, fieldClass, ghostButton, primaryButton } from "@/components/admin/ui";
+import { Chip, PageShell, fieldClass, ghostButton, primaryButton } from "@/components/admin/ui";
 import { DEVICE_LABEL, LOCALE_LABEL, sourceWithMedium } from "@/lib/admin/format";
 import { filterFrom } from "@/lib/admin/lead-filter";
 import { formatDateTime, leadGrades, leadSources, listLeads } from "@/lib/admin/leads";
@@ -30,18 +30,17 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
   };
 
   return (
-    <div className="max-w-5xl space-y-6">
-      <PageHeader
-        title="Leadlar"
-        text={`Saytdagi forma orqali kelgan arizalar arxivi va ular qayerdan kelgani. Arizalar bilan ishlash Telegram guruhida davom etadi.`}
-        actions={
-          <a href={`/admin/leads/export${query()}`} className={ghostButton}>
-            <Download size={16} aria-hidden />
-            CSV yuklash{filtered ? " (filtr bilan)" : ""}
-          </a>
-        }
-      />
-
+    <PageShell
+      width="5xl"
+      title="Leadlar"
+      text="Forma orqali kelgan arizalar va ularning manbasi."
+      actions={
+        <a href={`/admin/leads/export${query()}`} className={ghostButton}>
+          <Download size={16} aria-hidden />
+          CSV yuklash{filtered ? " (filtr bilan)" : ""}
+        </a>
+      }
+    >
       <form action="/admin/leads" className="grid gap-3 rounded-[22px] bg-surface p-5 sm:grid-cols-2 lg:grid-cols-6">
         <label className="text-[13px] font-semibold lg:col-span-2">
           Ism yoki telefon
@@ -150,6 +149,6 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
           {page < pages ? <Link href={`/admin/leads${query(page + 1)}`}>Keyingi →</Link> : <span />}
         </nav>
       ) : null}
-    </div>
+    </PageShell>
   );
 }

@@ -1,7 +1,7 @@
 import { CircleAlert, CircleCheck, Download } from "lucide-react";
 import { AdminForm, Field, FormSection } from "@/components/admin/form";
 import { ExcludeDevice } from "@/components/admin/exclude-device";
-import { PageHeader, Panel, ghostButton } from "@/components/admin/ui";
+import { PageShell, Panel, ghostButton } from "@/components/admin/ui";
 import { SubmitButton } from "@/components/admin/form";
 import { listBackups } from "@/lib/admin/backup";
 import { formatDateTime } from "@/lib/admin/leads";
@@ -29,8 +29,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
   const telegram = telegramConfigured();
 
   return (
-    <div className="max-w-4xl space-y-6">
-      <PageHeader title="Sozlamalar" text="Analitika kodlari, ariza bildirishnomalari, zaxira nusxalar va tizim holati." />
+    <PageShell width="4xl" title="Sozlamalar" text="Analitika kodlari, Telegram, zaxira nusxalar va tizim.">
 
       {notice ? (
         <p role="status" className={`flex items-center gap-2 rounded-[12px] px-4 py-3 text-[14px] font-semibold ${notice.error ? "bg-danger-bg text-danger" : "bg-tint-b text-brand"}`}>
@@ -117,6 +116,6 @@ export default async function SettingsPage({ searchParams }: { searchParams: Pro
           ))}
         </dl>
       </Panel>
-    </div>
+    </PageShell>
   );
 }
