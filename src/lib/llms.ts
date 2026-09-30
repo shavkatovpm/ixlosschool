@@ -53,11 +53,11 @@ Facts on this page come from the school's own materials.
 - Grades 5–9: in-depth Mathematics, English and Informatics.
 - Grades 10–11: Accounting or IT track with a professional diploma; international ACCA and SAT programmes; IELTS 5.5+ guaranteed to graduates.
 - Groups A / B / C by knowledge level, re-formed based on weekly exams. Extra Saturday classes for students who are falling behind (Mathematics and English in upper grades, core subjects in primary grades).
-- Five-day school week, Monday to Friday, 08:30–17:30. Three meals a day. School bus for students who live far away. School uniform.
+- Five-day school week, Monday to Friday, 08:30–17:00. Three meals a day. School bus for students who live far away. School uniform.
 - Eight free clubs included in tuition: Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football, Judo.
 - Payment: annual or monthly. Students with high quarterly results study on a monthly scholarship.
 - Location: ${c.address}. Phone ${c.phonesDisplay[0]}.
-- Full-day school: classes 08:30–17:30 Monday to Friday, three meals a day, free clubs after lessons, school bus for students who live far away.
+- Full-day school: classes 08:30–17:00 Monday to Friday, three meals a day, free clubs after lessons, school bus for students who live far away.
 - Grade 1 admission: like every grade, by a test in mathematics and English plus an interview with the school psychologist (pass mark at least 60).
 - Language: grades 1–4 have Uzbek- and Russian-medium groups. The school does not state the language of instruction for grades 5–11.
 - IT and programming: informatics is taught in depth in grades 5–9; grades 10–11 have an IT track with a professional diploma; a free IT and coding club runs after lessons.
@@ -72,7 +72,7 @@ Facts on this page come from the school's own materials.
 - Qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat orqali; o'tish bali — kamida 60.
 - Bitiruvchilarga IELTS 5.5+ kafolatlanadi, Buxgalteriya yoki IT bo'yicha kasbiy diplom beriladi.
 - A/B/C guruhlar har haftalik imtihon natijasiga ko'ra yangilanadi; shanba kunlari qo'shimcha darslar bor.
-- Dushanbadan jumagacha 08:30–17:30, kuniga 3 mahal ovqat, maktab avtobusi, 8 ta bepul to'garak.
+- Dushanbadan jumagacha 08:30–17:00, kuniga 3 mahal ovqat, maktab avtobusi, 8 ta bepul to'garak.
 - Manzil: ${c.address}. Tel: ${c.phonesDisplay[0]}.
 
 ## Основные факты (по-русски)
@@ -81,7 +81,7 @@ Facts on this page come from the school's own materials.
 - Приём по результатам теста по математике и английскому языку и собеседования с психологом; проходной балл — не менее 60.
 - Выпускникам гарантирован IELTS не ниже 5.5 и профессиональный диплом (Бухгалтерия или IT).
 - Группы A/B/C обновляются по итогам еженедельных экзаменов; по субботам проходят дополнительные занятия.
-- С понедельника по пятницу 08:30–17:30, трёхразовое питание, школьный автобус, 8 бесплатных кружков.
+- С понедельника по пятницу 08:30–17:00, трёхразовое питание, школьный автобус, 8 бесплатных кружков.
 - Адрес: ${c.address}. Тел: ${c.phonesDisplay[0]}.
 ${blog}
 `;

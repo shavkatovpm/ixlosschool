@@ -123,7 +123,7 @@
       },
       {
         "title": "Full day & safety",
-        "description": "Classes run 8:30 AM–5:30 PM with three daily meals, a school bus, and a high standard of security — peace of mind for parents."
+        "description": "Classes run 8:30 AM–5:00 PM with three daily meals, a school bus, and a high standard of security — peace of mind for parents."
       }
     ]
   },
@@ -218,8 +218,8 @@
     },
     "prev": "Previous teacher",
     "next": "Next teacher",
-    "badge": "{count, plural, one {# teacher} other {# teachers}} — up to {years, plural, one {# year} other {# years}} of experience",
-    "badgeCount": "{count, plural, one {# teacher} other {# teachers}}"
+    "badge": "Around {count} teachers — up to {years, plural, one {# year} other {# years}} of experience",
+    "badgeCount": "Around {count} teachers"
   },
   "results": {
     "titleA": "Results our students",
@@ -272,6 +272,11 @@
         "chip": "University grants",
         "title": "Student who won grants from several universities",
         "description": "Our student, who won grants from several universities, shares their view."
+      },
+      "trust": {
+        "chip": "Trust",
+        "title": "Trust your child's education to Ixlos School",
+        "description": "Why parents trust Ixlos School with their children's education."
       }
     }
   },
@@ -282,7 +287,7 @@
     "line1": "Gain knowledge.",
     "line2": "Make friends.",
     "line3": "Discover yourself.",
-    "hours": "8:30 AM — 5:30 PM / MONDAY — FRIDAY",
+    "hours": "8:30 AM — 5:00 PM / MONDAY — FRIDAY",
     "note": "A school bus for students commuting from afar, a high standard of security on campus, and a designated school uniform.",
     "cells": [
       {
@@ -298,7 +303,7 @@
         "label": "Free clubs"
       },
       {
-        "value": "17:30",
+        "value": "17:00",
         "label": "Classes end"
       }
     ]
@@ -331,7 +336,7 @@
       },
       {
         "question": "Is it a full-day school? Meals, transport and daily schedule",
-        "answer": "Yes. Classes run Monday to Friday from 08:30 to 17:30. Students have three meals a day — breakfast, lunch and an afternoon snack — from a specially prepared menu, attend free clubs after the main lessons, and a school bus serves students who live far away. Students wear the designated school uniform."
+        "answer": "Yes. Classes run Monday to Friday from 08:30 to 17:00. Students have three meals a day — breakfast, lunch and an afternoon snack — from a specially prepared menu, attend free clubs after the main lessons, and a school bus serves students who live far away. Students wear the designated school uniform."
       },
       {
         "question": "Are mathematics and English taught in depth?",
@@ -456,7 +461,7 @@
         },
         {
           "title": "Daily schedule and facilities",
-          "text": "Classes run Monday to Friday, 8:30 AM–5:30 PM. Three meals a day, a school bus for students commuting from afar, a high standard of security, and a school uniform. All clubs are free."
+          "text": "Classes run Monday to Friday, 8:30 AM–5:00 PM. Three meals a day, a school bus for students commuting from afar, a high standard of security, and a school uniform. All clubs are free."
         }
       ],
       "formHint": "Leave an application to learn about admission dates, the list of documents and tuition — the school will contact you.",
@@ -528,7 +533,7 @@
         },
         {
           "label": "Schedule",
-          "value": "Monday to Friday, 08:30–17:30 (five-day week); Saturday catch-up classes for students who fall behind."
+          "value": "Monday to Friday, 08:30–17:00 (five-day week); Saturday catch-up classes for students who fall behind."
         },
         {
           "label": "Meals",

@@ -2,6 +2,11 @@
 // Only facts the school gave us are stored here; nothing is inferred.
 // Text that differs per language (institution names, labels) lives in messages/*.json.
 
+// The school's total teaching staff (as stated by the school's leadership), used only for the marquee's
+// "~N ustoz" headline. It is independent of how many teachers have a published profile below: the profiled
+// list is shorter than the real staff, so this is never computed from the array's length.
+export const TEACHER_COUNT_APPROX = 40;
+
 export type InstitutionKey =
   | "umft"
   | "jahonTillari"

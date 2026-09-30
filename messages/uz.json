@@ -123,7 +123,7 @@
       },
       {
         "title": "To'liq kun va xavfsizlik",
-        "description": "08:30–17:30 dars jarayoni, kuniga 3 mahal ovqat, maktab avtobusi va yuqori xavfsizlik — ota-onalar xotirjam."
+        "description": "08:30–17:00 dars jarayoni, kuniga 3 mahal ovqat, maktab avtobusi va yuqori xavfsizlik — ota-onalar xotirjam."
       }
     ]
   },
@@ -218,8 +218,8 @@
     },
     "prev": "Oldingi ustoz",
     "next": "Keyingi ustoz",
-    "badge": "{count} ustoz — {years} yilgacha tajriba",
-    "badgeCount": "{count} ustoz"
+    "badge": "{count} ga yaqin ustoz — {years} yilgacha tajriba",
+    "badgeCount": "{count} ga yaqin ustoz"
   },
   "results": {
     "titleA": "O'quvchilarimiz erishgan",
@@ -272,6 +272,11 @@
         "chip": "Universitet granti",
         "title": "Bir necha universitetdan grant yutgan o'quvchi",
         "description": "Bir necha universitetdan grant yutgan o'quvchimiz o'z fikrini bildiradi."
+      },
+      "trust": {
+        "chip": "Ishonch",
+        "title": "Farzandingiz bilim olishini Ixlos School'ga ishoning",
+        "description": "Ota-onalarimiz nega farzandlarining ta'limini Ixlos School'ga ishonib topshirishgani haqida."
       }
     }
   },
@@ -282,7 +287,7 @@
     "line1": "Bilim olish.",
     "line2": "Do'st orttirish.",
     "line3": "O'zini kashf etish.",
-    "hours": "08:30 — 17:30 / DUSHANBA — JUMA",
+    "hours": "08:30 — 17:00 / DUSHANBA — JUMA",
     "note": "Uzoqdan qatnovchi o'quvchilar uchun maktab avtobusi, maktab hududida yuqori xavfsizlik va belgilangan maktab formasi.",
     "cells": [
       {
@@ -298,7 +303,7 @@
         "label": "Bepul to'garak"
       },
       {
-        "value": "17:30",
+        "value": "17:00",
         "label": "Darslar yakunlanadi"
       }
     ]
@@ -331,7 +336,7 @@
       },
       {
         "question": "To'liq kunlik maktabmi? Ovqat, avtobus va kun tartibi qanday?",
-        "answer": "Ha. Darslar dushanbadan jumagacha 08:30 dan 17:30 gacha davom etadi. O'quvchilar kuniga 3 mahal — nonushta, tushlik va ikkinchi tushlik — maxsus taomnoma asosida ovqatlanadi, asosiy darslardan keyin bepul to'garaklarga qatnashadi; uzoqdan qatnovchilar uchun maktab avtobusi bor. O'quvchilar belgilangan maktab formasida o'qiydi."
+        "answer": "Ha. Darslar dushanbadan jumagacha 08:30 dan 17:00 gacha davom etadi. O'quvchilar kuniga 3 mahal — nonushta, tushlik va ikkinchi tushlik — maxsus taomnoma asosida ovqatlanadi, asosiy darslardan keyin bepul to'garaklarga qatnashadi; uzoqdan qatnovchilar uchun maktab avtobusi bor. O'quvchilar belgilangan maktab formasida o'qiydi."
       },
       {
         "question": "Matematika va ingliz tili chuqurlashtirib o'qitiladimi?",
@@ -456,7 +461,7 @@
         },
         {
           "title": "Kun tartibi va qulayliklar",
-          "text": "Darslar dushanbadan jumagacha 08:30–17:30. Kuniga 3 mahal ovqat, uzoqdan qatnovchilar uchun maktab avtobusi, yuqori xavfsizlik va maxsus maktab formasi. Barcha to'garaklar bepul."
+          "text": "Darslar dushanbadan jumagacha 08:30–17:00. Kuniga 3 mahal ovqat, uzoqdan qatnovchilar uchun maktab avtobusi, yuqori xavfsizlik va maxsus maktab formasi. Barcha to'garaklar bepul."
         }
       ],
       "formHint": "Qabul muddati, hujjatlar ro'yxati va to'lov summasi haqida ma'lumot olish uchun ariza qoldiring — maktab siz bilan bog'lanadi.",
@@ -528,7 +533,7 @@
         },
         {
           "label": "Dars jadvali",
-          "value": "Dushanbadan jumagacha, 08:30–17:30 (5 kunlik hafta); orqada qolayotgan o'quvchilar uchun shanba kuni qo'shimcha darslar."
+          "value": "Dushanbadan jumagacha, 08:30–17:00 (5 kunlik hafta); orqada qolayotgan o'quvchilar uchun shanba kuni qo'shimcha darslar."
         },
         {
           "label": "Ovqatlanish",

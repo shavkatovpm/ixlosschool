@@ -3,6 +3,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { ContentLocale } from "@/lib/content/shared";
 import { publicTeachers } from "@/lib/content/teachers";
+import { TEACHER_COUNT_APPROX } from "@/lib/teachers";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 import { TeacherSlide } from "./teacher-slide";
@@ -16,7 +17,7 @@ export function TeachersPreview() {
   const teachers = publicTeachers(useLocale() as ContentLocale);
   if (teachers.length === 0) return null;
   const years = Math.max(0, ...teachers.map((teacher) => teacher.experienceYears ?? 0));
-  const badge = years > 0 ? t("badge", { count: teachers.length, years }) : t("badgeCount", { count: teachers.length });
+  const badge = years > 0 ? t("badge", { count: TEACHER_COUNT_APPROX, years }) : t("badgeCount", { count: TEACHER_COUNT_APPROX });
 
   const cards = (hidden: boolean) =>
     teachers.map((teacher) => <TeacherSlide key={teacher.slug} teacher={teacher} hidden={hidden} />);

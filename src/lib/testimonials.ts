@@ -7,6 +7,7 @@ export const testimonialVideos = [
   { key: "america", id: "-3utIFjs5cY", thumb: "/testimonials/testimonial-3-america-winner.jpg", uploadDate: "2026-09-22T15:26:22+00:00" },
   { key: "ielts", id: "i-N4LjJ31tQ", thumb: "/testimonials/testimonial-4-ielts-8.jpg", uploadDate: "2026-09-22T15:23:39+00:00" },
   { key: "grant", id: "NJJy5QrlaaM", thumb: "/testimonials/testimonial-5-university-grant.jpg", uploadDate: "2026-09-22T15:23:27+00:00" },
+  { key: "trust", id: "hAeJHjzYApQ", thumb: "/testimonials/testimonial-6-trust.jpg", uploadDate: "2026-09-24T13:18:09+00:00" },
 ] as const;
 
 export type TestimonialKey = (typeof testimonialVideos)[number]["key"];
