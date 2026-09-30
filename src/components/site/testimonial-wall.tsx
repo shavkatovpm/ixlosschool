@@ -81,10 +81,10 @@ export function TestimonialWall({ items, labels, locale }: { items: WallItem[]; 
         <div role="region" aria-label={labels.region} className="mt-12 sm:mt-14">
           <ul
             ref={railRef}
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-[clamp(20px,4.5vw,56px)] px-[clamp(20px,4.5vw,56px)] pb-3 [scrollbar-width:none] sm:gap-5 xl:mx-auto xl:grid xl:max-w-[1480px] xl:grid-cols-5 xl:gap-6 xl:overflow-visible xl:pb-0 [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-px-[clamp(20px,4.5vw,56px)] px-[clamp(20px,4.5vw,56px)] pb-3 [scrollbar-width:none] sm:gap-5 lg:mx-auto lg:grid lg:w-full lg:max-w-[1040px] lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden"
           >
             {items.map((item, i) => (
-              <li key={item.id} className="w-[min(64vw,250px)] shrink-0 snap-start xl:w-auto xl:min-w-0">
+              <li key={item.id} className="w-[min(64vw,250px)] shrink-0 snap-start lg:w-auto lg:min-w-0">
                 <button
                   type="button"
                   aria-haspopup="dialog"
@@ -99,7 +99,7 @@ export function TestimonialWall({ items, labels, locale }: { items: WallItem[]; 
                       fill
                       unoptimized={item.thumb.startsWith("/media/")}
                       draggable={false}
-                      sizes="(min-width: 1280px) 260px, (min-width: 640px) 250px, 64vw"
+                      sizes="(min-width: 1024px) 330px, (min-width: 640px) 250px, 64vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     />
                     <span
@@ -119,7 +119,7 @@ export function TestimonialWall({ items, labels, locale }: { items: WallItem[]; 
           </ul>
         </div>
 
-        <div className="wrap mt-6 hidden justify-end gap-2 md:flex xl:hidden">
+        <div className="wrap mt-6 hidden justify-end gap-2 md:flex lg:hidden">
           <button type="button" aria-label={labels.prev} onClick={() => scrollRail(-1)} className={railArrow}>
             <ChevronLeft size={20} aria-hidden />
           </button>
