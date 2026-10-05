@@ -24,6 +24,17 @@ export const PAGE_LABEL: Record<string, string> = {
   "/teachers": "Ustozlar",
   "/results": "Natijalar",
   "/contact": "Aloqa",
+  "/blog": "Blog",
+  "/programs/it": "IT yo'nalishi",
+  "/programs/finance": "Buxgalteriya va moliya",
+  "/clubs": "To'garaklar",
+  "/clubs/mental-arithmetic": "To'garak: mental arifmetika",
+  "/clubs/chess": "To'garak: shaxmat",
+  "/clubs/arabic": "To'garak: arab tili",
+  "/clubs/robotics": "To'garak: robototexnika",
+  "/clubs/speech-therapy": "To'garak: logoped",
+  "/clubs/football": "To'garak: futbol",
+  "/clubs/judo": "To'garak: dzyudo",
 };
 export const pageLabel = (path: string) => PAGE_LABEL[path] ?? path;
 

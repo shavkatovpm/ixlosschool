@@ -560,6 +560,836 @@
       "legalValue": "Ixlos School \"{orgName}\" nodavlat ta'lim muassasasi (NTM) litsenziyasi asosida faoliyat yuritadi. STIR: {taxId}.",
       "licenseLabel": "Litsenziya",
       "licenseValue": "№{number}, {date} dan muddatsiz. Faoliyat turi: umumiy o'rta ta'lim xizmatlari (1–11-sinf). Beruvchi: O'zbekiston Respublikasi Maktabgacha va maktab ta'limi vazirligi."
+    },
+    "topic": {
+      "addressLabel": "Manzil",
+      "teacherLabel": "Ustoz",
+      "teachersLink": "Barcha ustozlar",
+      "faqLabel": "Savol-javob",
+      "relatedLabel": "Yana ko'ring",
+      "relatedTitleA": "Boshqa yo'nalishlar va",
+      "relatedTitleEm": "to'garaklar.",
+      "programsLabel": "Yo'nalishlar",
+      "clubsLabel": "To'garaklar",
+      "allClubs": "Barcha to'garaklar",
+      "moreHint": "Qabul tartibi va to'lov haqida batafsil:",
+      "admissionsLink": "Qabul sahifasi",
+      "resultsHint": "O'quvchilarning IELTS va SAT natijalari, sertifikatlari bilan:",
+      "resultsLink": "Natijalar sahifasi"
+    },
+    "topics": {
+      "it": {
+        "metaTitle": "Toshkentda IT yo'nalishli xususiy maktab | Ixlos School",
+        "metaDescription": "Toshkent, Yunusoboddagi xususiy maktab: 5–9-sinfda informatika chuqurlashtirilgan, 10–11-sinfda IT yo'nalishi va mutaxassislik diplomi, bepul IT to'garaklari.",
+        "eyebrow": "IT yo'nalishi",
+        "name": "IT va dasturlash",
+        "h1": "IT va dasturlashga ixtisoslashgan xususiy maktab, Toshkent",
+        "lead": "Ixlos School — Toshkentning Yunusobod tumanidagi Moliya va IT yo'nalishiga ixtisoslashgan xususiy maktab (1–11-sinf). 5–9-sinflarda informatika chuqurlashtirilgan tarzda o'qitiladi, 10–11-sinflarda IT yo'nalishi bor va bitiruvchi shahodatnoma bilan birga mutaxassislik diplomini oladi. Darsdan keyin bepul IT va dasturlash hamda robototexnika to'garaklari ishlaydi.",
+        "sectionLabel": "Sinflar bo'yicha",
+        "titleA": "Informatikadan",
+        "titleEm": "IT diplomigacha.",
+        "cards": [
+          {
+            "tag": "5–9-sinf",
+            "title": "Informatika chuqurlashtirilgan",
+            "text": "5–9-sinflarda informatika matematika va ingliz tili bilan birga chuqurlashtirilgan tarzda o'qitiladi. O'quvchilar bilim darajasiga ko'ra A, B, C guruhlarda o'qiydi, guruhlar har haftalik imtihon natijasiga qarab yangilanadi."
+          },
+          {
+            "tag": "10–11-sinf",
+            "title": "IT yo'nalishi",
+            "text": "10–11-sinflarda maktabda ikki kasbiy yo'nalish bor: Buxgalteriya va IT. IT yo'nalishi bitiruvchisiga shahodatnoma bilan birga IT bo'yicha mutaxassislik diplomi beriladi."
+          },
+          {
+            "tag": "Darsdan keyin",
+            "title": "IT va robototexnika to'garaklari",
+            "text": "Asosiy darslardan keyin IT va dasturlash hamda robototexnika to'garaklari ishlaydi. Ikkalasi ham bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "tag": "Bitiruvchiga",
+            "title": "Diplom va ingliz tili",
+            "text": "Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi. Maktabda xalqaro SAT dasturi ham o'qitiladi, shuning uchun IT bilan birga til va oliygohga tayyorgarlik ham yonma-yon boradi."
+          }
+        ],
+        "factsTitle": "IT yo'nalishi bir qarashda",
+        "facts": [
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "5–9-sinf",
+            "value": "Informatika, matematika va ingliz tili chuqurlashtirilgan tarzda o'qitiladi."
+          },
+          {
+            "label": "10–11-sinf",
+            "value": "IT yo'nalishi (ikkinchi yo'nalish: Buxgalteriya)."
+          },
+          {
+            "label": "Diplom",
+            "value": "Shahodatnoma bilan birga IT bo'yicha mutaxassislik diplomi."
+          },
+          {
+            "label": "To'garaklar",
+            "value": "IT va dasturlash, robototexnika: bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Guruhlar",
+            "value": "Bilim darajasiga ko'ra A, B, C; har haftalik imtihon natijasiga ko'ra yangilanadi."
+          },
+          {
+            "label": "Ingliz tili",
+            "value": "Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          }
+        ],
+        "teacherTitleA": "Robototexnika",
+        "teacherTitleEm": "ustozi.",
+        "teacherText": "Robototexnika ustozining ta'limi, sertifikati va ish staji. Boshqa ustozlar haqidagi ma'lumot alohida sahifada jamlangan.",
+        "faqTitleA": "IT yo'nalishi haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Ixlos School IT maktabimi?",
+            "answer": "Ixlos School — Moliya va IT yo'nalishiga ixtisoslashgan xususiy umumta'lim maktabi (1–11-sinf). U faqat dasturlash o'rgatadigan kurs yoki akademiya emas: o'quvchilar umumiy o'rta ta'limni to'liq oladi, IT esa 5–9-sinflarda chuqurlashtirilgan informatika, 10–11-sinflarda alohida yo'nalish sifatida o'qitiladi."
+          },
+          {
+            "question": "Informatika nechanchi sinfdan chuqurlashtirib o'qitiladi?",
+            "answer": "5-sinfdan 9-sinfgacha. Shu sinflarda informatika bilan birga matematika va ingliz tili ham chuqurlashtirilgan tarzda o'qitiladi."
+          },
+          {
+            "question": "10–11-sinfdagi IT yo'nalishini bitirgan o'quvchi nima oladi?",
+            "answer": "Shahodatnoma bilan birga IT bo'yicha mutaxassislik diplomini oladi. Bundan tashqari, bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+          },
+          {
+            "question": "IT va robototexnika to'garaklari pullikmi?",
+            "answer": "Yo'q. IT va dasturlash hamda robototexnika to'garaklari, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan. Ular asosiy darslardan keyin o'tadi."
+          },
+          {
+            "question": "IT bilan birga matematika va ingliz tili qanday o'qitiladi?",
+            "answer": "5–9-sinflarda matematika va ingliz tili ham chuqurlashtirilgan. Orqada qolayotgan o'quvchilar uchun shanba kunlari qo'shimcha darslar o'tkaziladi: yuqori sinflarda matematika va ingliz tilidan."
+          },
+          {
+            "question": "IT yo'nalishiga qanday qabul qilinadi?",
+            "answer": "Qabul tartibi barcha sinflar uchun bir xil: matematika va ingliz tilidan test hamda psixolog bilan suhbat, o'tish bali — kamida 60. Boshlash uchun shu sahifada ariza qoldiring."
+          }
+        ],
+        "courseName": "IT yo'nalishi (10–11-sinf)",
+        "courseDescription": "IT bo'yicha kasbiy ta'lim; bitiruvchiga shahodatnoma bilan birga mutaxassislik diplomi beriladi. 5–9-sinflarda informatika chuqurlashtirilgan tarzda o'qitiladi."
+      },
+      "finance": {
+        "metaTitle": "Toshkentda buxgalteriya yo'nalishli maktab | Ixlos School",
+        "metaDescription": "Toshkent, Yunusoboddagi xususiy maktab: 10–11-sinfda Buxgalteriya yo'nalishi, xalqaro ACCA dasturi va mutaxassislik diplomi. Asoschi — ACCA diplomli moliyachi.",
+        "eyebrow": "Buxgalteriya va moliya",
+        "name": "Buxgalteriya va moliya",
+        "h1": "Buxgalteriya va moliyaga ixtisoslashgan xususiy maktab, Toshkent",
+        "lead": "Ixlos School — Toshkentning Yunusobod tumanidagi Moliya va IT yo'nalishiga ixtisoslashgan xususiy maktab (1–11-sinf). 10–11-sinflarda Buxgalteriya yo'nalishi va xalqaro ACCA dasturi o'qitiladi, bitiruvchi shahodatnoma bilan birga mutaxassislik diplomini oladi. Maktab asoschisi va direktori — xalqaro toifadagi moliyachi, buxgalter va auditor.",
+        "sectionLabel": "Sinflar bo'yicha",
+        "titleA": "Matematikadan",
+        "titleEm": "buxgalter diplomigacha.",
+        "cards": [
+          {
+            "tag": "5–9-sinf",
+            "title": "Matematika chuqurlashtirilgan",
+            "text": "5–9-sinflarda matematika, ingliz tili va informatika chuqurlashtirilgan tarzda o'qitiladi. O'quvchilar bilim darajasiga ko'ra A, B, C guruhlarda o'qiydi, guruhlar har haftalik imtihon natijasiga qarab yangilanadi."
+          },
+          {
+            "tag": "10–11-sinf",
+            "title": "Buxgalteriya yo'nalishi",
+            "text": "10–11-sinflarda maktabda ikki kasbiy yo'nalish bor: Buxgalteriya va IT. Buxgalteriya yo'nalishi bitiruvchisiga shahodatnoma bilan birga mutaxassislik diplomi beriladi."
+          },
+          {
+            "tag": "Xalqaro dasturlar",
+            "title": "ACCA va SAT",
+            "text": "10–11-sinflarda xalqaro ACCA va SAT dasturlari ham o'qitiladi. ACCA — buxgalter va moliyachilar uchun xalqaro kasbiy malaka."
+          },
+          {
+            "tag": "Rahbariyat",
+            "title": "Asoschi — moliyachi va auditor",
+            "text": "Maktab asoschisi va direktori Maxsuma Axrarovna Ashirmetova — xalqaro toifadagi moliyachi, buxgalter va auditor, ABCO Xalqaro moliya akademiyasi asoschisi. U Xalqaro moliyaviy hisobot bo'yicha ACCA diplomi va F1–F9 darajalari sohibasi."
+          }
+        ],
+        "factsTitle": "Buxgalteriya yo'nalishi bir qarashda",
+        "facts": [
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "10–11-sinf",
+            "value": "Buxgalteriya yo'nalishi (ikkinchi yo'nalish: IT)."
+          },
+          {
+            "label": "Xalqaro dasturlar",
+            "value": "ACCA va SAT."
+          },
+          {
+            "label": "Diplom",
+            "value": "Shahodatnoma bilan birga Buxgalteriya bo'yicha mutaxassislik diplomi."
+          },
+          {
+            "label": "5–9-sinf",
+            "value": "Matematika, ingliz tili va informatika chuqurlashtirilgan tarzda o'qitiladi."
+          },
+          {
+            "label": "Guruhlar",
+            "value": "Bilim darajasiga ko'ra A, B, C; har haftalik imtihon natijasiga ko'ra yangilanadi."
+          },
+          {
+            "label": "Ingliz tili",
+            "value": "Bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          }
+        ],
+        "teacherTitleA": "ACCA",
+        "teacherTitleEm": "ustozi.",
+        "teacherText": "ACCA ustozining ta'limi, topshirgan ACCA imtihonlari va ish staji. Boshqa ustozlar haqidagi ma'lumot alohida sahifada jamlangan.",
+        "faqTitleA": "Buxgalteriya yo'nalishi haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Ixlos School moliya maktabimi?",
+            "answer": "Ixlos School — Moliya va IT yo'nalishiga ixtisoslashgan xususiy umumta'lim maktabi (1–11-sinf). U buxgalteriya kursi emas: o'quvchilar umumiy o'rta ta'limni to'liq oladi, 10–11-sinflarda esa Buxgalteriya yo'nalishi va xalqaro ACCA dasturi o'qitiladi."
+          },
+          {
+            "question": "Buxgalteriya yo'nalishi nechanchi sinfdan boshlanadi?",
+            "answer": "10-sinfdan. 10–11-sinflarda maktabda ikki kasbiy yo'nalish bor: Buxgalteriya va IT. Undan oldin, 5–9-sinflarda, matematika, ingliz tili va informatika chuqurlashtirilgan tarzda o'qitiladi."
+          },
+          {
+            "question": "Maktabda ACCA o'qitiladimi?",
+            "answer": "Ha. 10–11-sinflarda xalqaro ACCA dasturi o'qitiladi. ACCA — buxgalter va moliyachilar uchun xalqaro kasbiy malaka. Maktab asoschisi Xalqaro moliyaviy hisobot bo'yicha ACCA diplomi va F1–F9 darajalari sohibasi."
+          },
+          {
+            "question": "Buxgalteriya yo'nalishini bitirgan o'quvchi nima oladi?",
+            "answer": "Shahodatnoma bilan birga Buxgalteriya bo'yicha mutaxassislik diplomini oladi. Bundan tashqari, bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+          },
+          {
+            "question": "Buxgalteriya o'rniga IT yo'nalishida o'qish mumkinmi?",
+            "answer": "Ha. 10–11-sinflarda ikki yo'nalish bor: Buxgalteriya va IT; IT yo'nalishi bitiruvchisiga ham mutaxassislik diplomi beriladi."
+          },
+          {
+            "question": "Buxgalteriya yo'nalishiga qanday qabul qilinadi?",
+            "answer": "Qabul tartibi barcha sinflar uchun bir xil: matematika va ingliz tilidan test hamda psixolog bilan suhbat, o'tish bali — kamida 60. Boshlash uchun shu sahifada ariza qoldiring."
+          }
+        ],
+        "courseName": "Buxgalteriya yo'nalishi (10–11-sinf)",
+        "courseDescription": "Buxgalteriya bo'yicha kasbiy ta'lim; xalqaro ACCA va SAT dasturlari ham o'qitiladi, bitiruvchiga shahodatnoma bilan birga mutaxassislik diplomi beriladi."
+      },
+      "football": {
+        "metaTitle": "Futbol to'garagi bor xususiy maktab, Toshkent | Ixlos School",
+        "metaDescription": "Ixlos School'da futbol to'garagi bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Futbol",
+        "name": "Futbol",
+        "h1": "Futbol to'garagi bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi futbol to'garagi maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Darsdan keyin",
+        "titleEm": "futbol.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Futbol to'garagi",
+            "text": "Futbol — jamoaviy sport o'yini. Ixlos School'da u o'quvchilar tanlashi mumkin bo'lgan ikki sport to'garagidan biri (ikkinchisi — dzyudo)."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Futbol: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Futbol (football): sport to'garagi."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "faqTitleA": "Futbol to'garagi haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Ixlos School futbol maktabimi?",
+            "answer": "Yo'q. Ixlos School — Moliya va IT yo'nalishiga ixtisoslashgan xususiy umumta'lim maktabi (1–11-sinf). Futbol bu yerda asosiy darslardan keyingi bepul to'garak sifatida o'tadi; maktab professional futbol akademiyasi emas."
+          },
+          {
+            "question": "Futbol to'garagi pullikmi?",
+            "answer": "Yo'q. Futbol to'garagi, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Futbol to'garagiga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Futbol to'garagi qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      },
+      "chess": {
+        "metaTitle": "Toshkentda shaxmat to'garagi bor maktab | Ixlos School",
+        "metaDescription": "Ixlos School'da shaxmat to'garagi bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Shaxmat",
+        "name": "Shaxmat",
+        "h1": "Shaxmat to'garagi bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi shaxmat to'garagi maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Darsdan keyin",
+        "titleEm": "shaxmat.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Shaxmat to'garagi",
+            "text": "Shaxmat — ikki kishi o'ynaydigan mantiqiy stol o'yini: har bir yurishni oldindan o'ylash va reja tuzishni talab qiladi. Ixlos School'da u bepul to'garaklardan biri."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Shaxmat: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Shaxmat: mantiqiy o'yin to'garagi."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "faqTitleA": "Shaxmat to'garagi haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Ixlos School shaxmat maktabimi?",
+            "answer": "Yo'q. Ixlos School — Moliya va IT yo'nalishiga ixtisoslashgan xususiy umumta'lim maktabi (1–11-sinf). Shaxmat bu yerda asosiy darslardan keyingi bepul to'garak; maktab ixtisoslashgan shaxmat maktabi emas."
+          },
+          {
+            "question": "Shaxmat to'garagi pullikmi?",
+            "answer": "Yo'q. Shaxmat to'garagi, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Shaxmat to'garagiga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Shaxmat to'garagi qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      },
+      "speechTherapy": {
+        "metaTitle": "Logopedi bor xususiy maktab, Toshkent | Ixlos School",
+        "metaDescription": "Ixlos School'da logoped mashg'ulotlari bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Logoped",
+        "name": "Logoped",
+        "h1": "Logoped mashg'ulotlari bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi logoped mashg'ulotlari maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Maktabning o'zida",
+        "titleEm": "logoped.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Logoped kim?",
+            "text": "Logoped — nutq va talaffuzdagi qiyinchiliklar bilan ishlaydigan mutaxassis. Ixlos School'da logoped mashg'ulotlari bepul to'garaklar qatorida o'tadi."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Logoped: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Logoped: nutq bo'yicha mashg'ulotlar."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "faqTitleA": "Logoped haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Ixlos School logopedik maktabmi?",
+            "answer": "Yo'q. Ixlos School — Moliya va IT yo'nalishiga ixtisoslashgan xususiy umumta'lim maktabi (1–11-sinf). Logoped mashg'ulotlari bu yerda bepul to'garaklar qatorida o'tadi; maktab tibbiy muassasa yoki ixtisoslashgan nutq maktabi emas. Farzandingiz nutqi bo'yicha savolingiz bo'lsa, ariza qoldiring: qabul bo'limi mashg'ulotlar haqida ma'lumot beradi."
+          },
+          {
+            "question": "Logoped mashg'ulotlari pullikmi?",
+            "answer": "Yo'q. Logoped mashg'ulotlari, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Logoped mashg'ulotlariga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Logoped mashg'ulotlari qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      },
+      "judo": {
+        "metaTitle": "Dzyudo to'garagi bor xususiy maktab, Toshkent | Ixlos School",
+        "metaDescription": "Ixlos School'da dzyudo to'garagi bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Dzyudo",
+        "name": "Dzyudo",
+        "h1": "Dzyudo to'garagi bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi dzyudo to'garagi maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Darsdan keyin",
+        "titleEm": "dzyudo.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Dzyudo to'garagi",
+            "text": "Dzyudo — Yaponiyada paydo bo'lgan yakkakurash turi, olimpiya sport turi. Ixlos School'da u o'quvchilar tanlashi mumkin bo'lgan ikki sport to'garagidan biri (ikkinchisi — futbol)."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Dzyudo: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Dzyudo: sport to'garagi (yakkakurash)."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "faqTitleA": "Dzyudo to'garagi haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Ixlos School sport maktabimi?",
+            "answer": "Yo'q. Ixlos School — Moliya va IT yo'nalishiga ixtisoslashgan xususiy umumta'lim maktabi (1–11-sinf). Dzyudo bu yerda asosiy darslardan keyingi bepul to'garak; maktab sport maktabi emas."
+          },
+          {
+            "question": "Dzyudo to'garagi pullikmi?",
+            "answer": "Yo'q. Dzyudo to'garagi, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Dzyudo to'garagiga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Dzyudo to'garagi qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      },
+      "robotics": {
+        "metaTitle": "Toshkentda robototexnika to'garagi bor maktab | Ixlos School",
+        "metaDescription": "Ixlos School'da robototexnika to'garagi bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Robototexnika",
+        "name": "Robototexnika",
+        "h1": "Robototexnika to'garagi bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi robototexnika to'garagi maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Darsdan keyin",
+        "titleEm": "robototexnika.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Robototexnika to'garagi",
+            "text": "Robototexnika — robotlarni loyihalash, yig'ish va dasturlash bilan shug'ullanadigan soha. Ixlos School'da u bepul to'garak; maktabda bundan tashqari IT va dasturlash to'garagi va 10–11-sinflarda IT yo'nalishi bor."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Robototexnika: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Robototexnika: texnik to'garak."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "teacherTitleA": "Robototexnika",
+        "teacherTitleEm": "ustozi.",
+        "teacherText": "Robototexnika ustozining ta'limi, sertifikati va ish staji. Boshqa ustozlar haqidagi ma'lumot alohida sahifada jamlangan.",
+        "faqTitleA": "Robototexnika haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Robototexnika asosiy fanmi yoki to'garakmi?",
+            "answer": "To'garak: u asosiy darslardan keyin o'tadi va bepul. Asosiy dasturda esa 5–9-sinflarda informatika chuqurlashtirilgan tarzda o'qitiladi, 10–11-sinflarda IT yo'nalishi bor."
+          },
+          {
+            "question": "Robototexnika to'garagi pullikmi?",
+            "answer": "Yo'q. Robototexnika to'garagi, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Robototexnika to'garagiga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Robototexnika to'garagi qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      },
+      "mentalArithmetic": {
+        "metaTitle": "Toshkentda mental arifmetika to'garagi | Ixlos School",
+        "metaDescription": "Ixlos School'da mental arifmetika to'garagi bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Mental arifmetika",
+        "name": "Mental arifmetika",
+        "h1": "Mental arifmetika to'garagi bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi mental arifmetika to'garagi maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Darsdan keyin",
+        "titleEm": "mental arifmetika.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Mental arifmetika nima?",
+            "text": "Mental arifmetika — avval abakus (cho't) yordamida, keyin uni tasavvur qilib og'zaki hisoblash usuli. Ixlos School'da u bepul to'garaklardan biri."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Mental arifmetika: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Mental arifmetika: og'zaki hisob to'garagi."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "faqTitleA": "Mental arifmetika haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Mental arifmetika matematika darsining o'rnini bosadimi?",
+            "answer": "Yo'q, bu asosiy darslardan keyingi qo'shimcha to'garak. Matematika asosiy fan sifatida o'qitiladi; 5–9-sinflarda u chuqurlashtirilgan."
+          },
+          {
+            "question": "Mental arifmetika to'garagi pullikmi?",
+            "answer": "Yo'q. Mental arifmetika to'garagi, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Mental arifmetika to'garagiga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Mental arifmetika to'garagi qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      },
+      "arabic": {
+        "metaTitle": "Toshkentda arab tili to'garagi bor maktab | Ixlos School",
+        "metaDescription": "Ixlos School'da arab tili to'garagi bepul: o'quv narxiga kiritilgan, darslardan keyin o'tadi. Toshkent, Yunusobod, 1–11-sinf, to'liq kunlik maktab.",
+        "eyebrow": "Arab tili",
+        "name": "Arab tili",
+        "h1": "Arab tili to'garagi bor xususiy maktab, Toshkent",
+        "lead": "Ixlos School'ning Toshkent, Yunusobod tumanidagi arab tili to'garagi maktab o'quvchilari uchun tashkil etilgan. Mashg'ulotlar asosiy darslardan keyin o'tadi va o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Ixlos School — 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan.",
+        "sectionLabel": "To'garak haqida",
+        "titleA": "Darsdan keyin",
+        "titleEm": "arab tili.",
+        "cards": [
+          {
+            "tag": "Bu nima",
+            "title": "Arab tili to'garagi",
+            "text": "Arab tili — dunyoda eng ko'p tarqalgan tillardan biri va Birlashgan Millatlar Tashkilotining olti rasmiy tilidan biri. Ixlos School'da u bepul to'garak sifatida o'rgatiladi."
+          },
+          {
+            "tag": "Shartlar",
+            "title": "Bepul, darsdan keyin, o'quvchilar uchun",
+            "text": "To'garak o'quv narxiga kiritilgan: alohida to'lov olinmaydi. Mashg'ulotlar asosiy darslardan keyin o'tadi. Qaysi to'garakka qatnashishni o'quvchi o'z qiziqishiga qarab tanlaydi."
+          }
+        ],
+        "factsTitle": "Arab tili: bir qarashda",
+        "facts": [
+          {
+            "label": "To'garak",
+            "value": "Arab tili: til to'garagi."
+          },
+          {
+            "label": "Narx",
+            "value": "Bepul, o'quv narxiga kiritilgan."
+          },
+          {
+            "label": "Vaqti",
+            "value": "Asosiy darslardan keyin."
+          },
+          {
+            "label": "Kimlar uchun",
+            "value": "Ixlos School o'quvchilari; o'quvchi qiziqishiga qarab tanlaydi."
+          },
+          {
+            "label": "Maktab",
+            "value": "Ixlos School: 1–11-sinf uchun xususiy maktab, Moliya va IT yo'nalishiga ixtisoslashgan."
+          },
+          {
+            "label": "Dars jadvali",
+            "value": "Dushanbadan jumagacha, 08:30–17:00."
+          },
+          {
+            "label": "Qabul",
+            "value": "Matematika va ingliz tilidan test hamda psixolog bilan suhbat; o'tish bali — kamida 60."
+          }
+        ],
+        "faqTitleA": "Arab tili to'garagi haqida",
+        "faqTitleEm": "savollar.",
+        "faq": [
+          {
+            "question": "Arab tili asosiy fanmi yoki to'garakmi?",
+            "answer": "To'garak: u asosiy darslardan keyin o'tadi va bepul. Asosiy dasturda chuqurlashtirib o'qitiladigan chet tili — ingliz tili (5–9-sinflar); bitiruvchilarga IELTS'dan kamida 5.5 ball kafolatlanadi."
+          },
+          {
+            "question": "Arab tili to'garagi pullikmi?",
+            "answer": "Yo'q. Arab tili to'garagi, maktabdagi boshqa to'garaklar kabi, bepul va o'quv narxiga kiritilgan."
+          },
+          {
+            "question": "Arab tili to'garagiga kimlar qatnashadi?",
+            "answer": "Ixlos School o'quvchilari: to'garak o'quv narxiga kiritilgan va o'quvchi uni qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+          },
+          {
+            "question": "Arab tili to'garagi qachon o'tadi?",
+            "answer": "Asosiy darslardan keyin; darslar dushanbadan jumagacha 08:30–17:00. Aniq jadval va qaysi sinflar qatnashishi haqida ma'lumotni qabul bo'limidan olish mumkin: shu sahifada ariza qoldiring."
+          }
+        ]
+      }
+    },
+    "clubs": {
+      "metaTitle": "Toshkentdagi maktabda 8 ta bepul to'garak | Ixlos School",
+      "metaDescription": "Ixlos School to'garaklari: mental arifmetika, shaxmat, arab tili, robototexnika, IT, logoped, futbol, dzyudo. Barchasi bepul, darslardan keyin. Toshkent.",
+      "eyebrow": "To'garaklar",
+      "h1": "Ixlos School to'garaklari: 8 ta bepul to'garak",
+      "lead": "Ixlos School'da 8 ta to'garak bor: mental arifmetika, shaxmat, arab tili, robototexnika, IT va dasturlash, logoped, futbol va dzyudo. Barchasi bepul va o'quv narxiga kiritilgan, asosiy darslardan keyin o'tadi. O'quvchi qaysi to'garakka qatnashishini o'z qiziqishiga qarab tanlaydi.",
+      "listLabel": "Ro'yxat",
+      "listTitleA": "Har bir to'garak",
+      "listTitleEm": "alohida.",
+      "more": "Batafsil",
+      "blurbs": {
+        "mentalArithmetic": "Abakus yordamida og'zaki hisoblash.",
+        "chess": "Mantiqiy o'yin: reja tuzish va oldindan o'ylash.",
+        "arabic": "Til to'garagi.",
+        "robotics": "Robotlarni yig'ish va dasturlash sohasi.",
+        "it": "Darsdan keyingi to'garak va 10–11-sinfda IT yo'nalishi.",
+        "speechTherapy": "Nutq va talaffuz bo'yicha mashg'ulotlar.",
+        "football": "Jamoaviy sport o'yini.",
+        "judo": "Yakkakurash, olimpiya sport turi."
+      },
+      "itName": "IT va dasturlash",
+      "factsTitle": "To'garaklar bir qarashda",
+      "facts": [
+        {
+          "label": "Soni",
+          "value": "8 ta to'garak."
+        },
+        {
+          "label": "Narx",
+          "value": "Barchasi bepul, o'quv narxiga kiritilgan."
+        },
+        {
+          "label": "Vaqti",
+          "value": "Asosiy darslardan keyin."
+        },
+        {
+          "label": "Tanlov",
+          "value": "O'quvchi qiziqishiga qarab tanlaydi."
+        },
+        {
+          "label": "Sport",
+          "value": "Futbol va dzyudo."
+        },
+        {
+          "label": "Texnika va IT",
+          "value": "Robototexnika, IT va dasturlash."
+        },
+        {
+          "label": "Til va tafakkur",
+          "value": "Arab tili, shaxmat, mental arifmetika."
+        },
+        {
+          "label": "Nutq",
+          "value": "Logoped."
+        },
+        {
+          "label": "Dars jadvali",
+          "value": "Dushanbadan jumagacha, 08:30–17:00."
+        }
+      ],
+      "faqTitleA": "To'garaklar haqida",
+      "faqTitleEm": "savollar.",
+      "faq": [
+        {
+          "question": "To'garaklar pullikmi?",
+          "answer": "Yo'q. Barcha 8 ta to'garak bepul va o'quv narxiga kiritilgan."
+        },
+        {
+          "question": "Ixlos School'da qanday to'garaklar bor?",
+          "answer": "Mental arifmetika, shaxmat, arab tili, robototexnika, IT va dasturlash, logoped, futbol va dzyudo."
+        },
+        {
+          "question": "To'garaklar qachon o'tadi?",
+          "answer": "Asosiy darslardan keyin. Darslar dushanbadan jumagacha 08:30–17:00. Aniq jadvalni qabul bo'limidan bilib olish mumkin: ariza qoldiring."
+        },
+        {
+          "question": "To'garaklarga kimlar qatnashadi?",
+          "answer": "Ixlos School o'quvchilari; har bir o'quvchi to'garakni o'z qiziqishiga qarab tanlaydi. Maktabga qabul matematika va ingliz tilidan test hamda psixolog bilan suhbat asosida, o'tish bali — kamida 60."
+        }
+      ]
     }
   }
 }

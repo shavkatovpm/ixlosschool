@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getContact, getLegal } from "@/lib/center";
 import { hasPublishedArticles } from "@/lib/content/articles";
+import { CLUBS_PATH, programKeys, topics } from "@/lib/topics";
 import { LegalDocuments } from "./legal-documents";
 import { InstagramIcon, YoutubeIcon } from "./social-icons";
 
@@ -13,7 +14,7 @@ const links = [
   { href: "/teachers", key: "teachers" },
   { href: "/results", key: "results" },
   { href: "/#hayot", key: "life" },
-  { href: "/#togaraklar", key: "clubs" },
+  { href: CLUBS_PATH, key: "clubs" },
   { href: "/#savol-javob", key: "faq" },
   { href: "/contact", key: "contact" },
 ] as const;
@@ -24,6 +25,7 @@ const socialLinkClass =
 export function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
+  const topicNames = useTranslations("pages.topics");
   const year = new Date().getFullYear();
   const CONTACT = getContact();
   const LEGAL = getLegal();
@@ -64,6 +66,11 @@ export function Footer() {
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="link-underline w-fit opacity-75 transition-opacity hover:opacity-100">
               {nav(l.key)}
+            </Link>
+          ))}
+          {programKeys.map((key) => (
+            <Link key={key} href={topics[key].path} className="link-underline w-fit opacity-75 transition-opacity hover:opacity-100">
+              {topicNames(`${key}.name`)}
             </Link>
           ))}
           <Link href="/admissions" className="link-underline w-fit opacity-75 transition-opacity hover:opacity-100">

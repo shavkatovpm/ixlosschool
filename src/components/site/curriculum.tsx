@@ -1,4 +1,7 @@
+import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { programKeys, topics } from "@/lib/topics";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 
@@ -8,6 +11,7 @@ export function Curriculum() {
   const t = useTranslations("curriculum");
   const nav = useTranslations("nav");
   const unit = useTranslations("hero")("gradeUnit");
+  const topicNames = useTranslations("pages.topics");
   const stages = t.raw("stages") as Stage[];
   const [first, ...rest] = stages;
 
@@ -51,6 +55,19 @@ export function Curriculum() {
           </Reveal>
         ))}
       </div>
+
+      <Reveal className="mt-8 flex flex-wrap gap-3">
+        {programKeys.map((key) => (
+          <Link
+            key={key}
+            href={topics[key].path}
+            className="group inline-flex h-12 w-fit items-center gap-3 rounded-full border border-ink/20 px-6 text-[14px] font-semibold transition-all duration-300 hover:border-brand hover:bg-brand hover:text-white"
+          >
+            {topicNames(`${key}.name`)}
+            <ArrowUpRight size={16} aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
+        ))}
+      </Reveal>
     </section>
   );
 }

@@ -17,10 +17,12 @@ const grades = Array.from({ length: 11 }, (_, i) => String(i + 1));
 type Props = {
   /** "modal" drops the inner heading. */
   variant?: "card" | "modal";
+  /** false hides the "or call us" link under the form; the number still appears if sending fails, so the lead is not lost. */
+  showPhone?: boolean;
   onSuccess?: () => void;
 };
 
-export function ApplicationForm({ variant = "card", onSuccess }: Props) {
+export function ApplicationForm({ variant = "card", showPhone = true, onSuccess }: Props) {
   const t = useTranslations("admissions");
   const locale = useLocale();
   const contact = useContact();
@@ -74,7 +76,7 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
         <span className={styles.successIcon}><Check size={30} strokeWidth={2} aria-hidden /></span>
         <h3>{t("successTitle")}</h3>
         <p>{t("success")}</p>
-        <a className={styles.successPhone} href={`tel:${contact.phone}`}><Phone size={17} aria-hidden />{contact.phoneDisplay}</a>
+        {showPhone ? <a className={styles.successPhone} href={`tel:${contact.phone}`}><Phone size={17} aria-hidden />{contact.phoneDisplay}</a> : null}
       </div>
     );
   }
@@ -131,7 +133,7 @@ export function ApplicationForm({ variant = "card", onSuccess }: Props) {
           {t(isSubmitting ? "submitting" : "submit")}
         </button>
       </fieldset>
-      <a href={`tel:${contact.phone}`} className={styles.mobileContact} aria-label={`${t("callLabel")}: ${contact.phoneDisplay}`}><Phone size={16} aria-hidden />{contact.phoneDisplay}</a>
+      {showPhone ? <a href={`tel:${contact.phone}`} className={styles.mobileContact} aria-label={`${t("callLabel")}: ${contact.phoneDisplay}`}><Phone size={16} aria-hidden />{contact.phoneDisplay}</a> : null}
     </form>
   );
 }

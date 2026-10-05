@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { publishedSlugs } from "@/lib/content/articles";
 import { SITE_URL, languageAlternates } from "@/lib/seo";
+import { CLUBS_PATH, topicKeys, topics } from "@/lib/topics";
 
 // Articles come from the admin panel, so the sitemap is built per request.
 export const dynamic = "force-dynamic";
@@ -12,6 +13,8 @@ const pages = [
   { path: "/teachers", changeFrequency: "monthly", priority: 0.8 },
   { path: "/results", changeFrequency: "monthly", priority: 0.8 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.7 },
+  { path: CLUBS_PATH, changeFrequency: "monthly", priority: 0.7 },
+  ...topicKeys.map((key) => ({ path: topics[key].path, changeFrequency: "monthly", priority: topics[key].kind === "program" ? 0.8 : 0.6 }) as const),
 ] as const;
 
 type Entry = { path: string; changeFrequency: "weekly" | "monthly"; priority: number; lastModified?: Date };

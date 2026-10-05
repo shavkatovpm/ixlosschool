@@ -9,7 +9,8 @@ import { useContact } from "./contact-context";
 import { Reveal } from "./reveal";
 import styles from "./admissions.module.css";
 
-export function Admissions({ showMore = false }: { showMore?: boolean }) {
+// showPhone={false}: pages whose single goal is the application keep the number out of this block (it stays in the footer).
+export function Admissions({ showMore = false, showPhone = true }: { showMore?: boolean; showPhone?: boolean }) {
   const t = useTranslations("admissions");
   const id = useId();
   const contact = useContact();
@@ -22,15 +23,21 @@ export function Admissions({ showMore = false }: { showMore?: boolean }) {
             <span className={styles.eyebrow}>IXLOS SCHOOL <span aria-hidden>·</span> {t("eyebrow")}</span>
             <h2 id={`${id}-title`} className={styles.title}>{t("titleA")} <span>{t("titleEm")}</span></h2>
             <p className={styles.description}>{t("description")}</p>
-            <div className={styles.contact}>
-              <p>{t("callLabel")}</p>
-              <a href={`tel:${contact.phone}`}><Phone size={19} aria-hidden />{contact.phoneDisplay}</a>
-              {showMore ? <Link href="/admissions" className={styles.more}>{t("more")}<ArrowUpRight size={16} aria-hidden /></Link> : null}
-            </div>
+            {showPhone || showMore ? (
+              <div className={styles.contact}>
+                {showPhone ? (
+                  <>
+                    <p>{t("callLabel")}</p>
+                    <a href={`tel:${contact.phone}`}><Phone size={19} aria-hidden />{contact.phoneDisplay}</a>
+                  </>
+                ) : null}
+                {showMore ? <Link href="/admissions" className={styles.more}>{t("more")}<ArrowUpRight size={16} aria-hidden /></Link> : null}
+              </div>
+            ) : null}
           </div>
 
           <div className={styles.formCard}>
-            <ApplicationForm />
+            <ApplicationForm showPhone={showPhone} />
           </div>
         </div>
       </Reveal>

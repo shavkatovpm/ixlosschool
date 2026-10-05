@@ -1,5 +1,8 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import { CLUBS_PATH, clubOrder, topics } from "@/lib/topics";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 
@@ -9,6 +12,7 @@ const cardColors = ["bg-neutral", "bg-surface", "bg-tint-d", "bg-neutral", "bg-s
 export function Clubs() {
   const t = useTranslations("clubs");
   const nav = useTranslations("nav");
+  const topic = useTranslations("pages.topic");
   const items = t.raw("items") as string[];
 
   return (
@@ -21,7 +25,7 @@ export function Clubs() {
         {items.map((club, i) => (
           <li key={club}>
             <Reveal delay={(i % 4) * 80} className="h-full">
-              <div className={`group relative flex h-full min-h-[240px] cursor-default flex-col text-ink justify-between overflow-hidden rounded-[22px] border border-line p-6 motion-safe:transition-[border-color,box-shadow] motion-safe:duration-700 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-brand hover:shadow-[0_24px_40px_-24px_rgba(22,62,50,0.18)] sm:min-h-[272px] sm:p-7 ${cardColors[i]}`}>
+              <Link href={topics[clubOrder[i]].path} className={`group relative flex h-full min-h-[240px] flex-col text-ink justify-between overflow-hidden rounded-[22px] border border-line p-6 motion-safe:transition-[border-color,box-shadow] motion-safe:duration-700 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-brand hover:shadow-[0_24px_40px_-24px_rgba(22,62,50,0.18)] sm:min-h-[272px] sm:p-7 ${cardColors[i]}`}>
                 <span className="font-display text-[14px] font-bold tabular-nums text-moss opacity-100 group-hover:opacity-100 group-active:opacity-100 motion-safe:transition-opacity motion-safe:duration-700 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -39,11 +43,21 @@ export function Clubs() {
                 <span className="font-display text-[clamp(1.125rem,1.6vw,1.5rem)] font-bold leading-tight tracking-tight [overflow-wrap:anywhere]">
                   {club}
                 </span>
-              </div>
+              </Link>
             </Reveal>
           </li>
         ))}
       </ul>
+
+      <Reveal className="mt-10">
+        <Link
+          href={CLUBS_PATH}
+          className="group inline-flex h-12 w-fit items-center gap-3 rounded-full border border-ink/20 px-6 text-[14px] font-semibold transition-all duration-300 hover:border-brand hover:bg-brand hover:text-white"
+        >
+          {topic("allClubs")}
+          <ArrowUpRight size={16} aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </Link>
+      </Reveal>
     </section>
   );
 }

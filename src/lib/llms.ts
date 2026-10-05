@@ -45,7 +45,11 @@ Facts on this page come from the school's own materials.
 - [Contact and address (Uzbek)](https://www.ixlosschool.uz/uz/contact): address, phones, hours and a fact sheet about the school
 - [Contact and address (Russian)](https://www.ixlosschool.uz/ru/contact): контакты, адрес и краткие сведения о школе
 - [Contact and address (English)](https://www.ixlosschool.uz/en/contact): the same in English
-- [Home (Uzbek, Cyrillic script)](https://www.ixlosschool.uz/uz-cyrl): ўзбекча, кирилл ёзувида. Every Uzbek page above has the same text in Cyrillic script at the same path under /uz-cyrl (/uz-cyrl/admissions, /uz-cyrl/teachers, /uz-cyrl/results, /uz-cyrl/contact)
+- [Clubs (Uzbek)](https://www.ixlosschool.uz/uz/clubs): the eight free clubs, with a page for each (also /ru/clubs, /en/clubs)
+- [IT track (Uzbek)](https://www.ixlosschool.uz/uz/programs/it): in-depth informatics in grades 5–9, the IT track and diploma in grades 10–11, IT and Robotics clubs (also /ru/programs/it, /en/programs/it)
+- [Accounting and finance track (Uzbek)](https://www.ixlosschool.uz/uz/programs/finance): the Accounting track, the ACCA programme and the diploma in grades 10–11 (also /ru/programs/finance, /en/programs/finance)
+- Club pages (Uzbek; the same paths exist under /ru and /en): [Mental Arithmetic](https://www.ixlosschool.uz/uz/clubs/mental-arithmetic), [Chess](https://www.ixlosschool.uz/uz/clubs/chess), [Arabic](https://www.ixlosschool.uz/uz/clubs/arabic), [Robotics](https://www.ixlosschool.uz/uz/clubs/robotics), [Speech Therapy](https://www.ixlosschool.uz/uz/clubs/speech-therapy), [Football](https://www.ixlosschool.uz/uz/clubs/football), [Judo](https://www.ixlosschool.uz/uz/clubs/judo)
+- [Home (Uzbek, Cyrillic script)](https://www.ixlosschool.uz/uz-cyrl): ўзбекча, кирилл ёзувида. Every Uzbek page above has the same text in Cyrillic script at the same path under /uz-cyrl (/uz-cyrl/admissions, /uz-cyrl/teachers, /uz-cyrl/results, /uz-cyrl/contact, /uz-cyrl/clubs, /uz-cyrl/programs/it and so on)
 
 ## Key facts (English)
 
@@ -56,6 +60,7 @@ Facts on this page come from the school's own materials.
 - Groups A / B / C by knowledge level, re-formed based on weekly exams. Extra Saturday classes for students who are falling behind (Mathematics and English in upper grades, core subjects in primary grades).
 - Five-day school week, Monday to Friday, 08:30–17:00. Three meals a day. School bus for students who live far away. School uniform.
 - Eight free clubs included in tuition: Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football, Judo.
+- The clubs are extras held after the main lessons: the school is a general-education school, not a football academy, sports school, chess school or speech therapy clinic.
 - Payment: annual or monthly. Students with high quarterly results study on a monthly scholarship.
 - Location: ${c.address}. Phone ${c.phonesDisplay[0]}.
 - Full-day school: classes 08:30–17:00 Monday to Friday, three meals a day, free clubs after lessons, school bus for students who live far away.

@@ -560,6 +560,836 @@
       "legalValue": "Ixlos School operates under the licence of “{orgName}”, a non-state educational institution. TIN: {taxId}.",
       "licenseLabel": "Licence",
       "licenseValue": "No. {number}, valid from {date}, unlimited. Activity: general secondary education services (grades 1–11). Issued by the Ministry of Preschool and School Education of the Republic of Uzbekistan."
+    },
+    "topic": {
+      "addressLabel": "Address",
+      "teacherLabel": "Teacher",
+      "teachersLink": "All teachers",
+      "faqLabel": "FAQ",
+      "relatedLabel": "See also",
+      "relatedTitleA": "Other tracks and",
+      "relatedTitleEm": "clubs.",
+      "programsLabel": "Tracks",
+      "clubsLabel": "Clubs",
+      "allClubs": "All clubs",
+      "moreHint": "More about admission and tuition:",
+      "admissionsLink": "Admissions page",
+      "resultsHint": "Students' IELTS and SAT results, with certificates:",
+      "resultsLink": "Results page"
+    },
+    "topics": {
+      "it": {
+        "metaTitle": "IT and Coding School in Tashkent | Ixlos School",
+        "metaDescription": "Private school in Yunusabad, Tashkent: in-depth informatics in grades 5–9, an IT track with a professional diploma in grades 10–11, and free IT clubs.",
+        "eyebrow": "IT track",
+        "name": "IT and coding",
+        "h1": "A private school specializing in IT and coding, Tashkent",
+        "lead": "Ixlos School is a private school in the Yunusabad district of Tashkent (grades 1–11) that specializes in finance and IT. Informatics is taught in depth in grades 5–9, grades 10–11 offer an IT track, and graduates receive a professional diploma along with the school certificate. Free IT & Coding and Robotics clubs run after lessons.",
+        "sectionLabel": "Grade by grade",
+        "titleA": "From informatics",
+        "titleEm": "to an IT diploma.",
+        "cards": [
+          {
+            "tag": "Grades 5–9",
+            "title": "In-depth informatics",
+            "text": "In grades 5–9 informatics is taught in depth alongside Mathematics and English. Students study in A, B and C groups by proficiency level, updated after weekly assessments."
+          },
+          {
+            "tag": "Grades 10–11",
+            "title": "The IT track",
+            "text": "Grades 10–11 offer two professional tracks: Accounting and IT. IT track graduates receive a professional diploma in IT along with the school certificate."
+          },
+          {
+            "tag": "After lessons",
+            "title": "IT and Robotics clubs",
+            "text": "IT & Coding and Robotics clubs run after the main lessons. Both are free and included in tuition."
+          },
+          {
+            "tag": "For graduates",
+            "title": "Diploma and English",
+            "text": "Graduates are guaranteed an IELTS score of at least 5.5. The school also teaches the international SAT program, so English and university preparation go hand in hand with IT."
+          }
+        ],
+        "factsTitle": "The IT track at a glance",
+        "facts": [
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Grades 5–9",
+            "value": "Informatics, Mathematics and English are taught in depth."
+          },
+          {
+            "label": "Grades 10–11",
+            "value": "IT track (the second track is Accounting)."
+          },
+          {
+            "label": "Diploma",
+            "value": "A professional diploma in IT along with the school certificate."
+          },
+          {
+            "label": "Clubs",
+            "value": "IT & Coding and Robotics: free, included in tuition."
+          },
+          {
+            "label": "Groups",
+            "value": "A, B and C by proficiency level, updated after weekly assessments."
+          },
+          {
+            "label": "English",
+            "value": "Graduates are guaranteed an IELTS score of at least 5.5."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          }
+        ],
+        "teacherTitleA": "Our Robotics",
+        "teacherTitleEm": "teacher.",
+        "teacherText": "The education, certificate and experience of our Robotics teacher. Details about the other teachers are on a separate page.",
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "the IT track.",
+        "faq": [
+          {
+            "question": "Is Ixlos School an IT school?",
+            "answer": "Ixlos School is a private general-education school (grades 1–11) that specializes in finance and IT. It is not a coding course or academy: students receive a full general secondary education, and IT is taught as in-depth informatics in grades 5–9 and as a separate track in grades 10–11."
+          },
+          {
+            "question": "From which grade is informatics taught in depth?",
+            "answer": "From grade 5 to grade 9. Mathematics and English are also taught in depth in these grades."
+          },
+          {
+            "question": "What does a graduate of the IT track in grades 10–11 receive?",
+            "answer": "A professional diploma in IT along with the school certificate. Graduates are also guaranteed an IELTS score of at least 5.5."
+          },
+          {
+            "question": "Are the IT and Robotics clubs paid?",
+            "answer": "No. The IT & Coding and Robotics clubs, like the school's other clubs, are free and included in tuition. They run after the main lessons."
+          },
+          {
+            "question": "How are Mathematics and English taught alongside IT?",
+            "answer": "Mathematics and English are also taught in depth in grades 5–9. Students who are falling behind have extra classes on Saturdays: in Mathematics and English in the upper grades."
+          },
+          {
+            "question": "How do students get into the IT track?",
+            "answer": "Admission is the same for every grade: a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60. To start, leave an application on this page."
+          }
+        ],
+        "courseName": "IT track (grades 10–11)",
+        "courseDescription": "Professional education in IT; graduates receive a professional diploma along with the school certificate. Informatics is taught in depth in grades 5–9."
+      },
+      "finance": {
+        "metaTitle": "Accounting and Finance School, Tashkent | Ixlos School",
+        "metaDescription": "Private school in Yunusabad, Tashkent: an Accounting track in grades 10–11, the international ACCA program and a professional diploma.",
+        "eyebrow": "Accounting and finance",
+        "name": "Accounting and finance",
+        "h1": "A private school specializing in accounting and finance, Tashkent",
+        "lead": "Ixlos School is a private school in the Yunusabad district of Tashkent (grades 1–11) that specializes in finance and IT. Grades 10–11 offer an Accounting track and the international ACCA program, and graduates receive a professional diploma along with the school certificate. The school's founder and principal is an internationally qualified financier, accountant and auditor.",
+        "sectionLabel": "Grade by grade",
+        "titleA": "From mathematics",
+        "titleEm": "to an accounting diploma.",
+        "cards": [
+          {
+            "tag": "Grades 5–9",
+            "title": "In-depth Mathematics",
+            "text": "In grades 5–9 Mathematics, English and informatics are taught in depth. Students study in A, B and C groups by proficiency level, updated after weekly assessments."
+          },
+          {
+            "tag": "Grades 10–11",
+            "title": "The Accounting track",
+            "text": "Grades 10–11 offer two professional tracks: Accounting and IT. Accounting track graduates receive a professional diploma along with the school certificate."
+          },
+          {
+            "tag": "International programs",
+            "title": "ACCA and SAT",
+            "text": "Grades 10–11 also teach the international ACCA and SAT programs. ACCA (Association of Chartered Certified Accountants) is an international professional qualification for accountants and finance specialists."
+          },
+          {
+            "tag": "Leadership",
+            "title": "Founded by a financier and auditor",
+            "text": "The school's founder and principal, Maxsuma Axrarovna Ashirmetova, is an internationally qualified financier, accountant and auditor and the founder of ABCO International Finance Academy. She holds the ACCA Diploma in International Financial Reporting and the F1–F9 qualifications."
+          }
+        ],
+        "factsTitle": "The Accounting track at a glance",
+        "facts": [
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Grades 10–11",
+            "value": "Accounting track (the second track is IT)."
+          },
+          {
+            "label": "International programs",
+            "value": "ACCA and SAT."
+          },
+          {
+            "label": "Diploma",
+            "value": "A professional diploma in Accounting along with the school certificate."
+          },
+          {
+            "label": "Grades 5–9",
+            "value": "Mathematics, English and informatics are taught in depth."
+          },
+          {
+            "label": "Groups",
+            "value": "A, B and C by proficiency level, updated after weekly assessments."
+          },
+          {
+            "label": "English",
+            "value": "Graduates are guaranteed an IELTS score of at least 5.5."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          }
+        ],
+        "teacherTitleA": "Our ACCA",
+        "teacherTitleEm": "teacher.",
+        "teacherText": "The education, ACCA papers and experience of our ACCA teacher. Details about the other teachers are on a separate page.",
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "the Accounting track.",
+        "faq": [
+          {
+            "question": "Is Ixlos School a finance school?",
+            "answer": "Ixlos School is a private general-education school (grades 1–11) that specializes in finance and IT. It is not an accounting course: students receive a full general secondary education, and grades 10–11 offer an Accounting track and the international ACCA program."
+          },
+          {
+            "question": "From which grade does the Accounting track start?",
+            "answer": "From grade 10. Grades 10–11 offer two professional tracks: Accounting and IT. Before that, in grades 5–9, Mathematics, English and informatics are taught in depth."
+          },
+          {
+            "question": "Does the school teach ACCA?",
+            "answer": "Yes. Grades 10–11 teach the international ACCA program. ACCA is an international professional qualification for accountants and finance specialists. The school's founder holds the ACCA Diploma in International Financial Reporting and the F1–F9 qualifications."
+          },
+          {
+            "question": "What does a graduate of the Accounting track receive?",
+            "answer": "A professional diploma in Accounting along with the school certificate. Graduates are also guaranteed an IELTS score of at least 5.5."
+          },
+          {
+            "question": "Can a student take the IT track instead of Accounting?",
+            "answer": "Yes. Grades 10–11 offer two tracks, Accounting and IT, and IT track graduates also receive a professional diploma."
+          },
+          {
+            "question": "How do students get into the Accounting track?",
+            "answer": "Admission is the same for every grade: a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60. To start, leave an application on this page."
+          }
+        ],
+        "courseName": "Accounting track (grades 10–11)",
+        "courseDescription": "Professional education in accounting; international ACCA and SAT programs are also taught, and graduates receive a professional diploma along with the school certificate."
+      },
+      "football": {
+        "metaTitle": "Private School with a Football Club, Tashkent | Ixlos School",
+        "metaDescription": "A free football club at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Football",
+        "name": "Football",
+        "h1": "A private school with a football club, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, the football club is run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "Football",
+        "titleEm": "after lessons.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "The football club",
+            "text": "Football is a team sport. At Ixlos School it is one of the two sports clubs students can choose (the other is judo)."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Football at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Football: a sports club."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "the football club.",
+        "faq": [
+          {
+            "question": "Is Ixlos School a football school?",
+            "answer": "No. Ixlos School is a private general-education school (grades 1–11) that specializes in finance and IT. Football here is a free club held after the main lessons; the school is not a professional football academy."
+          },
+          {
+            "question": "Is the football club paid?",
+            "answer": "No. The football club is free, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      },
+      "chess": {
+        "metaTitle": "Private School with a Chess Club, Tashkent | Ixlos School",
+        "metaDescription": "A free chess club at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Chess",
+        "name": "Chess",
+        "h1": "A private school with a chess club, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, the chess club is run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "Chess",
+        "titleEm": "after lessons.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "The chess club",
+            "text": "Chess is a two-player strategy board game: every move has to be thought through in advance and planned. At Ixlos School it is one of the free clubs."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Chess at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Chess: a strategy game club."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "the chess club.",
+        "faq": [
+          {
+            "question": "Is Ixlos School a chess school?",
+            "answer": "No. Ixlos School is a private general-education school (grades 1–11) that specializes in finance and IT. Chess here is a free club held after the main lessons; the school is not a specialized chess school."
+          },
+          {
+            "question": "Is the chess club paid?",
+            "answer": "No. The chess club is free, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      },
+      "speechTherapy": {
+        "metaTitle": "School with a Speech Therapist in Tashkent | Ixlos School",
+        "metaDescription": "Free speech therapy sessions at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Speech Therapy",
+        "name": "Speech Therapy",
+        "h1": "A private school with a speech therapist, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, speech therapy sessions are run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "A speech therapist",
+        "titleEm": "at school.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "What does a speech therapist do?",
+            "text": "A speech therapist is a specialist who works with difficulties in speech and pronunciation. At Ixlos School speech therapy sessions are among the free clubs."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Speech Therapy at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Speech therapy: sessions on speech."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "speech therapy.",
+        "faq": [
+          {
+            "question": "Is Ixlos School a speech therapy school?",
+            "answer": "No. Ixlos School is a private general-education school (grades 1–11) that specializes in finance and IT. Speech therapy sessions are held here as one of the free clubs; the school is not a medical institution or a specialized speech school. If you have questions about your child's speech, leave an application and the admissions office will tell you about the sessions."
+          },
+          {
+            "question": "Are the speech therapy sessions paid?",
+            "answer": "No. Speech therapy is a free club, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      },
+      "judo": {
+        "metaTitle": "Private School with a Judo Club, Tashkent | Ixlos School",
+        "metaDescription": "A free judo club at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Judo",
+        "name": "Judo",
+        "h1": "A private school with a judo club, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, the judo club is run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "Judo",
+        "titleEm": "after lessons.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "The judo club",
+            "text": "Judo is a martial art that originated in Japan and is an Olympic sport. At Ixlos School it is one of the two sports clubs students can choose (the other is football)."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Judo at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Judo: a sports club (martial art)."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "the judo club.",
+        "faq": [
+          {
+            "question": "Is Ixlos School a sports school?",
+            "answer": "No. Ixlos School is a private general-education school (grades 1–11) that specializes in finance and IT. Judo here is a free club held after the main lessons; the school is not a sports school."
+          },
+          {
+            "question": "Is the judo club paid?",
+            "answer": "No. The judo club is free, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      },
+      "robotics": {
+        "metaTitle": "Private School with a Robotics Club, Tashkent | Ixlos School",
+        "metaDescription": "A free robotics club at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Robotics",
+        "name": "Robotics",
+        "h1": "A private school with a robotics club, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, the robotics club is run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "Robotics",
+        "titleEm": "after lessons.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "The robotics club",
+            "text": "Robotics is the field of designing, building and programming robots. At Ixlos School it is a free club; the school also has an IT & Coding club and an IT track in grades 10–11."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Robotics at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Robotics: a technical club."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "teacherTitleA": "Our Robotics",
+        "teacherTitleEm": "teacher.",
+        "teacherText": "The education, certificate and experience of our Robotics teacher. Details about the other teachers are on a separate page.",
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "robotics.",
+        "faq": [
+          {
+            "question": "Is robotics a main subject or a club?",
+            "answer": "A club: it is held after the main lessons and is free. In the main program, informatics is taught in depth in grades 5–9, and grades 10–11 offer an IT track."
+          },
+          {
+            "question": "Is the robotics club paid?",
+            "answer": "No. The robotics club is free, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      },
+      "mentalArithmetic": {
+        "metaTitle": "School with Mental Arithmetic in Tashkent | Ixlos School",
+        "metaDescription": "A free mental arithmetic club at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Mental Arithmetic",
+        "name": "Mental Arithmetic",
+        "h1": "A private school with a mental arithmetic club, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, the mental arithmetic club is run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "Mental arithmetic",
+        "titleEm": "after lessons.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "What is mental arithmetic?",
+            "text": "Mental arithmetic is a way of calculating in your head: first with an abacus, then by picturing it. At Ixlos School it is one of the free clubs."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Mental Arithmetic at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Mental arithmetic: a mental calculation club."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "mental arithmetic.",
+        "faq": [
+          {
+            "question": "Does mental arithmetic replace Mathematics lessons?",
+            "answer": "No, it is an extra club held after the main lessons. Mathematics is taught as a main subject, and in depth in grades 5–9."
+          },
+          {
+            "question": "Is the mental arithmetic club paid?",
+            "answer": "No. The mental arithmetic club is free, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      },
+      "arabic": {
+        "metaTitle": "Private School with an Arabic Club, Tashkent | Ixlos School",
+        "metaDescription": "A free Arabic language club at Ixlos School, included in tuition and held after lessons. Private full-day school in Yunusabad, Tashkent, grades 1–11.",
+        "eyebrow": "Arabic",
+        "name": "Arabic",
+        "h1": "A private school with an Arabic club, Tashkent",
+        "lead": "At Ixlos School in Yunusabad, Tashkent, the Arabic club is run for the school's own students. Sessions take place after the main lessons and are included in tuition, with no separate fee. Ixlos School is a private school for grades 1–11 that specializes in finance and IT.",
+        "sectionLabel": "About the club",
+        "titleA": "Arabic",
+        "titleEm": "after lessons.",
+        "cards": [
+          {
+            "tag": "What it is",
+            "title": "The Arabic club",
+            "text": "Arabic is one of the most widely spoken languages in the world and one of the six official languages of the United Nations. At Ixlos School it is taught as a free club."
+          },
+          {
+            "tag": "Terms",
+            "title": "Free, after lessons, for students",
+            "text": "The club is included in tuition: there is no separate fee. Sessions take place after the main lessons. Students choose a club according to their interests."
+          }
+        ],
+        "factsTitle": "Arabic at a glance",
+        "facts": [
+          {
+            "label": "Club",
+            "value": "Arabic: a language club."
+          },
+          {
+            "label": "Cost",
+            "value": "Free, included in tuition."
+          },
+          {
+            "label": "When",
+            "value": "After the main lessons."
+          },
+          {
+            "label": "Who it is for",
+            "value": "Ixlos School students, who choose a club according to their interests."
+          },
+          {
+            "label": "School",
+            "value": "Ixlos School: a private school for grades 1–11, specializing in finance and IT."
+          },
+          {
+            "label": "Schedule",
+            "value": "Monday to Friday, 8:30 AM–5:00 PM."
+          },
+          {
+            "label": "Admission",
+            "value": "A test in Mathematics and English plus an interview with the school psychologist; the pass mark is at least 60."
+          }
+        ],
+        "faqTitleA": "Questions about",
+        "faqTitleEm": "the Arabic club.",
+        "faq": [
+          {
+            "question": "Is Arabic a main subject or a club?",
+            "answer": "A club: it is held after the main lessons and is free. The foreign language taught in depth in the main program is English (grades 5–9), and graduates are guaranteed an IELTS score of at least 5.5."
+          },
+          {
+            "question": "Is the Arabic club paid?",
+            "answer": "No. The Arabic club is free, like the school's other clubs, and included in tuition."
+          },
+          {
+            "question": "Who can attend?",
+            "answer": "Ixlos School students: the club is included in tuition and chosen according to the student's interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+          },
+          {
+            "question": "When are the sessions held?",
+            "answer": "After the main lessons; classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable and which grades take part, ask the admissions office: leave an application on this page."
+          }
+        ]
+      }
+    },
+    "clubs": {
+      "metaTitle": "8 Free Clubs at a Private School in Tashkent | Ixlos School",
+      "metaDescription": "Clubs at Ixlos School: Mental Arithmetic, Chess, Arabic, Robotics, IT, Speech Therapy, Football and Judo. All free, held after lessons. Tashkent.",
+      "eyebrow": "Clubs",
+      "h1": "Clubs at Ixlos School: 8 free clubs",
+      "lead": "Ixlos School has 8 clubs: Mental Arithmetic, Chess, Arabic, Robotics, IT & Coding, Speech Therapy, Football and Judo. All of them are free, included in tuition, and held after the main lessons. Students choose a club according to their interests.",
+      "listLabel": "The list",
+      "listTitleA": "Every club,",
+      "listTitleEm": "one by one.",
+      "more": "Learn more",
+      "blurbs": {
+        "mentalArithmetic": "Calculating in your head with an abacus.",
+        "chess": "A strategy game: planning and thinking ahead.",
+        "arabic": "A language club.",
+        "robotics": "Building and programming robots.",
+        "it": "An after-lessons club and an IT track in grades 10–11.",
+        "speechTherapy": "Sessions on speech and pronunciation.",
+        "football": "A team sport.",
+        "judo": "A martial art and Olympic sport."
+      },
+      "itName": "IT & Coding",
+      "factsTitle": "The clubs at a glance",
+      "facts": [
+        {
+          "label": "Number",
+          "value": "8 clubs."
+        },
+        {
+          "label": "Cost",
+          "value": "All free, included in tuition."
+        },
+        {
+          "label": "When",
+          "value": "After the main lessons."
+        },
+        {
+          "label": "Choice",
+          "value": "Students choose according to their interests."
+        },
+        {
+          "label": "Sports",
+          "value": "Football and Judo."
+        },
+        {
+          "label": "Tech and IT",
+          "value": "Robotics, IT & Coding."
+        },
+        {
+          "label": "Language and thinking",
+          "value": "Arabic, Chess, Mental Arithmetic."
+        },
+        {
+          "label": "Speech",
+          "value": "Speech Therapy."
+        },
+        {
+          "label": "Schedule",
+          "value": "Monday to Friday, 8:30 AM–5:00 PM."
+        }
+      ],
+      "faqTitleA": "Questions about",
+      "faqTitleEm": "the clubs.",
+      "faq": [
+        {
+          "question": "Are the clubs paid?",
+          "answer": "No. All 8 clubs are free and included in tuition."
+        },
+        {
+          "question": "What clubs does Ixlos School have?",
+          "answer": "Mental Arithmetic, Chess, Arabic, Robotics, IT & Coding, Speech Therapy, Football and Judo."
+        },
+        {
+          "question": "When are the clubs held?",
+          "answer": "After the main lessons. Classes run Monday to Friday, 8:30 AM–5:00 PM. For the exact timetable, ask the admissions office: leave an application."
+        },
+        {
+          "question": "Who can attend the clubs?",
+          "answer": "Ixlos School students; each student chooses a club according to their interests. Admission to the school is based on a test in Mathematics and English plus an interview with the school psychologist, with a pass mark of at least 60."
+        }
+      ]
     }
   }
 }
