@@ -98,7 +98,9 @@ export default async function LocaleLayout({
   const contact = getContact();
 
   return (
-    <html lang={langTag(locale)} className={`${geistSans.variable} ${manrope.variable} ${bodoni.variable} antialiased`}>
+    // data-scroll-behavior: lets Next switch off the CSS smooth scrolling while it moves to the top of a new page;
+    // without it a page opened from the footer appears at the bottom and slides (or stays) there.
+    <html lang={langTag(locale)} data-scroll-behavior="smooth" className={`${geistSans.variable} ${manrope.variable} ${bodoni.variable} antialiased`}>
       <body className="min-h-screen bg-paper font-sans text-ink">
         <JsonLd
           graph={[
