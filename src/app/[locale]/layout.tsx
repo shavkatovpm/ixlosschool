@@ -9,6 +9,7 @@ import { getIntegrations } from "@/lib/integrations";
 import { SITE_NAME, SITE_URL, schoolNode, websiteNode } from "@/lib/seo";
 import { Analytics } from "@/components/site/analytics";
 import { ApplyModalProvider } from "@/components/site/apply-modal";
+import { ScrollTop } from "@/components/site/scroll-top";
 import { ContactProvider } from "@/components/site/contact-context";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
@@ -121,6 +122,7 @@ export default async function LocaleLayout({
             </ApplyModalProvider>
           </ContactProvider>
         </NextIntlClientProvider>
+        <ScrollTop />
         <Analytics />
         <Tracker />
       </body>

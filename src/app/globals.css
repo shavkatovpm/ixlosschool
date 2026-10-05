@@ -45,9 +45,17 @@
 
 html {
   scroll-behavior: smooth;
-  /* Fixed header bottom is ~78px; the rest is breathing room above the section content. */
-  scroll-padding-top: 104px;
+  /* Room for the fixed header when jumping to a section. It must stay BELOW the header spacer's height
+     (88 / 96 / 97px in header-shell.tsx): Next treats a page whose top sits inside the scroll padding as hidden and
+     calls scrollIntoView() on it, and browsers that ignore scroll padding there open every page 88px too low. */
+  scroll-padding-top: 80px;
   -webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 88px;
+  }
 }
 
 body {
