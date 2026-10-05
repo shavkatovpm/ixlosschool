@@ -1,6 +1,11 @@
 import { getRequestConfig } from "next-intl/server";
 import { hasLocale } from "next-intl";
+import uz from "../../messages/uz.json";
+import { toCyrillicDeep } from "../lib/cyrillic.mjs";
 import { routing } from "./routing";
+
+// Cyrillic Uzbek has no message file of its own: it is messages/uz.json in the other script, converted once.
+let uzCyrillic: typeof uz | undefined;
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
@@ -10,6 +15,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
-    messages: (await import(`../../messages/${locale}.json`)).default,
+    messages: locale === "uz-cyrl" ? (uzCyrillic ??= toCyrillicDeep(uz)) : (await import(`../../messages/${locale}.json`)).default,
   };
 });

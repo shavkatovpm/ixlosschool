@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
-import { routing } from "@/i18n/routing";
+import { langTag, routing } from "@/i18n/routing";
 import { getContact, getLegal } from "@/lib/center";
 
 export const SITE_URL = "https://www.ixlosschool.uz";
 export const SITE_NAME = "Ixlos School";
 const FOUNDER_NAME = "Maxsuma Axrarovna Ashirmetova";
 
-const OG_LOCALE: Record<string, string> = { uz: "uz_UZ", ru: "ru_RU", en: "en_US" };
+// Open Graph locales have no script part, so both Uzbek versions share one.
+const OG_LOCALE: Record<string, string> = { uz: "uz_UZ", "uz-cyrl": "uz_UZ", ru: "ru_RU", en: "en_US" };
 
 export function languageAlternates(path = "") {
   return {
-    ...Object.fromEntries(routing.locales.map((l) => [l, `/${l}${path}`])),
+    ...Object.fromEntries(routing.locales.map((l) => [langTag(l), `/${l}${path}`])),
     "x-default": `/${routing.defaultLocale}${path}`,
   };
 }
@@ -47,7 +48,7 @@ export function buildMetadata({
       description,
       url: `/${locale}${path}`,
       locale: OG_LOCALE[locale],
-      alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
+      alternateLocale: [...new Set(routing.locales.map((l) => OG_LOCALE[l]))].filter((l) => l !== OG_LOCALE[locale]),
       images: [customImage ? { url: image, alt: title } : { url: image, width: 1200, height: 630, alt: title }],
     },
     twitter: { card: "summary_large_image", title, description, images: [image] },
@@ -98,7 +99,7 @@ export function websiteNode() {
     "@id": `${SITE_URL}/#website`,
     url: absoluteUrl(routing.defaultLocale),
     name: SITE_NAME,
-    inLanguage: routing.locales,
+    inLanguage: routing.locales.map(langTag),
     publisher: { "@id": `${SITE_URL}/#school` },
   };
 }
@@ -126,7 +127,7 @@ export function webPageNode({
       url,
       name,
       description,
-      inLanguage: locale,
+      inLanguage: langTag(locale),
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#school` },
       ...(breadcrumb ? { breadcrumb: { "@id": `${url}#breadcrumb` } } : {}),

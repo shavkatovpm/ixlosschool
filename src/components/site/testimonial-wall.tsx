@@ -175,7 +175,7 @@ export function TestimonialWall({ items, labels, locale }: { items: WallItem[]; 
                 <Image src={current.thumb} alt="" fill unoptimized={current.thumb.startsWith("/media/")} sizes="(min-width: 640px) 506px, 100vw" />
                 <iframe
                   key={current.id}
-                  src={`https://www.youtube-nocookie.com/embed/${current.id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=${locale}`}
+                  src={`https://www.youtube-nocookie.com/embed/${current.id}?autoplay=1&playsinline=1&rel=0&modestbranding=1&hl=${locale.split("-")[0]}`}
                   title={current.title}
                   allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
                   allowFullScreen

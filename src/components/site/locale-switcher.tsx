@@ -3,15 +3,19 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { routing } from "@/i18n/routing";
+import { langTag, routing } from "@/i18n/routing";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { Flag } from "./flags";
 
 const LABELS: Record<string, string> = {
   uz: "O'zbekcha",
+  "uz-cyrl": "Ўзбекча",
   ru: "Русский",
   en: "English",
 };
+
+// What the closed button shows: the two Uzbek versions differ by script, not by code.
+const SHORT: Record<string, string> = { "uz-cyrl": "ўз" };
 
 export function LocaleSwitcher() {
   const locale = useLocale();
@@ -84,7 +88,7 @@ export function LocaleSwitcher() {
         className="flex h-11 items-center gap-1.5 rounded-[14px] px-2.5 text-[12px] font-bold uppercase opacity-75 transition-opacity duration-300 hover:opacity-100 min-[1200px]:gap-2 min-[1200px]:rounded-[11px] min-[1200px]:px-3.5 min-[1200px]:text-[13px]"
       >
         <span className="hidden min-[1200px]:inline-flex"><Flag locale={locale} /></span>
-        <span className="inline">{locale}</span>
+        <span className="inline">{SHORT[locale] ?? locale}</span>
         <ChevronDown
           size={16}
           aria-hidden
@@ -110,7 +114,7 @@ export function LocaleSwitcher() {
                 type="button"
                 role="menuitemradio"
                 aria-checked={active}
-                lang={loc}
+                lang={langTag(loc)}
                 onClick={() => choose(loc)}
                 onKeyDown={(e) => onMenuKey(e, i)}
                 className={`flex h-12 w-full items-center gap-3 rounded-[10px] px-3 text-left text-[15px] font-semibold transition-colors duration-200 ${

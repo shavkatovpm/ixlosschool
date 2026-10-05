@@ -1,6 +1,6 @@
 import { adminEnabled } from "../admin/config";
 import { getDb, type Row } from "../admin/db";
-import type { ContentLocale, Localized } from "./shared";
+import { localizer, type Localized, type PublicLocale } from "./shared";
 
 export type ArticleStatus = "draft" | "published";
 
@@ -44,16 +44,23 @@ const toRow = (r: Row): ArticleRow => ({
 
 export const readMinutes = (text: string) => Math.max(1, Math.round(text.split(/\s+/).filter(Boolean).length / 200));
 
-const toPublic = (row: ArticleRow, locale: ContentLocale): PublicArticle => ({
-  slug: row.slug,
-  title: row.title[locale],
-  description: row.description[locale],
-  body: row.body[locale],
-  cover: row.cover,
-  publishedAt: row.publishedAt ?? row.createdAt,
-  updatedAt: row.updatedAt,
-  readMinutes: readMinutes(row.body[locale]),
-});
+// Links to the site's own Uzbek pages inside a Cyrillic article stay on the Cyrillic pages.
+const OWN_UZ_LINK = /\]\((https?:\/\/(?:www\.)?ixlosschool\.uz)?\/uz(?=[/)#?])/g;
+
+const toPublic = (row: ArticleRow, locale: PublicLocale): PublicArticle => {
+  const text = localizer(locale);
+  const body = locale === "uz-cyrl" ? text(row.body).replace(OWN_UZ_LINK, "]($1/uz-cyrl") : text(row.body);
+  return {
+    slug: row.slug,
+    title: text(row.title),
+    description: text(row.description),
+    body,
+    cover: row.cover,
+    publishedAt: row.publishedAt ?? row.createdAt,
+    updatedAt: row.updatedAt,
+    readMinutes: readMinutes(body),
+  };
+};
 
 export function listArticles(): ArticleRow[] {
   return getDb().prepare("SELECT * FROM articles ORDER BY COALESCE(published_at, created_at) DESC, id DESC").all().map(toRow);
@@ -71,7 +78,7 @@ export function slugTaken(slug: string, exceptId: number | null) {
 
 // ---- public reads: never throw, the site must not depend on the blog ----------------------------
 
-export function publishedArticles(locale: ContentLocale): PublicArticle[] {
+export function publishedArticles(locale: PublicLocale): PublicArticle[] {
   if (!adminEnabled()) return [];
   try {
     return getDb()
@@ -84,7 +91,7 @@ export function publishedArticles(locale: ContentLocale): PublicArticle[] {
   }
 }
 
-export function publishedArticle(slug: string, locale: ContentLocale): PublicArticle | null {
+export function publishedArticle(slug: string, locale: PublicLocale): PublicArticle | null {
   if (!adminEnabled()) return null;
   try {
     const row = getDb().prepare("SELECT * FROM articles WHERE slug = ? AND status = 'published'").get(slug);

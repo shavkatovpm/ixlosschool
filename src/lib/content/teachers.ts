@@ -3,7 +3,8 @@ import { getDb, type Row } from "../admin/db";
 import { teachers as builtIn } from "../teachers";
 import { categoryLabels, credentialLabel, credentialValue, degreeLabels, focusLabels, institutionLabels } from "./defaults";
 import { moveRow } from "./order";
-import { isCustomized, markCustomized, type ContentLocale, type Localized } from "./shared";
+import { toCyrillic } from "../cyrillic.mjs";
+import { isCustomized, localizer, markCustomized, type Localized, type PublicLocale } from "./shared";
 
 export const DEGREES = ["bachelor", "master", "bachelorMaster"] as const;
 export type Degree = (typeof DEGREES)[number];
@@ -75,20 +76,21 @@ export function defaultTeachers(): TeacherRecord[] {
   }));
 }
 
-const orFallback = (value: Localized, locale: ContentLocale) => value[locale] || value.uz;
-
-export function resolveTeacher(t: TeacherRecord, locale: ContentLocale): PublicTeacher {
-  const education = t.education.map((e) => ({ label: degreeLabels(e.degree)[locale], value: orFallback(e.institution, locale) }));
+export function resolveTeacher(t: TeacherRecord, locale: PublicLocale): PublicTeacher {
+  const text = localizer(locale);
+  const orFallback = (value: Localized) => text(value) || value.uz;
+  const education = t.education.map((e) => ({ label: text(degreeLabels(e.degree)), value: orFallback(e.institution) }));
   return {
     slug: t.slug,
     photo: t.photo,
-    name: locale === "ru" ? t.nameCyrillic : t.nameLatin,
+    // nameCyrillic is the Russian spelling; the Uzbek Cyrillic one (Ҳакимова, not Хакимова) comes from the Latin name.
+    name: locale === "ru" ? t.nameCyrillic : locale === "uz-cyrl" ? toCyrillic(t.nameLatin) : t.nameLatin,
     experienceYears: t.experienceYears ?? undefined,
-    focus: t.focus ? orFallback(t.focus, locale) : undefined,
-    category: t.category ? categoryLabels(t.category)[locale] : undefined,
+    focus: t.focus ? orFallback(t.focus) : undefined,
+    category: t.category ? text(categoryLabels(t.category)) : undefined,
     facts: [
       ...education.map((e) => ({ kind: "education" as const, ...e })),
-      ...t.credentials.map((c) => ({ kind: "credential" as const, label: orFallback(c.label, locale), value: c.value })),
+      ...t.credentials.map((c) => ({ kind: "credential" as const, label: orFallback(c.label), value: c.value })),
     ],
     institutions: education.map((e) => e.value),
   };
@@ -105,7 +107,7 @@ export function getTeacherRow(id: number): TeacherRow | null {
   return row ? toRow(row) : null;
 }
 
-export function publicTeachers(locale: ContentLocale): PublicTeacher[] {
+export function publicTeachers(locale: PublicLocale): PublicTeacher[] {
   const fallback = () => defaultTeachers().map((t) => resolveTeacher(t, locale));
   if (!adminEnabled()) return fallback();
   try {

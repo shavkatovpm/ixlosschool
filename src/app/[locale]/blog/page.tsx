@@ -6,8 +6,9 @@ import { ArticleCard } from "@/components/site/article-card";
 import { JsonLd } from "@/components/site/json-ld";
 import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
+import { langTag } from "@/i18n/routing";
 import { publishedArticles } from "@/lib/content/articles";
-import type { ContentLocale } from "@/lib/content/shared";
+import type { PublicLocale } from "@/lib/content/shared";
 import { SITE_URL, absoluteUrl, buildMetadata, webPageNode } from "@/lib/seo";
 
 const PATH = "/blog";
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const articles = publishedArticles(locale as ContentLocale);
+  const articles = publishedArticles(locale as PublicLocale);
   // No articles yet: the page does not exist (a thin page would only hurt search results).
   if (articles.length === 0) notFound();
 
@@ -48,7 +49,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             "@id": `${pageUrl}#blog`,
             url: pageUrl,
             name: t("h1"),
-            inLanguage: locale,
+            inLanguage: langTag(locale),
             publisher: { "@id": `${SITE_URL}/#school` },
             blogPost: articles.map((a) => ({ "@id": `${absoluteUrl(locale, `${PATH}/${a.slug}`)}#article` })),
           },

@@ -3,7 +3,7 @@ import { Geist, Manrope, Bodoni_Moda } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
+import { langTag, routing } from "@/i18n/routing";
 import { getContact } from "@/lib/center";
 import { getIntegrations } from "@/lib/integrations";
 import { SITE_NAME, SITE_URL, schoolNode, websiteNode } from "@/lib/seo";
@@ -98,7 +98,7 @@ export default async function LocaleLayout({
   const contact = getContact();
 
   return (
-    <html lang={locale} className={`${geistSans.variable} ${manrope.variable} ${bodoni.variable} antialiased`}>
+    <html lang={langTag(locale)} className={`${geistSans.variable} ${manrope.variable} ${bodoni.variable} antialiased`}>
       <body className="min-h-screen bg-paper font-sans text-ink">
         <JsonLd
           graph={[

@@ -15,7 +15,7 @@ export function sourceWithMedium(source: string, medium: string) {
   return medium && medium !== "direct" && medium !== "bot" ? `${sourceLabel(source)} · ${mediumLabel(medium)}` : sourceLabel(source);
 }
 
-export const LOCALE_LABEL: Record<string, string> = { uz: "O'zbekcha", ru: "Ruscha", en: "Inglizcha" };
+export const LOCALE_LABEL: Record<string, string> = { uz: "O'zbekcha", "uz-cyrl": "O'zbekcha (kirill)", ru: "Ruscha", en: "Inglizcha" };
 export const DEVICE_LABEL: Record<string, string> = { mobile: "Telefon", desktop: "Kompyuter", tablet: "Planshet" };
 
 export const PAGE_LABEL: Record<string, string> = {

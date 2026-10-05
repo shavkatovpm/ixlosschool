@@ -20,7 +20,7 @@ export function filterFrom(sp: Query): LeadFilter {
     from: period.preset === "all" ? undefined : period.range.from,
     to: period.preset === "all" ? undefined : period.range.to,
     source: (sp.source ?? "").slice(0, 60) || undefined,
-    locale: ["uz", "ru", "en"].includes(sp.locale ?? "") ? sp.locale : undefined,
+    locale: ["uz", "uz-cyrl", "ru", "en"].includes(sp.locale ?? "") ? sp.locale : undefined,
     grade: /^(?:[1-9]|10|11)$/.test(sp.grade ?? "") ? sp.grade : undefined,
   };
 }

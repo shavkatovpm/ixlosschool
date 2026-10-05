@@ -1,7 +1,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { getContact } from "@/lib/center";
 import { publicTestimonials } from "@/lib/content/testimonials";
-import type { ContentLocale } from "@/lib/content/shared";
+import type { PublicLocale } from "@/lib/content/shared";
 import { Reveal } from "./reveal";
 import { SectionHead } from "./section-head";
 import { YoutubeIcon } from "./social-icons";
@@ -12,7 +12,7 @@ export function Testimonials({ index, id = "video-fikrlar" }: { index?: string; 
   const locale = useLocale();
   const CONTACT = getContact();
 
-  const items = publicTestimonials(locale as ContentLocale).map((video) => ({
+  const items = publicTestimonials(locale as PublicLocale).map((video) => ({
     id: video.id,
     thumb: video.thumb,
     chip: video.chip,

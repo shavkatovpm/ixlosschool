@@ -66,7 +66,7 @@ export function Flag({ locale, className = "" }: FlagProps) {
     <span
       className={`relative inline-block h-[18px] w-[26px] shrink-0 overflow-hidden rounded-[4px] shadow-[0_0_0_1px_rgba(23,60,36,0.18)] ${className}`}
     >
-      {locale === "uz" ? <UzFlag /> : locale === "ru" ? <RuFlag /> : <GbFlag />}
+      {locale === "uz" || locale === "uz-cyrl" ? <UzFlag /> : locale === "ru" ? <RuFlag /> : <GbFlag />}
     </span>
   );
 }

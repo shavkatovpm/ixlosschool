@@ -9,8 +9,9 @@ import { ArticleCard } from "@/components/site/article-card";
 import { JsonLd } from "@/components/site/json-ld";
 import { Reveal } from "@/components/site/reveal";
 import { Link } from "@/i18n/navigation";
+import { langTag } from "@/i18n/routing";
 import { publishedArticle, publishedArticles } from "@/lib/content/articles";
-import type { ContentLocale } from "@/lib/content/shared";
+import type { PublicLocale } from "@/lib/content/shared";
 import { formatDate, isoDate } from "@/lib/format-date";
 import { SITE_URL, absoluteUrl, buildMetadata, webPageNode } from "@/lib/seo";
 
@@ -18,7 +19,7 @@ type Params = { locale: string; slug: string };
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const article = publishedArticle(slug, locale as ContentLocale);
+  const article = publishedArticle(slug, locale as PublicLocale);
   if (!article) return {};
   const title = article.title.length <= 45 ? `${article.title} | Ixlos School` : article.title;
   return buildMetadata({
@@ -34,14 +35,14 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 export default async function ArticlePage({ params }: { params: Promise<Params> }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
-  const article = publishedArticle(slug, locale as ContentLocale);
+  const article = publishedArticle(slug, locale as PublicLocale);
   if (!article) notFound();
 
   const t = await getTranslations({ locale, namespace: "pages.blog" });
   const home = await getTranslations({ locale, namespace: "pages" });
   const path = `/blog/${slug}`;
   const url = absoluteUrl(locale, path);
-  const others = publishedArticles(locale as ContentLocale)
+  const others = publishedArticles(locale as PublicLocale)
     .filter((a) => a.slug !== slug)
     .slice(0, 3);
 
@@ -65,7 +66,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
             "@id": `${url}#article`,
             headline: article.title,
             description: article.description,
-            inLanguage: locale,
+            inLanguage: langTag(locale),
             datePublished: isoDate(article.publishedAt),
             dateModified: isoDate(article.updatedAt),
             ...(article.cover ? { image: `${SITE_URL}${article.cover}` } : {}),

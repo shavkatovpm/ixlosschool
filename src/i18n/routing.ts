@@ -1,7 +1,8 @@
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  locales: ["uz", "ru", "en"],
+  // "uz-cyrl" is Uzbek in Cyrillic script: the same texts as "uz", converted by lib/cyrillic.mjs.
+  locales: ["uz", "uz-cyrl", "ru", "en"],
   defaultLocale: "uz",
   localePrefix: "always",
   // "/" always opens Uzbek; other languages only via the language switcher
@@ -12,3 +13,6 @@ export const routing = defineRouting({
 });
 
 export type AppLocale = (typeof routing.locales)[number];
+
+/** The language tag for lang="", hreflang and JSON-LD: the URL segment is lower case, the tag is "uz-Cyrl". */
+export const langTag = (locale: string) => (locale === "uz-cyrl" ? "uz-Cyrl" : locale);

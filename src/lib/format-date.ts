@@ -1,4 +1,4 @@
-const INTL_LOCALE: Record<string, string> = { uz: "uz-Latn", ru: "ru-RU", en: "en-GB" };
+const INTL_LOCALE: Record<string, string> = { uz: "uz-Latn", "uz-cyrl": "uz-Cyrl", ru: "ru-RU", en: "en-GB" };
 
 /** "24 September 2026" in the page language, Tashkent calendar day. */
 export function formatDate(timestamp: number, locale: string) {

@@ -1,12 +1,12 @@
 import { SITE_URL, absoluteUrl } from "@/lib/seo";
 import { publicTestimonials } from "@/lib/content/testimonials";
-import type { ContentLocale } from "@/lib/content/shared";
+import type { PublicLocale } from "@/lib/content/shared";
 
 // The videos are spoken in Uzbek whatever the page language, so inLanguage stays "uz".
 export async function testimonialVideoNodes(locale: string, path = "") {
   const page = absoluteUrl(locale, path);
 
-  return publicTestimonials(locale as ContentLocale).map((video) => ({
+  return publicTestimonials(locale as PublicLocale).map((video) => ({
     "@type": "VideoObject",
     "@id": `${page}#video-${video.id}`,
     name: video.title,

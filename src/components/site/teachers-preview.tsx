@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { ContentLocale } from "@/lib/content/shared";
+import type { PublicLocale } from "@/lib/content/shared";
 import { publicTeachers } from "@/lib/content/teachers";
 import { TEACHER_COUNT_APPROX } from "@/lib/teachers";
 import { Reveal } from "./reveal";
@@ -14,7 +14,7 @@ export function TeachersPreview() {
   const t = useTranslations("teachers");
   const nav = useTranslations("nav");
   const page = useTranslations("pages.teachers");
-  const teachers = publicTeachers(useLocale() as ContentLocale);
+  const teachers = publicTeachers(useLocale() as PublicLocale);
   if (teachers.length === 0) return null;
   const years = Math.max(0, ...teachers.map((teacher) => teacher.experienceYears ?? 0));
   const badge = years > 0 ? t("badge", { count: TEACHER_COUNT_APPROX, years }) : t("badgeCount", { count: TEACHER_COUNT_APPROX });

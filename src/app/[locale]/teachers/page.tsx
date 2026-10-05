@@ -6,7 +6,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { Reveal } from "@/components/site/reveal";
 import { TeacherCard } from "@/components/site/teacher-card";
 import { SITE_URL, absoluteUrl, buildMetadata, webPageNode } from "@/lib/seo";
-import type { ContentLocale } from "@/lib/content/shared";
+import type { PublicLocale } from "@/lib/content/shared";
 import { publicTeachers } from "@/lib/content/teachers";
 
 const PATH = "/teachers";
@@ -24,7 +24,7 @@ export default async function TeachersPage({ params }: { params: Promise<{ local
   const tt = await getTranslations({ locale, namespace: "teachers" });
   const home = await getTranslations({ locale, namespace: "pages" });
   const pageUrl = absoluteUrl(locale, PATH);
-  const teachers = publicTeachers(locale as ContentLocale);
+  const teachers = publicTeachers(locale as PublicLocale);
 
   const people = teachers.map((teacher) => ({
     "@type": "Person",

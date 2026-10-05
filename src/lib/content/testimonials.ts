@@ -2,7 +2,7 @@ import { adminEnabled } from "../admin/config";
 import { getDb, type Row } from "../admin/db";
 import { testimonialVideos } from "../testimonials";
 import { defaultTestimonialText } from "./defaults";
-import { isCustomized, markCustomized, type ContentLocale, type Localized } from "./shared";
+import { isCustomized, localizer, markCustomized, type Localized, type PublicLocale } from "./shared";
 import { moveRow } from "./order";
 
 export type TestimonialRow = {
@@ -59,14 +59,10 @@ export function youtubeIdTaken(youtubeId: string, exceptId: number | null) {
   return row !== undefined && Number(row.id) !== exceptId;
 }
 
-const inLocale = (t: TestimonialRow, locale: ContentLocale): PublicTestimonial => ({
-  id: t.youtubeId,
-  thumb: t.thumb,
-  uploadDate: t.uploadDate,
-  chip: t.chip[locale],
-  title: t.title[locale],
-  description: t.description[locale],
-});
+const inLocale = (t: TestimonialRow, locale: PublicLocale): PublicTestimonial => {
+  const text = localizer(locale);
+  return { id: t.youtubeId, thumb: t.thumb, uploadDate: t.uploadDate, chip: text(t.chip), title: text(t.title), description: text(t.description) };
+};
 
 /** The five videos that shipped with the site (see lib/testimonials.ts and messages/*.json). */
 export function defaultTestimonials(): Omit<TestimonialRow, "id" | "position" | "published">[] {
@@ -76,7 +72,7 @@ export function defaultTestimonials(): Omit<TestimonialRow, "id" | "position" | 
   });
 }
 
-export function publicTestimonials(locale: ContentLocale): PublicTestimonial[] {
+export function publicTestimonials(locale: PublicLocale): PublicTestimonial[] {
   const fallback = () => defaultTestimonials().map((t) => inLocale({ ...t, id: 0, position: 0, published: true }, locale));
   if (!adminEnabled()) return fallback();
   try {

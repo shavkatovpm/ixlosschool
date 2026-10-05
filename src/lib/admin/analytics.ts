@@ -16,7 +16,7 @@ const TZ_OFFSET_MS = 5 * 3600 * 1000; // Asia/Tashkent has no daylight saving
 const DAY_MS = 86_400_000;
 const RETENTION_DAYS = 400;
 
-export const LOCALES = ["uz", "ru", "en"] as const;
+export const LOCALES = ["uz", "uz-cyrl", "ru", "en"] as const;
 
 export const dayOf = (timestamp: number) => new Date(timestamp + TZ_OFFSET_MS).toISOString().slice(0, 10);
 export const today = () => dayOf(Date.now());
@@ -37,7 +37,7 @@ function saltFor(day: string) {
 /** "/uz/results/" -> { locale: "uz", path: "/results" }; the home page is "/". Null for anything that is not a site page. */
 export function normalizePagePath(raw: string): { locale: string; path: string } | null {
   const clean = raw.split(/[?#]/)[0];
-  const match = /^\/(uz|ru|en)(\/[a-z0-9\-_/]*)?$/i.exec(clean);
+  const match = /^\/(uz-cyrl|uz|ru|en)(\/[a-z0-9\-_/]*)?$/i.exec(clean);
   if (!match || clean.length > 160) return null;
   const path = (match[2] ?? "").replace(/\/+$/, "").toLowerCase();
   return { locale: match[1].toLowerCase(), path: path || "/" };

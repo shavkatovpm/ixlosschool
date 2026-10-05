@@ -1,4 +1,4 @@
-// Regenerates public/og/og-{uz,ru,en}.png (link-preview images) from the hero copy in messages/*.json,
+// Regenerates public/og/og-{uz,uz-cyrl,ru,en}.png (link-preview images) from the hero copy in messages/*.json,
 // so the share image always matches the site. One-off tool, not part of the build.
 //
 //   npm i --no-save playwright-core
@@ -8,6 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { chromium } from "playwright-core";
+import { toCyrillicDeep } from "../src/lib/cyrillic.mjs";
 
 const root = path.resolve(import.meta.dirname, "..");
 const chromePath = process.env.CHROME_PATH;
@@ -45,8 +46,11 @@ const html = (hero) => `<!doctype html><meta charset="utf-8">
 <div class="sub"><p><small>${hero.eyebrowRight}</small>${hero.leadStrong}</p><div class="domain">ixlosschool.uz</div></div>`;
 
 const browser = await chromium.launch({ executablePath: chromePath });
-for (const locale of ["uz", "ru", "en"]) {
-  const { hero } = JSON.parse(fs.readFileSync(path.join(root, `messages/${locale}.json`), "utf8"));
+const heroOf = (locale) => JSON.parse(fs.readFileSync(path.join(root, `messages/${locale}.json`), "utf8")).hero;
+
+for (const locale of ["uz", "uz-cyrl", "ru", "en"]) {
+  // Cyrillic Uzbek has no message file: it is the Uzbek copy in the other script, as on the site.
+  const hero = locale === "uz-cyrl" ? toCyrillicDeep(heroOf("uz")) : heroOf(locale);
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
   await page.setContent(html(hero));
   await page.evaluate(() => document.fonts.ready);

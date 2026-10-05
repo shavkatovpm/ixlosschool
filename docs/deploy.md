@@ -72,13 +72,13 @@ Qo'lda qaytarish: serverda `cd /opt/ixlosschool && ln -sfn releases/<oldingi> cu
 Tekshiruv (`curl`):
 
 ```bash
-for p in /uz /ru /en /uz/results /uz/contact /uz/teachers /uz/admissions /robots.txt /sitemap.xml /llms.txt; do
+for p in /uz /uz-cyrl /ru /en /uz-cyrl/admissions /uz/results /uz/contact /uz/teachers /uz/admissions /robots.txt /sitemap.xml /llms.txt; do
   printf "%-20s " "$p"; curl -s -o /dev/null -w "%{http_code}\n" -L "https://www.ixlosschool.uz$p"
 done
 curl -sI https://www.ixlosschool.uz/uz | grep -i -E "^via|strict-transport|x-frame|x-content-type|referrer-policy|permissions-policy"
 ```
 
-Kutilgan: hammasi 200 (`/uz/privacy` **404**: maxfiylik sahifasi egasi qaroriga ko'ra olib tashlangan), `via: 1.1 Caddy`, `sitemap.xml`da 15 URL.
+Kutilgan: hammasi 200 (`/uz/privacy` **404**: maxfiylik sahifasi egasi qaroriga ko'ra olib tashlangan), `via: 1.1 Caddy`, `sitemap.xml`da 20 URL (5 sahifa × 4 til: uz, uz-cyrl, ru, en; maqolalar chop etilgan bo'lsa ko'proq).
 
 ## Server va ABCO'dan ajratish
 

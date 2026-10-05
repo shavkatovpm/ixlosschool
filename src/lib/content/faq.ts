@@ -2,7 +2,7 @@ import { adminEnabled } from "../admin/config";
 import { getDb, type Row } from "../admin/db";
 import { defaultFaq } from "./defaults";
 import { moveRow } from "./order";
-import { isCustomized, markCustomized, type ContentLocale, type Localized } from "./shared";
+import { isCustomized, localizer, markCustomized, type Localized, type PublicLocale } from "./shared";
 
 export type FaqRow = {
   id: number;
@@ -38,14 +38,15 @@ export function getFaqRow(id: number): FaqRow | null {
 }
 
 /** What the public site shows: the edited entries (published ones) or, before any editing, the built-in ones. */
-export function publicFaq(locale: ContentLocale): { question: string; answer: string }[] {
-  const fallback = () => defaultFaq().map((item) => ({ question: item.question[locale], answer: item.answer[locale] }));
+export function publicFaq(locale: PublicLocale): { question: string; answer: string }[] {
+  const text = localizer(locale);
+  const fallback = () => defaultFaq().map((item) => ({ question: text(item.question), answer: text(item.answer) }));
   if (!adminEnabled()) return fallback();
   try {
     if (!faqCustomized()) return fallback();
     return listFaq()
       .filter((row) => row.published)
-      .map((row) => ({ question: row.question[locale], answer: row.answer[locale] }));
+      .map((row) => ({ question: text(row.question), answer: text(row.answer) }));
   } catch (error) {
     console.error("[faq] could not read entries:", error);
     return fallback();

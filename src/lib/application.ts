@@ -12,7 +12,7 @@ export const applicationFormSchema = z.object({
 });
 
 export const applicationSchema = applicationFormSchema.extend({
-  locale: z.enum(["uz", "ru", "en"]),
+  locale: z.enum(["uz", "uz-cyrl", "ru", "en"]),
 });
 
 export type ApplicationFormValues = z.infer<typeof applicationFormSchema>;

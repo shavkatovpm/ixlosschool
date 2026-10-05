@@ -7,12 +7,12 @@ export type LlmsArticle = { slug: string; title: Record<"uz" | "ru" | "en", stri
 export function llmsTemplate(c: Contact, l: Legal, articles: LlmsArticle[] = []): string {
   const blog = articles.length
     ? `\n\n## Blog (articles for parents)\n\n${articles
-        .map((a) => `- [${a.title.en}](https://www.ixlosschool.uz/en/blog/${a.slug}): ${a.description.en} (Uzbek: https://www.ixlosschool.uz/uz/blog/${a.slug}; Russian: https://www.ixlosschool.uz/ru/blog/${a.slug})`)
+        .map((a) => `- [${a.title.en}](https://www.ixlosschool.uz/en/blog/${a.slug}): ${a.description.en} (Uzbek: https://www.ixlosschool.uz/uz/blog/${a.slug}; Uzbek in Cyrillic script: https://www.ixlosschool.uz/uz-cyrl/blog/${a.slug}; Russian: https://www.ixlosschool.uz/ru/blog/${a.slug})`)
         .join("\n")}`
     : "";
   return `# Ixlos School
 
-> Ixlos School is a private school in the Yunusabad district of Tashkent, Uzbekistan, for grades 1–11, specializing in finance and IT. Grades 5–9 study mathematics, English and informatics in depth; grades 10–11 follow an Accounting or IT track. The school guarantees graduates an IELTS score of at least 5.5 and awards a professional diploma (Accounting or IT). The website is available in Uzbek (default), Russian and English.
+> Ixlos School is a private school in the Yunusabad district of Tashkent, Uzbekistan, for grades 1–11, specializing in finance and IT. Grades 5–9 study mathematics, English and informatics in depth; grades 10–11 follow an Accounting or IT track. The school guarantees graduates an IELTS score of at least 5.5 and awards a professional diploma (Accounting or IT). The website is available in Uzbek (default; in Latin and in Cyrillic script), Russian and English.
 
 Facts on this page come from the school's own materials.
 
@@ -45,6 +45,7 @@ Facts on this page come from the school's own materials.
 - [Contact and address (Uzbek)](https://www.ixlosschool.uz/uz/contact): address, phones, hours and a fact sheet about the school
 - [Contact and address (Russian)](https://www.ixlosschool.uz/ru/contact): контакты, адрес и краткие сведения о школе
 - [Contact and address (English)](https://www.ixlosschool.uz/en/contact): the same in English
+- [Home (Uzbek, Cyrillic script)](https://www.ixlosschool.uz/uz-cyrl): ўзбекча, кирилл ёзувида. Every Uzbek page above has the same text in Cyrillic script at the same path under /uz-cyrl (/uz-cyrl/admissions, /uz-cyrl/teachers, /uz-cyrl/results, /uz-cyrl/contact)
 
 ## Key facts (English)
 
